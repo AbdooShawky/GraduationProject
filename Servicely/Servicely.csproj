@@ -4246,11 +4246,6 @@
     <Content Include="Views\RealStateRegistryInterests\Details.cshtml" />
     <Content Include="Views\RealStateRegistryInterests\Edit.cshtml" />
     <Content Include="Views\RealStateRegistryInterests\Index.cshtml" />
-    <Content Include="Views\AreasAuthorityRequests\Create.cshtml" />
-    <Content Include="Views\AreasAuthorityRequests\Delete.cshtml" />
-    <Content Include="Views\AreasAuthorityRequests\Details.cshtml" />
-    <Content Include="Views\AreasAuthorityRequests\Edit.cshtml" />
-    <Content Include="Views\AreasAuthorityRequests\Index.cshtml" />
     <Content Include="Views\Shared\Justice_Ministry.cshtml" />
     <Content Include="Views\Shared\Real_State_Registry_Interest.cshtml" />
     <Content Include="Views\Cars\Create.cshtml" />
@@ -4292,13 +4287,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Scripts\README.md" />
-    <Content Include="Views\AtmCertificate\Index.cshtml" />
-    <Content Include="Views\ATMBirthCertificate\Index.cshtml" />
-    <Content Include="Views\ATMCivilAffairs\Index.cshtml" />
-    <Content Include="Views\ATMDeathCertificate\Index.cshtml" />
-    <Content Include="Views\ATMHome\Index.cshtml" />
-    <Content Include="Views\ATMinterior\Index.cshtml" />
-    <Content Include="Views\ATMMinistry\Index.cshtml" />
     <Content Include="Views\Shared\ATM_layout.cshtml" />
     <Content Include="Views\report\Create.cshtml" />
     <Content Include="Views\CertificateStudentM_M\SchoolCertificate.cshtml" />
