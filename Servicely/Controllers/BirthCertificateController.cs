@@ -69,17 +69,6 @@ namespace Servicely.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
-
-
             db.Configuration.ProxyCreationEnabled = false;
             db.Configuration.LazyLoadingEnabled = false;
 

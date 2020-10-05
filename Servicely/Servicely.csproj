@@ -3261,14 +3261,6 @@
     <Compile Include="Controllers\AddressesGeneralController.cs" />
     <Compile Include="Controllers\AddStudentsController.cs" />
     <Compile Include="Controllers\AmbulanceController.cs" />
-    <Compile Include="Controllers\AreasAuthorityRequestsController.cs" />
-    <Compile Include="Controllers\ATMBirthCertificateController.cs" />
-    <Compile Include="Controllers\AtmCertificateController.cs" />
-    <Compile Include="Controllers\ATMCivilAffairsController.cs" />
-    <Compile Include="Controllers\ATMDeathCertificateController.cs" />
-    <Compile Include="Controllers\ATMHomeController.cs" />
-    <Compile Include="Controllers\ATMinteriorController.cs" />
-    <Compile Include="Controllers\ATMMinistryController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CarLicencesController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
