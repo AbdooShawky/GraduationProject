@@ -1,0 +1,343 @@
+﻿@model Servicely.Models.District
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script src="~/js/jquery-3.4.1.min.js"></script>
+<script>
+
+    $(function () {
+
+            var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+                var sid = $("#City").val();
+                var ss = $("#city").val();
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+            });
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+            });
+        }
+        else {
+               $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+                var sid = $("#City").val();
+                var ss = $("#city").val();
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+            });
+
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+            });
+        }
+
+
+
+    });
+
+
+</script>
+
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Create</h2>
+
+    @using (Html.BeginForm())
+    {
+
+
+<div class="form-horizontal">
+    <h4>@Servicely.Languages.Language.District</h4>
+    <hr />
+
+    <div class="form-group">
+
+
+
+
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.States</label>
+            @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control", required = "required" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Cities</label>
+            <select class="form-control" id="city" required>
+                <option> ----</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Regions</label>
+            <select class="form-control" id="region" required name="district_region_id"></select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.District_Name</label>
+            @Html.EditorFor(model => model.district_name, new { htmlAttributes = new { @class = "form-control", required = "required", pattern ="([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{3,20})"
+ } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.District_Name_inArabic</label>
+            @Html.EditorFor(model => model.district_arabic_name, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([\u0600-\u06FF\\s]{3,20})" } })
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-3">
+            @if (@ViewBag.errMsg != null)
+            {
+
+
+                <label style="color:red"> @ViewBag.errMsg </label>
+
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value=@Servicely.Languages.Language.Create class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+

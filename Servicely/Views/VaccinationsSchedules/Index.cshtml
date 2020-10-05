@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Servicely.Models.VaccinationReservation>
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Index;
+    if (Session["Layout"] != null)
+        Layout = Session["Layout"].ToString(); 
+    else
+     Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<script>
+    $(function () {
+        $(document).ready(function () {
+
+            $('#dtBasicExample').DataTable();
+
+            $('.dataTables_length').addClass('bs-select');
+
+        });
+
+
+    });
+</script>
+
+
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Index</h2>
+    <div class="row">
+        <div class="col-12">
+            <table id="dtBasicExample" class="table table-striped table-sm  table-bordered" cellspacing="0" width="100%">
+
+                <thead>
+                    <tr>
+                        <th class="th-sm">
+                            @Servicely.Languages.Language.CitizenNationalId
+                        </th>
+                        <th class="th-sm">
+                            @Servicely.Languages.Language.CitizenName
+                        </th>
+                        <th class="th-sm">
+                            @Servicely.Languages.Language.Date
+                        </th>
+                        <th class="th-sm">
+                            @Servicely.Languages.Language.Healthcare
+                        </th>
+                        
+                        <th class="th-sm">
+                            @Servicely.Languages.Language.VaccinationType
+                        </th>
+                        <th class="th-sm">
+                            @Servicely.Languages.Language.Checked
+                        </th>
+                        <th>
+
+                        </th>
+
+
+
+                        @*<th class="th-sm">   </th>
+                            <th class="th-sm">   </th>*@
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            @if (Session["lang"] != null)
+                            {
+                                if (Session["lang"].ToString().Equals("ar-EG"))
+                                {
+
+                                    <td>@item.Citizen.citizen_national_id</td>
+                                    <td>@item.Citizen.citizen_first_name_arabic @item.Citizen.citizen_second_name_arabic @item.Citizen.citizen_third_name_arabic @item.Citizen.citizen_fourth_name_arabic</td>
+                                    <td>@item.VaccReservation_date.Value.ToShortDateString()</td>
+                                    <td>@item.HealthCare.hospital_name_arabic</td>
+                                    <td>@item.VaccinationType.vaccination_type_name_arabic</td>
+                                    <td>@item.VaccReservation_checked</td>
+
+
+
+                                }
+                                else
+                                {
+
+                                    <td>@item.Citizen.citizen_national_id</td>
+                                    <td>@item.Citizen.citizen_first_name @item.Citizen.citizen_second_name @item.Citizen.citizen_third_name @item.Citizen.citizen_fourth_name</td>
+                                    <td>@item.VaccReservation_date.Value.ToShortDateString()</td>
+                                    <td>@item.HealthCare.hospital_name</td>
+                                    <td>@item.VaccinationType.vaccination_type_name</td>
+                                    <td>@item.VaccReservation_checked</td>
+
+
+                                }
+                            }
+                            else
+                            {
+
+                                <td>@item.Citizen.citizen_national_id</td>
+                                <td>@item.Citizen.citizen_first_name @item.Citizen.citizen_second_name @item.Citizen.citizen_third_name @item.Citizen.citizen_fourth_name</td>
+                                <td>@item.VaccReservation_date.Value.ToShortDateString()</td>
+                                <td>@item.HealthCare.hospital_name</td>
+                                <td>@item.VaccinationType.vaccination_type_name</td>
+                                <td>@item.VaccReservation_checked</td>
+
+                            }
+
+                        <td>
+                            <a href="/VaccinationsSchedules/Edit/@item.VaccReservation_id"><i class="fa fa-edit"></i></a>| <a href="/VaccinationsSchedules/Delete/@item.VaccReservation_id"><i class="fa fa-trash-alt"></i></a>
+                        </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+

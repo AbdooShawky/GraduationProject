@@ -1,0 +1,48 @@
+﻿@model Servicely.Models.police_officer
+
+@{
+    ViewBag.Title = "Create";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Add new Police Officer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.police_officer_citizen_id, "NationalId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("police_officer_citizen_id", null, htmlAttributes: new { @class = "form-control",required = "required", data_live_search = "true" })
+                @Html.ValidationMessageFor(model => model.police_officer_citizen_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.police_officer_policeDepartmentId, "Police Department", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("police_officer_policeDepartmentId", null, htmlAttributes: new { @class = "form-control",required = "required", data_live_search = "true"  })
+                @Html.ValidationMessageFor(model => model.police_officer_policeDepartmentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

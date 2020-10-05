@@ -1,0 +1,11 @@
+﻿
+
+@media print{
+
+    body{
+        visibility:hidden;
+    }
+    #print{
+        visibility:visible;
+    }
+}

@@ -1,0 +1,326 @@
+﻿
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<!DOCTYPE html>
+
+
+
+<script src="~/jasonday-printThis-0aa7434/printThis.js"></script>
+<script src="~/qrCodeJs/qrcode.min.js"></script>
+
+
+<script>
+    
+</script>
+<script>
+
+    $(function () {
+
+        $('#btn').click(function () {
+
+            $("#print").printThis({
+
+                debug: false,               // show the iframe for debugging
+                importCSS: true,            // import parent page css
+                importStyle: false,         // import style tags
+                printContainer: true,       // print outer container/$.selector
+                loadCSS: "",                // path to additional css file - use an array [] for multiple
+                pageTitle: "",              // add title to print page
+                removeInline: false,        // remove inline styles from print elements
+                removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+                printDelay: 333,            // variable print delay
+                header: null,               // prefix to html
+                footer: null,               // postfix to html
+                base: false,                // preserve the BASE tag or accept a string for the URL
+                formValues: true,           // preserve input/form values
+                canvas: false,              // copy canvas content
+                doctypeString: '<!DOCTYPE html>', // enter a different doctype for older markup
+                removeScripts: false,       // remove script tags from print content
+                copyTagClasses: false,      // copy classes from the html & body tag
+                beforePrintEvent: null,     // callback function for printEvent in iframe
+                beforePrint: null,          // function called before iframe is filled
+                afterPrint: null            // function called before iframe is removed
+
+            });
+        });
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+       
+        
+        if (seesion == "ar-EG") {
+
+             var qr;
+        
+        $.ajax({
+
+            url: "/CitizenID/GetCitizenQRCode",
+            data: "",
+            async: false,
+            success: function (res) {
+                qr = res;
+            }
+
+        });
+        var q = new QRCode("qrcode", {
+    text: qr,
+    width: 50,
+    height: 50,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+               //  new QRCode(document.getElementById("qrcode"), qr);
+
+        $.ajax({
+
+    
+            url: "/CitizenID/GetCitizenInfoCardBack",
+            data: "",
+            async: false,
+            success: function (res) {
+                 
+                $.each(res, function (i, r) {
+
+                    
+                    
+                    if (r.citizen_gender == "Male") {
+
+                        $("#Gender").text("ذكر");
+                    }
+                    else {
+                        $("#Gender").text("انثى");
+                    }
+
+                    if (r.citizen_relegion == "Muslim") {
+                        $("#Relegion").text("مسلم");
+                    }
+                    else if (r.citizen_relegion == "Cristian") {
+                        $("#Relegion").text("مسيحي");
+                    }
+                    else if (r.citizen_relegion == "Jewish") {
+                        $("#Relegion").text("يهودي");
+                    }
+                    else {
+                         $("#Relegion").text(r.citizen_relegion);
+                    }
+
+
+                   
+                    $("#Nid").text(r.citizen_national_id);
+                    $("#job").text(r.citizen_job_title);
+                });
+
+
+
+            }
+
+        });
+        $.ajax({
+
+            url: "/CitizenID/GetCitizenSocialStatus",
+            data: "",
+            async: false,
+
+            success: function (res) {
+
+                $("#SocialStatus").text(res);
+
+            }
+
+        });
+        $.ajax({
+
+            url: "/CitizenID/GetHusbandNameByHisWife",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                $("#husbandName").text(res);
+
+            }
+
+        });
+
+
+        }
+        else {
+
+             var qr;
+        
+        $.ajax({
+
+            url: "/CitizenID/GetCitizenQRCode",
+            data: "",
+            async: false,
+            success: function (res) {
+                qr = res;
+            }
+
+        });
+        var q = new QRCode("qrcode", {
+    text: qr,
+    width: 50,
+    height: 50,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+               //  new QRCode(document.getElementById("qrcode"), qr);
+
+        $.ajax({
+
+    
+            url: "/CitizenID/GetCitizenInfoCardBack",
+            data: "",
+            async: false,
+            success: function (res) {
+                 
+                $.each(res, function (i, r) {
+
+                    
+                    $("#Gender").text(r.citizen_gender);
+                    $("#Relegion").text(r.citizen_relegion);
+                    $("#Nid").text(r.citizen_national_id);
+                    $("#job").text(r.citizen_job_title);
+                });
+
+
+
+            }
+
+        });
+        $.ajax({
+
+            url: "/CitizenID/GetCitizenSocialStatus",
+            data: "",
+            async: false,
+
+            success: function (res) {
+
+                $("#SocialStatus").text(res);
+
+            }
+
+        });
+        $.ajax({
+
+            url: "/CitizenID/GetHusbandNameByHisWife",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                $("#husbandName").text(res);
+
+            }
+
+        });
+        }
+
+
+
+       
+
+    });
+
+
+
+
+</script>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+        <div class="row mt-3 mb-3" id="print">
+            <div class="col-3"></div>
+            <div class="col-4">
+                <div class="row  " style="border:3px solid rgb(44, 44, 45) ; border-radius:10px; ">
+                    <div class="col-12" id="tb">
+                        <div class="row mt-2">
+                            <div class="col-8">
+                                <div class="text-center">
+                                    <strong class="font-small" id="Nid">    </strong>    <strong class="font-small">&emsp;  @DateTime.Now.Month / @DateTime.Now.Year</strong>
+                                    <br />
+                                    <strong class="font-small" id="job">
+
+                                    </strong>
+                                </div>
+                            </div>
+                           
+                            <div class="col-4 ">
+                                <div id="qrcode" class="float-md-right" ></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <strong class="font-small" id="husbandName">
+
+                                </strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-1">
+                                    <strong class="font-small" id="Gender">   </strong>
+                                    &emsp;
+                                    <strong class="font-small" id="Relegion">   </strong>
+                                    &emsp;
+
+                                    <strong class="font-small" id="SocialStatus">   </strong>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 mb-3">
+                            <div class="col">
+                                <strong class="font-small" id="NationalId"> @Servicely.Languages.Language.The_card_is_valid_until @DateTime.Now.AddDays(365 * 7).ToShortDateString()  </strong>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+
+
+
+        </div>
+
+
+        <div class="row mt-4 mb-3">
+
+            <div class="col-4">
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="col-4">
+                <input type="button" value="Print" class="btn btn-default" id="btn" />
+
+
+            </div>
+        </div>
+
+
+
+    }
+</div>

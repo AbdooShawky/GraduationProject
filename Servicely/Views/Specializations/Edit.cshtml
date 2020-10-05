@@ -1,0 +1,56 @@
+﻿@model Servicely.Models.HealthCareSpecialization
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Edit</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Servicely.Languages.Language.Specialization</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.specialization_id)
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <label>@Servicely.Languages.Language.Specialization_Name_inEnglish</label>
+                @Html.EditorFor(model => model.specialization_name, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([A-Z][a-z\\s]{2,20}" } })
+                @Html.ValidationMessageFor(model => model.specialization_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <label>@Servicely.Languages.Language.Specialization_name_inArabic</label>
+                @Html.EditorFor(model => model.specialization_name_arabic, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([\u0600-\u06FF\\s]{3,20})" } })
+                @Html.ValidationMessageFor(model => model.specialization_name_arabic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (ViewBag.msg != null)
+        {
+            <label class="text-danger mb-2">@ViewBag.msg</label>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List ,"Index")
+    </div>
+</div>

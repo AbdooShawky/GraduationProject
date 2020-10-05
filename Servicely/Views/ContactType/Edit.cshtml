@@ -1,0 +1,75 @@
+﻿@model Servicely.Models.Contact_Type
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+    <div class="container-fluid">
+        <h2>@Servicely.Languages.Language.Edit</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(a=> a.contact_type_id)
+
+    <div class="form-horizontal">
+        <h4>@Servicely.Languages.Language.ContactType</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="contact_type_name ">@Servicely.Languages.Language.ContactTypeName</label>
+                @Html.EditorFor(model => model.contact_type_name, new { htmlAttributes = new { @class = "form-control", Pattern = "([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20})", required = "required" } })
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="contact_type_name ">@Servicely.Languages.Language.Contact_type_description</label>
+                @Html.EditorFor(model => model.contact_type_description, new { htmlAttributes = new { @class = "form-control", Pattern = "([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20})", required = "required" } })
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="contact_type_name ">@Servicely.Languages.Language.ContactTypeNameArabic</label>
+                @Html.EditorFor(model => model.contact_type_name_arabic, new { htmlAttributes = new { @class = "form-control", Pattern = "[\u0600-\u06FF\\s]{3,20}$", required = "required" } })
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="contact_type_description "> @Servicely.Languages.Language.Contact_type_description_arabic</label>
+                @Html.EditorFor(model => model.contact_type_description_arabic, new { htmlAttributes = new { @class = "form-control", Pattern = "[\u0600-\u06FF\\s]{3,30}$", required = "required" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">
+                <label style="color:red"> @ViewBag.errMsg</label>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=@Servicely.Languages.Language.Edit class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+        }
+
+        <div>
+            @Html.ActionLink(@Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    </div>
+

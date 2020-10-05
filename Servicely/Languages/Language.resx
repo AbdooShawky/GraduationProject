@@ -1,0 +1,1818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutServicely" xml:space="preserve">
+    <value>About GSE</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddCitizen" xml:space="preserve">
+    <value>Add Citizen</value>
+  </data>
+  <data name="AddHealthCare" xml:space="preserve">
+    <value>Add Health Care</value>
+  </data>
+  <data name="AddHealthCareSchedule" xml:space="preserve">
+    <value>Add HealthCare Schedule</value>
+  </data>
+  <data name="Addnewcitizen" xml:space="preserve">
+    <value>Add new citizen</value>
+  </data>
+  <data name="AddNewDoctor" xml:space="preserve">
+    <value>Add New Doctor</value>
+  </data>
+  <data name="AddNewStudent" xml:space="preserve">
+    <value>Add New Student</value>
+  </data>
+  <data name="AddNewUser" xml:space="preserve">
+    <value>Add New User</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AddressDeleteMessage1" xml:space="preserve">
+    <value>*can not delete because this is the current addresa </value>
+  </data>
+  <data name="Addresses" xml:space="preserve">
+    <value>My Addresses</value>
+  </data>
+  <data name="Address_inArabic" xml:space="preserve">
+    <value>Address in Arabic</value>
+  </data>
+  <data name="Address_Of_Citizen" xml:space="preserve">
+    <value>Address Of Citizen</value>
+  </data>
+  <data name="AddSocialStatus" xml:space="preserve">
+    <value>Add Social Status</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="AddUserType" xml:space="preserve">
+    <value>Add User Type</value>
+  </data>
+  <data name="AddVaccinationSchedule" xml:space="preserve">
+    <value>Add Vaccination Schedule</value>
+  </data>
+  <data name="AdNewAddress" xml:space="preserve">
+    <value>Add New Address for Cirizen</value>
+  </data>
+  <data name="Age_at_Death" xml:space="preserve">
+    <value>Age at Death</value>
+  </data>
+  <data name="AllDoctorType" xml:space="preserve">
+    <value>All Doctor Type</value>
+  </data>
+  <data name="AllUsers" xml:space="preserve">
+    <value>All Users</value>
+  </data>
+  <data name="All_rights_reserved" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="All_Specialization_Types" xml:space="preserve">
+    <value>All Specialization Types</value>
+  </data>
+  <data name="already" xml:space="preserve">
+    <value>already</value>
+  </data>
+  <data name="AlreadyDied" xml:space="preserve">
+    <value>Already Died</value>
+  </data>
+  <data name="Already_exist_for_this_citizen" xml:space="preserve">
+    <value>Already exist for this citizen</value>
+  </data>
+  <data name="already_exist_go_to_edit_page_to_make_changes" xml:space="preserve">
+    <value>already exist go to edit page to make changes </value>
+  </data>
+  <data name="already_exist_in_this_state" xml:space="preserve">
+    <value>already exist in this state</value>
+  </data>
+  <data name="ApplicationDirection" xml:space="preserve">
+    <value>adminlte.min.css</value>
+  </data>
+  <data name="Appointemnts" xml:space="preserve">
+    <value>Appointemnts</value>
+  </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="ar" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
+  <data name="arabic.css" xml:space="preserve">
+    <value />
+  </data>
+  <data name="arabicModel_css" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArabicStreetName" xml:space="preserve">
+    <value>Street Name in Arabic</value>
+  </data>
+  <data name="AreyousureyouwanttodeletethisHealthCareSchedule" xml:space="preserve">
+    <value>Are you sure you want to delete this HealthCare Schedule?</value>
+  </data>
+  <data name="Areyousureyouwanttosave" xml:space="preserve">
+    <value>Are you sure you want to save</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_this_" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
+  </data>
+  <data name="BaasicInformation" xml:space="preserve">
+    <value>Basic Information</value>
+  </data>
+  <data name="Back_to_List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="Behind_the_card" xml:space="preserve">
+    <value>Behind The Card</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="BirthDateWithPoint" xml:space="preserve">
+    <value>Birth Date :</value>
+  </data>
+  <data name="BirthInformation" xml:space="preserve">
+    <value>Birth Information</value>
+  </data>
+  <data name="BirthPlace" xml:space="preserve">
+    <value>Birth Place</value>
+  </data>
+  <data name="Birth_Certificate" xml:space="preserve">
+    <value>Birth Certificate</value>
+  </data>
+  <data name="Birth_Document" xml:space="preserve">
+    <value>Birth Document</value>
+  </data>
+  <data name="BornIn" xml:space="preserve">
+    <value>Born in</value>
+  </data>
+  <data name="Botharenotmarriedtoeachother" xml:space="preserve">
+    <value>Both are not married to each other</value>
+  </data>
+  <data name="car" xml:space="preserve">
+    <value>car</value>
+  </data>
+  <data name="CarCode" xml:space="preserve">
+    <value>Car Code</value>
+  </data>
+  <data name="CarLicence" xml:space="preserve">
+    <value>Car Licence</value>
+  </data>
+  <data name="CarModel" xml:space="preserve">
+    <value>Car Model</value>
+  </data>
+  <data name="CarName" xml:space="preserve">
+    <value>CarName</value>
+  </data>
+  <data name="CarNameArabic" xml:space="preserve">
+    <value>Car Name in Arabic</value>
+  </data>
+  <data name="CarNameEn" xml:space="preserve">
+    <value>Car Name in English</value>
+  </data>
+  <data name="Cars" xml:space="preserve">
+    <value>Cars</value>
+  </data>
+  <data name="Certificate" xml:space="preserve">
+    <value>Certificate</value>
+  </data>
+  <data name="CertificateGraduate" xml:space="preserve">
+    <value>Certificates's Graduates</value>
+  </data>
+  <data name="CertificateNameAr" xml:space="preserve">
+    <value>Certificate Name in Arabic</value>
+  </data>
+  <data name="CertificateNameEn" xml:space="preserve">
+    <value>Certificate Name in English</value>
+  </data>
+  <data name="CertificateType" xml:space="preserve">
+    <value>Certificate Types</value>
+  </data>
+  <data name="certifies" xml:space="preserve">
+    <value>certifies</value>
+  </data>
+  <data name="Checked" xml:space="preserve">
+    <value>Checked</value>
+  </data>
+  <data name="CheckUPDate" xml:space="preserve">
+    <value>Check UP Date</value>
+  </data>
+  <data name="CheckUPEnd" xml:space="preserve">
+    <value>Check UP End</value>
+  </data>
+  <data name="CheckUPStart" xml:space="preserve">
+    <value>Check UP Start</value>
+  </data>
+  <data name="checkup_number" xml:space="preserve">
+    <value>Checkup Number</value>
+  </data>
+  <data name="Child_Information" xml:space="preserve">
+    <value>Child Information</value>
+  </data>
+  <data name="Choosefile" xml:space="preserve">
+    <value>Choose File</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+  <data name="Citizen" xml:space="preserve">
+    <value>Citizen</value>
+  </data>
+  <data name="CitizenAddedSuccessfully" xml:space="preserve">
+    <value>Citizen Added Successfully</value>
+  </data>
+  <data name="CitizenAlreadExist" xml:space="preserve">
+    <value>Citizen Alread Exist</value>
+  </data>
+  <data name="Citizenalreadymarried4" xml:space="preserve">
+    <value>Citizen already married 4</value>
+  </data>
+  <data name="CitizenBalance" xml:space="preserve">
+    <value>Citizen Balance </value>
+  </data>
+  <data name="CitizenBasicInfo" xml:space="preserve">
+    <value>Citizen Basic Info</value>
+  </data>
+  <data name="CitizenName" xml:space="preserve">
+    <value>Citizen Name</value>
+  </data>
+  <data name="CitizenNameArabic" xml:space="preserve">
+    <value>Citizen Name in Arabic</value>
+  </data>
+  <data name="CitizenNationalId" xml:space="preserve">
+    <value>Citizen National Id</value>
+  </data>
+  <data name="Citizen_already_has_this_address" xml:space="preserve">
+    <value>*Citizen already has this address</value>
+  </data>
+  <data name="citizen_balance" xml:space="preserve">
+    <value>citizen balance already exist</value>
+  </data>
+  <data name="Citizen_Contacts" xml:space="preserve">
+    <value>Citizen Contacts</value>
+  </data>
+  <data name="Citizen_Documents" xml:space="preserve">
+    <value>Citizen Documents</value>
+  </data>
+  <data name="Citizen_Name" xml:space="preserve">
+    <value>Citizen Name</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="CityName" xml:space="preserve">
+    <value>City Name in English</value>
+  </data>
+  <data name="City_already_exist" xml:space="preserve">
+    <value>City already exist</value>
+  </data>
+  <data name="City_Name" xml:space="preserve">
+    <value>City Name </value>
+  </data>
+  <data name="City_Name_Arabic" xml:space="preserve">
+    <value>City Name in Arabic</value>
+  </data>
+  <data name="Civil_Registry_Sector" xml:space="preserve">
+    <value>Civil Registry Sector</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Code_already_exist" xml:space="preserve">
+    <value>Code already exist</value>
+  </data>
+  <data name="Collegeofcertifies" xml:space="preserve">
+    <value>College of </value>
+  </data>
+  <data name="Complain" xml:space="preserve">
+    <value>Complain</value>
+  </data>
+  <data name="Complains" xml:space="preserve">
+    <value>Complains</value>
+  </data>
+  <data name="ComplainsAndResponds" xml:space="preserve">
+    <value>Complains And Responds</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="CongratulationsYouSignUpSuccessfully" xml:space="preserve">
+    <value>Congratulations You Sign Up Successfully</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="contactALREADY" xml:space="preserve">
+    <value>contact already exist</value>
+  </data>
+  <data name="ContactData" xml:space="preserve">
+    <value>contact Data</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Contact Info</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="ContactType" xml:space="preserve">
+    <value>Contact Type</value>
+  </data>
+  <data name="contactTypeErrorMsg1" xml:space="preserve">
+    <value>There is Contact Type have same Name</value>
+  </data>
+  <data name="ContactTypeName" xml:space="preserve">
+    <value>Contact Type Name</value>
+  </data>
+  <data name="ContactTypeNameArabic" xml:space="preserve">
+    <value>Contact Type Name in Arabic</value>
+  </data>
+  <data name="Contact_type_already_exist" xml:space="preserve">
+    <value>Contact type already exist</value>
+  </data>
+  <data name="Contact_type_description" xml:space="preserve">
+    <value>Contact Type Description</value>
+  </data>
+  <data name="Contact_type_description_arabic" xml:space="preserve">
+    <value>Contact Type Description in Arabic</value>
+  </data>
+  <data name="Control_Panel" xml:space="preserve">
+    <value>Control Panel</value>
+  </data>
+  <data name="Coordination" xml:space="preserve">
+    <value>Coordination</value>
+  </data>
+  <data name="CoordinationErr" xml:space="preserve">
+    <value>this coordination Already Exits</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Create_New" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="Cristian" xml:space="preserve">
+    <value>Cristian</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Dashboard_1" xml:space="preserve">
+    <value>Dashboard 1</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Datee" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="day" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="day_full" xml:space="preserve">
+    <value>*day full</value>
+  </data>
+  <data name="day_is_full_choose_another_date" xml:space="preserve">
+    <value>day is full choose another date</value>
+  </data>
+  <data name="deathCause" xml:space="preserve">
+    <value>Death Cause</value>
+  </data>
+  <data name="deathCause_inArabic" xml:space="preserve">
+    <value>Death Cause in Arabic</value>
+  </data>
+  <data name="deathCause_inEnglish" xml:space="preserve">
+    <value>Death Cause in English</value>
+  </data>
+  <data name="DeathDate" xml:space="preserve">
+    <value>Death Date</value>
+  </data>
+  <data name="DeathInformation" xml:space="preserve">
+    <value>Death Information</value>
+  </data>
+  <data name="DeathPlace" xml:space="preserve">
+    <value>Death Place</value>
+  </data>
+  <data name="DeathPlace_inArabic" xml:space="preserve">
+    <value>Death Place in Arabic</value>
+  </data>
+  <data name="Death_Document" xml:space="preserve">
+    <value>Death Document</value>
+  </data>
+  <data name="Deceased" xml:space="preserve">
+    <value>Deceased</value>
+  </data>
+  <data name="DeceasedDeathDate" xml:space="preserve">
+    <value>Deceased Death Date</value>
+  </data>
+  <data name="DeceasedInformation" xml:space="preserve">
+    <value>Deceased Information</value>
+  </data>
+  <data name="deceased_deathPlace_inEnglish" xml:space="preserve">
+    <value>Deceased Death Place in English</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeletedSuccessfully" xml:space="preserve">
+    <value>Deleted Successfully</value>
+  </data>
+  <data name="DeleteSocialStatus" xml:space="preserve">
+    <value>Delete Social Status</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Directorate" xml:space="preserve">
+    <value>Education Directorate</value>
+  </data>
+  <data name="DirectorateName" xml:space="preserve">
+    <value>Educational Administration Name</value>
+  </data>
+  <data name="DirectorateNameAr" xml:space="preserve">
+    <value> Administration Name in Arabic</value>
+  </data>
+  <data name="DirectorateNameEn" xml:space="preserve">
+    <value>Administration Name in English</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>disabled</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="Districts" xml:space="preserve">
+    <value>Districts</value>
+  </data>
+  <data name="District_Name" xml:space="preserve">
+    <value>District Name</value>
+  </data>
+  <data name="District_Name_inArabic" xml:space="preserve">
+    <value>District Name in Arabic</value>
+  </data>
+  <data name="Distric_already_exist" xml:space="preserve">
+    <value>Distric already exist</value>
+  </data>
+  <data name="divorced" xml:space="preserve">
+    <value>Divorced</value>
+  </data>
+  <data name="DoctorName" xml:space="preserve">
+    <value>Doctor Name</value>
+  </data>
+  <data name="DoctorNationalID" xml:space="preserve">
+    <value>Doctor National ID</value>
+  </data>
+  <data name="Doctors" xml:space="preserve">
+    <value>Doctors</value>
+  </data>
+  <data name="DoctorSpecialization" xml:space="preserve">
+    <value>Doctor Specialization</value>
+  </data>
+  <data name="Doctors_Schedules" xml:space="preserve">
+    <value>Doctors Schedules</value>
+  </data>
+  <data name="DoctorType" xml:space="preserve">
+    <value>Doctor Type</value>
+  </data>
+  <data name="DoctorTypeName" xml:space="preserve">
+    <value>Doctor Type Name</value>
+  </data>
+  <data name="DoctorTypeName_inArabic" xml:space="preserve">
+    <value>Doctor Type Name in Arabic</value>
+  </data>
+  <data name="doctor_error_message" xml:space="preserve">
+    <value>docotr is already exists</value>
+  </data>
+  <data name="Doctor_hospitalMasageErr" xml:space="preserve">
+    <value>Doctor Already in this Health care</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="DocumentData" xml:space="preserve">
+    <value>Document Data</value>
+  </data>
+  <data name="DocumentExitention" xml:space="preserve">
+    <value>Document Exitention</value>
+  </data>
+  <data name="DocumentFile" xml:space="preserve">
+    <value>Document File</value>
+  </data>
+  <data name="DocumentOfCitizen" xml:space="preserve">
+    <value>Document Of Citizen</value>
+  </data>
+  <data name="DocumentType" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="documentt_type_description" xml:space="preserve">
+    <value>Document Type Description</value>
+  </data>
+  <data name="documentt_type_description_inArabic" xml:space="preserve">
+    <value>Document Type Description in Arabic</value>
+  </data>
+  <data name="document_extensions" xml:space="preserve">
+    <value>Document Extensions</value>
+  </data>
+  <data name="Document_successfully" xml:space="preserve">
+    <value>Document added successfully</value>
+  </data>
+  <data name="document_type_already_exist" xml:space="preserve">
+    <value>Document Type already exist</value>
+  </data>
+  <data name="document_type_name" xml:space="preserve">
+    <value>Document Type Name</value>
+  </data>
+  <data name="document_type_name_inArabic" xml:space="preserve">
+    <value>Document Type Name in Arabic</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="drag" xml:space="preserve">
+    <value>Drag &amp; Drop files here or click to browse</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditedSuccessfully" xml:space="preserve">
+    <value>Updated Successfully</value>
+  </data>
+  <data name="EditUserType" xml:space="preserve">
+    <value>Edit User Type</value>
+  </data>
+  <data name="EducatedAbroad" xml:space="preserve">
+    <value>Educated Abroad</value>
+  </data>
+  <data name="EducatedInside" xml:space="preserve">
+    <value>Educated Inside</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="EducationDirectorate" xml:space="preserve">
+    <value>Educational Administration</value>
+  </data>
+  <data name="EmployeeReport" xml:space="preserve">
+    <value>Employee Report</value>
+  </data>
+  <data name="en" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="endDate" xml:space="preserve">
+    <value>end date</value>
+  </data>
+  <data name="end_time" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="EnterThreeDigits" xml:space="preserve">
+    <value>Enter three digits</value>
+  </data>
+  <data name="EnterThreeLettersInArabic" xml:space="preserve">
+    <value>Enter three letters in arabic</value>
+  </data>
+  <data name="errhospital" xml:space="preserve">
+    <value>Health care already exist</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="errorStudent" xml:space="preserve">
+    <value>this student is already exists</value>
+  </data>
+  <data name="errPhase" xml:space="preserve">
+    <value>This Phase Already Exist</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Exporting_Birth_Certificate" xml:space="preserve">
+    <value>Exporting Birth Certificate</value>
+  </data>
+  <data name="Exporting_Death_Certificate" xml:space="preserve">
+    <value>Exporting Death Certificate</value>
+  </data>
+  <data name="Exporting_marriage_divorce_document" xml:space="preserve">
+    <value>Exporting Marriage/Divorce Certificate</value>
+  </data>
+  <data name="Exporting_National_Id_Card" xml:space="preserve">
+    <value>Exporting National Id Card</value>
+  </data>
+  <data name="Faculties" xml:space="preserve">
+    <value>Faculties</value>
+  </data>
+  <data name="Faculty" xml:space="preserve">
+    <value>Faculty</value>
+  </data>
+  <data name="FacultyErr" xml:space="preserve">
+    <value>This Faculty aleady Exist</value>
+  </data>
+  <data name="FacultyNameAr" xml:space="preserve">
+    <value>Faculty Name in Arabic</value>
+  </data>
+  <data name="FacultyNameEn" xml:space="preserve">
+    <value>Faculty Name in English</value>
+  </data>
+  <data name="FatherInformation" xml:space="preserve">
+    <value>Father Information</value>
+  </data>
+  <data name="FatherNationalId" xml:space="preserve">
+    <value>Father National Id</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Females" xml:space="preserve">
+    <value>Females</value>
+  </data>
+  <data name="FileInput" xml:space="preserve">
+    <value>fileinput.css</value>
+  </data>
+  <data name="FileInputLang" xml:space="preserve">
+    <value>LANG.js</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="float-md-right" xml:space="preserve">
+    <value>float-md-right</value>
+  </data>
+  <data name="ForeignStudent" xml:space="preserve">
+    <value>Student Already Exist</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>From Date</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="GenderWithPoint" xml:space="preserve">
+    <value>Gender :</value>
+  </data>
+  <data name="General_Administration_for_Examinations" xml:space="preserve">
+    <value>General Administration for Examinations</value>
+  </data>
+  <data name="GovernementName" xml:space="preserve">
+    <value>Governement Name</value>
+  </data>
+  <data name="governement_body" xml:space="preserve">
+    <value>Governement Body</value>
+  </data>
+  <data name="governement_bodys" xml:space="preserve">
+    <value>Governement Bodies Services</value>
+  </data>
+  <data name="governement_name" xml:space="preserve">
+    <value>Governement Name</value>
+  </data>
+  <data name="governement_name_inArabic" xml:space="preserve">
+    <value>Governement Name in Arabic</value>
+  </data>
+  <data name="governmentAgency" xml:space="preserve">
+    <value>Government Agency</value>
+  </data>
+  <data name="GovernmentBody" xml:space="preserve">
+    <value>Government Body</value>
+  </data>
+  <data name="governmenterr" xml:space="preserve">
+    <value>government body name already exist</value>
+  </data>
+  <data name="Governments_Settings" xml:space="preserve">
+    <value>Governments Settings</value>
+  </data>
+  <data name="Grade" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="GradeCertificate" xml:space="preserve">
+    <value>This Grade Already in This Certificate</value>
+  </data>
+  <data name="GradeValidationUniversity" xml:space="preserve">
+    <value>grade of student is less than faculty Grade can not add</value>
+  </data>
+  <data name="graduated" xml:space="preserve">
+    <value>Graduated</value>
+  </data>
+  <data name="GraduatedStuednt" xml:space="preserve">
+    <value>Graduated Stuednts</value>
+  </data>
+  <data name="GraduatesUni" xml:space="preserve">
+    <value>Universities's Graduates</value>
+  </data>
+  <data name="GraduationProject" xml:space="preserve">
+    <value>Graduation Project</value>
+  </data>
+  <data name="GraduationUniversity" xml:space="preserve">
+    <value>Graduation Certificate</value>
+  </data>
+  <data name="hasaBachelor'sdegree" xml:space="preserve">
+    <value>has a Bachelor's degree</value>
+  </data>
+  <data name="Healthcare" xml:space="preserve">
+    <value>Healthcare</value>
+  </data>
+  <data name="healthCareName" xml:space="preserve">
+    <value>Health Care Name</value>
+  </data>
+  <data name="HealthcareReservation" xml:space="preserve">
+    <value>Healthcare Reservation</value>
+  </data>
+  <data name="Healthcares" xml:space="preserve">
+    <value>Health cares</value>
+  </data>
+  <data name="HealthcareType" xml:space="preserve">
+    <value>Healthcare Type</value>
+  </data>
+  <data name="Healthcare_Doctor" xml:space="preserve">
+    <value>Healthcare Doctor</value>
+  </data>
+  <data name="HealthCare_type" xml:space="preserve">
+    <value>HealthCare Type</value>
+  </data>
+  <data name="healthcare_type_id" xml:space="preserve">
+    <value>Healthcare Type Id</value>
+  </data>
+  <data name="healthcare_type_name" xml:space="preserve">
+    <value>Healthcare Type Name</value>
+  </data>
+  <data name="healthcare_type_name_inArabic" xml:space="preserve">
+    <value>Healthcare Type Name in Arabic</value>
+  </data>
+  <data name="healthcare_type_name_inEnglish" xml:space="preserve">
+    <value>Healthcare Type Name in English</value>
+  </data>
+  <data name="HealthCenter" xml:space="preserve">
+    <value>Health Center</value>
+  </data>
+  <data name="HealthCenter_Arabic" xml:space="preserve">
+    <value>Name of HealthCenter in Arabic</value>
+  </data>
+  <data name="HealthCenter_English" xml:space="preserve">
+    <value>Name of HealthCenter in English</value>
+  </data>
+  <data name="Health_cares_schedules" xml:space="preserve">
+    <value>Health cares schedules</value>
+  </data>
+  <data name="Health_cares_Specializations" xml:space="preserve">
+    <value>Health cares Specializations</value>
+  </data>
+  <data name="Health_cares_types" xml:space="preserve">
+    <value>Health cares types</value>
+  </data>
+  <data name="He_Sheisnotmarried" xml:space="preserve">
+    <value>he/she is not married</value>
+  </data>
+  <data name="High_school_completion_certificate" xml:space="preserve">
+    <value>High school completion certificate</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Home1" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>Hospital</value>
+  </data>
+  <data name="HospitalName" xml:space="preserve">
+    <value>Hospital Name</value>
+  </data>
+  <data name="HospitalName_inArabic" xml:space="preserve">
+    <value>Hospital Name in Arabic</value>
+  </data>
+  <data name="Hospital_Arabic" xml:space="preserve">
+    <value>Name of Hospital in Arabic</value>
+  </data>
+  <data name="Hospital_English" xml:space="preserve">
+    <value>Name of Hospital in English</value>
+  </data>
+  <data name="hospital_name" xml:space="preserve">
+    <value>Hospital Name</value>
+  </data>
+  <data name="House" xml:space="preserve">
+    <value>House</value>
+  </data>
+  <data name="House_Arabic" xml:space="preserve">
+    <value>Address of House in Arabic</value>
+  </data>
+  <data name="House_English" xml:space="preserve">
+    <value>Address of House in English</value>
+  </data>
+  <data name="HowManyYear" xml:space="preserve">
+    <value>Number of Year</value>
+  </data>
+  <data name="husband" xml:space="preserve">
+    <value>Husband</value>
+  </data>
+  <data name="HusbandInformation" xml:space="preserve">
+    <value>Husband Information</value>
+  </data>
+  <data name="HusbandNationalId" xml:space="preserve">
+    <value>Husband National Id</value>
+  </data>
+  <data name="IdentificationCard" xml:space="preserve">
+    <value>Identification Card</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Index1" xml:space="preserve">
+    <value>Index1</value>
+  </data>
+  <data name="IndexAdmin" xml:space="preserve">
+    <value>IndexAdmin</value>
+  </data>
+  <data name="IndexUser" xml:space="preserve">
+    <value>IndexUser</value>
+  </data>
+  <data name="IntermidateErr" xml:space="preserve">
+    <value>this student is still in primary phase</value>
+  </data>
+  <data name="intermidiatePhase" xml:space="preserve">
+    <value>Intermidiate Phase</value>
+  </data>
+  <data name="Is_Birth_Place" xml:space="preserve">
+    <value>Is Birth Place</value>
+  </data>
+  <data name="Is_Current" xml:space="preserve">
+    <value>Is Current</value>
+  </data>
+  <data name="Jewish" xml:space="preserve">
+    <value>Jewish</value>
+  </data>
+  <data name="JopTitle" xml:space="preserve">
+    <value>JopTitle</value>
+  </data>
+  <data name="Keep_me_logged_in" xml:space="preserve">
+    <value>Keep me logged in</value>
+  </data>
+  <data name="language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Language1" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Listofvaccinations" xml:space="preserve">
+    <value>List of Vaccinations</value>
+  </data>
+  <data name="List_of_vaccination_type" xml:space="preserve">
+    <value>List of Vaccination Type</value>
+  </data>
+  <data name="Litrary" xml:space="preserve">
+    <value>Litrary</value>
+  </data>
+  <data name="LiveSatusType" xml:space="preserve">
+    <value>Live Satus Type</value>
+  </data>
+  <data name="LiveStatus" xml:space="preserve">
+    <value>Live Status</value>
+  </data>
+  <data name="LiveStatusTypeName" xml:space="preserve">
+    <value>Live Status Type Name</value>
+  </data>
+  <data name="LiveStatusTypeName_inArabic" xml:space="preserve">
+    <value>Live Status Type Name in Arabic</value>
+  </data>
+  <data name="LiveStatusTypeName_inEnglish" xml:space="preserve">
+    <value>LiveStatus Type Name in English</value>
+  </data>
+  <data name="LiveStatus_type_ already_exist" xml:space="preserve">
+    <value>Live Status type already exist</value>
+  </data>
+  <data name="login_MSG" xml:space="preserve">
+    <value>*Please enter user name or password correctly</value>
+  </data>
+  <data name="LogRequest" xml:space="preserve">
+    <value>Log Request</value>
+  </data>
+  <data name="log_date" xml:space="preserve">
+    <value>Log Date</value>
+  </data>
+  <data name="Log_in" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="log_request_id" xml:space="preserve">
+    <value>Log Request Id</value>
+  </data>
+  <data name="log_request_typeId" xml:space="preserve">
+    <value>Log Request Type Id</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Males" xml:space="preserve">
+    <value>Males</value>
+  </data>
+  <data name="MarriagAndDevorceCertificate" xml:space="preserve">
+    <value>Marriag And Devorce Certificate</value>
+  </data>
+  <data name="MarriageDateWithPoint" xml:space="preserve">
+    <value>Marriage Date    :</value>
+  </data>
+  <data name="MarriageDocument" xml:space="preserve">
+    <value>Marriage Document</value>
+  </data>
+  <data name="MarriageInformation" xml:space="preserve">
+    <value>Marriage Information</value>
+  </data>
+  <data name="Married" xml:space="preserve">
+    <value>Married</value>
+  </data>
+  <data name="MarriedW" xml:space="preserve">
+    <value>Married</value>
+  </data>
+  <data name="Meanwhile" xml:space="preserve">
+    <value>Meanwhile you may</value>
+  </data>
+  <data name="middle_School_certificate" xml:space="preserve">
+    <value>middle School certificate</value>
+  </data>
+  <data name="MinistryEducation" xml:space="preserve">
+    <value>Ministry of Education</value>
+  </data>
+  <data name="Ministry_of_Health" xml:space="preserve">
+    <value>Ministry of Health</value>
+  </data>
+  <data name="Ministry_of_Interior" xml:space="preserve">
+    <value>Ministry of Interior</value>
+  </data>
+  <data name="minute" xml:space="preserve">
+    <value>minute</value>
+  </data>
+  <data name="ml-auto" xml:space="preserve">
+    <value>ml-auto</value>
+  </data>
+  <data name="modal3" xml:space="preserve">
+    <value>This citizen does not have a balance account</value>
+  </data>
+  <data name="ModalTitle" xml:space="preserve">
+    <value>Modal Title</value>
+  </data>
+  <data name="month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="More_info" xml:space="preserve">
+    <value>More info</value>
+  </data>
+  <data name="MotherInformation" xml:space="preserve">
+    <value>Mother Information</value>
+  </data>
+  <data name="MotherName" xml:space="preserve">
+    <value>Mother Name</value>
+  </data>
+  <data name="MotherNationalId" xml:space="preserve">
+    <value>Mother National Id</value>
+  </data>
+  <data name="mr-4" xml:space="preserve">
+    <value>mr-4</value>
+  </data>
+  <data name="Muslim" xml:space="preserve">
+    <value>Muslim</value>
+  </data>
+  <data name="MyContacts" xml:space="preserve">
+    <value>My Contacts</value>
+  </data>
+  <data name="MyDocument" xml:space="preserve">
+    <value>My Documents</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="MySocial" xml:space="preserve">
+    <value>My Social Status</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameAleadyExist" xml:space="preserve">
+    <value>Name already exist</value>
+  </data>
+  <data name="NameAlreadyExist" xml:space="preserve">
+    <value>this name is already exists</value>
+  </data>
+  <data name="NameWithPoint" xml:space="preserve">
+    <value>Name :</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>National Id</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="NationalityWithPoint" xml:space="preserve">
+    <value>Nationality :</value>
+  </data>
+  <data name="National_Id" xml:space="preserve">
+    <value>National Id</value>
+  </data>
+  <data name="National_Idhere" xml:space="preserve">
+    <value>National Id here...</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="NewSpecializationType" xml:space="preserve">
+    <value>New Specialization Type</value>
+  </data>
+  <data name="NewSpecializationType_inArabic" xml:space="preserve">
+    <value>New Specialization Type in Arabic</value>
+  </data>
+  <data name="next" xml:space="preserve">
+    <value>next</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value>Office</value>
+  </data>
+  <data name="officeerr" xml:space="preserve">
+    <value>Office name already exist</value>
+  </data>
+  <data name="OfficeName" xml:space="preserve">
+    <value>Office Name</value>
+  </data>
+  <data name="OfficeName_inArabic" xml:space="preserve">
+    <value>Office Name in Arabic</value>
+  </data>
+  <data name="Offices" xml:space="preserve">
+    <value>Offices</value>
+  </data>
+  <data name="Oops" xml:space="preserve">
+    <value>Oops! Something went wrong.</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Operations</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Other_inArabic" xml:space="preserve">
+    <value>Name of Other place  in Arabic</value>
+  </data>
+  <data name="Other_inEnglish" xml:space="preserve">
+    <value>Name of Other place  in English</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Passwor_here" xml:space="preserve">
+    <value>Password here...</value>
+  </data>
+  <data name="Phase" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="PhaseName" xml:space="preserve">
+    <value>Phase Name in English</value>
+  </data>
+  <data name="PhaseNameAr" xml:space="preserve">
+    <value>Phase Name in Arabic</value>
+  </data>
+  <data name="Phases" xml:space="preserve">
+    <value>Phases</value>
+  </data>
+  <data name="PhasesOfSchool" xml:space="preserve">
+    <value>Phases Of School</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="pl" xml:space="preserve">
+    <value>pl</value>
+  </data>
+  <data name="Places" xml:space="preserve">
+    <value>Places</value>
+  </data>
+  <data name="Please_sign_in_to_your_account" xml:space="preserve">
+    <value>Please sign in to your account.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>&lt;&lt; Previous</value>
+  </data>
+  <data name="previouss" xml:space="preserve">
+    <value>previous</value>
+  </data>
+  <data name="PrimaryPhase" xml:space="preserve">
+    <value>Primary Phase</value>
+  </data>
+  <data name="Primary_certificate" xml:space="preserve">
+    <value>Primary certificate</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Recover_Password" xml:space="preserve">
+    <value>Recover Password</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="Regions" xml:space="preserve">
+    <value>Regions</value>
+  </data>
+  <data name="Region_already_exist" xml:space="preserve">
+    <value>Region already exist</value>
+  </data>
+  <data name="Region_Name" xml:space="preserve">
+    <value>Region Name</value>
+  </data>
+  <data name="Region_Name_inArabic" xml:space="preserve">
+    <value>Region Name in Arabic</value>
+  </data>
+  <data name="Region_Name_inEnglish" xml:space="preserve">
+    <value>Region Name in English</value>
+  </data>
+  <data name="Relegion" xml:space="preserve">
+    <value>Relegion</value>
+  </data>
+  <data name="RelegionWithPoint" xml:space="preserve">
+    <value>Relegion :</value>
+  </data>
+  <data name="Remember_me" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Request</value>
+  </data>
+  <data name="requestErr" xml:space="preserve">
+    <value>can not request the same order today</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Requests</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>Request Type</value>
+  </data>
+  <data name="RequstsIndex" xml:space="preserve">
+    <value>Requsts Index</value>
+  </data>
+  <data name="ReservationDate" xml:space="preserve">
+    <value>Reservation Date</value>
+  </data>
+  <data name="Reservations" xml:space="preserve">
+    <value>Reservations</value>
+  </data>
+  <data name="reservation_msg" xml:space="preserve">
+    <value>you have reserved in this office once at that date</value>
+  </data>
+  <data name="reservation_success_msg" xml:space="preserve">
+    <value>Your Reservation is Created Successfully</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>Reserve</value>
+  </data>
+  <data name="Respond" xml:space="preserve">
+    <value>Respond</value>
+  </data>
+  <data name="return_dashboard" xml:space="preserve">
+    <value>return to dashboard</value>
+  </data>
+  <data name="Return_to" xml:space="preserve">
+    <value>Return to</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="scheduleErrDoctor" xml:space="preserve">
+    <value>this doctor already has the same schedule</value>
+  </data>
+  <data name="scheduleErrVacc" xml:space="preserve">
+    <value>this vaccination already has the same schedule</value>
+  </data>
+  <data name="ScheduleHealthCare" xml:space="preserve">
+    <value>Schedule HealthCare</value>
+  </data>
+  <data name="ScheduleVaccination" xml:space="preserve">
+    <value>Schedule Vaccination</value>
+  </data>
+  <data name="School" xml:space="preserve">
+    <value>School</value>
+  </data>
+  <data name="SchoolCertificate" xml:space="preserve">
+    <value>School Certificate</value>
+  </data>
+  <data name="SchoolErr" xml:space="preserve">
+    <value>This tybe already exist</value>
+  </data>
+  <data name="SchoolName" xml:space="preserve">
+    <value>School Name</value>
+  </data>
+  <data name="SchoolNameAr" xml:space="preserve">
+    <value>School Name in Arabic</value>
+  </data>
+  <data name="SchoolNameEn" xml:space="preserve">
+    <value>School Name in English</value>
+  </data>
+  <data name="SchoolPhaseErr" xml:space="preserve">
+    <value>This Phase already in this School</value>
+  </data>
+  <data name="Schools" xml:space="preserve">
+    <value>Schools</value>
+  </data>
+  <data name="SchoolSection" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="SchoolSectionValidation" xml:space="preserve">
+    <value>School Section not the same with faculty School Section</value>
+  </data>
+  <data name="SchoolType" xml:space="preserve">
+    <value>School Type</value>
+  </data>
+  <data name="SchoolTypeName" xml:space="preserve">
+    <value>School Type Name</value>
+  </data>
+  <data name="SchoolTypeNameAr" xml:space="preserve">
+    <value>School Type Name in Arabic</value>
+  </data>
+  <data name="SchoolTypeNameEn" xml:space="preserve">
+    <value>School Type Name in English</value>
+  </data>
+  <data name="Scientific" xml:space="preserve">
+    <value>Scientific</value>
+  </data>
+  <data name="ScientificAndLitrary" xml:space="preserve">
+    <value>Scientific and Litrary</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="search_form" xml:space="preserve">
+    <value>or try using the search form.</value>
+  </data>
+  <data name="SecondaryPhase" xml:space="preserve">
+    <value>Secondary Phase</value>
+  </data>
+  <data name="SecondarySchool" xml:space="preserve">
+    <value>High School</value>
+  </data>
+  <data name="SelectCitizenID" xml:space="preserve">
+    <value>Select Citizen ID</value>
+  </data>
+  <data name="Select_Portal" xml:space="preserve">
+    <value>Select Portal</value>
+  </data>
+  <data name="Select_your_portal" xml:space="preserve">
+    <value>Select your portal</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Service_Already_exist" xml:space="preserve">
+    <value>Service Already exist</value>
+  </data>
+  <data name="service_name" xml:space="preserve">
+    <value>Service Name</value>
+  </data>
+  <data name="service_name_inArabic" xml:space="preserve">
+    <value>Service Name in Arabic</value>
+  </data>
+  <data name="Service_price" xml:space="preserve">
+    <value>Service Price</value>
+  </data>
+  <data name="service_time" xml:space="preserve">
+    <value>Service Time</value>
+  </data>
+  <data name="service_type_id" xml:space="preserve">
+    <value>Service Type</value>
+  </data>
+  <data name="Shigh_school_certificate" xml:space="preserve">
+    <value>high school certificate</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SignUP" xml:space="preserve">
+    <value>Sign uP</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>Social</value>
+  </data>
+  <data name="SocialStatus" xml:space="preserve">
+    <value>Social Status</value>
+  </data>
+  <data name="SocialStatusType" xml:space="preserve">
+    <value>Social Status Type</value>
+  </data>
+  <data name="Social_status" xml:space="preserve">
+    <value>Social Status</value>
+  </data>
+  <data name="Social_status_type" xml:space="preserve">
+    <value>Social Status Type</value>
+  </data>
+  <data name="social_status_type_description" xml:space="preserve">
+    <value>Social Status Type Description</value>
+  </data>
+  <data name="social_status_type_description_inArabic" xml:space="preserve">
+    <value>Social Status Type Description in Arabic</value>
+  </data>
+  <data name="social_status_type_description_inEglish" xml:space="preserve">
+    <value>Social Status Type Description in Eglish</value>
+  </data>
+  <data name="social_status_type_name" xml:space="preserve">
+    <value>Social Status Type Name</value>
+  </data>
+  <data name="social_status_type_name_inArabic" xml:space="preserve">
+    <value>Social Status Type  Name in Arabic</value>
+  </data>
+  <data name="social_status_type_name_inEnglish" xml:space="preserve">
+    <value>Social Status Type Name in English</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>Specialization</value>
+  </data>
+  <data name="SpecializationOfFaculty" xml:space="preserve">
+    <value>Specialization of Faculty</value>
+  </data>
+  <data name="Specializations" xml:space="preserve">
+    <value>Specializations</value>
+  </data>
+  <data name="Specialization_already_exist" xml:space="preserve">
+    <value>Specialization type already exist</value>
+  </data>
+  <data name="Specialization_name" xml:space="preserve">
+    <value>Specialization Name</value>
+  </data>
+  <data name="Specialization_name_inArabic" xml:space="preserve">
+    <value>Specialization Name in Arabic</value>
+  </data>
+  <data name="Specialization_Name_inEnglish" xml:space="preserve">
+    <value>Specialization Name in English</value>
+  </data>
+  <data name="startDate" xml:space="preserve">
+    <value>start date</value>
+  </data>
+  <data name="start_time" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="States" xml:space="preserve">
+    <value>States</value>
+  </data>
+  <data name="State_already_exist" xml:space="preserve">
+    <value>State already exist</value>
+  </data>
+  <data name="State_Code" xml:space="preserve">
+    <value>State Code</value>
+  </data>
+  <data name="State_Name" xml:space="preserve">
+    <value>State Name</value>
+  </data>
+  <data name="State_Name_inArabic" xml:space="preserve">
+    <value>State Name in Arabic</value>
+  </data>
+  <data name="state_name_inEnglish" xml:space="preserve">
+    <value>State Name in English</value>
+  </data>
+  <data name="Step1" xml:space="preserve">
+    <value>Step 1</value>
+  </data>
+  <data name="Step2" xml:space="preserve">
+    <value>Step2</value>
+  </data>
+  <data name="Step3" xml:space="preserve">
+    <value>Step3 </value>
+  </data>
+  <data name="Step4" xml:space="preserve">
+    <value>Step 4</value>
+  </data>
+  <data name="stepsss" xml:space="preserve">
+    <value>style.css</value>
+  </data>
+  <data name="StreetName" xml:space="preserve">
+    <value>Street Name</value>
+  </data>
+  <data name="Street_Name" xml:space="preserve">
+    <value>Street Name in English</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="StudentInfo" xml:space="preserve">
+    <value>Student Information</value>
+  </data>
+  <data name="StudentName" xml:space="preserve">
+    <value>Student Name</value>
+  </data>
+  <data name="StudentRegisteration" xml:space="preserve">
+    <value>Student Registeration</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Students</value>
+  </data>
+  <data name="studentschool" xml:space="preserve">
+    <value>this student is in this school</value>
+  </data>
+  <data name="StudentsCount" xml:space="preserve">
+    <value>Maximum Students Count</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SuccessFulCreate" xml:space="preserve">
+    <value>Created Successfully</value>
+  </data>
+  <data name="successfully_reserved" xml:space="preserve">
+    <value>Successfully Reserved</value>
+  </data>
+  <data name="successfully_reserved_checkemail" xml:space="preserve">
+    <value>successfully reserved check your email to know the details</value>
+  </data>
+  <data name="succmsg" xml:space="preserve">
+    <value>The message was sent to the email you entered</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="text-left" xml:space="preserve">
+    <value>text-left</value>
+  </data>
+  <data name="TheEgyptianArabicRepublic" xml:space="preserve">
+    <value>The Egyptian Arabic Republic</value>
+  </data>
+  <data name="TheUserTypes" xml:space="preserve">
+    <value>The User Types</value>
+  </data>
+  <data name="The_card_is_valid_until" xml:space="preserve">
+    <value>The card is valid until</value>
+  </data>
+  <data name="The_Egyptian_Arabic_Republic" xml:space="preserve">
+    <value>The Egyptian Arabic Republic</value>
+  </data>
+  <data name="thisCodeIsAlreadyTaken" xml:space="preserve">
+    <value>this code is already taken</value>
+  </data>
+  <data name="thisladyisalreadymarried" xml:space="preserve">
+    <value>this lady is already married</value>
+  </data>
+  <data name="This_type_already_exist" xml:space="preserve">
+    <value>This type already exist</value>
+  </data>
+  <data name="threeYears" xml:space="preserve">
+    <value>threeYears</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="Transactioncode" xml:space="preserve">
+    <value>Transaction Code</value>
+  </data>
+  <data name="typeReaquest_name" xml:space="preserve">
+    <value>Type Request Name</value>
+  </data>
+  <data name="TypeRequest" xml:space="preserve">
+    <value>Type Request</value>
+  </data>
+  <data name="UniStudent" xml:space="preserve">
+    <value>This Student already Graduated</value>
+  </data>
+  <data name="Universities" xml:space="preserve">
+    <value>Universities</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>University</value>
+  </data>
+  <data name="UniversityFaculty" xml:space="preserve">
+    <value>This Faculty in this University Already</value>
+  </data>
+  <data name="UniversityNameAr" xml:space="preserve">
+    <value>University Name in Arabic</value>
+  </data>
+  <data name="UniversityNameEn" xml:space="preserve">
+    <value>University Name in English</value>
+  </data>
+  <data name="UniversityRegisteration" xml:space="preserve">
+    <value>University Registeration</value>
+  </data>
+  <data name="UniversityType" xml:space="preserve">
+    <value>University Type</value>
+  </data>
+  <data name="UniversityTypeNameAr" xml:space="preserve">
+    <value>University Type Name in Arabic</value>
+  </data>
+  <data name="UniversityTypeNameEn" xml:space="preserve">
+    <value>University Type Name in English</value>
+  </data>
+  <data name="universtyErr" xml:space="preserve">
+    <value>this University already Exist</value>
+  </data>
+  <data name="Unmarried" xml:space="preserve">
+    <value>Unmarried</value>
+  </data>
+  <data name="UnMarriedW" xml:space="preserve">
+    <value>Unmarried</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="UploadDate" xml:space="preserve">
+    <value>Upload Date</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UserNameAlready" xml:space="preserve">
+    <value>Username Already Exist</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>User Password</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="User_name" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="user_type_name" xml:space="preserve">
+    <value>User Type Name</value>
+  </data>
+  <data name="user_type_name_inArabic" xml:space="preserve">
+    <value>User Type Name in Arabic</value>
+  </data>
+  <data name="user_type_name_inEnglish" xml:space="preserve">
+    <value>User Type Name in English</value>
+  </data>
+  <data name="Vaccination" xml:space="preserve">
+    <value>Vaccination</value>
+  </data>
+  <data name="VaccinationReservation" xml:space="preserve">
+    <value>Vaccination Reservation</value>
+  </data>
+  <data name="Vaccinations" xml:space="preserve">
+    <value>Vaccinations</value>
+  </data>
+  <data name="Vaccinations_Reservations" xml:space="preserve">
+    <value>Vaccinations Reservations</value>
+  </data>
+  <data name="VaccinationType" xml:space="preserve">
+    <value>Vaccination Type</value>
+  </data>
+  <data name="VaccinationType _errorMsg" xml:space="preserve">
+    <value>Vaccination Type Already exist!</value>
+  </data>
+  <data name="Vaccination_not_allowed_to_the_child" xml:space="preserve">
+    <value>Vaccination not allowed to the child</value>
+  </data>
+  <data name="vaccination_on_age" xml:space="preserve">
+    <value>Vaccination on Age</value>
+  </data>
+  <data name="Vaccination_type" xml:space="preserve">
+    <value>Vaccination Type</value>
+  </data>
+  <data name="Vaccination_types" xml:space="preserve">
+    <value>Vaccination Types</value>
+  </data>
+  <data name="vaccination_type_age" xml:space="preserve">
+    <value>Vaccination Type Age</value>
+  </data>
+  <data name="vaccination_type_name" xml:space="preserve">
+    <value>Vaccination Type Name</value>
+  </data>
+  <data name="vaccination_type_name_inArabic" xml:space="preserve">
+    <value>Vaccination Type Name in Arabic</value>
+  </data>
+  <data name="vaccination_type_name_inEnglish" xml:space="preserve">
+    <value>Vaccination Type Name in English</value>
+  </data>
+  <data name="vaccination_type_period" xml:space="preserve">
+    <value>Vaccination Type Period</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>View All</value>
+  </data>
+  <data name="Violation" xml:space="preserve">
+    <value>Violation</value>
+  </data>
+  <data name="violationError" xml:space="preserve">
+    <value>this name is already exist</value>
+  </data>
+  <data name="ViolationName" xml:space="preserve">
+    <value>Violation Name</value>
+  </data>
+  <data name="ViolationNameInAr" xml:space="preserve">
+    <value>Violation Name in Arabic</value>
+  </data>
+  <data name="ViolationNameInEng" xml:space="preserve">
+    <value>Violation Name in English</value>
+  </data>
+  <data name="ViolationPrice" xml:space="preserve">
+    <value>Violation Price</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Warning !</value>
+  </data>
+  <data name="WarningMessage" xml:space="preserve">
+    <value>Are you sure you want to print ?</value>
+  </data>
+  <data name="WarningMessage1" xml:space="preserve">
+    <value>If you click "yes" 40EG will be deducted from your balance even if clicking "cancel" in preview screen</value>
+  </data>
+  <data name="We_away" xml:space="preserve">
+    <value>We will work on fixing that right away.</value>
+  </data>
+  <data name="wife" xml:space="preserve">
+    <value>Wife</value>
+  </data>
+  <data name="WifeInformation" xml:space="preserve">
+    <value>Wife Information</value>
+  </data>
+  <data name="WifeNationalId" xml:space="preserve">
+    <value>Wife National Id</value>
+  </data>
+  <data name="Withappreciation" xml:space="preserve">
+    <value>With Appreciation</value>
+  </data>
+  <data name="With_Father" xml:space="preserve">
+    <value>With Father</value>
+  </data>
+  <data name="With_Mother" xml:space="preserve">
+    <value>With Mother</value>
+  </data>
+  <data name="Wlecome_Back" xml:space="preserve">
+    <value>Welcome Back,</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="YearOfPhase" xml:space="preserve">
+    <value>Year Of Phase</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="YourChiledsNationalIds" xml:space="preserve">
+    <value>Your Chileds National Ids</value>
+  </data>
+  <data name="your_balance_is_not_sufficient" xml:space="preserve">
+    <value>Your balance is not sufficient</value>
+  </data>
+  <data name="your_child_is_vaccinated" xml:space="preserve">
+    <value>your child is vaccinated</value>
+  </data>
+  <data name="you_are_already_reserved_on_this_day" xml:space="preserve">
+    <value>you are already reserved on this day</value>
+  </data>
+  <data name="you_have_already_reservation" xml:space="preserve">
+    <value>you have already reservation</value>
+  </data>
+</root>

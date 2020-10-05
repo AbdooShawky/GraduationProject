@@ -1,0 +1,61 @@
+﻿@model Servicely.Models.Document_Detail
+
+@{
+    ViewBag.Title = "Delete";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Document_Detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.document_detail_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.document_detail_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.document_detail_isDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.document_detail_isDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.document_data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Document.document_data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen.citizen_national_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

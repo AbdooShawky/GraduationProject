@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Servicely.Models.EducationDirectorate>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script>
+    $(function () {
+       
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+        }
+        else {
+            $("#StateId").change(function () {
+
+                var data = $("#StateId").val();
+                $.ajax({
+                    url: "/EducationDirectorates/GetAllDirectorateByStateId",
+                    data: { Id: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#Table").append("<tr class='tt'>  <td> " + r.DirectorateName + "  </td>   <td>  <a  href='/EducationDirectorates/Edit/" + r.Id + "'> <i class='far fa-edit'></i></a> | <a  href='/EducationDirectorates/Delete/" + r.Id + "'> <i class='far fa-trash-alt'></i></a>  </td>  </tr>")
+
+                        });
+                    }
+
+
+
+                });
+
+            });
+
+        }
+
+
+    });
+</script>
+<h2>@Servicely.Languages.Language.Index </h2>
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Directorate</label>
+            @Html.DropDownList("StateId",null,"", new { @class="form-control"})
+        </div>
+    </div>
+</div>
+
+<table class="table table-sm mt-4" id="Table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.DirectorateName
+        </th>
+
+        <th></th>
+    </tr>
+
+   
+
+</table>

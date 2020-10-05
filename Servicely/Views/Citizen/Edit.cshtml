@@ -1,0 +1,202 @@
+﻿@model Servicely.Models.Citizen
+
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+
+<script>
+
+    $(function () {
+
+        $("#inp").hide();
+            $("#btn").prop('required', false);
+         $("#re").change(function () {
+
+                var data = $(this).val();
+                if (data == "Other") {
+                    $("#inp").show();
+                    $("#btn").prop('required', true);
+
+
+
+                }
+                else {
+                    $("#inp").hide();
+                    $("#btn").prop('required', false);
+                }
+            });
+        var data;
+        if (data == "M") {
+            $("#defaultInline1").prop("checked", true);
+
+        }
+        if (data == "F") {
+            $("#defaultInline2").prop("checked", true);
+        }
+
+            $('#citizen_mother_id').select2();
+            
+            $('#citizen_father_id').select2();
+
+    });
+
+</script>
+<h2>@Servicely.Languages.Language.Edit</h2>
+<div class="container">
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.citizen_id)
+        <h4>@Servicely.Languages.Language.Citizen</h4>
+        <hr />
+        <div class="row mt-3">
+
+
+
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.CitizenName</label>
+                @Html.EditorFor(model => model.citizen_first_name, new { htmlAttributes = new { @class = "form-control" ,pattern = "^[a-zA-Z\\s]{3,20}$" , required = "requierd" } })
+            </div>
+            <div class="col-1"></div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.CitizenNameArabic</label>
+                @Html.EditorFor(model => model.citizen_first_name_arabic, new { htmlAttributes = new { @class = "form-control" , pattern = "[\u0600-\u06FF\\s]{3,20}" , required = "requierd"} })
+            </div>
+
+
+
+
+
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.BirthPlace</label>
+                @Html.EditorFor(model => model.citizen_birthPlace, new { htmlAttributes = new { @class = "form-control", required = "requierd" } })
+            </div>
+           <div class="col-1"> </div>
+           <div class="col-md-3">
+               <label>@Servicely.Languages.Language.BirthDate</label>
+
+               <input type="date" name="citizen_birthDate" class="form-control" id="dd" required />
+
+           </div>
+           
+        </div>
+        <div class="row mt-3">
+
+
+
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.FatherNationalId</label>
+                
+                @Html.DropDownList("citizen_father_id", null, " ", htmlAttributes: new { @class = "form-control ", required = "requierd" })
+                @Html.ValidationMessageFor(model => model.citizen_father_id, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-1"></div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.MotherNationalId</label>
+                
+                @Html.DropDownList("citizen_mother_id", null, " ", htmlAttributes: new { @class = "form-control ", required = "requierd" })
+                @Html.ValidationMessageFor(model => model.citizen_mother_id, "", new { @class = "text-danger" })
+
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.JopTitle</label>
+                @Html.EditorFor(model => model.citizen_job_title, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-1">
+                
+                <div>
+                    <label>@Servicely.Languages.Language.Gender</label>
+                    <div class="col-md-3">
+
+                        <!-- Default inline 1-->
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="defaultInline1" name="citizen_gender" value="M">
+                            <label class="custom-control-label" for="defaultInline1">@Servicely.Languages.Language.Male</label>
+                        </div>
+
+                        <!-- Default inline 2-->
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="defaultInline2" name="citizen_gender" value="F">
+                            <label class="custom-control-label" for="defaultInline2">@Servicely.Languages.Language.Female</label>
+                        </div>
+
+
+                    </div>
+                </div>
+               
+
+                
+
+            </div>
+        </div>
+
+        <div class="row mt-3">
+           
+               
+                
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Relegion</label>
+                <select class="form-control" name="citizen_relegion" id="re" required>
+
+                    <option value="">
+                    </option>
+                    <option value="Muslim">
+                        @Servicely.Languages.Language.Muslim
+                    </option>
+                    <option value="Cristian">
+                        @Servicely.Languages.Language.Cristian
+                    </option>
+                    <option value="Jewish">
+                        @Servicely.Languages.Language.Jewish
+                    </option>
+
+                    <option value="Other">
+                        @Servicely.Languages.Language.Other
+                    </option>
+                </select>
+
+
+            </div>
+            <div class="col-md-3" id="inp">
+                <label>@Servicely.Languages.Language.Other</label>
+                <input type="text" class="form-control mb-2" id="btn" name="citizen_relegion" />
+
+
+            </div>
+            
+        </div>
+
+
+
+            <div class="form-group mt-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+                </div>
+            </div>
+       
+    }
+
+</div>
+
+
+<div>
+    @Html.ActionLink(@Servicely.Languages.Language.Back_to_List, "Index")
+</div>

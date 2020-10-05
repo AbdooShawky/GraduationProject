@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Servicely.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/css/fileinput.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer-fas/theme.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/css/@Servicely.Languages.Language.FileInput" rel="stylesheet" />
+<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer/theme.css" rel="stylesheet" />
+
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/js/fileinput.js"></script>
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/js/locales/@Servicely.Languages.Language.FileInputLang"></script>
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/fas/theme.js"></script>
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer-fas/theme.js"></script>
+<script>
+
+    $(function () {
+
+        $("#input-b1").fileinput({
+            theme: "explorer-fas",
+            uploadUrl: '#',
+            allowedFileExtensions: ['jpg', 'png', 'jpeg'],
+            overwriteInitial: false,
+            maxFileSize: 1000,
+
+        });
+
+    });
+</script>
+
+
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.Cars
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarNameArabic)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarName)
+                    </td>
+                }
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarName)
+                </td>
+            }
+
+
+
+            <td>
+                <a href="/Cars/Edit/@item.Id"><i class="far fa-edit"></i></a> |
+                <a href="/Cars/Delete/@item.Id"><i class="far fa-trash-alt"></i></a>
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+<form>
+    <div class="form-group">
+        <div class="mt-5 file-loading">
+            @*<input id="input-b1" name="input-b1" type="file" class="file mt-5" data-browse-on-zone-click="true">*@
+            <input id="input-b1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2" data-theme="fas" data-browse-on-zone-click="true">
+
+
+
+        </div>
+    </div>
+    
+</form>
+
+

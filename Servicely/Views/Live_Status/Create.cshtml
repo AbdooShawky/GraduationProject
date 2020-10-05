@@ -1,0 +1,137 @@
+﻿@model Servicely.Models.Live_Status
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Create;
+    if (Session["Layout"] != null)
+  
+        Layout = Session["Layout"].ToString(); 
+    else
+     Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+
+<script>
+
+    $(function () {
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+
+
+            $("#citizen_citizen_id").change(function () {
+
+                var data = $("#citizen_citizen_id").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+        }
+        else {
+            $("#citizen_citizen_id").change(function () {
+
+                var data = $("#citizen_citizen_id").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+        }
+
+        $('#citizen_citizen_id').select2();
+    });
+
+</script>
+
+<div class="container-fluid">
+    <h2> @Servicely.Languages.Language.Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4> @Servicely.Languages.Language.LiveStatus</h4>
+            <hr />
+
+
+            <div class="form-group">
+                <label> @Servicely.Languages.Language.CitizenNationalId</label>
+                <div class="col-md-3">
+
+                    @Html.DropDownList("citizen_citizen_id", null, " ", new { @class = "form-control", data_live_search = "true", required = "requierd" })
+
+                </div>
+
+                <table class="table mt-2" id="tb">
+                </table>
+
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Servicely.Languages.Language.LiveSatusType
+                <div class="col-md-3">
+                    @Html.DropDownList("live_satus_type_id", null, "", new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+
+
+
+            @if (ViewBag.errMsgStatus != null)
+            {
+                <label class="text-danger">
+                    @ViewBag.errMsgStatus
+
+                <a style="color:darkblue;" href="/Live_Status/Edit/@ViewBag.id">@ViewBag.edit</a>
+            </label>
+            ViewBag.id = null;
+            ViewBag.edit = null;
+        }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=@Servicely.Languages.Language.Create class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+

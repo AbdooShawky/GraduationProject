@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Servicely.Models.PhasesOfSchoole>
+
+@{
+    ViewBag.Title = "Index";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h3>@Servicely.Languages.Language.Index</h3>
+<h4>@Servicely.Languages.Language.PhasesOfSchool</h4>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.Phase
+        </th>
+        <th>
+            @Servicely.Languages.Language.HowManyYear
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhaseNameArabic)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhaseName)
+                    </td>
+                }
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhaseName)
+                </td>
+            }
+
+            <td>@item.Year</td>
+
+            <td>
+            
+                <a  href='/PhasesOfSchooles/Edit/@item.Id'> <i class="far fa-edit"></i></a>
+                |
+                <a  href='/PhasesOfSchooles/Delete/@item.Id'><i class="far fa-trash-alt"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>

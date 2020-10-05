@@ -1,0 +1,245 @@
+﻿@model IEnumerable<Servicely.Models.Social_status>
+
+@{
+    ViewBag.Title = "Index";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<script>
+
+   
+
+    $(function () {
+
+         $("#NId").select2();
+
+
+          var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        $("#WifeId").select2();
+        
+        if (seesion == "ar-EG") {
+
+
+             $("#NId").change(function () {
+            data = $("#NId").val();
+            $("#WifeId").empty();
+            $.ajax({
+                url: "/Social_status/GetAllWifeByHusId",
+                data: { tid: data },
+                async: false,
+                success: function (res) {
+                    $("#WifeId").append("<option value='" + "" + "'> " + "" + " </option>");
+                    $.each(res, function (i, row) {
+                        $("#WifeId").append("<option value='" + row.citizen_id + "'> " + row.citizen_national_id + " </option>");
+                    });
+
+                }
+            });
+        });
+
+
+        $("#NId").change(function () {
+
+            var da = $("#NId").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Social_status/GetNamesByCitizenId",
+                data: { ctId: da },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+
+        
+
+        $("#WifeId").change(function () {
+            var ss = $("#WifeId").val();
+
+
+        });
+        $(document).ready(function () {
+
+
+
+
+
+        });
+
+        }
+        else
+        {
+             $("#NId").change(function () {
+            data = $("#NId").val();
+            $("#WifeId").empty();
+            $.ajax({
+                url: "/Social_status/GetAllWifeByHusId",
+                data: { tid: data },
+                async: false,
+                success: function (res) {
+                    $("#WifeId").append("<option value='" + "" + "'> " + "" + " </option>");
+                    $.each(res, function (i, row) {
+                        $("#WifeId").append("<option value='" + row.citizen_id + "'> " + row.citizen_national_id + " </option>");
+                    });
+
+                }
+            });
+        });
+
+
+        $("#NId").change(function () {
+
+            var da = $("#NId").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Social_status/GetNamesByCitizenId",
+                data: { ctId: da },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+
+       
+
+        }
+
+        $("#WifeId").change(function () {
+            var sid = $("#WifeId").val();
+            $(".tt").empty();
+            $.ajax({
+
+
+                url: "/Social_status/GetSocialInfoByWifeId",
+                data: {
+                    WId: sid,
+                    HId: data
+                },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, row) {
+
+                        $("#table1").append("<tr class='tt'><td  >" + row.social_status_type_name_arabic + "</td><td>" + row.social_status_from + "</td> <td><a href='/Social_status/Edit/" + row.social_status_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/Social_status/Delete/" + row.social_status_id + "'>@Servicely.Languages.Language.Delete</a></td> </tr>");
+
+
+                    });
+
+
+
+                }
+
+
+
+            })
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Social_status/GetNamesByCitizenId",
+                data: { ctId: sid },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name+ " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+
+
+                }
+
+
+
+            })
+
+
+        });
+        var data;
+       
+
+
+    });
+
+</script>
+
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Social_status</h2>
+    <h2>@Servicely.Languages.Language.Index</h2>
+    <p>
+        @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+    </p>
+    <div class="row">
+        <div class="col-md-4">
+           <div>
+               <label> @Servicely.Languages.Language.HusbandNationalId </label>
+               
+               </div> 
+            @Html.DropDownList("NId", null, "", new { @class = " form-control", required = "required", data_live_search = "true" }) <div><table class=" mt-3 " id="tb1"> </table></div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div>
+                <label class=""> @Servicely.Languages.Language.WifeNationalId </label>
+
+            </div>
+            <select id="WifeId" class="form-control "></select> <table class=" mt-3 " id="tb2"> </table>
+        </div>
+    </div>
+
+    <div class="row fadeIn">
+        <div class="col-12">
+            <table class="table" id="table1">
+                <tr>
+                    <th class="font-weight-bold">
+                        @Servicely.Languages.Language.Social_status_type
+                    </th>
+
+                    <th class="font-weight-bold">
+                        @Servicely.Languages.Language.Date
+                    </th>
+                    <th>
+
+                    </th>
+
+                </tr>
+
+
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+

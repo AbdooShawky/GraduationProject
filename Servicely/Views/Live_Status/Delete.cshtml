@@ -1,0 +1,72 @@
+﻿@model Servicely.Models.Live_Status
+
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Delete;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h4> @Servicely.Languages.Language.LiveStatus</h4>
+<div>
+    <h5> @Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h5>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+
+        <dt>
+            @Servicely.Languages.Language.CitizenNationalId
+
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+        <dt>
+            @Servicely.Languages.Language.LiveSatusType
+        </dt>
+
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.Live_Status_Type.live_status_type_name_arabic)
+                </dd>
+
+
+            }
+            else
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Live_Status_Type.live_status_type_name)
+                </dd>
+
+            }
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.Live_Status_Type.live_status_type_name)
+            </dd>
+
+        }
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

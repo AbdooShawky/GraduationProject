@@ -1,0 +1,90 @@
+﻿@model Servicely.Models.CarLicence
+
+@{
+    ViewBag.Title = "Create";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h4>@Servicely.Languages.Language.Create</h4>
+<h4>@Servicely.Languages.Language.CarLicence</h4>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.NationalId</label>
+                @Html.DropDownList("CitizenId", null, "", new { @class = "form-control", required = "required" })
+
+            </div>
+
+        </div>
+
+
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>
+                    @Servicely.Languages.Language.CarNameEn
+
+                </label>
+                @Html.DropDownList("CarId", null, "", new { @class="form-control", required="required"})
+
+
+            </div>
+            
+
+        </div>
+        <div class="row mt-3">
+
+
+
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.CarModel</label>
+                @Html.TextBoxFor(a => a.CarModel, new { @class = " form-control", required = "required", type = "number", min = "1970", max = DateTime.Now.Year })
+            </div>
+            <div class="col-md-3">
+
+
+                <label>@Servicely.Languages.Language.CarCode</label>
+                <input type="text" name="arkam" class="form-control" required pattern="\d{3}" placeholder="@Servicely.Languages.Language.EnterThreeDigits" />
+                <input type="text" name="hroof" class=" mt-3 form-control" required pattern="([\u0600-\u06FF]{3})" placeholder="@Servicely.Languages.Language.EnterThreeLettersInArabic" />
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-3">
+
+
+                <label>@Servicely.Languages.Language.endDate</label> <span> </span><span><label>@Servicely.Languages.Language.threeYears</label></span>
+                <br />
+                <input type="checkbox" class="custom-checkbox" name="checkEndDate" value="1" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (ViewBag.errorMessage != null)
+                {
+                    <label class="text-danger mt-3 mb-3">   @ViewBag.errorMessage   </label>
+                }
+
+                <input type="submit" value="@Servicely.Languages.Language.Create" class="btn btn-default" />
+            </div>
+        </div>
+
+    }
+</div>
+
+<div>
+    @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+</div>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Servicely.Models.HealthCareSpecialization>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+    <div class="container">
+
+        <h3>@Servicely.Languages.Language.Index</h3>
+        <h4>@Servicely.Languages.Language.Specialization</h4>
+
+
+        <div class="col-md-12">
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Servicely.Languages.Language.Specialization
+
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+                
+
+                @if (Session["lang"] != null)
+                {
+                    if (Session["lang"].ToString().Equals("ar-EG"))
+                    {
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.specialization_name_arabic)
+                </td>
+
+
+
+                    }
+                    else
+                    {
+            <td>
+                @Html.DisplayFor(modelItem => item.specialization_name)
+            </td>
+
+
+                    }
+                }
+                else
+                {
+            <td>
+                @Html.DisplayFor(modelItem => item.specialization_name)
+            </td>
+
+                }
+
+            <td>
+                <a href="/Specializations/Edit/@item.specialization_id"><i class="fa fa-edit"></i></a>| <a href="/Specializations/Delete/@item.specialization_id"><i class="fa fa-trash-alt"></i></a>
+            </td>
+            </tr>
+                }
+
+
+            </table>
+        </div>
+      
+    </div>

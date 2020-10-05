@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Index;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2> @Servicely.Languages.Language.AddNewUser</h2>
+
+
+
+<form action="" method="post">
+    
+    <label for="Name" class="font-weight-bold"> @Servicely.Languages.Language.User_name</label>
+    <input type="text" class="form-control" placeholder="Enter UserName" name="Name" required />
+
+
+
+    <label for="Password" class="font-weight-bold"> @Servicely.Languages.Language.Password</label>
+    <input type="password" class="form-control" placeholder="Enter Password" name="Password" required />
+    <br />
+    <button type="submit" class="btn-danger btn-lg" style="width:100%"> @Servicely.Languages.Language.AddUser</button>
+    <br />
+    <br />
+    <label>
+        <input type="checkbox" checked="checked" name="remember">  @Servicely.Languages.Language.Remember_me 
+    </label>
+
+</form>
+

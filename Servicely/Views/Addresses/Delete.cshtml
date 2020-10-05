@@ -1,0 +1,85 @@
+﻿@model Servicely.Models.Address
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+      if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2>@Servicely.Languages.Language.Delete</h2>
+
+    <h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+    <div>
+        <h4>@Servicely.Languages.Language.Address</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Servicely.Languages.Language.Is_Current
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address_isCurrent)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.ArabicStreetName
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address_street_arabic)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.Street_Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address_street)
+            </dd>
+            <dt>
+                @Servicely.Languages.Language.District_Name
+            </dt>
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+                    <dd>
+                        @Html.DisplayFor(model => model.District.district_arabic_name)
+                    </dd>
+
+                }
+                else
+                {
+                    <dd>
+                        @Html.DisplayFor(model => model.District.district_name)
+                    </dd>
+                }
+            }
+            else
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.District.district_name)
+                </dd>
+            }
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            if (Session["addressmessage"] != null)
+            {
+               <label class="mt-3 mb-3 text-danger">@Session["addressmessage"]</label>
+            }
+
+
+            <div class="form-actions no-color">
+                <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+        }
+    </div>

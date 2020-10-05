@@ -1,0 +1,82 @@
+﻿
+@model IEnumerable<Servicely.Models.User>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2> @Servicely.Languages.Language.Edit</h2>
+
+
+<div class="container-fluid mt-5">
+    @using (Html.BeginForm())
+    {
+
+
+        <h5> @Servicely.Languages.Language.Download</h5>
+        <h5>@Servicely.Languages.Language.User</h5>
+        <hr />
+        <div class="col-12">
+            <div class="form-group">
+                @Html.HiddenFor(model => model.user_id)
+                <div class="col-3">
+
+                    <label for="Name" class="font-weight-bold"> @Servicely.Languages.Language.User_name</label>
+                    @Html.EditorFor(model => model.user_name, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "^[a-z0-9A-Z_-]{8,20}$" } })
+                </div>
+            </div>
+
+
+            <div class="col-3">
+                <label for="Password" class="font-weight-bold"> @Servicely.Languages.Language.Password</label>
+
+                @Html.EditorFor(model => model.user_password, new { htmlAttributes = new { @class = "form-control", type = "password", required = "required", pattern = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$" } })
+            </div>
+
+
+
+            <div class="col-3">
+                <label for="Password" class="font-weight-bold"> @Servicely.Languages.Language.ConfirmPassword</label>
+
+                @Html.EditorFor(model => model.user_password, new { htmlAttributes = new { @class = "form-control", required = "required", type = "password", pattern = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$" } })
+            </div>
+
+            <div class="col-3">
+                <label for="vaccination_type_period">@Servicely.Languages.Language.UserType</label><br />
+                @Html.DropDownList("user_type_id", null, "", new { @class = "form-control", requierd = "required" })
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 mt-2">
+                        <input type="submit" value=@Servicely.Languages.Language.Edit class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+            @if (ViewBag.errmsg != null)
+            {
+                <label class="text-danger font-weight-bold">@ViewBag.errmsg</label>
+            }
+
+
+
+        </div>
+        <div class="mt-3 mb-5">
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>
+

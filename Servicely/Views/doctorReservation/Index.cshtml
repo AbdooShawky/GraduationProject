@@ -1,0 +1,218 @@
+﻿@model IEnumerable<Servicely.Models.ReservationScheduleM_M>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+<script>
+
+    $(function () {
+
+          var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+             $.ajax({
+            url: "/doctorReservation/IndexOfUser",
+            data: "",
+            success: function (res) {
+
+                $.each(res, function (i, r) {
+
+                  //  $("#tb").append("<tr>  <td> "+r.Reservation_date+"  </td>  <td> "+r.hospital_name_arabic+"  </td>  <td> "+r.citizen_first_name_arabic+" "+r.citizen_second_name_arabic+" "+r.citizen_third_name_arabic+" "+r.citizen_fourth_name_arabic+"  </td> <td> "+r.district_arabic_name+"  </td> <td> "+r.checkup_date+"  </td>  </tr>");
+       $("#tb").append("<tr class='tt'>  <td> " + r.Reservation_date + "  </td>  <td> " + r.hospital_name_arabic + "  </td>  <td> " + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + "  </td><td> " + r.district_arabic_name + "  </td> <td> " + r.checkup_date + " from " + r.checkup_start + " to " + r.checkup_end + "  </td> <td> <a class='dell' href='/doctorReservation/Delete/"+r.healthcareReservation_id+"' > <i class='fa fa-trash-alt'>   </i>  </a>  </td> </tr>");
+
+                });
+
+            }
+
+
+        });
+        }
+        else {
+
+             
+             $.ajax({
+            url: "/doctorReservation/IndexOfUser",
+            data: "",
+            success: function (res) {
+
+                $.each(res, function (i, r) {
+
+                  //  $("#tb").append("<tr>  <td> "+r.Reservation_date+"  </td>  <td> "+r.hospital_name+"  </td>  <td> "+r.citizen_first_name+" "+r.citizen_second_name+" "+r.citizen_third_name+" "+r.citizen_fourth_name+"  </td> <td> "+r.district_name+"  </td> <td> "+r.checkup_date+"  </td>  </tr>");
+                  $("#tb").append("<tr class='tt'>  <td> " + r.Reservation_date + "  </td>  <td> " + r.hospital_name + "  </td>   <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + "  </td><td> " + r.district_name + "  </td> <td> " + r.checkup_date + " from " + r.checkup_start + " to " + r.checkup_end + "  </td> <td> <a class='dell' href='/doctorReservation/Delete/"+r.healthcareReservation_id+"' > <i class='fa fa-trash-alt'>   </i>  </a>  </td> </tr>");
+
+                });
+
+            }
+
+
+             });
+             $("#btn").click(function () {
+
+                
+                $(".tt").empty();
+                var form = $("#form");
+                var from = $("#datefrom").val();
+                var to = $("#dateto").val();
+                $(".tt").empty();
+                if (from != "" && to != "" && $("#citzen").val() != "") {
+                    $(".tt").empty();
+                    $.ajax({
+                        url: "/doctorReservation/IndexOfUserU",
+                        data: {  from: from, to: to },
+                        async: false,
+                        success: function (res) {
+
+
+                            $.each(res, function (i, r) {
+
+
+                                $("#tb").append("<tr class='tt'>  <td> " + r.Reservation_date + "  </td>  <td> " + r.hospital_name + "  </td>  <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + "  </td><td> " + r.district_name + "  </td> <td> " + r.checkup_date + " from " + r.checkup_start + " to " + r.checkup_end + "  </td> <td> <a class='dell' href='/doctorReservation/Delete/"+r.healthcareReservation_id+"'> <i class='fa fa-trash-alt'>   </i>  </a>  </td> </tr>");
+                                $("#del").addClass('text-primary');
+
+                            });
+
+
+                        }
+
+
+                    });
+                }
+                
+
+
+
+            });
+        }
+
+       
+
+    });
+</script>
+<div class="container-fluid">
+
+
+    <h2>  @Servicely.Languages.Language.Index</h2>
+
+    <p>
+        @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+    </p>
+
+    <div class="row">
+        <div class="col-md-9">
+            <form action="" id="form">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>@Servicely.Languages.Language.From</label>
+                        <input type="date" id="datefrom" required class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label> @Servicely.Languages.Language.To </label>
+                        <input type="date" id="dateto" required class="form-control" />
+                    </div>
+                    <div class="col-md-5 mt-4">
+                        <input type="button" value="Search" class="btn btn-primary btn-sm d-inline mt-2" id="btn" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <table class="table" id="tb">
+        <tr>
+            <th>
+
+                @Servicely.Languages.Language.Date
+            </th>
+            <th>
+                @Servicely.Languages.Language.HospitalName
+            </th>
+            <th>
+                @Servicely.Languages.Language.DoctorName
+            </th>
+            <th>
+                @Servicely.Languages.Language.Address
+            </th>
+            <th>
+                @Servicely.Languages.Language.Appointments
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+      
+
+    </table>
+
+</div>
+
+  @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.HealthcareReservation.Reservation_date.Value.ToShortDateString()
+                </td>
+
+
+                @if (Session["lang"] != null)
+                {
+                    if (Session["lang"].ToString().Equals("ar-EG"))
+                    {
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HealthcareReservation.HealthCare.hospital_name_arabic)
+                        </td>
+                        <td>
+                            @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_first_name_arabic     @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_second_name_arabic  @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_third_name_arabic
+                        </td>
+                        <td>
+                            @item.HealthcareReservation.HealthCare.District.Region.City.State.state_arabic_name  @item.HealthcareReservation.HealthCare.District.Region.City.city_arabic_name  @item.HealthcareReservation.HealthCare.District.Region.region_arabic_name  @item.HealthcareReservation.HealthCare.District.district_arabic_name
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HealthcareReservation.HealthCare.hospital_name)
+                        </td>
+                        <td>
+                            @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_first_name  @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_second_name     @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_third_name
+                        </td>
+                        <td>
+                            @item.HealthcareReservation.HealthCare.District.Region.City.State.state_name  @item.HealthcareReservation.HealthCare.District.Region.City.city_name  @item.HealthcareReservation.HealthCare.District.Region.region_name  @item.HealthcareReservation.HealthCare.District.district_name
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HealthcareReservation.HealthCare.hospital_name)
+                    </td>
+                    <td>
+                        @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_first_name  @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_second_name     @item.HealthcareReservation.Healthcare_Doctor.Citizen.citizen_third_name
+                    </td>
+                    <td>
+                        @item.HealthcareReservation.HealthCare.District.Region.City.State.state_name  @item.HealthcareReservation.HealthCare.District.Region.City.city_name  @item.HealthcareReservation.HealthCare.District.Region.region_name  @item.HealthcareReservation.HealthCare.District.district_name
+                    </td>
+                }
+
+                <td>
+                    @item.ScheduleHealthCare.checkup_date @item.ScheduleHealthCare.checkup_start @item.ScheduleHealthCare.checkup_end
+
+                </td>
+                <td>
+                    @Html.ActionLink(Servicely.Languages.Language.Delete, "DeleteUser", new { id = item.HealthcareReservation.healthcareReservation_id })
+                </td>
+            </tr>
+        }*@

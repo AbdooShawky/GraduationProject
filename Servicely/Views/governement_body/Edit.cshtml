@@ -1,0 +1,99 @@
+﻿@model Servicely.Models.governement_body
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(a=> a.id)
+        <h4>@Servicely.Languages.Language.governement_body</h4>
+        <hr />
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>@Servicely.Languages.Language.governement_name</label>
+
+                    @Html.EditorFor(model => model.governement_name, new { htmlAttributes = new { @class = "form-control", pattern="([A-Z][A-Za-z\\s]{2,50})" , required="required"  } })
+                    @Html.ValidationMessageFor(model => model.governement_name, "", new { @class = "text-danger" })
+
+                </div>
+
+
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>@Servicely.Languages.Language.governement_name_inArabic</label>
+
+                    @Html.EditorFor(model => model.governement_name_arabic, new { htmlAttributes = new { @class = "form-control", pattern="([\u0600-\u06FF\\s]{3,50})" , required="required" } })
+                    @Html.ValidationMessageFor(model => model.governement_name_arabic, "", new { @class = "text-danger" })
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-3">
+
+                <div class="form-group">
+
+                    <label>@Servicely.Languages.Language.start_time</label>
+
+                    @Html.EditorFor(model => model.start_time, new { htmlAttributes = new { @class = "form-control", type = "time"  , required="required"} })
+                    @Html.ValidationMessageFor(model => model.start_time, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>@Servicely.Languages.Language.end_time</label>
+
+                    @Html.EditorFor(model => model.end_time, new { htmlAttributes = new { @class = "form-control", type = "time" , required="required"} })
+                    @Html.ValidationMessageFor(model => model.end_time, "", new { @class = "text-danger" })
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                @if (ViewBag.errx != null)
+                {
+                    <label class="mt-3 mb-3 text-danger">@ViewBag.errx</label>
+                }
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-3">
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+
+        </div>
+    }
+</div>
+
+
+
+

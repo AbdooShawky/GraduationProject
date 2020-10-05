@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Servicely.Models.YearOfPhase>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+    }
+
+<script>
+    $(function () {
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+            $("#PhaseId").change(function () {
+
+                var data = $(this).val();
+                $(".tt").empty();
+                $.ajax({
+                    url: "/YearOfPhases/GetAllYearOfPhaseBYPhaseId",
+                    data: { Id: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#tb").append("<tr class='tt'> <td>"+r.NameOfYearePhaseArabic+"</td> <td> <a href='/YearOfPhases/Edit/"+r.Id+"'>  <i class='far fa-edit'> </i> </a> |<a href='/YearOfPhases/Delete/"+r.Id+"'>  <i class='far fa-trash-alt'> </i></a> </td>  </tr>");
+                    
+                        });
+                    }
+
+                });
+
+
+            });
+        }
+        else {
+               $("#PhaseId").change(function () {
+
+                   var data = $(this).val();
+                   $(".tt").empty();
+                $.ajax({
+                    url: "/YearOfPhases/GetAllYearOfPhaseBYPhaseId",
+                    data: { Id: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#tb").append("<tr class='tt'> <td>"+r.NameOfYearePhase+"</td> <td> <a href='/YearOfPhases/Edit/"+r.Id+"'>  <i class='far fa-edit'> </i></a> |<a href='/YearOfPhases/Delete/"+r.Id+"'>  <i class='far fa-trash-alt'></i> </a> </td>  </tr>");
+                    
+                        });
+                    }
+
+                });
+
+
+            });
+
+        }
+    });
+</script>
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label> @Servicely.Languages.Language.YearOfPhase </label>
+
+            @Html.DropDownList("PhaseId", null,"", htmlAttributes: new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+    <table class="table mt-3" id="tb">
+        <tr>
+            <th>
+                @Servicely.Languages.Language.YearOfPhase
+            </th>
+
+
+            <th></th>
+        </tr>
+
+
+    </table>
+</div>
+

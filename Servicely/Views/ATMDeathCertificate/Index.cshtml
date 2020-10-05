@@ -1,0 +1,794 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/ATM_layout.cshtml";
+}
+
+<script src="~/jasonday-printThis-0aa7434/printThis.js"></script>
+<script src="~/qrCodeJs/qrcode.min.js"></script>
+@*<script>
+    $(function () {
+
+         var Id;
+        $.ajax({
+
+            url: "/Login/GetCitizenId",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                Id = res;
+
+            }
+
+        });
+
+
+        $("#citi").select2();
+          $("#citi").change(function () {
+
+            var data = $(this).val();
+              var qr;
+              $("#qrcode").empty();
+            $.ajax({
+
+                url: "/CitizenID/GetCitizenQRCode1",
+                data: { cid: Id },
+                async: false,
+                success: function (res) {
+
+                    qr = res;
+
+            }
+
+            });
+
+               var q = new QRCode("qrcode", {
+                   text: qr,
+                   width: 60,
+                   height:60,
+                   colorDark : "#000000",
+                   colorLight : "#ffffff",
+                   correctLevel : QRCode.CorrectLevel.H
+              });
+
+        });
+
+         $('#btn').click(function () {
+
+            $("#print").printThis({
+
+                 debug: false,               // show the iframe for debugging
+                 importCSS: true,            // import parent page css
+                 importStyle: false,         // import style tags
+                 printContainer: true,       // print outer container/$.selector
+                 loadCSS: "C:\Users\Dashmala\Source\Repos\Servicely\Servicely\Content\bootstrap.css",                // path to additional css file - use an array [] for multiple
+                 pageTitle: "",              // add title to print page
+                 removeInline: false,        // remove inline styles from print elements
+                 removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+                 printDelay: 333,            // variable print delay
+                 header: null,               // prefix to html
+                 footer: null,               // postfix to html
+                 base: false,                // preserve the BASE tag or accept a string for the URL
+                 formValues: true,           // preserve input/form values
+                 canvas: false,              // copy canvas content
+                 doctypeString: '<!DOCTYPE html>', // enter a different doctype for older markup
+                 removeScripts: false,       // remove script tags from print content
+                 copyTagClasses: false,      // copy classes from the html & body tag
+                 beforePrintEvent: null,     // callback function for printEvent in iframe
+                 beforePrint: null,          // function called before iframe is filled
+                 afterPrint: null            // function called before iframe is removed
+
+            });
+    });
+
+      var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+
+        if (seesion == "ar-EG") {
+
+           //Mother Information
+       
+
+            
+
+            $("#MRelegion").empty();
+            $("#Mnationality").empty();
+            $("#MotherName").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { y: Id },
+                async:false,
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                       // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                            if (r.citizen_relegion == "Muslim") {
+                        $("#MRelegion").text("مسلم");
+                    }
+                    else if (r.citizen_relegion == "Cristian") {
+                        $("#MRelegion").text("مسيحي");
+                    }
+                    else if (r.citizen_relegion == "Jewish") {
+                        $("#MRelegion").text("يهودي");
+                    }
+                    else {
+                         $("#MRelegion").text(r.citizen_relegion);
+                    }
+
+                        $("#Mnationality").text("مصري");
+                        $("#MotherName").text(r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic);
+                    });
+                }
+
+            });
+
+
+       
+
+        
+
+           // deceaced social status
+
+            $("#SocialStatus").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/DeathCertificate",
+                data: { social: Id },
+                async:false,
+                success: function (res) {
+
+                    $("#SocialStatus").text(res);
+
+                }
+
+            });
+
+
+     
+
+
+             $("#Name").empty();
+             $("#Gender").empty();
+             $("#egyptian").empty();
+             $("#DeathDate").empty();
+             $("#DeathPlace").empty();
+             $("#BirthPlace").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/DeathCertificate",
+                data: { citi: Id },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                        // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                        var d = r.citizen_birthDate;
+                        var d1 = @DateTime.Now;
+                        var diffirence = new Date(d1 - d);
+                        var days = diffirence / 1000 / 60 / 60 / 24;
+                        $("#Age").text(days);
+                        $("#Name").text(r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic);
+
+
+
+                         if (r.citizen_gender == "Male") {
+
+                        $("#Gender").text("ذكر");
+                    }
+                    else {
+                        $("#Gender").text("انثى");
+                    }
+                        $("#egyptian").text("مصري");
+                        $("#DeathDate").text(r.deceased_deathDate);
+                        $("#DeathPlace").text(r.deceased_deathPlace_arabic);
+                        $("#BirthPlace").text(r.citizen_birthPlace);
+
+                    });
+                }
+
+            });
+
+
+      
+
+        }
+        else {
+            //Mother Information
+       
+
+            $("#MotherNamee").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { y: Id },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                       // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                      $("#MotherNamee").text(r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name)
+
+                    });
+                }
+
+            });
+
+
+       
+
+            $("#SocialStatus").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/DeathCertificate",
+                data: { social: Id },
+
+                success: function (res) {
+
+                    $("#SocialStatus").text(res);
+
+                }
+
+            });
+
+
+       
+
+     
+
+             $("#Name").empty();
+             $("#Gender").empty();
+             $("#egyptian").empty();
+             $("#DeathDate").empty();
+             $("#DeathPlace").empty();
+             $("#BirthPlace").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/DeathCertificate",
+                data: { citi: Id },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                        // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                        var d = r.citizen_birthDate;
+                        var d1 = @DateTime.Now;
+                        var diffirence = new Date(d1 - d);
+                        var days = diffirence / 1000 / 60 / 60 / 24;
+                        $("#Age").text(days);
+                        $("#Name").text(r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name);
+                        $("#Gender").text(r.citizen_gender);
+                        $("#egyptian").text("Egyption");
+                        $("#DeathDate").text(r.deceased_deathDate);
+                        $("#DeathPlace").text(r.deceased_deathPlace);
+                        $("#BirthPlace").text(r.citizen_birthPlace);
+
+                    });
+                }
+
+            });
+
+
+      
+        }
+
+
+    });
+
+</script>*@
+<script>
+    $(function () {
+       
+        alert("aaaa");
+         var Id;
+        $.ajax({
+
+            url: "/Login/GetCitizenId",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                Id = res ;
+
+            }
+
+        });
+
+        $("#citi").empty();
+        $.ajax({
+            url: "https://localhost:44389/api/DeathCertificate",
+            data: { Id: Id },
+            async: false,
+            success: function (res) {
+                                    $("#citi").append("<option >   </option>");
+
+                $.each(res, function (i, r) {
+
+                    $("#citi").append("<option "+r.Id+">  "+r.NId+"  </option>");
+
+                });
+
+            }
+
+        });
+
+        //$("#citi").select2();
+        $("#citi").change(function () {
+            alert("aaaa")
+            var data = $(this).val();
+              var qr;
+              $("#qrcode").empty();
+            $.ajax({
+
+                url: "/CitizenID/GetCitizenQRCode1",
+                data: {cid:data},
+                async: false,
+                success: function (res) {
+
+                    qr = res;
+
+            }
+
+            });
+
+               var q = new QRCode("qrcode", {
+                   text: qr,
+                   width: 60,
+                   height:60,
+                   colorDark : "#000000",
+                   colorLight : "#ffffff",
+                   correctLevel : QRCode.CorrectLevel.H
+              });
+
+        });
+
+         $('#btn').click(function () {
+
+            $("#print").printThis({
+
+                 debug: false,               // show the iframe for debugging
+                 importCSS: true,            // import parent page css
+                 importStyle: false,         // import style tags
+                 printContainer: true,       // print outer container/$.selector
+                 loadCSS: "C:\Users\Dashmala\Source\Repos\Servicely\Servicely\Content\bootstrap.css",                // path to additional css file - use an array [] for multiple
+                 pageTitle: "",              // add title to print page
+                 removeInline: false,        // remove inline styles from print elements
+                 removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+                 printDelay: 333,            // variable print delay
+                 header: null,               // prefix to html
+                 footer: null,               // postfix to html
+                 base: false,                // preserve the BASE tag or accept a string for the URL
+                 formValues: true,           // preserve input/form values
+                 canvas: false,              // copy canvas content
+                 doctypeString: '<!DOCTYPE html>', // enter a different doctype for older markup
+                 removeScripts: false,       // remove script tags from print content
+                 copyTagClasses: false,      // copy classes from the html & body tag
+                 beforePrintEvent: null,     // callback function for printEvent in iframe
+                 beforePrint: null,          // function called before iframe is filled
+                 afterPrint: null            // function called before iframe is removed
+
+            });
+    });
+
+      var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+
+        if (seesion == "ar-EG") {
+
+           //Mother Information
+        $("#citi").change(function () {
+
+            var data = $(this).val();
+
+            $("#MRelegion").empty();
+            $("#Mnationality").empty();
+            $("#MotherName").empty();
+
+            $.ajax({
+                url: "/BirthCertificate/GetMotherInformation",
+                data: { citi: data },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                       // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                            if (r.citizen_relegion == "Muslim") {
+                        $("#MRelegion").text("مسلم");
+                    }
+                    else if (r.citizen_relegion == "Cristian") {
+                        $("#MRelegion").text("مسيحي");
+                    }
+                    else if (r.citizen_relegion == "Jewish") {
+                        $("#MRelegion").text("يهودي");
+                    }
+                    else {
+                         $("#MRelegion").text(r.citizen_relegion);
+                    }
+
+                        $("#Mnationality").text("مصري");
+                        $("#MotherName").text(r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic);
+                    });
+                }
+
+            });
+
+
+        });
+
+         $("#citi").change(function () {
+
+            var data = $(this).val();
+
+            $("#SocialStatus").empty();
+
+            $.ajax({
+                url: "/DeceasedCertificate/GetSocialStatusByCitizenId",
+                data: { citi: data },
+
+                success: function (res) {
+
+                    $("#SocialStatus").text(res);
+
+                }
+
+            });
+
+
+        });
+
+         $("#citi").change(function () {
+
+            var data = $(this).val();
+
+             $("#Name").empty();
+             $("#Gender").empty();
+             $("#egyptian").empty();
+             $("#DeathDate").empty();
+             $("#DeathPlace").empty();
+             $("#BirthPlace").empty();
+
+            $.ajax({
+                url: "/DeceasedCertificate/GetDeceasedInfoById",
+                data: { citi: data },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                        // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                        @*var d = r.citizen_birthDate;
+                        var d1 = @DateTime.Now;
+                        var diffirence = new Date(d1 - d);
+                        var days = diffirence / 1000 / 60 / 60 / 24;
+                        $("#Age").text(days);*@
+                        $("#Name").text(r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic);
+
+
+
+                         if (r.citizen_gender == "Male") {
+
+                        $("#Gender").text("ذكر");
+                    }
+                    else {
+                        $("#Gender").text("انثى");
+                    }
+                        $("#egyptian").text("مصري");
+                        $("#DeathDate").text(r.deceased_deathDate);
+                        $("#DeathPlace").text(r.deceased_deathPlace_arabic);
+                        $("#BirthPlace").text(r.citizen_birthPlace);
+
+                    });
+                }
+
+            });
+
+
+        });
+
+        }
+        else {
+            //Mother Information
+        $("#citi").change(function () {
+
+            var data = $(this).val();
+
+            $("#MotherNamee").empty();
+
+            $.ajax({
+                url: "/BirthCertificate/GetMotherInformation",
+                data: { citi: data },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                       // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                      $("#MotherNamee").text(r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name)
+
+                    });
+                }
+
+            });
+
+
+        });
+         $("#citi").change(function () {
+
+            var data = $(this).val();
+
+            $("#SocialStatus").empty();
+
+            $.ajax({
+                url: "/DeceasedCertificate/GetSocialStatusByCitizenId",
+                data: { citi: data },
+
+                success: function (res) {
+
+                    $("#SocialStatus").text(res);
+
+                }
+
+            });
+
+
+        });
+
+         $("#citi").change(function () {
+
+            var data = $(this).val();
+
+             $("#Name").empty();
+             $("#Gender").empty();
+             $("#egyptian").empty();
+             $("#DeathDate").empty();
+             $("#DeathPlace").empty();
+             $("#BirthPlace").empty();
+
+            $.ajax({
+                url: "/DeceasedCertificate/GetDeceasedInfoById",
+                data: { citi: data },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                        // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                        @*var d = r.citizen_birthDate;
+                        var d1 = @DateTime.Now;
+                        var diffirence = new Date(d1 - d);
+                        var days = diffirence / 1000 / 60 / 60 / 24;
+                        $("#Age").text(days);*@
+                        $("#Name").text(r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name);
+                        $("#Gender").text(r.citizen_gender);
+                        $("#egyptian").text("Egyption");
+                        $("#DeathDate").text(r.deceased_deathDate);
+                        $("#DeathPlace").text(r.deceased_deathPlace);
+                        $("#BirthPlace").text(r.citizen_birthPlace);
+
+                    });
+                }
+
+            });
+
+
+        });
+        }
+
+
+    });
+
+</script>
+<style>
+    /*strong {
+        font-size: small;
+    }*/
+</style>
+<div class="container mt-5">
+    <h2 class="mt-4">@Servicely.Languages.Language.Exporting_Death_Certificate</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+
+<div class=" row">
+    <div class="col-md-4">
+        @*@Html.DropDownList("citi", null, " ", new { @class = "selectpicker", required = "required", data_live_search = "true" })*@
+    
+        <select id="citi">
+
+        </select>
+    
+    </div>
+
+</div>
+
+
+        <div class="row mt-5">
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8" id="print">
+                <div class="container mt-3" style="border:1px solid black">
+
+                    <div class="row mt-3 mb-3">
+
+                        <div class="col-md-4">
+                            <strong class="font-weight-bold ">  @Servicely.Languages.Language.TheEgyptianArabicRepublic </strong>
+                            <br />
+                            <strong class="font-weight-bold"> @Servicely.Languages.Language.Ministry_of_Interior </strong>
+                            <br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Civil_Registry_Sector</strong>
+                        </div>
+                        <div class="col-md-4 text-center">
+
+                            <strong class="font-weight-bold "> @Servicely.Languages.Language.Death_Document</strong>
+
+                            <div class="row">
+                                <br />
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <strong class="font-weight-bold" id="NId"></strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div id="qrcode" class="float-md-right @Servicely.Languages.Language.mr_4"></div>
+
+                        </div>
+                    </div>
+
+                    <!-- D Information -->
+                    <div class="row">
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                        <div class="col-4 text-center">
+                            <strong class="font-weight-bold ">
+                                @Servicely.Languages.Language.DeceasedInformation
+                            </strong>
+
+                        </div>
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                    </div>
+
+                    <!-- ////////////////////////   -->
+                    <div class="row mt-3 mb-3">
+                        <div class="col-9">
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Name : </strong><strong class="font-weight-bold" id="Name"></strong>
+                            <br />
+                            <strong class="font-weight-bold "> @Servicely.Languages.Language.Gender : </strong><strong class="font-weight-bold" id="Gender"> </strong>
+                            <br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Nationality : </strong><strong class="font-weight-bold" id="egyptian"></strong>
+                            <br />
+                            @*<strong class="font-weight-bold">Birth Place : </strong> <strong class="font-weight-bold" id="state"></strong> <strong id="City" class="font-weight-bold"></strong>*@
+
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.MotherName  : </strong><strong id="MotherNamee" class="font-weight-bold"></strong>
+                            <br />
+                            <strong class="font-weight-bold ">@Servicely.Languages.Language.SocialStatus : </strong><strong class="font-weight-bold" id="SocialStatus"> </strong>
+                            <br />
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    @*Father Information*@
+                    <div class="row">
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                        <div class="col-4 text-center">
+                            <strong class="font-weight-bold">
+                                @Servicely.Languages.Language.DeathInformation
+                            </strong>
+
+                        </div>
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                    </div>
+
+                    <!-- ////////////////////////   -->
+                    <div class="row mt-3 mb-3">
+                        <div class="col-6">
+
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.DeathDate   : </strong><strong class="font-weight-bold" id="DeathDate"></strong>
+                            <br /><br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.DeathPlace : </strong> <strong class="font-weight-bold" id="DeathPlace"></strong> <strong id="City" class="font-weight-bold"></strong>
+
+
+
+
+                        </div>
+
+                        <div class="col-3 text-center">
+
+
+                        </div>
+                    </div>
+
+                    @*Mother Information*@
+                    <div class="row">
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                        <div class="col-4 text-center">
+                            <strong class="font-weight-bold">
+                                @Servicely.Languages.Language.BirthInformation
+                            </strong>
+
+                        </div>
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                    </div>
+
+                    <!-- ////////////////////////   -->
+                    <div class="row mt-3 mb-3">
+                        <div class="col-6">
+
+                            <strong class="font-weight-bold">ِ@Servicely.Languages.Language.Age_at_Death   : </strong><strong class="font-weight-bold" id="Age"></strong>
+                            <br /><br />
+                            <strong class="font-weight-bold">ِ@Servicely.Languages.Language.BirthPlace : </strong> <strong class="font-weight-bold" id="BirthPlace"></strong> <strong id="City" class="font-weight-bold"></strong>
+
+
+
+
+                        </div>
+
+                        <div class="col-3 text-center">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="row mt-4 mb-4">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <input type="button" value=ِ@Servicely.Languages.Language.Export class="btn btn-default" id="btn" />
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+
+
+    }
+</div>
+

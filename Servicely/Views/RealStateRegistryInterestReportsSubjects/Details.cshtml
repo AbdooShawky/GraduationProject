@@ -1,0 +1,31 @@
+﻿@model Servicely.Models.RealStateRegistryInterestReportsSubject
+
+@{
+    ViewBag.Title = "Details";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RealStateRegistryInterestReportsSubject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterestReports_subject_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterestReports_subject_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.realStateRegistryInterestReports_subject_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

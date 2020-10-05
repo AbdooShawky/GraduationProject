@@ -1,0 +1,356 @@
+﻿
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<script>
+    $(function () {
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#city").append("<option value='0'>   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+
+
+            });
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $("#region").append("<option value='0'>   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+
+
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#district").append("<option value='0'>   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+
+
+
+            });
+
+            $("#district").change(function () {
+
+                var data = $("#district").val();
+                var typ = $("#HCtype").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/ScheduleHealthCares/GetAllHospitalsByTypesAndDistrictId",
+                    data: { dis: data, tid: typ },
+                    async: false,
+                    success: function (res) {
+                        $("#hospital").append("<option value='0'>   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name_arabic + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+
+            $("#hospital").change(function () {
+
+                var data = $("#hospital").val();
+                $("#spec").empty();
+                $.ajax({
+                    url: "/ScheduleVaccinations/GetAllVaccTypeByHospitalId",
+                    data: { hid: data },
+                    async: false,
+                    success: function (res) {
+                        $("#spec").append("<option value='0'>   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#spec").append("<option value='" + r.vaccination_type_id + "'>" + r.vaccination_type_name_arabic + "</option>");
+
+
+                        });
+                    }
+                });
+
+
+            });
+        }
+        else {
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#city").append("<option value='0'>   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+
+            });
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $("#region").append("<option value='0'>   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#district").append("<option value='0'>   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+            });
+
+            $("#district").change(function () {
+
+                var data = $("#district").val();
+                var typ = $("#HCtype").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/ScheduleHealthCares/GetAllHospitalsByTypesAndDistrictId",
+                    data: { dis: data, tid: typ },
+                    async: false,
+                    success: function (res) {
+                        $("#hospital").append("<option value='0'>   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+            });
+
+
+            $("#hospital").change(function () {
+
+                var data = $("#hospital").val();
+                $("#spec").empty();
+                $.ajax({
+                    url: "/ScheduleVaccinations/GetAllVaccTypeByHospitalId",
+                    data: { hid: data },
+                    async: false,
+                    success: function (res) {
+
+                        $("#spec").append("<option value='0'>   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#spec").append("<option value='" + r.vaccination_type_id + "'>" + r.vaccination_type_name + "</option>");
+
+
+                        });
+                    }
+                });
+
+
+            });
+
+        }
+
+
+
+
+    });
+</script>
+<div class="container-fluid">
+    <h2> @Servicely.Languages.Language.AddVaccinationSchedule</h2>
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-4 mt-3">
+                <label class="label">  @Servicely.Languages.Language.HealthCare_type</label>
+                @Html.DropDownList("HCtype", null, "", new { @class = "form-control", required = "required" })
+
+            </div>
+        </div>
+
+
+
+        <div class="row ">
+            <div class="col-3 mt-3">
+                <label class="label"> @Servicely.Languages.Language.State</label>
+                @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control" })
+
+
+            </div>
+            <div class="col-3 mt-3">
+                <label class="label"> @Servicely.Languages.Language.City</label>
+                <select class="form-control" id="city"></select>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-3 mt-3">
+                <label class="label"> @Servicely.Languages.Language.Region</label>
+                <select class="form-control" id="region" name="district_region_id"></select>
+
+
+            </div>
+
+            <div class="col-3 mt-3">
+                <label class="label"> @Servicely.Languages.Language.District</label>
+                <select class="form-control" id="district" name="address_district_id">
+                </select>
+
+
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-3 mt-3">
+                <label class="label"> @Servicely.Languages.Language.Hospital</label>
+                <select class="form-control" id="hospital" name="hospitalDoctor_hospital">
+                </select>
+
+
+            </div>
+
+            <div class="col-3 mt-3">
+                <label class="label"> @Servicely.Languages.Language.Vaccination </label>
+                <select class="form-control" id="spec" name="VaccID">
+                </select>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+        <div class="row mt-5 ">
+            <div class="col-3">
+                <input type="submit" class="btn btn-default" value="@Servicely.Languages.Language.next" />
+            </div>
+        </div>
+    }
+
+</div>

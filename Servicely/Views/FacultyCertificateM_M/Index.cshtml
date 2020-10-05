@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Servicely.Models.FacultyCertificateM_M>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+     
+    
+        <th>
+                Certificate type name
+        </th>
+        <th>
+            Faculty name
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Certificate.CirtificateTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty.FacultyName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+          
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,56 @@
+﻿
+@{
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<div class=" app-container app-theme-white h-100  ">
+    <div class="app-container">
+        <div class="h-100">
+            <div class="h-100 no-gutters row">
+
+
+                <div class=" h-100 d-flex bg-white justify-content-center align-items-center col-md-12 col-lg-12">
+                    <div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9 container" style="margin-bottom: 8rem; ">
+
+
+
+                        <!-- Main content -->
+                        <div class="content h-100 align-content-center align-items-center justify-content-center">
+                            <div class="error-page">
+                                <h2 class="headline text-danger"><img src="~/img/W.jpg" width="120"  height="120"/></h2>
+
+                                <div class="error-content">
+                                    <h3><i class="fas fa-exclamation-triangle text-danger mt-5"></i> @Servicely.Languages.Language.Oops</h3>
+
+                                    <p>
+                                        @Servicely.Languages.Language.We_away
+                                      
+                                    </p>
+
+                                    <form class="search-form">
+                                     
+                                        <!-- /.input-group -->
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.error-page -->
+                        </div>
+
+
+
+                        <!-- /.content -->
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

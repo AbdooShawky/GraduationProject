@@ -1,0 +1,178 @@
+﻿@model IEnumerable<Servicely.Models.Contact>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+         $('#NId').select2();
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+             $("#contact_contactType_id").change(function () {
+
+            var ttid = $("#contact_contactType_id").val();
+                   
+            $.ajax({
+                url: "/CitizenContact/GetAllContactByContactTypeId",
+                data: { tid :ttid},
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, row) {
+                        
+                        $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name_arabic+" "+ row.citizen_second_name_arabic+" "+ row.citizen_third_name_arabic +" "+row.citizen_fourth_name_arabic + " </td><td> " + row.contact_type_name_arabic + " </td><td> " + row.contact_data + " </td>  <td><a href='/CitizenContact/Edit/" + row.contact_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/CitizenContact/Delete/" + row.contact_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                    });
+                }
+
+
+            });
+
+
+
+
+             });
+
+
+
+                $("#NId").change(function () {
+
+            var ttid = $("#NId").val();
+                  
+            $.ajax({
+                url: "/CitizenContact/GetAllContactByCitizenId",
+                data: { tid :ttid},
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, row) {
+                        
+                        $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name_arabic+" "+ row.citizen_second_name_arabic+" "+ row.citizen_third_name_arabic +" "+row.citizen_fourth_name_arabic + " </td><td> " + row.contact_type_name_arabic + " </td><td> " + row.contact_data + " </td>  <td><a href='/CitizenContact/Edit/" + row.contact_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/CitizenContact/Delete/" + row.contact_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                    });
+                }
+
+
+            });
+
+
+
+
+             });
+
+
+        }
+        else {
+             $("#NId").change(function () {
+
+            var ttid = $("#NId").val();
+
+            $.ajax({
+                url: "/CitizenContact/GetAllContactByCitizenId",
+                data: { tid :ttid},
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, row) {
+                        
+                        $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name+" "+ row.citizen_second_name+" "+ row.citizen_third_name +" "+row.citizen_fourth_name + " </td><td> " + row.contact_type_name + " </td><td> " + row.contact_data + " </td>  <td><a href='/CitizenContact/Edit/" + row.contact_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/CitizenContact/Delete/" + row.contact_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                    });
+                }
+
+
+            });
+
+
+
+
+             });
+
+             $("#contact_contactType_id").change(function () {
+
+            var ttid = $("#contact_contactType_id").val();
+
+            $.ajax({
+                url: "/CitizenContact/GetAllContactByContactTypeId",
+                data: { tid :ttid},
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, row) {
+                        
+                        $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name+" "+ row.citizen_second_name+" "+ row.citizen_third_name +" "+row.citizen_fourth_name + " </td><td> " + row.contact_type_name + " </td><td> " + row.contact_data + " </td>  <td><a href='/CitizenContact/Edit/" + row.contact_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/CitizenContact/Delete/" + row.contact_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                    });
+                }
+
+
+            });
+
+
+
+
+        });
+
+        }
+       
+
+     
+        
+        
+    });
+
+</script>
+
+<div class="container-fluid">
+    <h5>@Servicely.Languages.Language.Index</h5>
+    <h5>@Servicely.Languages.Language.Contacts</h5>
+
+    <hr />
+    <p>
+        @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+    </p>
+    <div class="row">
+        <label>@Servicely.Languages.Language.CitizenNationalId</label>
+
+
+        <div class="col-md-3">
+            @Html.DropDownList("NId", null, "", new { @class = "form-control", required = "required", data_live_search = "true" })
+        </div>
+
+
+        <label>@Servicely.Languages.Language.ContactType</label>
+        <div class="col-md-3">
+            @Html.DropDownList("contact_contactType_id", null, " ", new { @class = "form-control", required = "required" })
+
+        </div>
+
+    </div>
+
+    <table class="table mt-3" id="tb1">
+        <tr>
+            <th>
+                @Servicely.Languages.Language.CitizenName
+            </th>
+            <th>
+                @Servicely.Languages.Language.ContactType
+            </th>
+            <th>
+                @Servicely.Languages.Language.ContactInfo
+            </th>
+
+            <th></th>
+        </tr>
+
+
+    </table>
+</div>
+

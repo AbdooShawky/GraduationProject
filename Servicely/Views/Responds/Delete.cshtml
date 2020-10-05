@@ -1,0 +1,55 @@
+﻿@model Servicely.Models.Respond
+
+@{
+    ViewBag.Title = "Delete";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Delete</h2>
+
+<h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4>Respond</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Servicely.Languages.Language.Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.Respond
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RespondText)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.Complain
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complain.ComplainText)
+        </dd>
+
+   
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Servicely.Languages.Language.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(@Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "IndexH";
+    Layout = "~/Views/Shared/HealthCare_LayOut.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.ScheduleHealthCare</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-calendar"></i>
+
+                </div>
+                <a href="/ScheduleHealthCares/Step1_ShcheduleHealthCare" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.ScheduleVaccination</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-calendar"></i>
+
+                </div>
+                <a href="/ScheduleVaccinations/Step1Shcedule" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.Healthcares</p>
+                </div>
+                <div class="icon">
+                    <i class=" fa fa-medkit"></i>
+                </div>
+                <a href="/doctorReservation/IndexAdmin" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Vaccinations</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-syringe"></i>
+                </div>
+                <a href="/VaccinationsSchedules/Index" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>
+
+

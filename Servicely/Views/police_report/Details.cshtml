@@ -1,0 +1,87 @@
+﻿@model Servicely.Models.police_report
+
+@{
+    ViewBag.Title = "Details";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>police_report</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.police_report_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.police_report_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.police_report_body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.police_report_body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.police_report_DateAndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.police_report_DateAndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen.citizen_national_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen1.citizen_national_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen1.citizen_national_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliceReport_type.police_report_type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliceReport_type.police_report_type_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliceDepartment.police_department_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliceDepartment.police_department_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliceReportClassification.police_report_classification_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliceReportClassification.police_report_classification_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.police_report_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

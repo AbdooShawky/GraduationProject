@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index2";
+      if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.AddNewStudent</h2>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    @if (ViewBag.Pri != null)
+                    {
+                        <h3>@ViewBag.Pri</h3>
+                    }
+                   
+
+                    <p>@Servicely.Languages.Language.PrimaryPhase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+
+                </div>
+                <a href="/Students/Index" class="small-box-footer">@Servicely.Languages.Language.Students <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    @if (ViewBag.Int != null)
+                    {
+                        <h3>@ViewBag.Int</h3>
+                    }
+                   
+
+                    <p>@Servicely.Languages.Language.intermidiatePhase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+
+                </div>
+                <a href="/IntermediateRegistration/Index" class="small-box-footer">@Servicely.Languages.Language.Students <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    @if (ViewBag.Sec != null)
+                    {
+                        <h3>@ViewBag.Sec</h3>
+                    }
+                   
+                    <p>@Servicely.Languages.Language.SecondaryPhase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/SecondaryRegisterations/Index" class="small-box-footer">@Servicely.Languages.Language.Students <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    @if ( ViewBag.Uni != null)
+                    {
+                    <h3>@ViewBag.Uni</h3>
+                    }
+                   
+                    <p>@Servicely.Languages.Language.Universities</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/UniversityStudentsRegisteration/Index" class="small-box-footer">@Servicely.Languages.Language.Students <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>

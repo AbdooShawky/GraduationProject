@@ -1,0 +1,64 @@
+﻿@model Servicely.Models.Region
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <div class="container-fluid">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.region_id)
+            <h2>@Servicely.Languages.Language.Edit</h2>
+            <h4>@Servicely.Languages.Language.Region</h4>
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.Cities</label>
+                    @Html.DropDownList("region_city_id", null, htmlAttributes: new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.Region_Name_inEnglish</label>
+                    @Html.EditorFor(model => model.region_name, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{3,20})"
+} })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.Region_Name_inArabic</label>
+                    @Html.EditorFor(model => model.region_arabic_name, new { htmlAttributes = new { @class = "form-control", required = "required", pattern ="([\u0600-\u06FF\\s]{3,20})" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label style="color:red"> @ViewBag.errMsg </label>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+        }
+    </div>
+
+
+
+
+   
+
+

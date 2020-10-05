@@ -1,0 +1,89 @@
+﻿@model Servicely.Models.YearOfPhase
+
+@{
+    ViewBag.Title = "Delete";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Delete</h2>
+
+<h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4>@Servicely.Languages.Language.YearOfPhase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Servicely.Languages.Language.YearOfPhase
+        </dt>
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.NameOfYearePhaseArabic)
+                </dd>
+
+            }
+            else
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.NameOfYearePhase)
+                </dd>
+            }
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.NameOfYearePhase)
+            </dd>
+        }
+
+
+        <dt>
+            @Servicely.Languages.Language.Phase
+        </dt>
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhasesOfSchoole.PhaseNameArabic)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.PhasesOfSchoole.PhaseName)
+                </dd>
+            }
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.PhasesOfSchoole.PhaseName)
+            </dd>
+        }
+
+
+
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Servicely.Languages.Language.Back_to_List" class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

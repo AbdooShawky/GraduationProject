@@ -1,0 +1,110 @@
+﻿@model Servicely.Models.CarLicence
+
+@{
+    ViewBag.Title = "Delete";
+      if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h4>@Servicely.Languages.Language.Delete</h4>
+    <h4>@Servicely.Languages.Language.CarLicence</h4>
+<h4>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h4>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+        <dt>
+            @Servicely.Languages.Language.CarName
+        </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CarNameArabic)
+                </dd>
+            }
+            else
+            {
+    <dt>
+        @Servicely.Languages.Language.CarName
+    </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CarName)
+                </dd>
+            }
+        }
+        else
+        {
+    <dt>
+        @Servicely.Languages.Language.CarName
+    </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CarName)
+            </dd>
+        }
+
+
+
+        <dt>
+            @Servicely.Languages.Language.CarCode
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarCode)
+        </dd>
+
+
+
+        <dt>
+            @Servicely.Languages.Language.CarModel
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarModel)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.startDate
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.endDate
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+
+        <dt>
+            @Servicely.Languages.Language.CitizenNationalId
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=" @Servicely.Languages.Language.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Delete, "Index")
+        </div>
+    }
+</div>

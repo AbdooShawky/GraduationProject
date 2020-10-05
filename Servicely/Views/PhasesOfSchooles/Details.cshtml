@@ -1,0 +1,55 @@
+﻿@model Servicely.Models.PhasesOfSchoole
+
+@{
+    ViewBag.Title = "Details";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhasesOfSchoole</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhaseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhaseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhaseNameArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhaseNameArabic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Deleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

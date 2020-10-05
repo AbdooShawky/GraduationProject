@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Servicely.Models.KindOfSchool>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h3>@Servicely.Languages.Language.Index</h3>
+<h4>@Servicely.Languages.Language.SchoolType</h4>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.SchoolType
+        </th>
+       
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+
+    @if (Session["lang"] != null)
+    {
+        if (Session["lang"].ToString().Equals("ar-EG"))
+        {
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.KindOfSchollNameArabic)
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.KindOfSchollName)
+            </td>
+        }
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.KindOfSchollName)
+        </td>
+    }
+
+
+
+<td>
+    <a  href='/KindOfSchools/Edit/@item.Id'> <i class="far fa-edit"></i></a>
+    |
+    <a  href='/KindOfSchools/Delete/@item.Id'><i class="far fa-trash-alt"></i></a>
+</td>
+</tr>
+}
+
+</table>

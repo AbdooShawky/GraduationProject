@@ -1,0 +1,55 @@
+﻿@model Servicely.Models.University
+
+@{
+    ViewBag.Title = "Details";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>University</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniversityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Deleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversityNameArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniversityNameArabic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversityType.UniversityTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniversityType.UniversityTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

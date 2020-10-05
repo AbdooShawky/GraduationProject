@@ -1,0 +1,145 @@
+﻿@model Servicely.Models.VaccinationReservation
+@{
+    ViewBag.Title = "DeleteUser";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+
+
+
+<div class="container-fluid">
+    <h2>  @Servicely.Languages.Language.Delete</h2>
+
+    <h3>  @Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+    <div>
+        <h4>  @Servicely.Languages.Language.Vaccinations_Reservations</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+
+
+
+
+
+
+
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+                    <dt>
+                        @Servicely.Languages.Language.FatherInformation
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Citizen.citizen_first_name_arabic) @Html.DisplayFor(model => model.Citizen.Citizen2.citizen_national_id)
+
+                    </dd>
+
+                    <dt>
+                        @Servicely.Languages.Language.HospitalName
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HealthCare.hospital_name_arabic)
+                    </dd>
+
+
+                }
+                else
+                {
+                    <dt>
+                        @Servicely.Languages.Language.FatherInformation
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Citizen.citizen_first_name) @Html.DisplayFor(model => model.Citizen.Citizen2.citizen_national_id)
+                    </dd>
+                    <dt>
+                        @Servicely.Languages.Language.Child_Information
+                    </dt>
+
+                    <dt>
+                        @Servicely.Languages.Language.HospitalName
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HealthCare.hospital_name)
+                    </dd>
+                    <dt>
+                        @Servicely.Languages.Language.Vaccination_type
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.VaccinationType.vaccination_type_name)
+                    </dd>
+                    <dt>
+                        @Servicely.Languages.Language.Date
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.VaccReservation_date)
+                    </dd>
+                }
+            }
+            else
+            {
+                <dt>
+                    @Servicely.Languages.Language.FatherInformation
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Citizen.citizen_first_name) @Html.DisplayFor(model => model.Citizen.Citizen2.citizen_national_id)
+                </dd>
+
+
+
+                <dt>
+                    @Servicely.Languages.Language.HospitalName
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HealthCare.hospital_name)
+                </dd>
+                <dt>
+                    @Servicely.Languages.Language.Vaccination_type
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VaccinationType.vaccination_type_name)
+                </dd>
+                <dt>
+                    @Servicely.Languages.Language.Date
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VaccReservation_date)
+                </dd>
+            }
+
+
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mt-3 mb-3 text-danger">
+                @if(ViewBag.err != null)
+                {
+                    @ViewBag.err
+                }
+            </div>
+            <div class="form-actions no-color">
+                <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+        }
+    </div>
+</div>
+
+
+

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Servicely.Models.Live_Status>
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Index;
+    if (Session["Layout"] != null)
+        Layout = Session["Layout"].ToString(); 
+    else
+     Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+
+<script>
+    $(function () {
+
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $("#NId").change(function () {
+
+                var ttid = $("#NId").val();
+
+                $.ajax({
+                    url: "/Live_Status/GetAllLiveSatusByCitizenId",
+                    data: { tid: ttid },
+                    success: function (res) {
+                        $(".tt").empty();
+                        $.each(res, function (i, row) {
+
+                            $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name_arabic + " " + row.citizen_second_name_arabic + " " + row.citizen_third_name_arabic + " " + row.citizen_fourth_name_arabic + " </td><td> " + row.live_status_type_name_arabic + " </td><td> " + " </td>  <td><a href='/Live_Status/Edit/" + row.live_satus_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/Live_Status/Delete/" + row.live_satus_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                        });
+                    }
+
+
+                });
+
+
+
+
+            });
+
+        }
+        else
+        {
+             $("#NId").change(function () {
+
+                var ttid = $("#NId").val();
+
+                $.ajax({
+                    url: "/Live_Status/GetAllLiveSatusByCitizenId",
+                    data: { tid: ttid },
+                    success: function (res) {
+                        $(".tt").empty();
+                        $.each(res, function (i, row) {
+
+                            $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name + " " + row.citizen_second_name + " " + row.citizen_third_name + " " + row.citizen_fourth_name + " </td><td> " + row.live_status_type_name + " </td><td> " + " </td>  <td><a href='/Live_Status/Edit/" + row.live_satus_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/Live_Status/Delete/" + row.live_satus_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                        });
+                    }
+
+
+                });
+
+
+
+
+            });
+        }
+         $('#NId').select2();
+    });
+
+</script>
+
+<div class="container-fluid">
+    <h3>@Servicely.Languages.Language.Index</h3>
+    <h3>@Servicely.Languages.Language.LiveStatus</h3>
+
+    <p>
+        @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+    </p>
+    <div class="col-md-3">
+        @Html.DropDownList("NId", null, "", new { @class = "form-control", data_live_search = "true", required = "required" })
+    </div>
+    <table class="table mt-5" id="tb1">
+        <tr>
+
+            <th>
+                @Servicely.Languages.Language.CitizenName
+            </th>
+            <th>
+                @Servicely.Languages.Language.LiveSatusType
+            </th>
+
+        </tr>
+
+
+    </table>
+</div>
+

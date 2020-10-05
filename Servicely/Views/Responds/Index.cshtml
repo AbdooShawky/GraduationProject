@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Servicely.Models.Respond>
+
+@{
+    ViewBag.Title = "Index";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.Date
+        </th>
+
+        <th>
+            @Servicely.Languages.Language.Complain
+        </th>
+        <th>
+            @Servicely.Languages.Language.Respond
+        </th>
+        <th>
+            @Servicely.Languages.Language.NationalId
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Complain.ComplainText)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RespondText)
+    </td>
+    @if (item.Complain.CitizenNationalId != null)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Complain.CitizenNationalId)
+        </td>
+    }
+    else
+    {
+        <td>
+
+        </td>
+    }
+    <td>
+        @Html.ActionLink(Servicely.Languages.Language.Edit, "Edit", new { id = item.Id }) |
+
+        @Html.ActionLink(Servicely.Languages.Language.Delete, "Delete", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

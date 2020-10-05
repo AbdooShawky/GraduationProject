@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "IndexOfUser";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+    <script>
+
+    $(function () {
+
+        $.ajax({
+            url: "/doctorReservation/IndexOfUser",
+            data: "",
+            success: function (res) {
+
+                $.each(res, function (i, r) {
+
+                    $("#tb").append("<tr>  <td> "+r.Reservation_date+"  </td>  <td> "+r.hospital_name+"  </td>   </tr>");
+
+                });
+
+            }
+
+
+        });
+
+    });
+    </script>
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<table class="table mt-3" id="tb">
+    <tr>
+        <th>
+
+            @Servicely.Languages.Language.Date
+        </th>
+        <th>
+            @Servicely.Languages.Language.HospitalName
+        </th>
+        <th>
+            @Servicely.Languages.Language.DoctorName
+        </th>
+        <th>
+            @Servicely.Languages.Language.Address
+        </th>
+        <th>
+            @Servicely.Languages.Language.Appointments
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+</table>
+
+

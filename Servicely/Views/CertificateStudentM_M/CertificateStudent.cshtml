@@ -1,0 +1,653 @@
+﻿
+@{
+    ViewBag.Title = "CertificateStudent";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <script>
+    $(function () {
+        $("#StudentId").select2();
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+             $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+             $("#FacultyId").change(function () {
+
+                 var data = $(this).val();
+                $("#CertificateId").empty();
+                $("#CirtificateTypeName").empty();
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllCertificateByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    $("#CirtificateTypeName").val(res.CirtificateTypeName);
+                    $("#CertificateId").val(res.CertificateId);
+
+
+                }
+
+            });
+
+            });
+            //-----------------------
+            $("#FacultyId").change(function () {
+
+                      var data = $(this).val();
+            $("#StudentId").empty();
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllStudentByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#StudentId").append("<option >  </option>");
+                    $.each(res, function (i, r) {
+
+
+
+
+                        $("#StudentId").append("<option value='" + r.Id + "'>  "+r.citizen_national_id+"  </option>");
+                    });
+
+                }
+
+            });
+
+
+            });
+            //--------------------------------
+
+            //====================================
+            //====================================
+            //====================================
+            //====================================
+
+
+
+            $("#StudentId").change(function () {
+               
+                     
+                 var imge = $('#imge'); 
+               imge.attr("src", imge.attr("src") );
+                        $("#UName").empty();
+                        $("#FName").empty();
+                        $("#StudentName").empty();
+                $("#FSName").empty();
+                        $("#month").empty();
+                        $("#Year").empty();
+                        $("#Grade").empty();
+                        $("#date").empty();
+
+
+                $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAllStudentInfoById",
+                    data: { Id: $("#StudentId").val(), FId: $("#FacultyId").val() },
+                    async:false,
+                    success: function (res) {
+
+                       
+                        $("#UName").text(res.UniversityNameArabic);
+                        $("#FName").text( $("#FacultyId option:selected").text());
+                        $("#StudentName").text(res.citizen_first_name_arabic + " " + res.citizen_second_name_arabic + " " + res.citizen_third_name_arabic + " " + res.citizen_fourth_name_arabic);
+                        $("#FSName").text(res.SpecializationNameArabic);
+                        var data = res.Date.split("-");
+                        $("#month").text(data[1]);
+                        $("#Year").text(data[0]);
+                        $("#Grade").text(res.GradeNameArabic);
+                        $("#date").text(res.citizen_birthDate);
+                        imge.attr("src", imge.attr("src") + res.UniversityLogo);
+                        
+                    }
+
+                });
+
+                $("#StateName").empty();
+                // state
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAddressByStudentId",
+                       data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+
+                        $("#StateName").text(res);
+                       
+                        
+                    }
+
+                   });
+                // Photo
+                $('#img').empty();
+                 var img = $('#img'); 
+               img.attr("src", img.attr("src") );
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetPhotoByStudentId",
+                    data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+                         img.attr("src", img.attr("src") + res.Photo_Url);
+                        
+                       
+                        
+                    }
+
+                });
+            });
+
+             $("#StudentId").change(function () {
+               
+                     
+                 var imge = $('#imge'); 
+               imge.attr("src", imge.attr("src") );
+                        $("#UName").empty();
+                        $("#FName").empty();
+                        $("#StudentName").empty();
+                $("#FSName").empty();
+                        $("#month").empty();
+                        $("#Year").empty();
+                        $("#Grade").empty();
+                        $("#date").empty();
+
+
+                $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAllDataByStudentId",//GetAllStudentInfoById
+                    data: { Id: $("#StudentId").val() },   //, FId: $("#FacultyId").val() },
+                    async:false,
+                    success: function (res) {
+
+
+                       
+
+                        $("#UName").text(res.UniversityNameArabic);
+                        $("#FName").text(res.FacultyNameArabic );
+                        $("#StudentName").text(res.citizen_first_name_arabic + " " + res.citizen_second_name_arabic + " " + res.citizen_third_name_arabic + " " + res.citizen_fourth_name_arabic);
+                        $("#FSName").text(res.SpecializationNameArabic);
+                        var data = res.Date.split("/");
+                        $("#month").text(data[1]);
+                        $("#Year").text(data[2]);
+                        $("#Grade").text(res.GradeNameArabic);
+                        $("#date").text(res.citizen_birthDate);
+                        imge.attr("src", imge.attr("src") + res.UniversityLogo);
+                        
+                      
+                       
+                    }
+
+                });
+
+                $("#StateName").empty();
+                // state
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAddressByStudentId",
+                       data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+
+                        $("#StateName").text(res);
+                       
+                        
+                    }
+
+                   });
+                // Photo
+                $('#img').empty();
+                 var img = $('#img'); 
+               img.attr("src", img.attr("src") );
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetPhotoByStudentId",
+                    data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+                         img.attr("src", img.attr("src") + res.Photo_Url);
+                        
+                       
+                        
+                    }
+
+                });
+            });
+
+        }
+        else {
+
+         $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityName + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyName + "  </option>");
+                    });
+
+                }
+
+            });
+
+         });
+         
+
+            $("#FacultyId").change(function () {
+
+                 var data = $(this).val();
+                $("#CertificateId").empty();
+                $("#CirtificateTypeName").empty();
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllCertificateByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    $("#CirtificateTypeName").val(res.CirtificateTypeName);
+                    $("#CertificateId").val(res.CertificateId);
+
+
+                }
+
+            });
+
+            });
+            //-----------------------
+            $("#FacultyId").change(function () {
+
+                      var data = $(this).val();
+            $("#StudentId").empty();
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllStudentByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#StudentId").append("<option >  </option>");
+                    $.each(res, function (i, r) {
+
+
+
+
+                        $("#StudentId").append("<option value='" + r.Id + "'>  "+r.citizen_national_id+"  </option>");
+                    });
+
+                }
+
+            });
+
+
+            });
+            //--------------------------------
+
+            //====================================
+            //====================================
+            //====================================
+            //====================================
+
+                $("#StudentId").change(function () {
+               
+                     
+                 var imge = $('#imge'); 
+               imge.attr("src", imge.attr("src") );
+                        $("#UName").empty();
+                        $("#FName").empty();
+                        $("#StudentName").empty();
+                $("#FSName").empty();
+                        $("#month").empty();
+                        $("#Year").empty();
+                        $("#Grade").empty();
+                        $("#date").empty();
+
+
+                $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAllDataByStudentId",//GetAllStudentInfoById
+                    data: { Id: $("#StudentId").val() },   //, FId: $("#FacultyId").val() },
+                    async:false,
+                    success: function (res) {
+
+
+                       
+
+                        $("#UName").text(res.UniversityName);
+                        $("#FName").text( $("#FacultyId option:selected").text());
+                        $("#StudentName").text(res.citizen_first_name + " " + res.citizen_second_name + " " + res.citizen_third_name + " " + res.citizen_fourth_name);
+                        $("#FSName").text(res.SpecializationName);
+                        var data = res.Date.split("-");
+                        $("#month").text(data[1]);
+                        $("#Year").text(data[0]);
+                        $("#Grade").text(res.GradeName);
+                        $("#date").text(res.citizen_birthDate);
+                        imge.attr("src", imge.attr("src") + res.UniversityLogo);
+                        
+                      
+                       
+                    }
+
+                });
+
+                $("#StateName").empty();
+                // state
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAddressByStudentId",
+                       data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+
+                        $("#StateName").text(res);
+                       
+                        
+                    }
+
+                   });
+                // Photo
+                $('#img').empty();
+                 var img = $('#img'); 
+               img.attr("src", img.attr("src") );
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetPhotoByStudentId",
+                    data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+                         img.attr("src", img.attr("src") + res.Photo_Url);
+                        
+                       
+                        
+                    }
+
+                });
+            });
+
+
+            $("#StudentId").change(function () {
+               
+                     
+                 var imge = $('#imge'); 
+               imge.attr("src", imge.attr("src") );
+                        $("#UName").empty();
+                        $("#FName").empty();
+                        $("#StudentName").empty();
+                $("#FSName").empty();
+                        $("#month").empty();
+                        $("#Year").empty();
+                        $("#Grade").empty();
+                        $("#date").empty();
+
+
+                $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAllDataByStudentId",//GetAllStudentInfoById
+                    data: { Id: $("#StudentId").val() },   //, FId: $("#FacultyId").val() },
+                    async:false,
+                    success: function (res) {
+
+
+                       
+
+                        $("#UName").text(res.UniversityName);
+                        $("#FName").text(res.FacultyName );
+                        $("#StudentName").text(res.citizen_first_name + " " + res.citizen_second_name + " " + res.citizen_third_name + " " + res.citizen_fourth_name);
+                        $("#FSName").text(res.SpecializationName);
+                        var data = res.Date.split("/");
+                        $("#month").text(data[1]);
+                        $("#Year").text(data[2]);
+                        $("#Grade").text(res.GradeName);
+                        $("#date").text(res.citizen_birthDate);
+                        imge.attr("src", imge.attr("src") + res.UniversityLogo);
+                        
+                      
+                       
+                    }
+
+                });
+
+                $("#StateName").empty();
+                // state
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetAddressByStudentId",
+                       data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+
+                        $("#StateName").text(res);
+                       
+                        
+                    }
+
+                   });
+                // Photo
+                $('#img').empty();
+                 var img = $('#img'); 
+               img.attr("src", img.attr("src") );
+                   $.ajax({
+
+
+                    url: "/CertificateStudentM_M/GetPhotoByStudentId",
+                    data: { Id: $("#StudentId").val() },
+                    async:false,
+                    success: function (res) {
+                         img.attr("src", img.attr("src") + res.Photo_Url);
+                        
+                       
+                        
+                    }
+
+                });
+            });
+
+        }
+
+
+    });
+    </script>
+
+<h2>@Servicely.Languages.Language.Certificate</h2>
+
+<div class="container">
+
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.UniversityType</label>
+            @Html.DropDownList("UType", null, "", new { @class = "form-control", required = "required" })
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.University</label>
+            <select class="form-control" required id="U" name="UniversityId">
+            </select>
+        </div>
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Faculty</label>
+            <select class="form-control" id="FacultyId" name="FacultyId" required>
+            </select>
+        </div>
+
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <label>@Servicely.Languages.Language.Students</label>
+            @*<select required class="form-control " id="StudentId" name="StudentId">
+            </select>*@
+            @Html.DropDownList("StudentId",null,"",new { @class="form-control"})
+
+            <div class="mt-2" id="studentInfo">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5" style="border:dashed">
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <img src="~/UniversityLogo/" class=" " style="height:100px; width:5.5rem " id="imge" />
+                
+            </div>
+            <div class="col-md-4 text-center">
+                @Servicely.Languages.Language.University
+                <br />
+                <strong id="UName">
+
+                </strong>
+                <br />
+                <strong>
+                    @Servicely.Languages.Language.GraduationUniversity
+                </strong>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="~/CitizenPhotos/" class=" " style="height:80px; width:4.5rem " id="img" />
+
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-3 text-center ">
+                <label>@Servicely.Languages.Language.Collegeofcertifies</label>
+            </div>
+            <div class="col-md-4 text-center">
+                <label id="FName">
+
+                </label>
+
+            </div>
+        </div>
+        <div class="row mt-5 ">
+            <div class="col-md-3 text-center ">
+                <label>
+                    @Servicely.Languages.Language.certifies / 
+                </label>
+            </div>
+            <div class="col-md-4 text-left">
+                <strong id="StudentName"></strong>
+            </div>
+        </div>
+        <div class="row mt-4 ">
+            <div class="col-md-3 text-center">
+                <lable>@Servicely.Languages.Language.BornIn</lable> &nbsp; <strong id="StateName"></strong>
+            </div>
+            <div class="col-md-3 text-center">
+                <label>@Servicely.Languages.Language.Datee</label>&nbsp;<strong id="date"></strong>
+
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <lable>@Servicely.Languages.Language.hasaBachelor_sdegree</lable> &nbsp; <strong id="FSName"></strong>
+            </div>
+
+        </div>
+        <div class="row mt-5 mb-3">
+            <div class="col-md-3 text-center">
+                <lable>@Servicely.Languages.Language.month</lable> &nbsp; <strong id="month"></strong>
+            </div>
+            <div class="col-md-3 text-center">
+                <lable>@Servicely.Languages.Language.Year </lable> &nbsp; <strong id="Year"></strong>
+            </div>
+            <div class="col-md-4 text-center">
+                <label>@Servicely.Languages.Language.Withappreciation</label>&nbsp;<strong id="Grade"></strong>
+            </div>
+        </div>
+
+        <div class="row mt-5 mb-3">
+            <div class="col-md-3 text-center">
+                <lable>@Servicely.Languages.Language.GraduationProject</lable> &nbsp; <strong id="GradeGraduation"></strong>
+            </div>
+            
+        </div>
+    </div>
+   
+</div>

@@ -1,0 +1,237 @@
+﻿@model IEnumerable<Servicely.Models.Request>
+@{
+    ViewBag.Title = "Indexuser";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+
+<script>
+
+    $(function () {
+
+
+         $("#request_citizenId").change(function () {
+
+            var data = $("#request_citizenId").val();
+            $("#tb").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb").append("<tr > <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+         });
+
+
+         $("#request_citizenId").change(function () {
+
+            var data = $("#request_citizenId").val();
+            $(".tt").empty();
+            $.ajax({
+                url: "/Requests/GetRequestsByCitizenId",
+                data: { cid: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#dtBasicExample").append("  <tbody>   <tr class='tt'> <td class='font-weight-bold'>" + r.address + " </td> <td class='font-weight-bold'>" + r.service + " </td><td class='font-weight-bold'>" + r.language + " </td><td class='font-weight-bold'>" + r.quantity + " </td><td class='font-weight-bold'>" + r.typeRequest + " </td><td class='font-weight-bold'>" + r.date + " </td>   <td class='font-weight-bold'>" + r.governmentAgency + " </td> </tr> </tbody>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+        $(document).ready(function () {
+$('#dtBasicExample').DataTable();
+$('.dataTables_length').addClass('bs-select');
+});
+    });
+
+</script>
+
+
+<div class="container mt-5">
+    <div class="container">
+        <h2 class="mt-5">Requsts Index</h2>
+        <a href="/Requests/Create">Create new</a>
+        <hr />
+        <div class="row">
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-12">
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        @*@Html.DropDownList("request_citizenId", null, "", new { @class = "selectpicker", required = "required" })*@
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table id="tb" class="mt-4">
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row mt-3 mb-5">
+            <div class="col-12 ">
+                <table id="dtBasicExample" class="table table-striped table-sm table-bordered" cellspacing="0" width="100%">
+
+                    <thead>
+                        <tr>
+                            <th class="th-sm">
+                                Citizen National id
+                            </th>
+                            <th class="th-sm">
+                                Citizen Name
+                            </th>
+                            <th class="th-sm">
+                                Address
+                            </th>
+                            <th class="th-sm">
+                                Service
+                            </th>
+                            <th class="th-sm">
+                                Language
+                            </th>
+                            <th class="th-sm">
+                                Quantity
+                            </th>
+                            <th>
+                                Type Request
+                            </th>
+                            <th class="th-sm">
+                                Date
+                            </th>
+                            <th class="th-sm">
+                                Government Agency
+                            </th>
+
+
+                            @*<th class="th-sm">   </th>
+                                <th class="th-sm">   </th>*@
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (Session["lang"] != null)
+                            {
+                                if (Session["lang"].ToString().Equals("ar-EG"))
+                                {
+                                    <tr>
+                                        <td>@item.Citizen.citizen_first_name_arabic @item.Citizen.citizen_second_name_arabic @item.Citizen.citizen_third_name_arabic @item.Citizen.citizen_fourth_name_arabic </td>
+                                        <td>@item.Citizen.citizen_national_id</td>
+                                        <td>@item.address_arabic</td>
+                                        <td>@item.service1.service_name_arabic</td>
+                                        <td>@item.language_arabic</td>
+                                        <td>@item.quantity</td>
+
+                                        <td>
+
+                                            @using (Html.BeginForm())
+                                            {
+                                                <Input type="hidden" value="@item.TypeRequest1.typeReaquest_id" name="RTId" />
+                                                <Input type="hidden" value="@item.request_id" name="RId" />
+                                                <input type="submit" disabled value="@item.TypeRequest1.typeReaquest_name_arabic"
+                                                       @if (ViewBag.err != null) { @ViewBag.err } />
+                                            }
+
+
+
+                                        </td>
+                                        <td>@item.date</td>
+                                        <td>@item.governement_body.governement_name_arabic</td>
+                                    </tr>
+
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>@item.Citizen.citizen_first_name @item.Citizen.citizen_second_name @item.Citizen.citizen_third_name @item.Citizen.citizen_fourth_name </td>
+                                        <td>@item.Citizen.citizen_national_id</td>
+                                        <td>@item.address</td>
+                                        <td>@item.service1.service_name</td>
+                                        <td>@item.language</td>
+                                        <td>@item.quantity</td>
+
+                                        <td>
+
+                                            @using (Html.BeginForm())
+                                            {
+                                                <Input type="hidden" value="@item.TypeRequest1.typeReaquest_id" name="RTId" />
+                                                <Input type="hidden" value="@item.request_id" name="RId" />
+                                                <input type="submit" disabled value="@item.TypeRequest1.typeReaquest_name"
+                                                       @if (ViewBag.err != null) { @ViewBag.err } />
+                                            }
+
+
+
+                                        </td>
+                                        <td>@item.date</td>
+                                        <td>@item.governement_body.governement_name</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>@item.Citizen.citizen_first_name @item.Citizen.citizen_second_name @item.Citizen.citizen_third_name @item.Citizen.citizen_fourth_name </td>
+                                    <td>@item.Citizen.citizen_national_id</td>
+                                    <td>@item.address</td>
+                                    <td>@item.service1.service_name</td>
+                                    <td>@item.language</td>
+                                    <td>@item.quantity</td>
+
+                                    <td>
+
+                                        @using (Html.BeginForm())
+                                        {
+                                            <Input type="hidden" value="@item.TypeRequest1.typeReaquest_id" name="RTId" />
+                                            <Input type="hidden" value="@item.request_id" name="RId" />
+                                            <input type="submit" disabled value="@item.TypeRequest1.typeReaquest_name"
+                                                   @if (ViewBag.err != null) { @ViewBag.err } />
+                                        }
+
+
+
+                                    </td>
+                                    <td>@item.date</td>
+                                    <td>@item.governement_body.governement_name</td>
+                                </tr>
+                            }
+
+                        }
+
+                    </tbody>
+
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

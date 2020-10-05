@@ -1,0 +1,55 @@
+﻿@model Servicely.Models.HealthcareReservation
+
+@{
+    ViewBag.Title = "Details";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HealthcareReservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservation_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservation_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.healthcareReservation_isDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.healthcareReservation_isDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hospital.hospital_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hospital.hospital_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.service.service_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.service.service_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.healthcareReservation_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

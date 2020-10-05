@@ -1,0 +1,105 @@
+﻿@model Servicely.Models.VaccinationReservation
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>VaccinationReservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_child_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_child_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_checked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_checked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_isDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_isDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_cancel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_cancel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen.citizen_national_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthCare.hospital_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthCare.hospital_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccinationType.vaccination_type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccinationType.vaccination_type_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

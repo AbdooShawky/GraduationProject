@@ -1,0 +1,66 @@
+﻿@model Servicely.Models.CitizenBalance
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script>
+    $(function () {
+
+        $("#CitizenBalance_citizen_id").select2();
+
+    });
+</script>
+
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Edit</h2>
+    @using (Html.BeginForm())
+    {
+
+
+        <div class="form-horizontal">
+            <h4>@Servicely.Languages.Language.CitizenBalance</h4>
+            <hr />
+            @Html.HiddenFor(a=> a.CitizenBalance_id)
+
+            <div class="form-group">
+                <label>citizen national id</label>
+                <div class="col-md-3">
+                    @Html.DisplayFor(a=> a.Citizen.citizen_national_id)
+                    @Html.DropDownList("CitizenBalance_citizen_id", null, "", htmlAttributes: new { @class = "form-control selectpicker", data_live_search = "true", required = "required" })
+                    @Html.ValidationMessageFor(model => model.CitizenBalance_citizen_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>balance</label>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.CitizenBalance_balance, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.CitizenBalance_balance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+
+                @if (ViewBag.errbalance != null)
+                {
+                    <label class="label mb-3 mt-3 text-danger">@ViewBag.errbalance</label>
+                }
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+</div>

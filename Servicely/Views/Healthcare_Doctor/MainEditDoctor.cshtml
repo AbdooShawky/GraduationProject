@@ -1,0 +1,166 @@
+﻿@model Servicely.Models.Healthcare_Doctor
+@{
+    ViewBag.Title = "MainCreateDoctor";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script>
+
+    $(function () {
+
+        $("#doctor_citizen_id").select2();
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+
+             $("#doctor_citizen_id").change(function () {
+
+
+            var data = $(this).val();
+
+            $.ajax({
+
+
+
+                url: "/Healthcare_Doctor/getCitizenName",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb").append("<tr class='tt'>  <td> " + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic  + " " + r.citizen_third_name_arabic  + " " + r.citizen_fourth_name_arabic  + " " + "   </td>      </tr>");
+
+                    });
+
+
+
+                }
+
+
+
+
+
+            });
+
+
+
+
+
+        });
+
+        }
+        else {
+             $("#doctor_citizen_id").change(function () {
+
+
+            var data = $(this).val();
+
+            $.ajax({
+
+
+
+                url: "/Healthcare_Doctor/getCitizenName",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb").append("<tr class='tt'>  <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " " + "   </td>      </tr>");
+
+                    });
+
+
+
+                }
+
+
+
+
+
+            });
+
+
+
+
+
+        });
+        }
+
+
+
+
+
+
+
+
+
+
+    });
+
+</script>
+
+
+<div class="container">
+
+
+    @using (Html.BeginForm())
+    {
+
+        <h2>@Servicely.Languages.Language.Edit</h2>
+        <h3>@Servicely.Languages.Language.Doctors</h3>
+        <div class="row">
+
+            <div class="col-md-4">
+                <label>@Servicely.Languages.Language.Doctors</label>
+                @Html.DropDownList("doctor_citizen_id", null, "", new { @class = "form-control", required = "required" })
+
+                <table id="tb" class="table"></table>
+
+            </div>
+            <div class="col-md-4">
+
+                <label>@Servicely.Languages.Language.Specializations</label>
+                @Html.DropDownList("doctor_specialization_id", null, "", new { @class = "form-control", required = "required" })
+
+
+            </div>
+        </div>
+        <div class="row mt-3">
+
+
+            <div class="col-md-3">
+
+                @if (ViewBag.errorMessage != null)
+                {
+
+                    <label class="label mb-3 text-danger">@ViewBag.errorMessage</label>
+                }
+                <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+
+
+            </div>
+
+
+
+        </div>
+
+    }
+</div>
+

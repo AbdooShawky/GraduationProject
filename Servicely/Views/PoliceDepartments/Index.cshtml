@@ -1,0 +1,147 @@
+﻿@model IEnumerable<Servicely.Models.PoliceDepartment>
+
+@{
+    ViewBag.Title = "Index";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<script>
+
+    $(function () {
+        $('#btn').click(function () {
+
+            $("#print").printThis();
+        });
+
+
+        $("#citi").change(function () {
+
+            var data = $(this).val();
+
+            $("#egyptian").empty();
+            $("#state").empty();
+            $("#birth").empty();
+            $("#Relegion").empty();
+            $("#Gender").empty();
+            $("#FirstName").empty();
+            $("#NId").empty();
+
+            $.ajax({
+                url: "/BirthCertificate/citizenData",
+                data: { citi: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        // $("#tbb").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+
+
+
+
+                        $("#vendor").text(r.citizen_first_name + r.citizen_second_name + r.citizen_third_name + r.citizen_fourth_name);
+                        $("#egyptian").text("Egyptian");
+                        $("#state").text(r.state_name + " / " + r.city_name);
+                        $("#Relegion").text(r.citizen_relegion);
+                        $("#Gender").text(r.citizen_gender);
+
+
+
+
+                    });
+                }
+
+            });
+
+
+        });
+
+        $(document).ready(function () {
+            $("#citi").select2();
+
+        });
+
+    });
+
+
+
+</script>
+
+
+
+
+<div class="container mt-5">
+    <h2 class="mt-4">Exporting Police Reports</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        <div class=" row">
+            <div class="col-md-4">
+                @Html.DropDownList("citi", null, " ", new { @class = "form-control", required = "required", data_live_search = "true" })
+            </div>
+
+        </div>
+
+
+
+        <div class="row mt-5">
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8" id="print">
+                <div class="container mt-3" style="border:1px solid black">
+
+                    <div class="row ">
+
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-10">
+                            <strong class="font-weight-bold">Police Classification /</strong><strong class="font-weight-bold" id="subject"></strong>
+                            <br />
+                            <strong class="font-weight-bold ">Police Officer</strong><strong class="font-weight-bold" id="vendor"> </strong>
+                            <br />
+                            <strong class="font-weight-bold "></strong><strong class="font-weight-bold" id="Relegion"> </strong>
+
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="egyptian"></strong>
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="job"></strong>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class="row mt-4 mb-4">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <input type="button" value=@Servicely.Languages.Language.Export class="btn btn-default" id="btn" />
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+
+
+    }
+</div>

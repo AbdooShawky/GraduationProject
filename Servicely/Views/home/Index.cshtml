@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Index;
+    if (Session["Layout"] != null)
+
+        Layout = Session["Layout"].ToString();
+    else
+        Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<script>
+    $(function () {
+
+
+        $(document).ready(function () {
+
+            $('#exampleModalCenter').modal('show')
+
+
+        });
+
+
+    });
+
+</script>
+
+
+@if (Session["success"] != null)
+{
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="font-weight-bold label" style="color:#151313"> @Servicely.Languages.Language.Citizen</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+
+
+                </div>
+                <div class="modal-body">
+                    <h5>@Session["success"]</h5>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    Session["success"] = null;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.Citizen</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+
+                </div>
+                <a href="/report/index" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Requests</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-paper-plane"></i>
+
+                </div>
+                <a href="/Requests/IndexToday" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.Reservations</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <a href="/Reservation/IndexToday" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Violation</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                </div>
+                <a href="/Violation_CarLicenceM_M/IndexToday" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>
+
+<div class="card-header">
+    <h3 class="card-title">
+    </h3>
+    <div class="card-tools">
+
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.ScheduleHealthCare</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-calendar"></i>
+
+                </div>
+                <a href="/ScheduleHealthCares/Step1_ShcheduleHealthCare" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.ScheduleVaccination</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-calendar"></i>
+
+                </div>
+                <a href="/ScheduleVaccinations/Step1Shcedule" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.Healthcares</p>
+                </div>
+                <div class="icon">
+                    <i class=" fa fa-medkit"></i>
+                </div>
+                <a href="/doctorReservation/IndexAdmin" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Vaccinations</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-syringe"></i>
+                </div>
+                <a href="/VaccinationsSchedules/Index" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>
+
+
+<div class="card-header">
+    <h3 class="card-title">
+    </h3>
+    <div class="card-tools">
+
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.Exporting_Birth_Certificate</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-print"></i>
+
+                </div>
+                <a href="/ScheduleHealthCares/Step1_ShcheduleHealthCare" class="small-box-footer">@Servicely.Languages.Language.Export <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Exporting_Death_Certificate</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-print"></i>
+
+                </div>
+                <a href="/ScheduleVaccinations/Step1Shcedule" class="small-box-footer">@Servicely.Languages.Language.Export <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+                    <h7>@Servicely.Languages.Language.Exporting_marriage_divorce_document</h7>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-print"></i>
+                </div>
+                <a href="/doctorReservation/IndexAdmin" class="small-box-footer">@Servicely.Languages.Language.Export <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark  w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Exporting_National_Id_Card</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-print"></i>
+                </div>
+                <a href="/VaccinationsSchedules/Index" class="small-box-footer">@Servicely.Languages.Language.Export <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>

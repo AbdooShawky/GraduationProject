@@ -1,0 +1,55 @@
+﻿@model Servicely.Models.RealStateRegistryInterest
+
+@{
+    ViewBag.Title = "Details";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RealStateRegistryInterest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterest_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_isDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterest_isDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District.district_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District.district_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestDepartment.realStateRegistryInterestDepartments_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealStateRegistryInterestDepartment.realStateRegistryInterestDepartments_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.realStateRegistryInterest_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

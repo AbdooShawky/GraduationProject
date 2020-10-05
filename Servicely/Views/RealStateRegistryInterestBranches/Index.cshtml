@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Servicely.Models.RealStateRegistryInterestBranch>
+
+@{
+    ViewBag.Title = "Index";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>All branches of RSRI</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>RSRI Branch Name</label>
+        </th>
+        <th>
+            <label>RSRI Name</label>
+        </th>
+        <th>
+            <label>RSRI Technical member NID</label>
+        </th>
+        <th>
+            <label>Branch Place</label>
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.realStateRegistryInterest_branch_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RealStateRegistryInterest.realStateRegistryInterest_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.District.Region.City.city_name)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.realStateRegistryInterest_branch_id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.realStateRegistryInterest_branch_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.realStateRegistryInterest_branch_id })
+    </td>
+</tr>
+}
+
+</table>

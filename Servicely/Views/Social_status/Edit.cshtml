@@ -1,0 +1,303 @@
+﻿@model Servicely.Models.Social_status
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+
+    $(function () {
+           
+
+
+         $("#socialStatus_citizenId_Wife").select2();
+
+
+          var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+         
+        $("#socialStatus_citizenId_Husband").select2();
+        
+        if (seesion == "ar-EG") {
+             var data = $("#socialStatus_citizenId_Husband").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+             // display father name after select NId
+        $("#socialStatus_citizenId_Husband").change(function () {
+
+            var data = $("#socialStatus_citizenId_Husband").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+            var data = $("#socialStatus_citizenId_Wife").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        // display mother name after select NId
+        $("#socialStatus_citizenId_Wife").change(function () {
+
+            var data = $("#socialStatus_citizenId_Wife").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        }
+        else {
+
+              var data = $("#socialStatus_citizenId_Husband").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+             // display father name after select NId
+        $("#socialStatus_citizenId_Husband").change(function () {
+
+            var data = $("#socialStatus_citizenId_Husband").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+             var data = $("#socialStatus_citizenId_Wife").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+        // display mother name after select NId
+        $("#socialStatus_citizenId_Wife").change(function () {
+
+            var data = $("#socialStatus_citizenId_Wife").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        }
+
+
+         
+
+
+      
+
+    });
+
+</script>
+
+
+<div class="container-fluid">
+    <h2> @Servicely.Languages.Language.Create</h2>
+    <h4> @Servicely.Languages.Language.Social_status</h4>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(a=> a.social_status_id)
+        <div class="row fadeIn">
+            <div class="col-4">
+                <div class="form-group">
+                    <label> @Servicely.Languages.Language.husband</label>
+
+                    @Html.DropDownList("socialStatus_citizenId_Husband", null, " ", htmlAttributes: new { @class = "form-control selectpicker", required = "required", data_live_search = "true" })
+                    @Html.ValidationMessageFor(model => model.socialStatus_citizenId_Husband, "", new { @class = "text-danger", required = "required" })
+
+                </div>
+                <div class="mt-2">
+
+                    <table class="table" id="tb1">
+                    </table>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+
+                    <label> @Servicely.Languages.Language.wife</label>
+
+                    @Html.DropDownList("socialStatus_citizenId_Wife", null, "", htmlAttributes: new { @class = "form-control selectpicker", required = "required", data_live_search = "true" })
+                    @Html.ValidationMessageFor(model => model.socialStatus_citizenId_Wife, "", new { @class = "text-danger", required = "required" })
+
+                </div>
+                <div class="mt-2">
+
+                    <table class=" table  mt-2  " id="tb2">
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+
+                    <label> @Servicely.Languages.Language.Social_status_type</label>
+
+                    @Html.DropDownList("socialStatus_TypeId", null, "", htmlAttributes: new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.socialStatus_TypeId, "", new { @class = "text-danger", required = "required" })
+
+                </div>
+
+
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label> @Servicely.Languages.Language.Date</label>
+
+
+
+                    <input type="date" class="form-control" name="social_status_from" />
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @if (ViewBag.wifeIsAlreadyMarried != null)
+            {
+                <label class="text-danger">@ViewBag.wifeIsAlreadyMarried</label>
+            }
+
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+
+</div>
+
+
+
+
+
+
+
+
+
+

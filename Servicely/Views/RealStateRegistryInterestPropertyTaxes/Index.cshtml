@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Servicely.Models.RealStateRegistryInterestPropertyTax>
+
+@{
+    ViewBag.Title = "Index";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>RSRI Property Taxes Number</label>
+        </th>
+        <th>
+            <label>RSRI body</label>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.realStateRegistryInterestPropertyTaxes_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.realStateRegistryInterestPropertyTaxes_body)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.realStateRegistryInterestPropertyTaxes_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.realStateRegistryInterestPropertyTaxes_id })
+        </td>
+    </tr>
+}
+
+</table>

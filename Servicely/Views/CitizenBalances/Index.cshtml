@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Servicely.Models.CitizenBalance>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.CitizenBalance
+        </th>
+        <th>
+            @Servicely.Languages.Language.Citizen_Name
+        </th>
+        <th>
+            @Servicely.Languages.Language.NationalId
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    @if (Session["lang"] != null)
+    {
+        if (Session["lang"].ToString().Equals("ar-EG"))
+        {
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CitizenBalance_balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name_arabic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.CitizenBalance_balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+            </td>
+        }
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.CitizenBalance_balance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+        </td>
+    }
+
+
+
+
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.CitizenBalance_id }) |
+
+        @Html.ActionLink("Delete", "Delete", new { id = item.CitizenBalance_id })
+    </td>
+</tr>
+}
+
+</table>

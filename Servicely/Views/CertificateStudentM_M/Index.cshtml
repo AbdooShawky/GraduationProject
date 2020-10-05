@@ -1,0 +1,340 @@
+﻿@model IEnumerable<Servicely.Models.CertificateStudentM_M>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <script>
+    $(function () {
+        
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+             $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+            $("#Id").change(function () {
+            var data = $("#Id").val();
+            $("#studentInfo").empty();
+
+            $.ajax({
+
+
+                url: "/IntermediateRegistration/getDataOfStudent",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    $("#studentInfo").text(  res.citizen_first_name_arabic + " " + res.citizen_second_name_arabic + " " + res.citizen_third_name_arabic + " " + res.citizen_fourth_name_arabic);
+
+
+                }
+
+
+            });
+
+
+
+
+        });
+
+        }
+        else {
+
+         $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityName + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyName + "  </option>");
+                    });
+
+                }
+
+            });
+
+         });
+        
+
+
+            $("#FacultyId").change(function () {
+
+                 var data = $(this).val();
+              
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllCertificateByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+              
+
+
+                }
+
+            });
+
+            });
+            $("#FacultyId").change(function () {
+
+            var data = $(this).val();
+            $("#Spec").empty();
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllSpecByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                  $("#Spec").append("<option   </option>");
+
+                    $.each(res, function (i, r) {
+                        $("#Spec").append("<option value='" + r.Id + "'>  " + r.SpecializationName + "  </option>");
+                    });
+
+                }
+
+            });
+
+                // Append in tb table student info
+                $(".tt").empty();
+                 $.ajax({
+                     url: "/CertificateStudentM_M/GetAllStudentInfoByFacutlyIdandGradeId",
+                     data: { Id: data, GId: $("#GradeId").val() },
+                async: false,
+                success: function (res) {
+                  
+
+                    $.each(res, function (i, r) {
+                        $("#tb").append("<tr class='tt'>  <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> <td> " + r.citizen_national_id + " </td> <td> " + r.SpecializationName + " </td><td> "+r.Date+" </td><td> <a href='/CertificateStudentM_M/Edit/" + r.Id + "'>  <i class='far fa-edit'></i> </a> | <a href='/CertificateStudentM_M/Delete/" + r.Id + "'><i class='far fa-trash-alt'></i> </a> </td> </tr>");
+                    });
+
+                }
+
+            });
+
+            });
+
+            $("#Spec").change(function () {
+
+            var data = $(this).val();
+
+                var faculty = $("#FacultyId").val();
+
+                // Append in tb table student info
+                $(".tt").empty();
+                 $.ajax({
+                     url: "/CertificateStudentM_M/GetAllStudentInfoByFacutlyIdandGradeIdd",
+                     data: { Id: faculty, GId: $("#GradeId").val(), SId: data },
+                async: false,
+                success: function (res) {
+                  
+
+                    $.each(res, function (i, r) {
+                        $("#tb").append("<tr class='tt'>  <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> <td> " + r.citizen_national_id + " </td> <td> " + r.SpecializationName + " </td><td> "+r.Date+" </td><td> <a href='/CertificateStudentM_M/Edit/" + r.Id + "'>  <i class='far fa-edit'></i> </a> | <a href='/CertificateStudentM_M/Delete/" + r.Id + "'><i class='far fa-trash-alt'></i> </a> </td> </tr>");
+                    });
+
+                }
+
+            });
+
+            });
+
+            $("#dd").change(function () {
+                 var dateee = $("#dd").val();
+                     var faculty = $("#FacultyId").val();
+           
+
+                // Append in tb table student info
+                $(".tt").empty();
+                 $.ajax({
+                     url: "/CertificateStudentM_M/GetAllStudentInfoByFacutlyIdandGradeIddd",
+                     data: { Id: faculty, GId: $("#GradeId").val(),  dd: dateee },
+                async: false,
+                success: function (res) {
+                  
+
+                    $.each(res, function (i, r) {
+                        $("#tb").append("<tr class='tt'>  <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> <td> " + r.citizen_national_id + " </td> <td> " + r.SpecializationName + " </td><td> "+r.Date+" </td><td> <a href='/CertificateStudentM_M/Edit/" + r.Id + "'>  <i class='far fa-edit'></i> </a> | <a href='/CertificateStudentM_M/Delete/" + r.Id + "'><i class='far fa-trash-alt'></i> </a> </td> </tr>");
+                    });
+
+                }
+
+            });
+            });
+           
+           
+        }
+
+
+    });
+    </script>
+
+<h2>@Servicely.Languages.Language.Index</h2>
+<h4>@Servicely.Languages.Language.GraduatedStuednt</h4>
+<hr />
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Grade</label>
+            @Html.DropDownList("GradeId", null, "", new { @class = "form-control", required = "required" })
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.UniversityType</label>
+            @Html.DropDownList("UType", null, "", new { @class = "form-control", required = "required" })
+        </div>
+    </div>
+    <div class="row mt-3">
+        
+        
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.University</label>
+            <select class="form-control" required id="U">
+            </select>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Faculty</label>
+            <select class="form-control" id="FacultyId" name="FacultyId" required>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Specialization</label>
+            <select class="form-control" id="Spec">
+            </select>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Date</label>
+            @if (DateTime.Now.Month >= 1 && DateTime.Now.Month < 10)
+            {
+                if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                {
+                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                }
+                else
+                {
+                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                }
+
+
+            }
+            else
+            {
+
+                if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                {
+                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                }
+                else
+                {
+                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                }
+
+            }
+        </div>
+       
+    </div>
+
+    <table class="table table-sm table-striped mt-5" id="tb">
+        <tr>
+
+
+            <th>@Servicely.Languages.Language.Student</th>
+            <th>@Servicely.Languages.Language.NationalId</th>
+            <th>@Servicely.Languages.Language.Specialization</th>
+            <th>@Servicely.Languages.Language.Date</th>
+            <th></th>
+        </tr>
+
+
+
+    </table>
+</div>
+

@@ -1,0 +1,96 @@
+﻿
+
+@model IEnumerable<Servicely.Models.Complain>
+@{
+    ViewBag.Title = "Index";
+   Layout = "~/Views/Shared/userlayout.cshtml";
+}
+<script>
+
+    $(function () {
+              $('#dtBasicExample').DataTable();
+                $('.dataTables_length').addClass('bs-select');
+
+    });
+
+</script>
+
+<div class="container">
+    <div class="row">
+        <h4>@Servicely.Languages.Language.Index</h4>
+        <h4>@Servicely.Languages.Language.Complain</h4>
+        <hr />
+
+        <table id="dtBasicExample" class="table table-striped table-sm table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Servicely.Languages.Language.governement_name
+                    </th>
+                    <th>
+                        @Servicely.Languages.Language.Complains
+                    </th>
+                    <th>
+                        @Servicely.Languages.Language.NationalId
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+
+
+                    @if (Session["lang"] != null)
+                    {
+                        if (Session["lang"].ToString().Equals("ar-EG"))
+                        {
+
+                            <td>@item.governement_body.governement_name_arabic</td>
+
+                        }
+                        else
+                        {
+                            <td>@item.governement_body.governement_name</td>
+                        }
+                    }
+                    else
+                    {
+                        <td>@item.governement_body.governement_name</td>
+                    }
+
+
+
+                    <td>@item.ComplainText</td>
+
+
+                    @if (item.CitizenNationalId != null)
+                    {
+                        <td>@item.CitizenNationalId</td>
+                    }
+                    else
+                    {
+                        <td> </td>
+                    }
+
+                    <td>
+
+                        <a style='color:darkslategray' href='/Complains/Edit/@item.Id'> <i class="far fa-edit"></i></a>
+                        |
+                        <a style='color:darkslategray' href='/Complains/Delete/@item.Id'><i class="fas fa-eraser"></i></a>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,428 @@
+﻿@model Servicely.Models.CertificateStudentM_M
+
+@{
+    ViewBag.Title = "Create";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script>
+
+
+
+
+
+
+    $(document).ready(function () {
+                $('.js-example-basic-multiple').select2();
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+
+
+
+
+            $("#State").change(function () {
+            var data = $("#State").val();
+            $("#city").empty();
+            $.ajax({
+                url: "/Addresses/GetCitiesByStateId",
+                data: { stateId: data },
+                async: false,
+                success: function (res) {
+                    $("#city").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+            });
+
+
+
+
+              $("#city").change(function () {
+            var ss = $("#city").val();
+            $("#region").empty();
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $("#region").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                    });
+
+                }
+            });
+
+        });
+
+
+        $("#region").change(function () {
+            var data = $("#region").val();
+            $("#district").empty();
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                success: function (res) {
+                    $("#district").append("<option> </option>");
+                    $.each(res, function (i, r) {
+
+                        $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+
+
+        });
+
+
+
+                    $("#district").change(function () {
+
+                var data = $(this).val();
+                var Phase = $("#Phase").val();
+                $("#School").empty();
+                $.ajax({
+
+                    url: "/Students/GetAllSchoolsBySchooTypeId",
+                    data: { typeId: Phase, dis: data },
+                    success: function (res) {
+                        $("#School").append("<option >    </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#School").append("<option value='"+r.Id+"'> "+r.SchoolNameArabic+"   </option>");
+                        });
+
+                    }
+
+                });
+
+            });
+              $("#School").change(function () {
+
+                 var data = $(this).val();
+                 var Phase = $("#Phase option:selected").val();
+                 $("#CertificateId").empty();
+                 $("#StudentId").empty();
+
+                 // GET CERTIFICATE
+                 $.ajax({
+
+                    url: "/CertificateStudentM_MSecondary/GetCertificateByPhaseId",
+                    data: {   ph:Phase},
+                    success: function (res) {
+                       $("#CertificateId").append("<option   </option>");
+
+                        $.each(res, function (i, r) {
+
+                            // $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td>  <td>  " + r.citizen_national_id + "</td> <td> <a href='/Students/Edit/" + r.Id + "'> <i class='far fa-edit'></i> </a> | <a href='/Students/Delete/" + r.Id + "'> <i class='far fa-trash-alt'></i> </a> </td>  </tr>");
+                            
+                            $("#CertificateId").append("<option value='" + r.Id + "'>  "+r.CirtificateTypeNameArabic+"  </option>");
+                            
+                        });
+
+                    }
+
+                });
+                $.ajax({
+
+                    url: "/CertificateStudentM_MSecondary/GetAllStudentBySchoolId",
+                    data: {  school: data , Phase:Phase},
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                           // $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td>  <td>  " + r.citizen_national_id + "</td> <td> <a href='/Students/Edit/" + r.Id + "'> <i class='far fa-edit'></i> </a> | <a href='/Students/Delete/" + r.Id + "'> <i class='far fa-trash-alt'></i> </a> </td>  </tr>");
+
+                            $("#StudentId").append("<option value='" + r.Id + "'>  "+ r.citizen_first_name_arabic+" "+r.citizen_second_name_arabic+" "+r.citizen_third_name_arabic+" "+r.citizen_fourth_name_arabic+"  </option>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+
+
+        }
+        else {
+
+            $("#State").change(function () {
+            var data = $("#State").val();
+            $("#city").empty();
+            $.ajax({
+                url: "/Addresses/GetCitiesByStateId",
+                data: { stateId: data },
+                async: false,
+                success: function (res) {
+                    $("#city").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+            });
+
+
+
+        $("#city").change(function () {
+            var ss = $("#city").val();
+            $("#region").empty();
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $("#region").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                    });
+
+                }
+            });
+
+           
+        });
+
+        $("#region").change(function () {
+            var data = $("#region").val();
+            $("#district").empty();
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                success: function (res) {
+                    $("#district").append("<option> </option>");
+                    $.each(res, function (i, r) {
+
+                        $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+
+
+        });
+
+
+            $("#district").change(function () {
+
+                var data = $(this).val();
+                var Phase = $("#Phase").val();
+                $("#School").empty();
+                $.ajax({
+
+                    url: "/Students/GetAllSchoolsBySchooTypeId",
+                    data: { typeId: Phase, dis: data },
+                    success: function (res) {
+                        $("#School").append("<option >    </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#School").append("<option value='"+r.Id+"'> "+r.SchoolName+"   </option>");
+                        });
+
+                    }
+
+                });
+
+            });
+             $("#School").change(function () {
+
+                 var data = $(this).val();
+                 var Phase = $("#Phase option:selected").val();
+                 $("#CertificateId").empty();
+                 $("#StudentId").empty();
+
+                 // GET CERTIFICATE
+                 $.ajax({
+
+                    url: "/CertificateStudentM_MSecondary/GetCertificateByPhaseId",
+                    data: {   ph:Phase},
+                    success: function (res) {
+                       $("#CertificateId").append("<option   </option>");
+
+                        $.each(res, function (i, r) {
+
+                            // $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td>  <td>  " + r.citizen_national_id + "</td> <td> <a href='/Students/Edit/" + r.Id + "'> <i class='far fa-edit'></i> </a> | <a href='/Students/Delete/" + r.Id + "'> <i class='far fa-trash-alt'></i> </a> </td>  </tr>");
+                            
+                            $("#CertificateId").append("<option value='" + r.Id + "'>  "+r.CirtificateTypeName+"  </option>");
+
+                        });
+
+                    }
+
+                });
+                $.ajax({
+
+                    url: "/CertificateStudentM_MSecondary/GetAllStudentBySchoolId",
+                    data: {  school: data , Phase:Phase},
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                           // $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td>  <td>  " + r.citizen_national_id + "</td> <td> <a href='/Students/Edit/" + r.Id + "'> <i class='far fa-edit'></i> </a> | <a href='/Students/Delete/" + r.Id + "'> <i class='far fa-trash-alt'></i> </a> </td>  </tr>");
+
+                            $("#StudentId").append("<option value='" + r.Id + "'>  "+ r.citizen_first_name+" "+r.citizen_second_name+" "+r.citizen_third_name+" "+r.citizen_fourth_name+"  </option>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+        }
+
+
+
+
+    });
+
+
+
+
+
+</script>
+<h2>@Servicely.Languages.Language.Create</h2>
+<h4>
+    @Servicely.Languages.Language.GraduatedStuednt
+</h4>
+<hr />
+<style>
+   
+</style>
+<div class="container">
+
+
+    @using (Html.BeginForm())
+    {
+    <div class="row">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Phases</label>
+            @Html.DropDownList("Phase", null, "", new { @class = "form-control" })
+        </div>
+       
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Grade</label>
+            @Html.DropDownList("GradeId", null, "", htmlAttributes: new { @class = "form-control" })
+
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.State</label>
+            @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control" })
+
+
+        </div>
+      
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.City</label>
+            <select class="form-control" id="city"></select>
+        </div>
+
+
+        
+
+
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.Region</label>
+            <select class="form-control" id="region" name="district_region_id"></select>
+
+
+        </div>
+        
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.District</label>
+            <select class="form-control" id="district" name="address_district_id">
+            </select>
+
+
+        </div>
+    </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label class="label">@Servicely.Languages.Language.School</label>
+                <select class="form-control" id="School">
+                </select>
+            </div>
+            
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Certificate</label>
+                <select required name="CertificateId" id="CertificateId" class="form-control">
+                </select>
+            </div>
+            
+            
+                <div class="col-md-4">
+                    <label>@Servicely.Languages.Language.Students</label>
+                    <select required class="form-control js-example-basic-multiple" multiple id="StudentId" name="StudentId">
+                    </select>
+                    <div class="mt-2" id="studentInfo">
+
+                    </div>
+                </div>
+          
+        </div>
+
+            <div class="form-group mt-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Servicely.Languages.Language.Create" class="btn btn-default" />
+                </div>
+            </div>
+        
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+

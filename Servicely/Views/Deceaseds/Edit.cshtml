@@ -1,0 +1,124 @@
+﻿@model Servicely.Models.Deceased
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Edit;
+    if (Session["Layout"] != null)
+        Layout = Session["Layout"].ToString(); 
+    else
+      Layout = "~/Views/Shared/_Layout.cshtml"; 
+
+}
+
+
+<script>
+    $(function () {
+
+        $(function () {
+
+            var seesion;
+            $.ajax({
+                url: "/Addresses/Sessionvalue",
+                data: "",
+                async: false,
+                success: function (res) {
+
+                    seesion = res;
+
+                }
+            });
+            if (seesion == "ar-EG") {
+                $(document).ready(function () {
+
+
+
+                    $("#deceased_citizenId").prop('class', 'selectpicker');
+                    $("#deceased_citizenId").attr('data-live-search', true);
+
+                });
+            }
+            else {
+                $(document).ready(function () {
+
+
+
+                    $("#deceased_citizenId").prop('class', 'selectpicker');
+                    $("#deceased_citizenId").attr('data-live-search', true);
+
+                });
+            }
+
+            $('#deceased_citizenId').select2();
+        });
+</script>
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>@Servicely.Languages.Language.Deceased</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.deceased_id)
+
+            <div class="form-group">
+                @Servicely.Languages.Language.CitizenNationalId
+                <div class="col-md-3">
+                    @Html.DropDownList("deceased_citizenId", null, htmlAttributes: new { required = "required", @class = "form-control", })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Servicely.Languages.Language.DeathDate
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.deceased_deathDate, new { htmlAttributes = new { required = "required", InputType = "date", @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="row">
+                @Servicely.Languages.Language.deceased_deathPlace_inEnglish
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.deceased_deathPlace, new { htmlAttributes = new { required = "required", @class = "form-control", pattern = "([a-zA-Z\\s]{2,30})" } })
+                </div>
+
+
+
+                @Servicely.Languages.Language.DeathPlace_inArabic
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.deceased_deathPlace_arabic, new { htmlAttributes = new { required = "required", @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="row">
+                @Servicely.Languages.Language.deathCause_inEnglish
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.deceased_deathCause, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([a-zA-Z\\s]{2,30})" } })
+                    @Html.ValidationMessageFor(model => model.deceased_deathCause_arabic, "", new { @class = "text-danger" })
+                </div>
+
+                @Servicely.Languages.Language.deathCause_inArabic
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.deceased_deathCause_arabic, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "[\u0600-\u06FF\\s]{2,30}$" } })
+                    @Html.ValidationMessageFor(model => model.deceased_deathCause_arabic, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @if (ViewBag.errMsgDead != null)
+            {
+                <label class="text-danger">@ViewBag.errMsgDead </label>
+            }
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+
+

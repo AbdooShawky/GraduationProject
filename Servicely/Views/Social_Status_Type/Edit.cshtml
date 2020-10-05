@@ -1,0 +1,80 @@
+﻿@model Servicely.Models.Social_Status_Type
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <div class="container-fluid  mt-5 mr-5 ml-5">
+        <div class="row">
+            <div class="col">
+                <h4>@Servicely.Languages.Language.Edit</h4>
+                <h4>@Servicely.Languages.Language.SocialStatusType</h4>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+
+           @Html.HiddenFor(a=> a.social_status_type_id)
+    <div class="form-horizontal">
+
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label>@Servicely.Languages.Language.social_status_type_name_inEnglish</label>
+                    @Html.EditorFor(model => model.social_status_type_name, new { htmlAttributes = new { @class = "form-control", required = "required",pattern="([A-Za-z\\s]{2,20})" } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label> @Servicely.Languages.Language.social_status_type_description_inEglish</label>
+                    @Html.EditorFor(model => model.social_status_type_description, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([A-Za-z\\s]{2,100})" } })
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label> @Servicely.Languages.Language.social_status_type_name_inArabic</label>
+                    @Html.EditorFor(model => model.social_status_type_name_arabic, new { htmlAttributes = new { @class = "form-control", required = "required", pattern="([\u0600-\u06FF\\s]{3,20})"} })
+
+
+                </div>
+            </div>
+
+    
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label> @Servicely.Languages.Language.social_status_type_description_inArabic</label>
+                    @Html.EditorFor(model => model.social_status_type_description_arabic, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([\u0600-\u06FF\\s]{3,100})" } })
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Servicely.Languages.Language.Save" class=" button" />
+            </div>
+        </div>
+    </div>
+        }
+        @if (ViewBag.errMsg != null)
+        {
+            <label class="text-danger">@ViewBag.errMsg</label>
+        }
+
+        <div>
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    </div>

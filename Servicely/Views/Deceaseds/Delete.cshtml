@@ -1,0 +1,111 @@
+﻿@model Servicely.Models.Deceased
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2>@Servicely.Languages.Language.Delete</h2>
+
+    <h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4>@Servicely.Languages.Language.Deceased</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Servicely.Languages.Language.CitizenNationalId
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+        <dt>
+            @Servicely.Languages.Language.DeathDate
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deceased_deathDate)
+        </dd>
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+                <dt>
+                    @Servicely.Languages.Language.DeathPlace
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.deceased_deathPlace_arabic)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.deathCause
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.deceased_deathCause_arabic)
+                </dd>
+
+
+
+
+            }
+            else
+            {
+                <dt>
+                    @Servicely.Languages.Language.DeathPlace
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.deceased_deathPlace)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.deathCause
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.deceased_deathCause)
+                </dd>
+
+
+            }
+        }
+        else
+        {
+            <dt>
+                @Servicely.Languages.Language.DeathPlace
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.deceased_deathPlace)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.deathCause
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.deceased_deathCause)
+            </dd>
+
+
+        }
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

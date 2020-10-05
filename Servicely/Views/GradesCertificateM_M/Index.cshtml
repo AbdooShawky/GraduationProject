@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Servicely.Models.GradesCertificateM_M>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Servicely.Languages.Language.Certificate
+        </th>
+        <th>
+            @Servicely.Languages.Language.Grade
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    @if (Session["lang"] != null)
+    {
+        if (Session["lang"].ToString().Equals("ar-EG"))
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Certificate.CirtificateTypeNameArabic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade.GradeNameArabic)
+            </td>
+
+        }
+        else
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Certificate.CirtificateTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade.GradeName)
+            </td>
+
+        }
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Certificate.CirtificateTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grade.GradeName)
+        </td>
+    }
+
+    <td>
+        @Html.ActionLink(Servicely.Languages.Language.Edit, "Edit", new { id = item.Id }) |
+
+        @Html.ActionLink(Servicely.Languages.Language.Delete, "Delete", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

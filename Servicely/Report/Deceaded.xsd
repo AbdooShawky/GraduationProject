@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Deceaded" targetNamespace="http://tempuri.org/Deceaded.xsd" xmlns:mstns="http://tempuri.org/Deceaded.xsd" xmlns="http://tempuri.org/Deceaded.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Deceaded" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Deceaded" msprop:Generator_UserDSName="Deceaded">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Deceased" msprop:Generator_TableClassName="DeceasedDataTable" msprop:Generator_TableVarName="tableDeceased" msprop:Generator_TablePropName="Deceased" msprop:Generator_RowDeletingName="DeceasedRowDeleting" msprop:Generator_RowChangingName="DeceasedRowChanging" msprop:Generator_RowEvHandlerName="DeceasedRowChangeEventHandler" msprop:Generator_RowDeletedName="DeceasedRowDeleted" msprop:Generator_UserTableName="Deceased" msprop:Generator_RowChangedName="DeceasedRowChanged" msprop:Generator_RowEvArgName="DeceasedRowChangeEvent" msprop:Generator_RowClassName="DeceasedRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CitizenName" msprop:Generator_ColumnVarNameInTable="columnCitizenName" msprop:Generator_ColumnPropNameInRow="CitizenName" msprop:Generator_ColumnPropNameInTable="CitizenNameColumn" msprop:Generator_UserColumnName="CitizenName" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenMotherName" msprop:Generator_ColumnVarNameInTable="columnCitizenMotherName" msprop:Generator_ColumnPropNameInRow="CitizenMotherName" msprop:Generator_ColumnPropNameInTable="CitizenMotherNameColumn" msprop:Generator_UserColumnName="CitizenMotherName" type="xs:string" minOccurs="0" />
+              <xs:element name="Gender" msprop:Generator_ColumnVarNameInTable="columnGender" msprop:Generator_ColumnPropNameInRow="Gender" msprop:Generator_ColumnPropNameInTable="GenderColumn" msprop:Generator_UserColumnName="Gender" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Place" msprop:Generator_ColumnVarNameInTable="columnPlace" msprop:Generator_ColumnPropNameInRow="Place" msprop:Generator_ColumnPropNameInTable="PlaceColumn" msprop:Generator_UserColumnName="Place" type="xs:string" minOccurs="0" />
+              <xs:element name="AgeofDeath" msprop:Generator_ColumnVarNameInTable="columnAgeofDeath" msprop:Generator_ColumnPropNameInRow="AgeofDeath" msprop:Generator_ColumnPropNameInTable="AgeofDeathColumn" msprop:Generator_UserColumnName="AgeofDeath" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

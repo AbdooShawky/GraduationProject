@@ -1,0 +1,65 @@
+﻿@model Servicely.Models.Violation_CarLicenceM_M
+
+@{
+    ViewBag.Title = "Delete";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h4>@Servicely.Languages.Language.Delete</h4>
+    <h4>@Servicely.Languages.Language.Violation</h4>
+
+    <h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_ </h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Servicely.Languages.Language.CarCode
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarLicence.CarCode)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.ViolationName
+        </dt>
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Violation.ViolationNameArabic)
+                </dd>
+
+            }
+            else
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Violation.ViolationName)
+                </dd>
+            }
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.Violation.ViolationName)
+            </dd>
+        }
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

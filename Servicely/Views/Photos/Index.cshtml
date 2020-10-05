@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Servicely.Models.Photo>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+
+    $(function () {
+        $("#Photo_citizen_id").select2();
+        $("#Photo_citizen_id").change(function () {
+
+            var data = $(this).val();
+            $(".tt").empty();
+            $.ajax({
+
+                url: "/Photos/GetinfoByCitizenId",
+                data: { id: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#tb").append("<tr class='tt'>    <td>  " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> <td>  <img src='https://localhost:44389/api/Photos?Id=" + data + "' class=' elevation-4 ' style='height:70px; width:4.5rem ' /></td> <td> " + r.Photo_isCurrent + " </td>  <td> <a href='/Photos/Edit/" + r.Photo_id + "'> Edit </a> |  <a href='/Photos/Delete/" + r.Photo_id + "'> Delete </a>  </td>    </tr>");
+                    });
+                }
+            });
+
+        });
+
+
+    });
+</script>
+
+<div class="container">
+    <h2>@Servicely.Languages.Language.Index</h2>
+    <p>
+        @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+    </p>
+    <div class="row">
+
+        <div class="col-md-4">
+            <label> @Servicely.Languages.Language.NationalId</label>
+            @Html.DropDownList("Photo_citizen_id", null, "", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table" id="tb">
+            <tr>
+                <th>
+                    @Servicely.Languages.Language.CitizenName
+                </th>
+                <th>
+                    @Servicely.Languages.Language.Photo
+                </th>
+                <th>
+                    @Servicely.Languages.Language.Is_Current
+                </th>
+
+                <th></th>
+            </tr>
+
+          
+               
+
+
+        </table>
+    </div>
+</div>
+
+
+
+

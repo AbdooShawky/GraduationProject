@@ -1,0 +1,534 @@
+﻿@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<!DOCTYPE html>
+<script src="~/jasonday-printThis-0aa7434/printThis.js"></script>
+<link href="~/jasonday-printThis-0aa7434/assets/css/normalize.css" rel="stylesheet" />
+<script>
+    //$(document).bind("keyup keydown", function (e) {
+    //     if (e.ctrlKey && e.keyCode == 80) {
+    //         setTimeout(function () { CallAfterWindowLoad();}, 5000);
+    //         return true;
+    //     }
+    // });
+
+   
+    $(function () {
+
+          var fooorm = $("#form");
+        $("#form").validate();
+        $("#pr").click(function () {
+         
+            if (fooorm.valid() == true) {
+
+                
+                   $.ajax({
+                    url: "/BirthCertificate/GetCitizenBalance",
+                    data: { Id: $("#NId").val() },
+                    async: false,
+                       success: function (res) {
+                          
+                           if (res == "true") {
+
+                               $('#exampleModa2').modal('show');
+
+                           }
+                           else if (res == "false") {
+                               $('#exampleModal1').modal('show');
+                           }
+                           else {
+                                $('#exampleModal3').modal('show');
+                           }
+                    }
+
+                });
+
+            }
+
+        });
+        $("#behind").hide();
+        $('#btn').click(function () {
+
+            $("#print").printThis({
+
+                debug: false,               // show the iframe for debugging
+                importCSS: true,            // import parent page css
+                importStyle: false,         // import style tags
+                printContainer: true,       // print outer container/$.selector
+                loadCSS: "",                // path to additional css file - use an array [] for multiple
+                pageTitle: "",              // add title to print page
+                removeInline: false,        // remove inline styles from print elements
+                removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+                printDelay: 333,            // variable print delay
+                header: null,               // prefix to html
+                footer: null,               // postfix to html
+                base: false,                // preserve the BASE tag or accept a string for the URL
+                formValues: true,           // preserve input/form values
+                canvas: false,              // copy canvas content
+                doctypeString: '<!DOCTYPE html>', // enter a different doctype for older markup
+                removeScripts: false,       // remove script tags from print content
+                copyTagClasses: false,      // copy classes from the html & body tag
+                beforePrintEvent: null,     // callback function for printEvent in iframe
+                beforePrint: null,          // function called before iframe is filled
+                afterPrint: null            // function called before iframe is removed
+
+            });
+            $.ajax({
+                url: "/CitizenBalances/GetWithdrow",
+                data: { Id: $("#citi").val(), balance: 40 },
+                async: false,
+
+                success: function (res) {
+
+                    const Toast = Swal.mixin({
+
+
+                        toast: true,
+
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+
+                        timer: 5000,
+                        onOpen: (toast) => {
+
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+
+                        }
+
+
+                    });
+
+
+                    Toast.fire({
+
+                        type: 'success',
+
+
+                        title: res
+
+
+                    });
+
+                }
+
+            });
+            $("#behind").show();
+        });
+
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+            $("#NId").change(function () {
+
+                var data = $("#NId").val();
+                $("#Fname").empty();
+
+                $("#Street-Region").empty();
+
+                $("#City-State").empty();
+
+                $("#NationalId").empty();
+                $.ajax({
+
+                    url: "/CitizenID/GetAllInfoAboutCitizenByCitizenId",
+                    data: { Cid: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#Fname").text(r.citizen_first_name_arabic);
+                            $("#Street-Region").text(r.address_street_arabic + " - " + r.region_arabic_name);
+                            $("#City-State").text(r.city_arabic_name + " - " + r.state_arabic_name);
+                            $("#NationalId").text(r.citizen_national_id);
+
+
+
+
+
+                        });
+
+                    }
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+            });
+
+            $("#NId").change(function () {
+
+                var data = $("#NId").val();
+                $("#FatherName").empty();
+
+
+                $.ajax({
+
+                    url: "/CitizenID/GetFatherNameByCitizenId",
+                    data: { Cid: data },
+                    success: function (res) {
+
+
+                        $("#FatherName").text(res);
+
+
+                    }
+
+                });
+
+
+
+            });
+
+
+
+            $("#NId").change(function () {
+
+
+                var data = $("#NId").val();
+                $("#img").empty();
+
+                $("#img").attr("src", "http://192.168.1.34:88/api/Photos?Id=" + data);
+
+
+            });
+
+
+        }
+        else {
+
+
+
+            $("#NId").change(function () {
+
+                var data = $("#NId").val();
+                $("#Fname").empty();
+
+                $("#Street-Region").empty();
+
+                $("#City-State").empty();
+
+                $("#NationalId").empty();
+                $.ajax({
+
+                    url: "/CitizenID/GetAllInfoAboutCitizenByCitizenId",
+                    data: { Cid: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#Fname").text(r.citizen_first_name);
+                            $("#Street-Region").text(r.address_street + " - " + r.region_name);
+                            $("#City-State").text(r.city_name + " - " + r.state_name);
+                            $("#NationalId").text(r.citizen_national_id);
+
+
+
+
+
+                        });
+
+                    }
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+            });
+
+            $("#NId").change(function () {
+
+                var data = $("#NId").val();
+                $("#FatherName").empty();
+
+
+                $.ajax({
+
+                    url: "/CitizenID/GetFatherNameByCitizenId",
+                    data: { Cid: data },
+                    async: false,
+                    success: function (res) {
+
+
+                        $("#FatherName").text(res);
+
+
+                    }
+
+                });
+
+
+
+            });
+        }
+        $("#icon").hide();
+        $("#NId").change(function () {
+            var ss;
+            var data = $("#NId").val();
+            $("#img").empty();
+           
+            $("#img").attr("src", "http://192.168.1.34:88/api/Photos?Id=" + data);
+
+
+            // img.attr("src", img.attr("src") );
+
+            //$.ajax({
+
+            //    url: "/CitizenID/GetCurrentPhotoByCitizenId",
+            //    data: { cid: data },
+            //    async: false,
+            //    success: function (res) {
+
+            //              //<img src=~/CitizenPhotos/' class='elevation-4 ' style='height:40px; width:2.2rem ' />
+            //        var dataaa = "~/CitizenPhotos/44198910244147_Ahmed_.jpg"
+            //        //$('#img').attr("src", );
+            //        ss = img.attr("src") + res;
+            //        img.attr("src", ss );
+
+
+            //       // $("#img").append("<img src='" + dataaa + "' class='card-img-top rounded' />");
+            //       // $('#img').prepend('<img id="theImg" src="' + dataaa + '" />')
+            //       // alert("<img src='" + dataaa + "' class='card-img-top rounded' />");
+            //          //$('#img').prepend($('<img>',{id:'theImg',src:'CitizenPhotos/44198910244147_Ahmed_.jpg'}))
+
+            //    }
+
+            //});
+
+
+
+            $.ajax({
+
+                url: "/CitizenID/GetCitizenCarLicense",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    if (res == true) {
+                        $("#icon").show();
+                    }
+                    else {
+                        $("#icon").hide();
+                    }
+                }
+
+            });
+
+        });
+
+        $("#NId").select2();
+    });
+
+</script>
+
+<style>
+    .fa-car-alt {
+        color: rgb(214, 164, 67);
+    }
+</style>
+<div class="container ">
+    @using (Html.BeginForm("Index", "CitizenID", FormMethod.Post, new{ id="form"}))
+    {
+        <div class="row">
+            <div class="col-md-4 ">
+                <h4 class="mt-2">@Servicely.Languages.Language.SelectCitizenID</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.DropDownList("NId", null, "", new { @class = "form-control", required = "required", data_live_search = "true" })
+
+            </div>
+        </div>
+
+
+
+        <div class="row mt-3 mb-3" id="print">
+            <div class="col-3"></div>
+            <div class="col-5  ">
+                <div class="row  " style="border:3px solid rgb(44, 44, 45);border-radius:10px; ">
+                    <div class="col-12" id="tb">
+                        <div class=" row mt-2 ">
+                            <div class="col-8">
+                                <div class="text-center">
+                                    <strong class="font-small">@Servicely.Languages.Language.TheEgyptianArabicRepublic </strong>
+                                    <br />
+
+                                    <strong class="font-small">@Servicely.Languages.Language.IdentificationCard</strong>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div>
+                                    <img src="~/CitizenPhotos/" class="elevation-3 " style="height:100px; width:6rem ; border:1px solid; border-radius:10px; " id="img" />
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="">
+                                    <strong class="font-small" id="Fname">   </strong>
+                                    <br />
+                                    <strong class="font-small" id="FatherName">   </strong>
+                                    <br />
+
+                                    <strong class="font-small" id="Street-Region">   </strong>
+                                    <br />
+                                    <strong class="font-small" id="City-State">   </strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2 mb-3">
+                            <div class="col-6">
+                                <strong class="" id="NationalId">   </strong>
+
+                            </div>
+                            <div class="col-4"></div>
+                            <div class="col-2 text-center" id="icon">
+
+                                <i class="fas fa-car-alt "></i>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+
+
+
+        </div>
+
+
+        <div class="row mt-4 mb-3">
+
+            <div class="col-md-4">
+                <input type="submit" value=@Servicely.Languages.Language.Behind_the_card class="btn btn-default" id="behind" />
+            </div>
+            <div class="col-md-4">
+                @*<input type="button" value=@Servicely.Languages.Language.Print class="btn btn-default" id="btn" />*@
+                <!-- Button trigger modal -->
+                <button type="button" id="pr" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    @Servicely.Languages.Language.Print
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+    }
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Servicely.Languages.Language.warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modelbody">
+                <h3> @Servicely.Languages.Language.WarningMessage</h3>
+                <h5> @Servicely.Languages.Language.WarningMessage1</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn">@Servicely.Languages.Language.yes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">@Servicely.Languages.Language.No</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Servicely.Languages.Language.warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modelbody">
+                <h3>@Servicely.Languages.Language.your_balance_is_not_sufficient</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">@Servicely.Languages.Language.Close</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Servicely.Languages.Language.warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modelbody">
+                <h3>@Servicely.Languages.Language.modal3</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">@Servicely.Languages.Language.Close</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>

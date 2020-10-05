@@ -1,0 +1,39 @@
+﻿@model Servicely.Models.DoctorType
+
+@{
+    ViewBag.Title = "Details";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DoctorType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.doctor_type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doctor_type_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doctor_type_isDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doctor_type_isDeleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.doctor_type_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

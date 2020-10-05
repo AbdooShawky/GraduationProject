@@ -1,0 +1,337 @@
+﻿@model IEnumerable<Servicely.Models.RealStateRegistryInterestReport>
+
+@{
+    ViewBag.Title = "Index";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<style>
+
+    a {
+        font-weight: 900;
+    }
+</style>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_reports_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_reports_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_reports_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreasAuthorityRequest.AreasAuthorityRequest_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Citizen.citizen_national_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Citizen1.citizen_national_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.District.district_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestBranch.realStateRegistryInterest_branch_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestPopularContract.realStateRegistryInterest_popularContract_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestPropertyTax.realStateRegistryInterestPropertyTaxes_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestReportsSubject.realStateRegistryInterestReports_subject_name)
+        </th>
+        <th></th>
+    </tr>*@
+
+
+
+
+
+<script>
+
+    $(function () {
+        $('#btn').click(function () {
+
+            $("#print").printThis();
+        });
+
+
+        $("#citi").change(function () {
+
+            var data = $(this).val();
+           
+
+
+            $("#egyptian").empty();
+            $("#state").empty();
+            $("#birth").empty();
+            $("#Relegion").empty();
+            $("#Gender").empty();
+            $("#FirstName").empty();
+            $("#NId").empty();
+            $("#Subject").empty();
+            $("#RDate").empty();
+            $("#RPrice").empty();
+            $("#RNumber").empty();
+            $.ajax({
+                url: "/RealStateRegistryInterestReports/citizenData",
+                data: { citi: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        // $("#tbb").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+
+
+
+                        
+                        $("#vendor").text(r.citizen_first_name + r.citizen_second_name + r.citizen_third_name + r.citizen_fourth_name);
+                        $("#egyptian").text("Egyptian");
+                        $("#state").text(r.state_name + " / " + r.city_name);
+                        $("#Relegion").text(r.citizen_relegion);
+                        $("#Gender").text(r.citizen_gender);
+                        $("#job").text(r.citizen_job_title);
+
+
+
+                        $("#RPrice").text(r.realStateRegistryInterest_reports_price);
+                        
+                       $("#Subject").text(r.realStateRegistryInterestReports_subject_name);
+
+                        $("#RDate").text(r.realStateRegistryInterest_reports_Date);
+
+
+                        $("#RNumber").text(r.realStateRegistryInterest_reports_number);
+
+
+                        $("#pc").text(r.realStateRegistryInterest_popularContract_name);
+
+                        $("#pt").text(r.realStateRegistryInterestPropertyTaxes_number);
+
+                        $("#area").text(r.AreasAuthorityRequest_number );
+
+                        $("#branch").text(r.realStateRegistryInterest_branch_name );
+
+                   
+
+                        
+                        
+
+                    });
+                }
+
+            });
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+        $(document).ready(function () {
+            $("#citi").select2();
+
+        });
+
+    });
+
+
+
+</script>
+
+
+
+
+
+
+@*@foreach (var item in Model)
+    {
+
+        <a>Subject /</a> @Html.DisplayFor(modelItem => item.RealStateRegistryInterestReportsSubject.realStateRegistryInterestReports_subject_name)
+        <br />
+        <a>Vendor(First Party) /</a> @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_second_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_third_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_fourth_name)
+        <a>/</a>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_relegion)
+        <a>/</a>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_job_title)
+        <a>/</a>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_birthPlace)
+        <br />
+        <a>buyer(seconed Party)</a> @Html.DisplayFor(modelItem => item.Citizen1.citizen_first_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_second_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_third_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_fourth_name)
+        <a>/</a>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_relegion)
+        <a>/</a>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_job_title)
+        <a>/</a>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_birthPlace)
+
+        <br />
+        <a>Subject of the deal /</a>
+        @Html.DisplayFor(modelItem => item.AreasAuthorityRequest.District.district_name)
+        @Html.DisplayFor(modelItem => item.AreasAuthorityRequest.District.Region.region_name)
+        @Html.DisplayFor(modelItem => item.AreasAuthorityRequest.District.Region.City.city_name)
+        @Html.DisplayFor(modelItem => item.AreasAuthorityRequest.District.Region.City.State.state_name)
+
+        <br />
+        <a>Popular Contract /</a>
+        @Html.DisplayFor(modelItem => item.RealStateRegistryInterestPopularContract.realStateRegistryInterest_popularContract_name)
+        <br />
+        <a>Taxes /</a>
+        @Html.DisplayFor(modelItem => item.RealStateRegistryInterestPropertyTax.realStateRegistryInterestPropertyTaxes_number)
+        <br />
+        <a>Price /</a>
+        @Html.DisplayFor(modelItem => item.realStateRegistryInterest_reports_price)
+        <br />
+        <a>Conflict Clause /</a>
+        @Html.DisplayFor(modelItem => item.AreasAuthorityRequest.AreasAuthorityRequest_number)
+        <br />
+        <a>Branch Name /</a>
+        @Html.DisplayFor(modelItem => item.RealStateRegistryInterestBranch.realStateRegistryInterest_branch_name)
+        <br />
+        <a>Report Number /</a>
+        @Html.DisplayFor(modelItem => item.realStateRegistryInterest_reports_number)
+        <br />
+        <a>Report Date</a>
+        @Html.DisplayFor(modelItem => item.realStateRegistryInterest_reports_Date)
+
+
+
+
+
+
+
+
+
+
+
+    }*@
+
+@*</table>*@
+<div class="container mt-5">
+    <h2 class="mt-4">Exporting Reports</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        <div class=" row">
+            <div class="col-md-4">
+                @Html.DropDownList("citi", null, " ", new { @class = "form-control", required = "required", data_live_search = "true" })
+            </div>
+
+        </div>
+
+
+
+        <div class="row mt-5">
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8" id="print">
+                <div class="container mt-3" style="border:1px solid black">
+
+                    <div class="row ">
+
+                    </div>
+
+                  
+
+                   
+                    <div class="row">
+                        <div class="col-10">
+                            <strong class="font-weight-bold">Subject /</strong><strong class="font-weight-bold" id="Subject"></strong>
+                            <br />
+                            <strong class="font-weight-bold ">Vendor(First Party) /</strong><strong class="font-weight-bold" id="vendor"> </strong>
+                            <br />
+                            <strong class="font-weight-bold "></strong><strong class="font-weight-bold" id="Relegion"> </strong>
+
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="egyptian"></strong>
+
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="job"></strong>
+                            <br />
+
+
+
+
+                            <br />
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="area"></strong>
+                            <br />
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="pc"></strong>
+                            <br />
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="pt"></strong>
+                            <br />
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="RPrice"></strong>
+                            <br />
+
+
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="branch"></strong>
+                            <br />
+
+
+                            //التعارض الخاص بهيئة المساحات
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="RDate"></strong>
+                            <br />
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="RNumber"></strong>
+                            <br />
+
+
+                            <strong class="font-weight-bold">/</strong><strong class="font-weight-bold" id="area"></strong>
+
+
+
+                            <br />
+                            <strong class="font-weight-bold">Live in/</strong> <strong class="font-weight-bold" id="state"></strong> <strong id="City" class="font-weight-bold"></strong>
+                            <br />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+
+
+
+        </div>
+
+
+        <div class="row mt-4 mb-4">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <input type="button" value=@Servicely.Languages.Language.Export class="btn btn-default" id="btn" />
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+
+
+    }
+</div>

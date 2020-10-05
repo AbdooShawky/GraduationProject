@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Servicely.Models.governement_body>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+    <div class="container-fluid">
+        <h2>@Servicely.Languages.Language.Index</h2>
+
+        <p>
+            @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+        </p>
+        <table class="table">
+            <tr>
+
+                <th>
+                    @Servicely.Languages.Language.governement_name
+                </th>
+                <th>
+                    @Servicely.Languages.Language.start_time
+                </th>
+                <th>
+                    @Servicely.Languages.Language.end_time
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.governement_name_arabic)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.governement_name)
+                    </td>
+                }
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.governement_name)
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.start_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.end_time)
+            </td>
+            <td>
+                <a href='/governement_body/Edit/@item.id'> <i class="far fa-edit"></i></a>
+                |
+                <a href='/governement_body/Delete/@item.id'><i class="far fa-trash-alt"></i></a>
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+

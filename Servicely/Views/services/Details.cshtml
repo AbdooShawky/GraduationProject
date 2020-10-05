@@ -1,0 +1,47 @@
+﻿@model Servicely.Models.service
+
+@{
+    ViewBag.Title = "Details";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>service</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.service_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.service_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.service_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.service_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.governement_body.governement_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.governement_body.governement_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.service_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

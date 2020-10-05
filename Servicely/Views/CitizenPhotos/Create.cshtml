@@ -1,0 +1,33 @@
+﻿@model Servicely.Models.photo
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<!DOCTYPE html>
+
+
+<div>
+    @using (Html.BeginForm("Create","CitizenPhotos",FormMethod.Post,new { enctype="multipart/form-data"}))
+    {
+
+    <div>
+       @*Citize National ID: @Html.DropDownList("NId", null, "", new { @class = "selectpicker", required = "required", data_live_search = "true" })*@
+        <br />
+        photo: <input type="file" name="f1" />
+        <br />
+        <input type="submit" />
+    </div>  
+
+    
+    }
+
+</div>
+
+
+

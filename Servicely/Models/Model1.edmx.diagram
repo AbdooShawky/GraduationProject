@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="848b3ba177a44ec4896045db39cdf8e4" Name="Diagram1" ZoomLevel="116">
+        <EntityTypeShape EntityType="DbMasterModel.Address" Width="1.5" PointX="3.75" PointY="79.375" />
+        <EntityTypeShape EntityType="DbMasterModel.AddressCitizen" Width="1.5" PointX="6" PointY="62.875" />
+        <EntityTypeShape EntityType="DbMasterModel.AreasAuthorityRequest" Width="1.5" PointX="12" PointY="67" />
+        <EntityTypeShape EntityType="DbMasterModel.CarLicence" Width="1.5" PointX="6" PointY="54.125" />
+        <EntityTypeShape EntityType="DbMasterModel.Car" Width="1.5" PointX="3.75" PointY="72.875" />
+        <EntityTypeShape EntityType="DbMasterModel.Certificate" Width="1.5" PointX="6" PointY="76" />
+        <EntityTypeShape EntityType="DbMasterModel.CertificateStudentM_M" Width="1.5" PointX="8.25" PointY="64.375" />
+        <EntityTypeShape EntityType="DbMasterModel.CertificateType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Citizen" Width="1.5" PointX="0.75" PointY="50.125" />
+        <EntityTypeShape EntityType="DbMasterModel.Citizen_id" Width="1.5" PointX="3" PointY="62.75" />
+        <EntityTypeShape EntityType="DbMasterModel.CitizenBalance" Width="1.5" PointX="3" PointY="130.125" />
+        <EntityTypeShape EntityType="DbMasterModel.City" Width="1.5" PointX="1.5" PointY="33.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Complain" Width="1.5" PointX="12" PointY="62.375" />
+        <EntityTypeShape EntityType="DbMasterModel.Contact" Width="1.5" PointX="12" PointY="58.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Contact_Type" Width="1.5" PointX="9.75" PointY="72.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Coordination" Width="1.5" PointX="3" PointY="83.375" />
+        <EntityTypeShape EntityType="DbMasterModel.Deceased" Width="1.5" PointX="3" PointY="113.25" />
+        <EntityTypeShape EntityType="DbMasterModel.District" Width="1.5" PointX="1.5" PointY="40.875" />
+        <EntityTypeShape EntityType="DbMasterModel.DoctorScheduleM_M" Width="1.5" PointX="8.25" PointY="45.875" />
+        <EntityTypeShape EntityType="DbMasterModel.DoctorType" Width="1.5" PointX="3.75" PointY="42.5" />
+        <EntityTypeShape EntityType="DbMasterModel.Document" Width="1.5" PointX="12" PointY="51.375" />
+        <EntityTypeShape EntityType="DbMasterModel.Document_Detail" Width="1.5" PointX="17.25" PointY="54.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Document_Type" Width="1.5" PointX="9.75" PointY="34.75" />
+        <EntityTypeShape EntityType="DbMasterModel.EducationalOut" Width="1.5" PointX="3" PointY="126.5" />
+        <EntityTypeShape EntityType="DbMasterModel.EducationDirectorate" Width="1.5" PointX="1.5" PointY="89.875" />
+        <EntityTypeShape EntityType="DbMasterModel.Faculty" Width="1.5" PointX="0.75" PointY="80" />
+        <EntityTypeShape EntityType="DbMasterModel.FacultyCertificateM_M" Width="1.5" PointX="8.25" PointY="78.25" />
+        <EntityTypeShape EntityType="DbMasterModel.governement_body" Width="1.5" PointX="7.5" PointY="68.25" />
+        <EntityTypeShape EntityType="DbMasterModel.Grade" Width="1.5" PointX="6" PointY="79.25" />
+        <EntityTypeShape EntityType="DbMasterModel.GradesCertificateM_M" Width="1.5" PointX="11.25" PointY="77.75" />
+        <EntityTypeShape EntityType="DbMasterModel.HealthCare" Width="1.5" PointX="6" PointY="33.25" />
+        <EntityTypeShape EntityType="DbMasterModel.Healthcare_Doctor" Width="1.5" PointX="6" PointY="46.25" />
+        <EntityTypeShape EntityType="DbMasterModel.HealthCare_Type" Width="1.5" PointX="3.75" PointY="34.625" />
+        <EntityTypeShape EntityType="DbMasterModel.HealthCareDoctorM_M" Width="1.5" PointX="11.25" PointY="43.875" />
+        <EntityTypeShape EntityType="DbMasterModel.HealthcareReservation" Width="1.5" PointX="14.25" PointY="51.25" />
+        <EntityTypeShape EntityType="DbMasterModel.HealthCareSheduleM_M" Width="1.5" PointX="8.25" PointY="42.75" />
+        <EntityTypeShape EntityType="DbMasterModel.HealthCareSpecializationM_M" Width="1.5" PointX="11.25" PointY="31.25" />
+        <EntityTypeShape EntityType="DbMasterModel.HealthCareSpecialization" Width="1.5" PointX="3.75" PointY="39.125" />
+        <EntityTypeShape EntityType="DbMasterModel.KindOfSchool" Width="1.5" PointX="1.5" PointY="93" />
+        <EntityTypeShape EntityType="DbMasterModel.Live_Status" Width="1.5" PointX="3" PointY="59.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Live_Status_Type" Width="1.5" PointX="0.75" PointY="95.875" />
+        <EntityTypeShape EntityType="DbMasterModel.LoginCitizen" Width="1.5" PointX="3" PointY="116.75" />
+        <EntityTypeShape EntityType="DbMasterModel.LogRequest" Width="1.5" PointX="11.25" PointY="55.375" />
+        <EntityTypeShape EntityType="DbMasterModel.Office" Width="1.5" PointX="9.75" PointY="68.375" />
+        <EntityTypeShape EntityType="DbMasterModel.PhasesOfSchoole" Width="1.5" PointX="1.75" PointY="100.375" />
+        <EntityTypeShape EntityType="DbMasterModel.Photo" Width="1.5" PointX="3" PointY="123.375" />
+        <EntityTypeShape EntityType="DbMasterModel.police_officer" Width="1.5" PointX="3" PointY="45.875" />
+        <EntityTypeShape EntityType="DbMasterModel.police_report" Width="1.5" PointX="3" PointY="49" />
+        <EntityTypeShape EntityType="DbMasterModel.PoliceDepartment" Width="1.5" PointX="0.75" PointY="45.75" />
+        <EntityTypeShape EntityType="DbMasterModel.PoliceReport_type" Width="1.5" PointX="0.75" PointY="62.875" />
+        <EntityTypeShape EntityType="DbMasterModel.PoliceReportClassification" Width="1.5" PointX="0.75" PointY="65.375" />
+        <EntityTypeShape EntityType="DbMasterModel.RealStateRegistryInterest" Width="1.5" PointX="3.75" PointY="68.625" />
+        <EntityTypeShape EntityType="DbMasterModel.RealStateRegistryInterestBranch" Width="1.5" PointX="6" PointY="50.375" />
+        <EntityTypeShape EntityType="DbMasterModel.RealStateRegistryInterestDepartment" Width="1.5" PointX="1.5" PointY="69" />
+        <EntityTypeShape EntityType="DbMasterModel.RealStateRegistryInterestPopularContract" Width="1.5" PointX="12" PointY="72.625" />
+        <EntityTypeShape EntityType="DbMasterModel.RealStateRegistryInterestPropertyTax" Width="1.5" PointX="12" PointY="75" />
+        <EntityTypeShape EntityType="DbMasterModel.RealStateRegistryInterestReport" Width="1.5" PointX="14.25" PointY="56.25" />
+        <EntityTypeShape EntityType="DbMasterModel.RealStateRegistryInterestReportsSubject" Width="1.5" PointX="12" PointY="70.25" />
+        <EntityTypeShape EntityType="DbMasterModel.Region" Width="1.5" PointX="1.5" PointY="37.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Request" Width="1.5" PointX="9" PointY="58.625" />
+        <EntityTypeShape EntityType="DbMasterModel.Request_Ambulance" Width="1.5" PointX="3" PointY="119.875" />
+        <EntityTypeShape EntityType="DbMasterModel.Reservation" Width="1.5" PointX="12" PointY="47.375" />
+        <EntityTypeShape EntityType="DbMasterModel.ReservationScheduleM_M" Width="1.5" PointX="19.5" PointY="52" />
+        <EntityTypeShape EntityType="DbMasterModel.Respond" Width="1.5" PointX="14.25" PointY="62.75" />
+        <EntityTypeShape EntityType="DbMasterModel.RSRIPersonalRegistry" Width="1.5" PointX="16.5" PointY="63.25" />
+        <EntityTypeShape EntityType="DbMasterModel.RSRISpecificRegistry" Width="1.5" PointX="16.5" PointY="60.875" />
+        <EntityTypeShape EntityType="DbMasterModel.ScheduleHealthCare" Width="1.5" PointX="6" PointY="39.75" />
+        <EntityTypeShape EntityType="DbMasterModel.ScheduleVaccination" Width="1.5" PointX="12" PointY="39.625" />
+        <EntityTypeShape EntityType="DbMasterModel.ScheduleVaccM_M" Width="1.5" PointX="14.25" PointY="34.75" />
+        <EntityTypeShape EntityType="DbMasterModel.ScheduleVaccReservationM_M" Width="1.5" PointX="14.25" PointY="47.875" />
+        <EntityTypeShape EntityType="DbMasterModel.School" Width="1.5" PointX="0.75" PointY="84.625" />
+        <EntityTypeShape EntityType="DbMasterModel.SchoolCertificateM_M" Width="1.5" PointX="11.25" PointY="80.875" />
+        <EntityTypeShape EntityType="DbMasterModel.SchoolPhasesM_M" Width="1.5" PointX="4" PointY="87.375" />
+        <EntityTypeShape EntityType="DbMasterModel.SchoolStudentM_M" Width="1.5" PointX="3" PointY="96.5" />
+        <EntityTypeShape EntityType="DbMasterModel.service" Width="1.5" PointX="9.75" PointY="38.625" />
+        <EntityTypeShape EntityType="DbMasterModel.Social_status" Width="1.5" PointX="9" PointY="54.375" />
+        <EntityTypeShape EntityType="DbMasterModel.Social_Status_Type" Width="1.5" PointX="6.75" PointY="72.75" />
+        <EntityTypeShape EntityType="DbMasterModel.SpecializationOfFaculty" Width="1.5" PointX="0.75" PointY="25.75" />
+        <EntityTypeShape EntityType="DbMasterModel.State" Width="1.5" PointX="1.5" PointY="29.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Student" Width="1.5" PointX="3" PointY="53.5" />
+        <EntityTypeShape EntityType="DbMasterModel.Transaction" Width="1.5" PointX="4.75" PointY="1.625" />
+        <EntityTypeShape EntityType="DbMasterModel.TypeRequest" Width="1.5" PointX="6.75" PointY="82.875" />
+        <EntityTypeShape EntityType="DbMasterModel.University" Width="1.5" PointX="0.75" PointY="71.875" />
+        <EntityTypeShape EntityType="DbMasterModel.UniversityFacultyM_M" Width="1.5" PointX="9" PointY="82.5" />
+        <EntityTypeShape EntityType="DbMasterModel.UniversityStudentM_M" Width="1.5" PointX="14.25" PointY="44.625" />
+        <EntityTypeShape EntityType="DbMasterModel.UniversityType" Width="1.5" PointX="1.5" PointY="76.625" />
+        <EntityTypeShape EntityType="DbMasterModel.User" Width="1.5" PointX="6" PointY="58.5" />
+        <EntityTypeShape EntityType="DbMasterModel.User_Type" Width="1.5" PointX="3.75" PointY="75.875" />
+        <EntityTypeShape EntityType="DbMasterModel.UserCitizen" Width="1.5" PointX="17.25" PointY="57.875" />
+        <EntityTypeShape EntityType="DbMasterModel.VaccinationReservation" Width="1.5" PointX="9" PointY="49" />
+        <EntityTypeShape EntityType="DbMasterModel.VaccinationType" Width="1.5" PointX="6.75" PointY="29.625" />
+        <EntityTypeShape EntityType="DbMasterModel.VacinationHealthCareM_M" Width="1.5" PointX="9" PointY="31.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Violation" Width="1.5" PointX="15" PointY="40.75" />
+        <EntityTypeShape EntityType="DbMasterModel.Violation_CarLicenceM_M" Width="1.5" PointX="17.25" PointY="50.625" />
+        <AssociationConnector Association="DbMasterModel.FK_Address_District" />
+        <AssociationConnector Association="DbMasterModel.FK_AddressCitizen_Address" />
+        <AssociationConnector Association="DbMasterModel.FK_AddressCitizen_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_AreasAuthorityRequests_AreasAuthorityRequests" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_AreasAuthorityRequests" />
+        <AssociationConnector Association="DbMasterModel.FK_CarLicence_Cars" />
+        <AssociationConnector Association="DbMasterModel.FK_CarLicence_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Violation_CarLicenceM_M_CarLicence" />
+        <AssociationConnector Association="DbMasterModel.FK_GradesCertificateM_M_Certificate" />
+        <AssociationConnector Association="DbMasterModel.FK_SchoolCertificateM_M_Certificate" />
+        <AssociationConnector Association="DbMasterModel.FK_Table_1_Certificate" />
+        <AssociationConnector Association="DbMasterModel.FK_UniversityCertificateM_M_Certificate" />
+        <AssociationConnector Association="DbMasterModel.FK_CertificateStudentM_M_Grades" />
+        <AssociationConnector Association="DbMasterModel.FK_CertificateStudentM_M_Grades1" />
+        <AssociationConnector Association="DbMasterModel.FK_Table_1_Student" />
+        <AssociationConnector Association="DbMasterModel.FK_Citizen_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Citizen_Citizen1" />
+        <AssociationConnector Association="DbMasterModel.FK_Citizen_id_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_CitizenBalance_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Complains_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Contact_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Deceased_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Document_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Document_Detail_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_EducationalOut_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Healthcare_Doctor_Citizen1" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthcareReservation_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Live_Status_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_LoginCitizen_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_LogRequest_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Photo_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_police_officer_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_police_report_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_police_report_police_report" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestBranch_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_Citizen1" />
+        <AssociationConnector Association="DbMasterModel.FK_Request_Ambulance_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Request_Citizen1" />
+        <AssociationConnector Association="DbMasterModel.FK_Reservation_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Social_status_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Social_status_Citizen1" />
+        <AssociationConnector Association="DbMasterModel.FK_Student_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_User_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_UserCitizen_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_VaccinationReservation_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_City_State" />
+        <AssociationConnector Association="DbMasterModel.FK_Region_City" />
+        <AssociationConnector Association="DbMasterModel.FK_Complains_governement_body" />
+        <AssociationConnector Association="DbMasterModel.FK_Responds_Complains" />
+        <AssociationConnector Association="DbMasterModel.FK_Contact_Contact_Type" />
+        <AssociationConnector Association="DbMasterModel.FK_Coordination_Faculty" />
+        <AssociationConnector Association="DbMasterModel.FK_District_Region" />
+        <AssociationConnector Association="DbMasterModel.FK_Hospitals_District" />
+        <AssociationConnector Association="DbMasterModel.FK_Office_District" />
+        <AssociationConnector Association="DbMasterModel.FK_PoliceDepartment_District" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterest_District" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestBranch_District" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_District" />
+        <AssociationConnector Association="DbMasterModel.FK_School_District1" />
+        <AssociationConnector Association="DbMasterModel.FK_Universities_District" />
+        <AssociationConnector Association="DbMasterModel.FK_DoctorScheduleM_M_Healthcare_Doctor" />
+        <AssociationConnector Association="DbMasterModel.FK_DoctorScheduleM_M_SheduleHealthCare" />
+        <AssociationConnector Association="DbMasterModel.FK_Healthcare_Doctor_DoctorType" />
+        <AssociationConnector Association="DbMasterModel.FK_Document_Detail_Document" />
+        <AssociationConnector Association="DbMasterModel.FK_Document_Document_Type" />
+        <AssociationConnector Association="DbMasterModel.FK_EducationDirectorate_State" />
+        <AssociationConnector Association="DbMasterModel.FK_School_EducationDirectorate" />
+        <AssociationConnector Association="DbMasterModel.FK_SpecializationOfFaculty_Faculty" />
+        <AssociationConnector Association="DbMasterModel.FK_Student_Faculty" />
+        <AssociationConnector Association="DbMasterModel.FK_UniversityCertificateM_M_Universities" />
+        <AssociationConnector Association="DbMasterModel.FK_UniversityFacultyM_M_Faculty" />
+        <AssociationConnector Association="DbMasterModel.FK_Office_governement_body" />
+        <AssociationConnector Association="DbMasterModel.FK_Request_governement_body" />
+        <AssociationConnector Association="DbMasterModel.FK_services_governement_body" />
+        <AssociationConnector Association="DbMasterModel.FK_GradesCertificateM_M_Grades" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthCare_HealthCare_Type" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthCareDoctorM_M_HealthCare1" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthcareReservation_Hospitals1" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthCareSpecializationM_M_HealthCare" />
+        <AssociationConnector Association="DbMasterModel.FK_Hospitals_Hospitals" />
+        <AssociationConnector Association="DbMasterModel.FK_HospitalShedule_Hospitals" />
+        <AssociationConnector Association="DbMasterModel.FK_ScheduleVaccM_M_HealthCare" />
+        <AssociationConnector Association="DbMasterModel.FK_VaccinationReservation_HealthCare" />
+        <AssociationConnector Association="DbMasterModel.FK_VacinationHealthCareM_M_HealthCare" />
+        <AssociationConnector Association="DbMasterModel.FK_Healthcare_Doctor_HealthCareSpecializations" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthCareDoctorM_M_Healthcare_Doctor" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthcareReservation_Healthcare_Doctor" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthCareSheduleM_M_Healthcare_Doctor" />
+        <AssociationConnector Association="DbMasterModel.FK_ReservationSchedule_HealthcareReservation" />
+        <AssociationConnector Association="DbMasterModel.FK_HospitalShedule_SheduleHealthCare" />
+        <AssociationConnector Association="DbMasterModel.FK_HealthCareSpecializationM_M_Specializations" />
+        <AssociationConnector Association="DbMasterModel.FK_School_District" />
+        <AssociationConnector Association="DbMasterModel.FK_Live_Status_Live_Status_Type" />
+        <AssociationConnector Association="DbMasterModel.FK_LogRequest_Request" />
+        <AssociationConnector Association="DbMasterModel.FK_LogRequest_TypeRequests" />
+        <AssociationConnector Association="DbMasterModel.FK_Reservation_Office" />
+        <AssociationConnector Association="DbMasterModel.FK_SchoolPhasesM_M_PhasesOfSchooles" />
+        <AssociationConnector Association="DbMasterModel.FK_police_officer_PoliceDepartment" />
+        <AssociationConnector Association="DbMasterModel.FK_police_report_police_report1" />
+        <AssociationConnector Association="DbMasterModel.FK_police_report_PoliceDepartment" />
+        <AssociationConnector Association="DbMasterModel.FK_police_report_PoliceReportClassification" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterest_RealStateRegistryInterestDepartments" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestBranch_RealStateRegistryInterest" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_RealStateRegistryInterest" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_RealStateRegistryInterestPopularContract" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_RealStateRegistryInterestPropertyTaxes" />
+        <AssociationConnector Association="DbMasterModel.FK_RealStateRegistryInterestReports_RealStateRegistryInterestReportsSubject" />
+        <AssociationConnector Association="DbMasterModel.FK_RSRIPersonalRegistry_RealStateRegistryInterestReports" />
+        <AssociationConnector Association="DbMasterModel.FK_RSRISpecificRegistry_RealStateRegistryInterestReports" />
+        <AssociationConnector Association="DbMasterModel.FK_Request_Citizen" />
+        <AssociationConnector Association="DbMasterModel.FK_Request_services" />
+        <AssociationConnector Association="DbMasterModel.FK_Reservation_services" />
+        <AssociationConnector Association="DbMasterModel.FK_ReservationSchedule_SheduleHealthCare" />
+        <AssociationConnector Association="DbMasterModel.FK_ScheduleVaccM_M_ScheduleVaccinations" />
+        <AssociationConnector Association="DbMasterModel.FK_ScheduleVaccReservationM_M_ScheduleVaccinations" />
+        <AssociationConnector Association="DbMasterModel.FK_ScheduleVaccM_M_VaccinationType" />
+        <AssociationConnector Association="DbMasterModel.FK_ScheduleVaccReservationM_M_VaccinationReservation" />
+        <AssociationConnector Association="DbMasterModel.FK_SchoolCertificateM_M_School" />
+        <AssociationConnector Association="DbMasterModel.FK_SchoolPhasesM_M_School" />
+        <AssociationConnector Association="DbMasterModel.FK_SchoolStudentM_M_School" />
+        <AssociationConnector Association="DbMasterModel.FK_Student_School" />
+        <AssociationConnector Association="DbMasterModel.FK_Social_status_Social_Status_Type" />
+        <AssociationConnector Association="DbMasterModel.FK_Student_SpecializationOfFaculty" />
+        <AssociationConnector Association="DbMasterModel.FK_Student_Universities" />
+        <AssociationConnector Association="DbMasterModel.FK_UniversityStudentM_M_Student" />
+        <AssociationConnector Association="DbMasterModel.FK_Universities_UniversityTypes" />
+        <AssociationConnector Association="DbMasterModel.FK_UniversityFacultyM_M_Universities" />
+        <AssociationConnector Association="DbMasterModel.FK_UniversityStudentM_M_Universities" />
+        <AssociationConnector Association="DbMasterModel.FK_User_User_Type" />
+        <AssociationConnector Association="DbMasterModel.FK_UserCitizen_User" />
+        <AssociationConnector Association="DbMasterModel.FK_VaccinationReservation_VaccinationType" />
+        <AssociationConnector Association="DbMasterModel.FK_VacinationHealthCareM_M_VaccinationType" />
+        <AssociationConnector Association="DbMasterModel.FK_Violation_CarLicenceM_M_Violation" />
+        <AssociationConnector Association="DbMasterModel.FK_VaccinationReservation_Citizen1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

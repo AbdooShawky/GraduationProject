@@ -1,0 +1,174 @@
+﻿@model Servicely.Models.Contact
+@{
+    ViewBag.Title =Servicely.Languages.Language.Create;
+       Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<script>
+    $(function () {
+
+          var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+
+            $("#contact_citizen_id").change(function () {
+
+                var data = $("#contact_citizen_id").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+        }
+        else
+        {
+             $("#contact_citizen_id").change(function () {
+
+                var data = $("#contact_citizen_id").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+        }
+
+        $('#contact_citizen_id').select2();
+
+        @*
+
+        $("#email").hide();
+        $("#email").prop('required', false);
+
+        $("#Tele").hide();
+        $("#Tele").prop('required', false);
+
+        $("#fax").hide();
+        $("#fax").prop('required', false);
+
+        $("#contact_contactType_id").change(function () {
+            var data = $(this).val();
+            if (data == 1)
+            {
+                $("#email").show();
+                $("#email").prop('required', true);
+
+                $("#Tele").hide();
+                $("#Tele").prop('required', false);
+
+                $("#fax").hide();
+                $("#fax").prop('required', false);
+               
+            }
+             if (data == 2)
+             {
+                 $("#Tele").show();
+                 $("#Tele").prop('required', true);
+
+                 $("#fax").hide();
+                 $("#fax").prop('required', false);
+                 $("#email").hide();
+                 $("#email").prop('required', false);
+
+                
+            }
+             if (data == 3)
+            {
+                 $("#fax").show();
+                 $("#fax").prop('required', true);
+
+                 $("#email").hide();
+                 $("#email").prop('required', false);
+
+                 $("#Tele").hide();
+                 $("#Tele").prop('required', false);
+            }
+
+        });
+
+        *@
+        
+    });
+
+</script>
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Create</h2>
+    @using (Html.BeginForm())
+    {
+
+
+<div class="form-horizontal">
+    <h4>@Servicely.Languages.Language.MyContacts</h4>
+    <hr />
+    <div class="form-group">
+
+        <label>@Servicely.Languages.Language.ContactType</label>
+        <div class="col-md-3">
+            @Html.DropDownList("contact_contactType_id", null, " ", new { @class = "form-control", required = "required" })
+
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3" id="divInput">
+            <label>@Servicely.Languages.Language.ContactData</label>
+            <input type="text" class="form-control" required name="contact_data" id="email" pattern="(^[a-zA-Z0-9._+-]+@("@")[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$)|((201)[0-9]{9}) | (\\+[0-9]{1,3}-[0-9]{3}\\-[0-9]{7})" />
+            @*
+                <input type="text" class="form-control" required name="contact_data" id="Tele" pattern="(201)[0-9]{9}" />
+                <input type="text" class="form-control" required name="contact_data" id="fax" pattern="\\+[0-9]{1,3}-[0-9]{3}\\-[0-9]{7}" />
+            *@
+
+        </div>
+    </div>
+
+    <div class="col-md-offset-2 col-md-10">
+        <label  style="color:darkred"  >@ViewBag.ww</label>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value=@Servicely.Languages.Language.Create class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "UserIndex")
+    </div>
+</div>
+
+

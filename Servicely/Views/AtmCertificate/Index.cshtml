@@ -1,0 +1,564 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<script src="~/jasonday-printThis-0aa7434/printThis.js"></script>
+<script src="~/qrCodeJs/qrcode.min.js"></script>
+<script>
+
+
+     //function printDiv()
+     //{
+
+     //  var divToPrint=document.getElementById('print');
+
+     //  var newWin=window.open('','_blank');
+
+     //   newWin.document.open();
+
+     //   newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+
+     //   newWin.document.close();
+
+     //   setTimeout(function(){newWin.close();},10);
+
+     //}
+
+
+    $(function () {
+
+        var Id;
+        $.ajax({
+
+            url: "/Login/GetCitizenId",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                Id = res;
+
+            }
+
+        });
+
+       
+       
+
+            var data = $(this).val();
+              var qr;
+            $("#qrcode").empty();
+            $.ajax({
+
+                url: "/CitizenID/GetCitizenQRCode1",
+                data: {cid:Id},
+                async: false,
+                success: function (res) {
+
+                    qr = res;
+
+            }
+
+            });
+
+               var q = new QRCode("qrcode", {
+                   text: qr,
+                   width: 60,
+                   height:60,
+                   colorDark : "#000000",
+                   colorLight : "#ffffff",
+                   correctLevel : QRCode.CorrectLevel.H
+              });
+
+       
+
+
+        //Print Birth Document
+        $('#btn').click(function () {
+
+            $("#print").printThis();
+    });
+
+
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+
+
+
+
+
+        if (seesion == "ar-EG") {
+             //Chiled Information
+        $("#citi").change(function () {
+
+            var data = $(this).val();
+
+            $("#egyptian").empty();
+            $("#state").empty();
+            $("#birth").empty();
+            $("#Relegion").empty();
+            $("#Gender").empty();
+            $("#FirstName").empty();
+            $("#NId").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { citi: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+
+                       // $("#tbb").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+
+
+
+                        $("#egyptian").text("مصري");
+                        $("#state").text(r.state_arabic_name + " / " + r.city_arabic_name );
+                        $("#birth").text(r.citizen_birthDate);
+
+                         if (r.citizen_relegion == "Muslim") {
+                        $("#Relegion").text("مسلم");
+                    }
+                    else if (r.citizen_relegion == "Cristian") {
+                        $("#Relegion").text("مسيحي");
+                    }
+                    else if (r.citizen_relegion == "Jewish") {
+                        $("#Relegion").text("يهودي");
+                    }
+                    else {
+                         $("#Relegion").text(r.citizen_relegion);
+                    }
+
+                         if (r.citizen_gender == "Male") {
+
+                        $("#Gender").text("ذكر");
+                    }
+                    else {
+                        $("#Gender").text("انثى");
+                    }
+
+
+                        $("#FirstName").text(r.citizen_first_name_arabic);
+                        $("#NId").text(r.citizen_national_id);
+                    });
+                }
+
+            });
+
+
+        });
+
+        //Father Information
+        
+            $("#FRelegion").empty();
+            $("#Fnationality").empty();
+            $("#FatherName").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { x: Id },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                       // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                         if (r.citizen_relegion == "Muslim") {
+                        $("#FRelegion").text("مسلم");
+                    }
+                    else if (r.citizen_relegion == "Cristian") {
+                        $("#FRelegion").text("مسيحي");
+                    }
+                    else if (r.citizen_relegion == "Jewish") {
+                        $("#FRelegion").text("يهودي");
+                    }
+                    else {
+                         $("#FRelegion").text(r.citizen_relegion);
+                    }
+
+                        $("#Fnationality").text("مصري");
+                        $("#FatherName").text(r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic)
+                    });
+                }
+
+            });
+
+
+       
+
+        //Mother Information
+        
+
+            var data = $(this).val();
+
+            $("#MRelegion").empty();
+            $("#Mnationality").empty();
+            $("#MotherName").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { y: Id },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                       // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                            if (r.citizen_relegion == "Muslim") {
+                        $("#MRelegion").text("مسلم");
+                    }
+                    else if (r.citizen_relegion == "Cristian") {
+                        $("#MRelegion").text("مسيحي");
+                    }
+                    else if (r.citizen_relegion == "Jewish") {
+                        $("#MRelegion").text("يهودي");
+                    }
+                    else {
+                         $("#MRelegion").text(r.citizen_relegion);
+                    }
+
+                        $("#Mnationality").text("مصري");
+                        $("#MotherName").text(r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic)
+                    });
+                }
+
+            });
+
+
+        
+        }
+
+
+
+
+        else {
+             //Chiled Information
+      
+
+           
+
+            $("#egyptian").empty();
+            $("#state").empty();
+            $("#birth").empty();
+            $("#Relegion").empty();
+            $("#Gender").empty();
+            $("#FirstName").empty();
+            $("#NId").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { citi: Id },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+
+                       // $("#tbb").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+
+
+
+                        $("#egyptian").text("Egyptian");
+                        $("#state").text(r.state_name + " / " + r.city_name );
+                        $("#birth").text(r.citizen_birthDate);
+                        $("#Relegion").text(r.citizen_relegion);
+                        $("#Gender").text(r.citizen_gender);
+                        $("#FirstName").text(r.citizen_first_name);
+                        $("#NId").text(r.citizen_national_id);
+                    });
+                }
+
+            });
+
+
+        
+
+        //Father Information
+     
+            $("#FRelegion").empty();
+            $("#Fnationality").empty();
+            $("#FatherName").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { x: Id },
+
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                       // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+
+                        $("#FRelegion").text(r.citizen_relegion);
+                        $("#Fnationality").text("Egyptian");
+                        $("#FatherName").text(r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name)
+                    });
+                }
+
+            });
+
+
+        
+
+        //Mother Information
+       
+
+           
+
+            $("#MRelegion").empty();
+            $("#Mnationality").empty();
+            $("#MotherName").empty();
+
+            $.ajax({
+                url: "https://localhost:44389/api/BirthCertificate",
+                data: { y: Id },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i,r) {
+                        // $("#tbb1").append("<tr>   <td> "+r.citizen_first_name+" "+r.citizen_second_name +" "+r.citizen_third_name +" "+r.citizen_fourth_name+ " </td>  <td> "+ r.citizen_gender+" </td> <td> "+ r.citizen_birthDate +"</td> <td> "+r.state_name+" </td> <td> "+r.city_name+" </td>  </tr>");
+                        
+                        $("#MRelegion").text(r.citizen_relegion);
+                        $("#Mnationality").text("Egyptian");
+                        $("#MotherName").text(r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name)
+                    });
+                }
+
+            });
+
+
+    
+
+        }
+
+
+
+
+
+
+
+        $(document).ready(function () {
+            $("#citi").select2();
+
+        });
+
+    });
+
+</script>
+<style>
+    strong {
+        font-size: small;
+    }
+</style>
+
+
+
+<div class="container mt-5">
+    <h2 class="mt-4">@Servicely.Languages.Language.Exporting_Birth_Certificate</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        <div class=" row">
+            <div class="col-md-4">
+            </div>
+
+        </div>
+
+
+
+        <div class="row mt-5">
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8" id="print">
+                <div class="container mt-3" style="border:1px solid black">
+
+                    <div class="row mt-3 mb-3">
+
+                        <div class="col-sm-4">
+                            <strong class="font-weight-bold "> @Servicely.Languages.Language.TheEgyptianArabicRepublic </strong>
+                            <br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Ministry_of_Interior </strong>
+                            <br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Civil_Registry_Sector</strong>
+                        </div>
+                        <div class="col-sm-4 text-center">
+
+                            <strong class="font-weight-bold "> @Servicely.Languages.Language.Birth_Document</strong>
+
+                            <div class="row">
+                                <br />
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <strong class="font-weight-bold" id="NId"></strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4  ">
+                            <div id="qrcode" class="float-md-right @Servicely.Languages.Language.mr_4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Child Information -->
+                    <div class="row">
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                        <div class="col-4 text-center">
+                            <strong class="font-weight-bold ">
+                                @Servicely.Languages.Language.Child_Information
+                            </strong>
+
+                        </div>
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                    </div>
+
+                    <!-- ////////////////////////   -->
+                    <div class="row mt-3 mb-3">
+                        <div class="col-5">
+
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Nationality : </strong><strong class="font-weight-bold" id="egyptian"></strong>
+                            <br /><br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.BirthPlace : </strong> <strong class="font-weight-bold" id="state"></strong> <strong id="City" class="font-weight-bold"></strong>
+                            <br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.BirthDate  : </strong><strong id="birth" class="font-weight-bold"></strong>
+
+
+
+                        </div>
+                        <div class="col-2 text-center">
+
+
+
+
+                            <strong class="font-weight-bold" id="FirstName">
+
+
+
+                            </strong>
+
+                        </div>
+                        <div class="col-5 text-center">
+                            <strong class="font-weight-bold ">@Servicely.Languages.Language.Relegion : </strong><strong class="font-weight-bold" id="Relegion"> </strong>
+                            <br />
+                            <strong class="font-weight-bold "> @Servicely.Languages.Language.Gender : </strong><strong class="font-weight-bold" id="Gender"> </strong>
+                        </div>
+                    </div>
+                    @*Father Information*@
+                    <div class="row">
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                        <div class="col-4 text-center">
+                            <strong class="font-weight-bold">
+                                @Servicely.Languages.Language.FatherInformation
+                            </strong>
+
+                        </div>
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                    </div>
+
+                    <!-- ////////////////////////   -->
+                    <div class="row mt-3 mb-3">
+                        <div class="col-3">
+
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Relegion    : </strong><strong class="font-weight-bold" id="FRelegion"></strong>
+                            <br /><br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Nationality : </strong> <strong class="font-weight-bold" id="Fnationality"></strong> <strong id="City" class="font-weight-bold"></strong>
+
+
+
+
+                        </div>
+                        <div class="col-6 text-center">
+
+                            <strong class="font-weight-bold" id="FatherName"></strong>
+
+                        </div>
+                        <div class="col-3 text-center">
+
+
+                        </div>
+                    </div>
+
+                    @*Mother Information*@
+                    <div class="row">
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                        <div class="col-4 text-center">
+                            <strong class="font-weight-bold">
+                                @Servicely.Languages.Language.MotherInformation
+                            </strong>
+
+                        </div>
+                        <div class="col-4">
+                            <hr class="hr-bold" />
+                        </div>
+                    </div>
+
+                    <!-- ////////////////////////   -->
+                    <div class="row mt-3 mb-3">
+                        <div class="col-3">
+
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Relegion    : </strong><strong class="font-weight-bold" id="MRelegion"></strong>
+                            <br /><br />
+                            <strong class="font-weight-bold">@Servicely.Languages.Language.Nationality : </strong> <strong class="font-weight-bold" id="Mnationality"></strong> <strong id="City" class="font-weight-bold"></strong>
+
+
+
+
+                        </div>
+                        <div class="col-6 text-center">
+
+                            <strong class="font-weight-bold" id="MotherName"></strong>
+
+                        </div>
+                        <div class="col-3 text-center">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="row mt-4 mb-4">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <input type="button" value=@Servicely.Languages.Language.Export class="btn btn-default" id="btn" />
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+
+
+    }
+</div>

@@ -1,0 +1,463 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<link href="~/drag-drop-image-uploader/dist/image-uploader.min.css" rel="stylesheet" />
+
+
+<script src="~/drag-drop-image-uploader/src/GseUploader.js"></script>
+<script src="~/player/lottie.js"></script>
+<script>
+    $(function () {
+
+        $("#card").hide();
+
+        $("#link").hover(function () {
+
+
+            $("#card").show().animate({ opacity: "1" }, 3000);
+
+            //$("#card").animate({
+            //    height: "400px",
+
+            //},
+            // 1000,
+            //    function () {
+
+
+
+            //    });
+        }, function () {
+            $("#card").hide();
+
+
+        });
+
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $('.input-images').imageUploader({
+                label: "اسحب الملفات وأفلتها هنا أو انقر للتصفح",
+                maxFiles: 1,
+                imagesInputName: 'photos',
+
+            });
+
+            $.ajax({
+                url: "/CitizenId/GetCiticens",
+                data: "",
+                success: function (res) {
+
+                    $("#citizen_citizen_id").append("<option>    </option>");
+                    $.each(res, function (i, r) {
+                        // "+" " + "citizen_first_name"+" "+ "citizen_second_name" + " "+ "citizen_third_name"+" "+ "citizen_fourth_name"
+                        //" + r.citizen_national_id + " " + r.citizen_first_name + " " ++ " " +  + " " + +"
+                        $("#citizen_citizen_id").append("<option value='" + r.citizen_id + "'> " + r.citizen_national_id + " &nbsp;   " + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + "   </option>");
+
+                    });
+
+                }
+
+            });
+
+
+
+
+
+
+            $("#citizen_citizen_id").change(function () {
+
+                var data = $("#citizen_citizen_id").val();
+                $("#Fname").empty();
+
+                $("#Street-Region").empty();
+
+                $("#City-State").empty();
+
+                $("#NationalId").empty();
+                $.ajax({
+
+                    url: "/CitizenID/GetAllInfoAboutCitizenByCitizenId",
+                    data: { Cid: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#Fname").text(r.citizen_first_name_arabic);
+                            $("#Street-Region").text(r.address_street_arabic + " - " + r.region_arabic_name);
+                            $("#City-State").text(r.city_arabic_name + " - " + r.state_arabic_name);
+                            $("#NationalId").text(r.citizen_national_id);
+
+
+
+
+
+                        });
+
+                    }
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+            });
+
+            $("#citizen_citizen_id").change(function () {
+
+                var data = $("#citizen_citizen_id").val();
+                $("#FatherName").empty();
+
+
+                $.ajax({
+
+                    url: "/CitizenID/GetFatherNameByCitizenId",
+                    data: { Cid: data },
+                    success: function (res) {
+
+
+                        $("#FatherName").text(res);
+
+
+                    }
+
+                });
+
+
+
+            });
+
+
+
+        }
+        else {
+            $('.input-images').imageUploader({
+                label: "Drag & Drop files here or click to browse",
+                maxFiles: 1,
+                imagesInputName: 'photos',
+
+            });
+
+            $.ajax({
+                url: "/CitizenId/GetCiticens",
+                data: "",
+                success: function (res) {
+
+                    $("#citizen_citizen_id").append("<option>    </option>");
+                    $.each(res, function (i, r) {
+                        // "+" " + "citizen_first_name"+" "+ "citizen_second_name" + " "+ "citizen_third_name"+" "+ "citizen_fourth_name"
+                        //" + r.citizen_national_id + " " + r.citizen_first_name + " " ++ " " +  + " " + +"
+                        $("#citizen_citizen_id").append("<option value='" + r.citizen_id + "'> " + r.citizen_national_id + " &nbsp;   " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + "   </option>");
+
+                    });
+
+                }
+
+            });
+
+
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            $("#citizen_citizen_id").change(function () {
+
+                var data = $("#citizen_citizen_id").val();
+                $("#Fname").empty();
+
+                $("#Street-Region").empty();
+
+                $("#City-State").empty();
+
+                $("#NationalId").empty();
+                $.ajax({
+
+                    url: "/CitizenID/GetAllInfoAboutCitizenByCitizenId",
+                    data: { Cid: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#Fname").text(r.citizen_first_name);
+                            $("#Street-Region").text(r.address_street + " - " + r.region_name);
+                            $("#City-State").text(r.city_name + " - " + r.state_name);
+                            $("#NationalId").text(r.citizen_national_id);
+
+
+
+
+
+                        });
+
+                    }
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+            });
+
+            $("#citizen_citizen_id").change(function () {
+
+                var data = $("#citizen_citizen_id").val();
+                $("#FatherName").empty();
+
+
+                $.ajax({
+
+                    url: "/CitizenID/GetFatherNameByCitizenId",
+                    data: { Cid: data },
+                    async: false,
+                    success: function (res) {
+
+
+                        $("#FatherName").text(res);
+
+
+                    }
+
+                });
+
+
+
+            });
+
+            var srcImg = $("#photo").attr('src');
+
+        }
+
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById('imm'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/upload-to-cloud/upload-to-cloud.json'
+        });
+
+
+        $('input[type="file"]').attr('name', 'file');
+        $('input[type="file"]').prop('required', true);
+        $("#citizen_citizen_id").select2();
+
+
+        var imgName = $('input[type="file"]').attr('name');
+
+
+        $('input[type="file"]').change(function () {
+
+            var srcImg = $("#photo").attr('src');
+
+            $("#img").attr('src', srcImg)
+
+        });
+
+    });
+    $("#imm").css("height", "120px");
+
+</script>
+<style>
+    input-images:hover {
+        background-color: rgb(234, 234, 234);
+    }
+
+    .aa {
+        height: 100px;
+        width: 100px;
+    }
+</style>
+<div class="container">
+    <h2 class="pp">Create an Id Card</h2>
+    <hr />
+    <form action="/CitizenID/Create" method="post" enctype="multipart/form-data">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label>@Servicely.Languages.Language.Citizen_Name</label>
+                @*@Html.DropDownList("citizen_citizen_id", null, "", new { @class = "form-control", required = "required" })*@
+                <select class="form-control" name="citizen_citizen_id" id="citizen_citizen_id" required>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-5">
+                <div class="input-images" style="border:2px dashed;"></div>
+            </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12" style="width:100%;">
+                        <div class="row">
+                            <div class="ml-3">
+                                <a href="#" id="link"> <i class="far fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div class="card mb-3 ml-3" id="card" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-10">
+                                            <div class="card-body " style="">
+                                                <div class="row mt-3 mb-3" style="width:100%" id="print ">
+                                                    <div class="col-md-12" id="IdCard" style="border:3px solid rgb(44, 44, 45) ;border-radius:10px;">
+                                                        <div class="row" style=" width:100%; ">
+                                                            <div class="col-md-12" id="tb">
+                                                                <div class="row mt-2">
+                                                                    <div class="col-md-8">
+                                                                        <div class="text-center">
+                                                                            <strong class="font-small">@Servicely.Languages.Language.TheEgyptianArabicRepublic </strong>
+                                                                            <br />
+
+                                                                            <strong class="font-small">@Servicely.Languages.Language.IdentificationCard</strong>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 text-center">
+                                                                        <div>
+                                                                            <img src="~/CitizenPhotos/" class="elevation-3 " style="height:100px; width:6rem ; border:1px solid; border-radius:10px; " id="img" />
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class=" @Servicely.Languages.Language.pl-3 ">
+                                                                            <strong class="font-small" id="Fname">   </strong>
+                                                                            <br />
+                                                                            <strong class="font-small" id="FatherName">   </strong>
+                                                                            <br />
+
+                                                                            <strong class="font-small" id="Street-Region">   </strong>
+                                                                            <br />
+                                                                            <strong class="font-small" id="City-State">   </strong>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mt-3 mb-3">
+                                                                    <div class="col-md @Servicely.Languages.Language.pl-3">
+                                                                        <strong class="" id="NationalId">   </strong>
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row mt-3">
+
+        </div>
+
+        <input type="submit" value="@Servicely.Languages.Language.Create" class="mt-3 btn btn-default" />
+    </form>
+
+</div>
+
+
+<div>
+    @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Servicely.Languages.Language.error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modelbody">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Servicely.Languages.Language.Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div id='upload_area' class='dropzone'>Drag & Drop or click to upload files</div>-->

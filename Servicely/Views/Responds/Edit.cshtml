@@ -1,0 +1,49 @@
+﻿@model Servicely.Models.Respond
+
+@{
+    ViewBag.Title = "Create";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<div class="row">
+
+</div>
+<h2>@Servicely.Languages.Language.Edit</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+      
+        <div class="form-horizontal">
+            <h4>Respond</h4>
+            <hr />
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RespondText, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.TextAreaFor(model => model.RespondText, new { @class = "form-control", required = "required" } )
+                    @Html.ValidationMessageFor(model => model.RespondText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+

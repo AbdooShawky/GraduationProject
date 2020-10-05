@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Servicely.Models.CertificateStudentM_M>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Is_Deleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificate.CirtificateTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade.GradeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.SchoolSection)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Is_Deleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certificate.CirtificateTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grade.GradeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.SchoolSection)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

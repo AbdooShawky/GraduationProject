@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Servicely.Models.Certificate>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h4>@Servicely.Languages.Language.Index</h4>
+<h4>@Servicely.Languages.Language.CertificateType</h4>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.CertificateType
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CirtificateTypeNameArabic)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CirtificateTypeName)
+                    </td>
+                }
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.CirtificateTypeName)
+                </td>
+            }
+
+
+
+        <td>
+          
+            <a href='/CertificateTypes/Edit/@item.Id'> <i class="far fa-edit"></i></a>
+            |
+            <a href='/CertificateTypes/Delete/@item.Id'><i class="far fa-trash-alt"></i></a>
+        </td>
+        </tr>
+    }
+
+</table>

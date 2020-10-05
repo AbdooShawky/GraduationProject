@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Index1;
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2>@Servicely.Languages.Language.Index1</h2>
+
+<div class="container-fluid  mt-5" style="border:3px solid rgb(209, 36, 36) ; width:370px;height:300px">
+    <div class="row">
+        <div class="col text-lg-center">
+            <h4 style="color:rgb(209, 36, 36) " class="mt-2">@Servicely.Languages.Language.reservation_success_msg</h4>
+        </div>
+    </div>
+    <div class="text-lg-left form-group">
+
+        <label class="font-weight-bold">@Servicely.Languages.Language.NationalId : </label>
+
+        @Session["nid"]
+
+
+        <br />
+
+        <label class="font-weight-bold">@Servicely.Languages.Language.Name : </label>
+
+        @Session["name"] @Session["sname"] @Session["thname"]
+
+        <br />
+
+        <label class="font-weight-bold">@Servicely.Languages.Language.Document :</label>
+
+        @Session["did"]
+        <br />
+
+        <label class="font-weight-bold">@Servicely.Languages.Language.OfficeName :</label>
+
+        @Session["oid"]
+
+        <br />
+
+        <label class="font-weight-bold">@Servicely.Languages.Language.ReservationDate :</label>
+
+        @Session["date"]
+
+        <br />
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index1</h2>
+

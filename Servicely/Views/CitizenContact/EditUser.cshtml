@@ -1,0 +1,57 @@
+﻿@model Servicely.Models.Contact
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+     Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<h5>@Servicely.Languages.Language.Edit</h5>
+<h5>@Servicely.Languages.Language.MyContacts</h5>
+
+@using (Html.BeginForm())
+{
+
+
+<div class="form-horizontal">
+    <hr />
+
+    @*   <div class="form-group">
+            <label> @Servicely.Languages.Language.CitizenNationalId</label>
+            <div class="col-md-3">
+                @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+            </div>
+        </div>
+    *@
+    <div class="form-group">
+        <label> @Servicely.Languages.Language.ContactType</label>
+        <div class="col-md-3">
+            @Html.DropDownList("contact_contactType_id", null, "", htmlAttributes: new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.contact_id)
+    @Html.HiddenFor(model => model.contact_citizen_id)
+    <div class="form-group">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.ContactData</label>
+            @Html.EditorFor(model => model.contact_data, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+        </div>
+    </div>
+
+
+    <div class="col-md-offset-2 col-md-10">
+        <label style="color:darkred">@ViewBag.ww</label>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "UserIndex")
+</div>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet2" targetNamespace="http://tempuri.org/DataSet2.xsd" xmlns:mstns="http://tempuri.org/DataSet2.xsd" xmlns="http://tempuri.org/DataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet2" msprop:Generator_UserDSName="DataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Marrage" msprop:Generator_TableClassName="MarrageDataTable" msprop:Generator_TableVarName="tableMarrage" msprop:Generator_TablePropName="Marrage" msprop:Generator_RowDeletingName="MarrageRowDeleting" msprop:Generator_RowChangingName="MarrageRowChanging" msprop:Generator_RowEvHandlerName="MarrageRowChangeEventHandler" msprop:Generator_RowDeletedName="MarrageRowDeleted" msprop:Generator_UserTableName="Marrage" msprop:Generator_RowChangedName="MarrageRowChanged" msprop:Generator_RowEvArgName="MarrageRowChangeEvent" msprop:Generator_RowClassName="MarrageRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="WifeName" msprop:Generator_ColumnVarNameInTable="columnWifeName" msprop:Generator_ColumnPropNameInRow="WifeName" msprop:Generator_ColumnPropNameInTable="WifeNameColumn" msprop:Generator_UserColumnName="WifeName" type="xs:string" minOccurs="0" />
+              <xs:element name="HusbandName" msprop:Generator_ColumnVarNameInTable="columnHusbandName" msprop:Generator_ColumnPropNameInRow="HusbandName" msprop:Generator_ColumnPropNameInTable="HusbandNameColumn" msprop:Generator_UserColumnName="HusbandName" type="xs:string" minOccurs="0" />
+              <xs:element name="MirrageDate" msprop:Generator_ColumnVarNameInTable="columnMirrageDate" msprop:Generator_ColumnPropNameInRow="MirrageDate" msprop:Generator_ColumnPropNameInTable="MirrageDateColumn" msprop:Generator_UserColumnName="MirrageDate" type="xs:string" minOccurs="0" />
+              <xs:element name="wifeBirth" msprop:Generator_ColumnVarNameInTable="columnwifeBirth" msprop:Generator_ColumnPropNameInRow="wifeBirth" msprop:Generator_ColumnPropNameInTable="wifeBirthColumn" msprop:Generator_UserColumnName="wifeBirth" type="xs:string" minOccurs="0" />
+              <xs:element name="HusbandBirth" msprop:Generator_ColumnVarNameInTable="columnHusbandBirth" msprop:Generator_ColumnPropNameInRow="HusbandBirth" msprop:Generator_ColumnPropNameInTable="HusbandBirthColumn" msprop:Generator_UserColumnName="HusbandBirth" type="xs:string" minOccurs="0" />
+              <xs:element name="Hrelegion" msprop:Generator_ColumnVarNameInTable="columnHrelegion" msprop:Generator_ColumnPropNameInRow="Hrelegion" msprop:Generator_ColumnPropNameInTable="HrelegionColumn" msprop:Generator_UserColumnName="Hrelegion" type="xs:string" minOccurs="0" />
+              <xs:element name="Wrelegion" msprop:Generator_ColumnVarNameInTable="columnWrelegion" msprop:Generator_ColumnPropNameInRow="Wrelegion" msprop:Generator_ColumnPropNameInTable="WrelegionColumn" msprop:Generator_UserColumnName="Wrelegion" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

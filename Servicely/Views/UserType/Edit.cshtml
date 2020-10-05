@@ -1,0 +1,59 @@
+﻿@model Servicely.Models.User_Type
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+
+    <div class="container-fluid">
+        <h3>@Servicely.Languages.Language.Edit</h3>
+        <h3>@Servicely.Languages.Language.UserType</h3>
+
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+
+            <div class="row fadeIn">
+                @Html.HiddenFor(model => model.user_type_id)
+
+
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.user_type_name_inEnglish</label>
+                    @Html.EditorFor(model => model.user_type_name, new { htmlAttributes = new { @class = "form-control", pattern = "([A-Za-z\\s]{3,20})", required = "required" } })
+
+
+                </div>
+
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.user_type_name_inEnglish</label>
+                    @Html.EditorFor(model => model.user_type_name_arabic, new { htmlAttributes = new { @class = "form-control", Pattern = "([\u0600-\u06FF\\s]{3,20})", required = "required" } })
+
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label style="color:red"> @ViewBag.errMsg </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+                    </div>
+                </div>
+
+                <div class="mt-2" >
+                    @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+                </div>
+            </div>
+        }
+    </div>

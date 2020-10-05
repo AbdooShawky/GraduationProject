@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Indexuser";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark">
+                <div class="inner">
+                   
+                    <p>@Servicely.Languages.Language.Requests</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-paper-plane"></i>
+
+                </div>
+                <a href="/Requests/Create" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark">
+                <div class="inner">
+                 
+
+                    <p>@Servicely.Languages.Language.Reservations</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-ticket-alt"></i>
+
+                </div>
+                <a href="/Reservation/Create" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark">
+                <div class="inner">
+                   
+                    <p>@Servicely.Languages.Language.Healthcares</p>
+                </div>
+                <div class="icon">
+                    <i class=" fa fa-medkit"></i>
+                </div>
+                <a href="/doctorReservation/Create" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark">
+                <div class="inner">
+                 
+
+                    <p>@Servicely.Languages.Language.Vaccinations</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-syringe"></i>
+                </div>
+                <a href="/VaccinationsSchedules/Create" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>

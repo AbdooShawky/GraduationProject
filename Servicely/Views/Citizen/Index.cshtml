@@ -1,0 +1,211 @@
+﻿@model IEnumerable<Servicely.Models.Citizen>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
+
+
+</script>
+
+
+<br />
+<h3>@Servicely.Languages.Language.CitizenBasicInfo</h3>
+<h3>@Servicely.Languages.Language.Index</h3>
+
+<p>
+</p>
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+
+    <thead>
+        <tr>
+            <th class="th-sm">
+                @Servicely.Languages.Language.NationalId
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.CitizenName
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.Gender
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.Relegion
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.BirthPlace
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.BirthDate
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.Operations
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_national_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_first_name_arabic) @Html.DisplayFor(modelItem => item.citizen_second_name_arabic) @Html.DisplayFor(modelItem => item.citizen_third_name_arabic)  @Html.DisplayFor(modelItem => item.citizen_fourth_name_arabic)
+            </td>
+            <td>
+                
+                @if (item.citizen_gender == "Male")
+                {
+                    @Servicely.Languages.Language.Male
+                }
+                else
+                {
+                    @Servicely.Languages.Language.Female
+                }
+            </td>
+            <td>
+
+                @if (item.citizen_relegion == "Muslim")
+                {
+                    
+                <label>مسلم</label>
+                }
+                else if (item.citizen_relegion == "Cristian")
+                {
+                    
+                <label>مسيحي</label>
+                }
+                else if (item.citizen_relegion == "Jewish")
+                {
+
+                    <label>يهودي</label>
+
+                }
+                else
+                {
+                    @item.citizen_relegion
+                }
+
+
+
+
+               
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_birthPlace)
+            </td>
+            <td>
+                @Convert.ToDateTime( item.citizen_birthDate).ToShortDateString()
+            </td>
+            <td>
+                @Html.ActionLink(Servicely.Languages.Language.Edit, "Edit", new { id = item.citizen_id }) |
+                @Html.ActionLink(@Servicely.Languages.Language.Delete, "Delete", new { id = item.citizen_id })
+            </td>
+        </tr>
+
+                }
+                else
+                {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_national_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_first_name) @Html.DisplayFor(modelItem => item.citizen_second_name) @Html.DisplayFor(modelItem => item.citizen_third_name)  @Html.DisplayFor(modelItem => item.citizen_fourth_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_relegion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_birthPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_birthDate)
+            </td>
+            <td>
+                @Html.ActionLink(Servicely.Languages.Language.Edit, "Edit", new { id = item.citizen_id }) |
+                @Html.ActionLink(@Servicely.Languages.Language.Delete, "Delete", new { id = item.citizen_id })
+            </td>
+        </tr>
+                }
+            }
+            else
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_national_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_first_name) @Html.DisplayFor(modelItem => item.citizen_second_name) @Html.DisplayFor(modelItem => item.citizen_third_name)  @Html.DisplayFor(modelItem => item.citizen_fourth_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_relegion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_birthPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.citizen_birthDate)
+            </td>
+            <td>
+                @Html.ActionLink(Servicely.Languages.Language.Edit, "Edit", new { id = item.citizen_id }) |
+                @Html.ActionLink(@Servicely.Languages.Language.Delete, "Delete", new { id = item.citizen_id })
+            </td>
+        </tr>
+            }
+
+            
+        }
+    </tbody>
+
+
+    <tfoot>
+        <tr>
+            <th class="th-sm">
+                @Servicely.Languages.Language.NationalId
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.CitizenName
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.Gender
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.Relegion
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.BirthPlace
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.BirthDate
+            </th>
+            <th class="th-sm">
+                @Servicely.Languages.Language.Operations
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+

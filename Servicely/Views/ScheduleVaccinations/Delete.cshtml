@@ -1,0 +1,104 @@
+﻿@model Servicely.Models.ScheduleVaccM_M
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<h2>@Servicely.Languages.Language.Delete</h2>
+
+<h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4>@Servicely.Languages.Language.ScheduleVaccination</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Servicely.Languages.Language.Appointemnts
+        </dt>
+
+        <dd>
+            @Model.ScheduleVaccination.checkup_date.Value.ToShortDateString() &nbsp;  <span> @Servicely.Languages.Language.From </span> &nbsp; @Html.DisplayFor(modelItem => modelItem.ScheduleVaccination.checkup_start.Value.Hours):@Model.ScheduleVaccination.checkup_start.Value.Minutes &nbsp;<span>@Servicely.Languages.Language.To</span> &nbsp; @Html.DisplayFor(modelItem => modelItem.ScheduleVaccination.checkup_end.Value.Hours):@Model.ScheduleVaccination.checkup_end.Value.Minutes
+
+        </dd>
+
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+                <dt>
+                    @Servicely.Languages.Language.Vaccination_type
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VaccinationType.vaccination_type_name_arabic)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Healthcare
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HealthCare.hospital_name_arabic)
+                </dd>
+            }
+            else
+            {
+                <dt>
+                    @Servicely.Languages.Language.Vaccination_type
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VaccinationType.vaccination_type_name)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Healthcare
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HealthCare.hospital_name)
+                </dd>
+            }
+        }
+        else
+        {
+            <dt>
+                @Servicely.Languages.Language.Vaccination_type
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VaccinationType.vaccination_type_name)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.Healthcare
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HealthCare.hospital_name)
+            </dd>
+        }
+       
+
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Servicely.Languages.Language.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

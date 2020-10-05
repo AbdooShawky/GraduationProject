@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Servicely.Models.DoctorType>
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+     Layout = Session["Layout"].ToString(); 
+    else
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+    <div class="container">
+        <h2>@Servicely.Languages.Language.Index</h2>
+        <h2>@Servicely.Languages.Language.DoctorType</h2>
+
+        <p>
+            @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+        </p>
+
+        <table class="table">
+
+            <h3>@Servicely.Languages.Language.DoctorTypeName</h3>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.doctor_type_name)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink(Servicely.Languages.Language.Edit, "Edit", new { id = item.doctor_type_id }) |
+                        @Html.ActionLink(Servicely.Languages.Language.Delete, "Delete", new { id = item.doctor_type_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>

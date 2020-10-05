@@ -1,0 +1,53 @@
+﻿@model Servicely.Models.Live_Status_Type
+
+@{
+    ViewBag.Title =   Servicely.Languages.Language.Edit;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+    <div class="container-fluid">
+        <h2>  @Servicely.Languages.Language.Edit</h2>
+        <h3>  @Servicely.Languages.Language.LiveSatusType </h3>
+        @using (Html.BeginForm())
+        {
+
+            @Html.HiddenFor(a => a.live_status_type_id)
+
+            <div class="form-horizontal">
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>  @Servicely.Languages.Language.LiveStatusTypeName_inEnglish</label>
+                        @Html.EditorFor(model => model.live_status_type_name, new { htmlAttributes = new { @class = "form-control", Pattern = "[a-zA-Z\\s]{3,20}$", required = "required" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>  @Servicely.Languages.Language.LiveStatusTypeName_inArabic</label>
+                        @Html.EditorFor(model => model.live_status_type_name_arabic, new { htmlAttributes = new { @class = "form-control", Pattern = "[\u0600-\u06FF\\s]{3,20}", required = "required" } })
+                    </div>
+                </div>
+
+
+                @if (ViewBag.errMsgLive != null)
+                {
+                    <label class="text-danger">@ViewBag.errMsgLive</label>
+                }
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+
+    </div>

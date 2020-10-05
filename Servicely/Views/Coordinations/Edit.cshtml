@@ -1,0 +1,177 @@
+﻿@model Servicely.Models.Coordination
+
+@{
+    ViewBag.Title = "Create";
+   if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<script>
+    $(function () {
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+             $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+
+        }
+        else {
+
+         $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityName + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyName + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+        }
+
+
+    });
+</script>
+<h2>@Servicely.Languages.Language.Edit</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <h4>@Servicely.Languages.Language.Coordination</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.UniversityType</label>
+                @Html.DropDownList("UType", null, "", new { @class = "form-control", required = "required" })
+            </div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.University</label>
+                <select class="form-control" required id="U">
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Faculty</label>
+                <select class="form-control" id="FacultyId" name="FacultyId" required>
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.StudentsCount</label>
+                @Html.TextBoxFor(a => a.Size, new { @class = "form-control", required = "required", type = "number", min = "1" })
+                @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Year</label>
+                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control", required = "required", type = "number", min = DateTime.Now.Year, max = DateTime.Now.Year, value = DateTime.Now.Year, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Grade</label>
+                @Html.TextBoxFor(a => a.Grade, new { @class = "form-control", required = "required", type = "number", max = "100", min = "1" })
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+
+
+

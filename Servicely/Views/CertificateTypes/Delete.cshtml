@@ -1,0 +1,60 @@
+﻿@model Servicely.Models.Certificate
+
+@{
+    ViewBag.Title = "Delete";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h3>@Servicely.Languages.Language.Delete</h3>
+<h4>@Servicely.Languages.Language.CertificateType</h4>
+
+<h4>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Servicely.Languages.Language.CertificateType
+        </dt>
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.CirtificateTypeNameArabic)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.CirtificateTypeName)
+                </dd>
+            }
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.CirtificateTypeName)
+            </dd>
+        }
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Servicely.Languages.Language.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

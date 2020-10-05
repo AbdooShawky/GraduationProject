@@ -1,0 +1,39 @@
+﻿@model Servicely.Models.Violation_CarLicenceM_M
+
+@{
+    ViewBag.Title = "Details";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Violation_CarLicenceM_M</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CarLicence.CarName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarLicence.CarName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Violation.ViolationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Violation.ViolationName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

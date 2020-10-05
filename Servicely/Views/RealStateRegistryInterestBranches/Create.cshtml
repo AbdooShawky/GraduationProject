@@ -1,0 +1,382 @@
+﻿
+@model Servicely.Models.RealStateRegistryInterestBranch
+
+@{
+    ViewBag.Title = "Create";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+              $("#State").change(function () {
+            var data = $("#State").val();
+            $("#city").empty();
+            $.ajax({
+                url: "/Addresses/GetCitiesByStateId",
+                data: { stateId: data },
+
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, row) {
+
+                        $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+            var sid = $("#City").val();
+            var ss = $("#city").val();
+            $("#region").empty();
+            $("#district").empty();
+
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                    });
+
+                }
+            });
+
+            var data = $("#region").val();
+
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#realStateRegistryInterest_branch_district_id").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+            });
+
+
+
+        $("#city").change(function () {
+            var ss = $("#city").val();
+            $("#region").empty();
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                    });
+
+                }
+            });
+
+             $("#region").empty();
+            $("#district").empty();
+
+
+
+            var data = $("#region").val();
+
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#realStateRegistryInterest_branch_district_id").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                    });
+                }
+
+
+            });
+        });
+
+        $("#region").change(function () {
+            var data = $("#region").val();
+            $("#district").empty();
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#realStateRegistryInterest_branch_district_id").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+
+
+        });
+
+
+        }
+        else {
+             $("#State").change(function () {
+            var data = $("#State").val();
+            $("#city").empty();
+            $.ajax({
+                url: "/Addresses/GetCitiesByStateId",
+                data: { stateId: data },
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, row) {
+
+                        $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+            var sid = $("#City").val();
+            var ss = $("#city").val();
+            $("#region").empty();
+            $("#realStateRegistryInterest_address").empty();
+
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                    });
+
+                }
+            });
+
+            var data = $("#region").val();
+
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#realStateRegistryInterest_branch_district_id").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+            });
+
+
+
+        $("#city").change(function () {
+            var ss = $("#city").val();
+            $("#region").empty();
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                    });
+
+                }
+            });
+
+             $("#region").empty();
+            $("#realStateRegistryInterest_branch_district_id").empty();
+
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                    });
+
+                }
+            });
+
+            var data = $("#region").val();
+
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#realStateRegistryInterest_branch_district_id").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                    });
+                }
+
+
+            });
+        });
+
+        $("#region").change(function () {
+            var data = $("#region").val();
+            $("#realStateRegistryInterest_branch_district_id").empty();
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#realStateRegistryInterest_branch_district_id").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+
+
+        });
+        }
+
+
+
+    });
+</script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>RealStateRegistryInterestBranch</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>RSRI Branch Name</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.realStateRegistryInterest_branch_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.realStateRegistryInterest_branch_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>RSRI Name</label>
+        <div class="col-md-10">
+            @Html.DropDownList("realStateRegistryInterest_branch_realstate_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.realStateRegistryInterest_branch_realstate_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>RSRI Technical member NID</label>
+        <div class="col-md-10">
+            @Html.DropDownList("realStateRegistryInterest_branch_technical_member_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.realStateRegistryInterest_branch_technical_member_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col mt-3">
+            <label class="label">  @Servicely.Languages.Language.State</label>
+            @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control", required = "required" })
+
+
+        </div>
+
+        <div class="col mt-3">
+            <label class="label">  @Servicely.Languages.Language.City</label>
+            <select required class="form-control" id="city"></select>
+        </div>
+
+        <div class="col mt-3">
+            <label class="label">  @Servicely.Languages.Language.Region</label>
+            <select required class="form-control" id="region" name="district_region_id"></select>
+
+
+        </div>
+
+
+        <div class="col mt-3">
+            <label class="label">  @Servicely.Languages.Language.District</label>
+            <select required class="form-control" id="realStateRegistryInterest_branch_district_id" name="realStateRegistryInterest_branch_district_id">
+            </select>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+    <br />
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

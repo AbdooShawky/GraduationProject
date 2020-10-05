@@ -1,0 +1,299 @@
+﻿@model IEnumerable<Servicely.Models.University>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+   
+}
+    <script>
+
+
+
+
+
+
+    $(document).ready(function () {
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+
+
+
+
+            $("#State").change(function () {
+            var data = $("#State").val();
+            $("#city").empty();
+            $.ajax({
+                url: "/Addresses/GetCitiesByStateId",
+                data: { stateId: data },
+                async: false,
+                success: function (res) {
+                    $("#city").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+
+            });
+
+
+
+
+              $("#city").change(function () {
+            var ss = $("#city").val();
+            $("#region").empty();
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $("#region").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                    });
+
+                }
+            });
+
+             });
+
+
+        $("#region").change(function () {
+            var data = $("#region").val();
+            $("#district").empty();
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                success: function (res) {
+                    $("#district").append("<option> </option>");
+                    $.each(res, function (i, r) {
+
+                        $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+
+
+        });
+
+
+
+                      $("#district").change(function () {
+
+                var data = $(this).val();
+
+                $(".tt").empty();
+                $.ajax({
+
+                    url: "/Universities/GetAllUniversityBydistrictId",
+                    data: {  dis: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#tb").append("<tr class='tt'> <td>  " + r.UniversityNameArabic + " </td> <td> "+r.UniversityTypeNameArabic+" </td> <td> <a href='/Universities/Edit/" + r.Id + "'><i class='far fa-edit'> </i>  </a> | <a href='/Universities/Delete/" + r.Id + "'><i class='far fa-trash-alt'> </i>  </a> </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+
+
+
+        }
+        else {
+
+            $("#State").change(function () {
+            var data = $("#State").val();
+            $("#city").empty();
+            $.ajax({
+                url: "/Addresses/GetCitiesByStateId",
+                data: { stateId: data },
+                async: false,
+                success: function (res) {
+                    $("#city").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+            });
+
+
+
+        $("#city").change(function () {
+            var ss = $("#city").val();
+            $("#region").empty();
+            $.ajax({
+                url: "/Addresses/GetRegionByCityId",
+                data: { CityId: ss },
+                async: false,
+                success: function (res) {
+                    $("#region").append("<option> </option>");
+                    $.each(res, function (i, row) {
+
+                        $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                    });
+
+                }
+            });
+
+        });
+
+        $("#region").change(function () {
+            var data = $("#region").val();
+            $("#district").empty();
+            $.ajax({
+                url: "/Addresses/GetDistrictByRegionId",
+                data: { rId: data },
+                success: function (res) {
+                    $("#district").append("<option> </option>");
+                    $.each(res, function (i, r) {
+
+                        $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                    });
+                }
+
+
+            });
+
+
+
+        });
+
+
+            $("#district").change(function () {
+
+                var data = $(this).val();
+
+                $(".tt").empty();
+                $.ajax({
+
+                    url: "/Universities/GetAllUniversityBydistrictId",
+                    data: {  dis: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#tb").append("<tr class='tt'> <td>  " + r.UniversityName + " </td> <td> "+r.UniversityTypeName+" </td> <td> <a href='/Universities/Edit/" + r.Id + "'><i class='far fa-edit'> </i>  </a> | <a href='/Universities/Delete/" + r.Id + "'><i class='far fa-trash-alt'> </i>  </a> </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+
+        }
+
+
+
+
+    });
+
+
+
+
+
+    </script>
+<h2>@Servicely.Languages.Language.Index</h2>
+<h4>@Servicely.Languages.Language.Universities</h4>
+<hr />
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.State</label>
+            @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control" })
+
+
+        </div>
+
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.City</label>
+            <select class="form-control" id="city"></select>
+        </div>
+
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.Region</label>
+            <select class="form-control" id="region" name="district_region_id"></select>
+
+
+        </div>
+
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.District</label>
+            <select class="form-control" id="district" name="address_district_id">
+            </select>
+
+
+        </div>
+    </div>
+    <div class="row mt-5">
+        <table class="table table-sm table-striped" id="tb">
+            <tr>
+                <th>
+                    @Servicely.Languages.Language.University
+                </th>
+                <th>
+                    @Servicely.Languages.Language.UniversityType
+                </th>
+
+                <th></th>
+            </tr>
+
+        </table>
+    </div>
+</div>
+

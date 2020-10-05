@@ -1,0 +1,220 @@
+﻿@model Servicely.Models.Student
+@{
+    ViewBag.Title = "Create";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script>
+    $(function () {
+
+        $("#Id").select2();
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+             $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+            $("#CitizenId").change(function () {
+            var data = $("#CitizenId").val();
+            $("#studentInfo").empty();
+
+            $.ajax({
+
+
+                url: "/IntermediateRegistration/getDataOfStudent",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    $("#studentInfo").text(  res.citizen_first_name_arabic + " " + res.citizen_second_name_arabic + " " + res.citizen_third_name_arabic + " " + res.citizen_fourth_name_arabic);
+
+
+                }
+
+
+            });
+
+
+
+
+        });
+
+        }
+        else {
+
+         $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityName + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyName + "  </option>");
+                    });
+
+                }
+
+            });
+
+         });
+             $("#CitizenId").change(function () {
+            var data = $("#CitizenId").val();
+            $("#studentInfo").empty();
+
+            $.ajax({
+
+
+                url: "/IntermediateRegistration/getDataOfStudent",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    $("#studentInfo").text( res.citizen_first_name + " " + res.citizen_second_name + " " + res.citizen_third_name + " " + res.citizen_fourth_name);
+
+
+                }
+
+
+            });
+
+
+
+
+        });
+        }
+
+
+    });
+</script>
+<h2>@Servicely.Languages.Language.Create</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <h4>@Servicely.Languages.Language.UniversityRegisteration</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>  @Servicely.Languages.Language.Students </label>
+                @Html.DropDownList("CitizenId", null, "", new { @class = "form-control", required = "required" })
+                <div class="mt-2" id="studentInfo">
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.UniversityType</label>
+                @Html.DropDownList("UType", null, "", new { @class = "form-control", required = "required" })
+            </div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.University</label>
+                <select class="form-control" required id="U" name="UniversityId">
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Faculty</label>
+                <select class="form-control" id="FacultyId" name="FacultyId" required>
+                </select>
+            </div>
+
+        </div>
+
+        if (ViewBag.ErrMessage != null)
+        {
+            <label class="text-danger mb-3">
+                @ViewBag.ErrMessage
+            </label>
+        }
+        <div class="row mt-3">
+
+            <div class="col-md-3">
+                <input type="submit" class="btn btn-default " value="@Servicely.Languages.Language.Create" />
+            </div>
+        </div>
+
+
+
+
+    }
+</div>

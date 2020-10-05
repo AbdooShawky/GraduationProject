@@ -1,0 +1,512 @@
+﻿@model Servicely.Models.Citizen
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+
+
+<style>
+       .button {
+        
+        width: 190px;
+        background: white;
+        color: rgb(209, 36, 36);
+        font-size: 16px;
+        line-height: 25px;
+        padding: 10px 0;
+        border-radius: 15px;
+        cursor: pointer;
+        border-color:rgb(209, 36, 36);
+        outline: rgb(209, 36, 36);
+        border:solid;
+    }
+
+        .button:hover {
+            color: #fff;
+            background-color: rgb(209, 36, 36);
+        }
+</style>
+
+
+<script>
+
+    $(function () {
+
+
+      var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        
+        if (seesion == "ar-EG") {
+
+              // display father name after select NId
+        $("#citizen_father_id").change(function () {
+
+            var data = $("#citizen_father_id").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+        // display mother name after select NId
+        $("#citizen_mother_id").change(function () {
+
+            var data = $("#citizen_mother_id").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        }
+        else {
+              // display father name after select NId
+        $("#citizen_father_id").change(function () {
+
+            var data = $("#citizen_father_id").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+        // display mother name after select NId
+        $("#citizen_mother_id").change(function () {
+
+            var data = $("#citizen_mother_id").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        }
+
+      
+
+
+        $("tb1").find("td").click(function () {
+
+            var daya = $(this).text();
+
+
+
+        });
+        $(document).ready(function () {
+
+
+             $('#citizen_mother_id').select2();
+            
+            $('#citizen_father_id').select2();
+
+            $("#inp").hide();
+            $("#btn").prop('required', false);
+
+            //$("#citizen_mother_id").prop('class', 'selectpicker');
+            //$("#citizen_mother_id").attr('data-live-search', true);
+            //$("#citizen_father_id").prop('class', 'selectpicker');
+            //$("#citizen_father_id").attr('data-live-search', true);
+
+
+
+            $("#bp").change(function () {
+                $("#tb").empty();
+
+                var d = $("#bp").val();
+
+
+                if (d == "other")
+                    $("#tb").append("<tr> <td>" +
+
+                        " <lable>  @Servicely.Languages.Language.Other_inEnglish </lable><br/><input type='text' required class='form-control'  pattern = '[a-zA-Z\s]{3,20}$' name='citizen_birthPlace' id='inputt'/>"                       
+                      +" <lable>  @Servicely.Languages.Language.Other_inArabic </lable><br/><input type='text' required class='form-control'  pattern ='[\u0600-\u06FF\s]{3,20}' name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+
+
+                    );
+                if (d == "Health Center") {
+                    $("#tb").append(" <tr> <td>" +
+                       " <lable> @Servicely.Languages.Language.HealthCenter_English </lable><br/><input type='text' required  pattern = '[a-zA-Z\s]{3,20}$' class='form-control' name='citizen_birthPlace' id='inputt'/>"
+                       +"<lable> @Servicely.Languages.Language.HealthCenter_Arabic </lable><br/><input type='text' required class='form-control' pattern ='[\u0600-\u06FF\s]{3,20}'name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+                    );
+                }
+                if (d == "House") {
+                    $("#tb").append("<tr> <td>" +
+                       " <lable> @Servicely.Languages.Language.House_English </lable><br/><input type='text' required class='form-control' pattern = '[a-zA-Z\s]{3,20}$'name='citizen_birthPlace' id='inputt'/>"
+                        +"<lable> @Servicely.Languages.Language.House_Arabic </lable><br/><input type='text' required class='form-control' pattern ='[\u0600-\u06FF\s]{3,20}' name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+                        
+                    );
+                }
+
+                if (d == "Hospital") {
+
+                    $("#tb").append("<tr> <td>" +
+                          " <lable> @Servicely.Languages.Language.Hospital_English </lable><br/><input type='text' required class='form-control'  pattern = '[a-zA-Z\s]{3,20}$' name='citizen_birthPlace' id='inputt'/>"
+                        + " <lable> @Servicely.Languages.Language.Hospital_Arabic </lable><br/><input type='text' required class='form-control'pattern ='[\u0600-\u06FF\s]{3,20}' name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+                    );
+
+                }
+
+
+            });
+
+            $("#re").change(function () {
+
+                var data = $(this).val();
+                if (data == "Other") {
+                    $("#inp").show();
+                    $("#btn").prop('required', true);
+
+
+
+                }
+                else {
+                    $("#inp").hide();
+                    $("#btn").prop('required', false);
+                }
+            });
+
+        });
+
+      
+   
+
+
+
+    });
+</script>
+<style>
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+
+            <div class="container-fluid  mt-5" >
+
+
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h2 style="color:rgb(209, 36, 36)">@Servicely.Languages.Language.AddCitizen</h2>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-6 ">
+
+                                <img src="~/img/step1.PNG" style="width:300px;height:50px;margin:auto" class="mr-0" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+
+                                <label for="Citizen name">@Servicely.Languages.Language.CitizenName</label>
+
+                                @Html.EditorFor(model => model.citizen_first_name, new { htmlAttributes = new { required = "required", pattern = "^[a-zA-Z\\s]{3,20}$", placeholder = Servicely.Languages.Language.CitizenName, @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+
+                                <label for="Citizen name">@Servicely.Languages.Language.CitizenNameArabic</label>
+
+                                @Html.EditorFor(model => model.citizen_first_name_arabic, new { htmlAttributes = new { required = "required", pattern = "[\u0600-\u06FF]{3,20}", placeholder = Servicely.Languages.Language.CitizenName, @class = "form-control" } })
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="FatherNationalId" >@Servicely.Languages.Language.FatherNationalId</label>
+
+
+                                @Html.DropDownList("citizen_father_id", null, " ", htmlAttributes: new { @class = " select2 form-control"})
+
+                               
+
+                                <div class="mt-2">
+
+                                    <table class=" table  " id="tb1">
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>@Servicely.Languages.Language.MotherNationalId </label>
+                                @Html.DropDownList("citizen_mother_id", null, "", htmlAttributes: new { @class = "selectpicker scrollable form-control", data_live_search="true"})
+                                <div class="mt-2">
+
+                                    <table class=" table  mt-2  " id="tb2">
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+
+                                <label> @Servicely.Languages.Language.BirthPlace</label>
+                                <select class="form-control" id="bp" name="" required>
+                                    <option value="">
+                                    </option>
+                                    <option value="House">
+                                        @Servicely.Languages.Language.House
+                                    </option>
+                                    <option value="Hospital">
+                                        @Servicely.Languages.Language.Hospital
+                                    </option>
+                                    <option value="Health Center">
+                                        @Servicely.Languages.Language.HealthCenter
+                                    </option>
+                                    <option value="other">
+                                        @Servicely.Languages.Language.Other
+                                    </option>
+                                </select>
+
+                                <div class="mt-2">
+                                    <table id="tb" class="table">
+                                    </table>
+                                </div>
+                                
+
+
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label>@Servicely.Languages.Language.BirthDate</label>
+                                @if (DateTime.Now.Month >= 1 && DateTime.Now.Month < 10)
+                                {
+                                    if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                    {
+                                        <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                    }
+                                    else
+                                    {
+                                        <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                    }
+
+
+                                }
+                                else
+                                {
+
+                                    if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                    {
+                                        <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                    }
+                                    else
+                                    {
+                                        <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                    }
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>@Servicely.Languages.Language.Gender</label>
+
+                                <!-- Default inline 1-->
+                                <div class="custom-control custom-radio custom-control-inline ">
+                                    <input type="radio" class="custom-control-input" id="defaultInline1" name="citizen_gender" checked="checked" value="Male">
+                                    <label class="custom-control-label" for="defaultInline1">@Servicely.Languages.Language.Male</label>
+                                </div>
+
+                                <!-- Default inline 2-->
+                                <div class="custom-control custom-radio custom-control-inline ">
+                                    <input type="radio" class="custom-control-input" id="defaultInline2" name="citizen_gender" value="Female">
+                                    <label class="custom-control-label" for="defaultInline2">@Servicely.Languages.Language.Female</label>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>@Servicely.Languages.Language.Relegion</label>
+
+
+                                <div>
+                                    <select class="form-control" name="citizen_relegion" id="re" required>
+
+                                        <option value="">
+                                        </option>
+                                        <option value="Muslim">
+                                            @Servicely.Languages.Language.Muslim
+                                        </option>
+                                        <option value="Cristian">
+                                            @Servicely.Languages.Language.Cristian
+                                        </option>
+                                        <option value="Jewish">
+                                            @Servicely.Languages.Language.Jewish
+                                        </option>
+
+                                        <option value="Other">
+                                            @Servicely.Languages.Language.Other
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="mt-3 mb-3" id="inp">
+
+                                    <input type="text" class="form-control mb-2" id="btn" name="citizen_relegion" />
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+
+                        <div class="col-md-3">
+                            <button type="submit" class="btn  button  float-right">
+
+                                @Servicely.Languages.Language.Step2
+                            </button>
+
+                            
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+                }
+
+
+
+            </div>
+
+
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

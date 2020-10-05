@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Servicely.Models.service>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <script>
+    $(function () {
+
+        $("#Gove").select2();
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+           $("#Gove").change(function () {
+
+                var ttid = $("#Gove").val();
+
+                $.ajax({
+                    url: "/services/GetAllServicesByGId",
+                    data: { Id: ttid },
+                    success: function (res) {
+                        $(".tt").empty();
+
+                        $.each(res, function (i, row) {
+
+                          $("#tb1").append("<tr class='tt'><td> "  + row.service_name_arabic + " </td><td> " + row.service_time + " </td><td> " + row.service_price + " </td>   <td><a href='/services/Edit/" + row.service_id + "'><i class='far fa-edit'></i></a> | <a href='/services/Delete/" + row.service_id + "'><i class='far fa-trash-alt' ></i></a>   </td></tr>");
+
+                        });
+
+                    }
+
+
+                });
+
+
+
+
+            });
+
+        }
+
+        else
+        {
+             $("#Gove").change(function () {
+
+                var ttid = $("#Gove").val();
+
+                $.ajax({
+                    url: "/services/GetAllServicesByGId",
+                    data: { Id: ttid },
+                    success: function (res) {
+                        $(".tt").empty();
+
+                        $.each(res, function (i, row) {
+
+                          $("#tb1").append("<tr class='tt'><td> "  + row.service_name + " </td><td> " + row.service_time + " </td><td> " + row.service_price + " </td>   <td><a href='/services/Edit/" + row.service_id + "'><i class='far fa-edit'></i></a> | <a href='/services/Delete/" + row.service_id + "'><i class='far fa-trash-alt' ></i></a>   </td></tr>");
+
+                        });
+
+                    }
+
+
+                });
+
+
+
+
+            });
+        }
+        //<i class="far fa-edit"></i></a>
+
+        //><i class="far fa-trash-alt"></i>
+        //$.ajax({
+        //    url: "/Document/GetAllDocument",
+        //    data: "",
+        //    success: function (res) {
+
+        //        $.each(res, function (i, row) {
+
+        //            $("#tb1").append("<tr class='tt'><td> " + row.citizen_national_id + " </td><td> " + row.document_type_name + " </td><td> " + row.document_name + " </td>  <td> " + row.document_extensions + " </td><td> " + row.document_data + " </td>  <td><a href='/Document/Edit/" + row.document_id + "'>Edit</a> | <a href='/Document/Delete/" + row.document_id + "'>Delete</a>   </td></tr>");
+        //        });
+        //    }
+
+
+        //});
+
+    });
+
+    </script>
+    <div class="container-fluid">
+        <h2>@Servicely.Languages.Language.Index</h2>
+
+        <p>
+            @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+        </p>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DropDownList("Gove", null, "", new { @class = "form-control" })
+            </div>
+        </div>
+        <table class="table mt-3" id="tb1">
+            <tr>
+
+                <th>
+                    @Servicely.Languages.Language.service_name
+                </th>
+                <th>
+                    @Servicely.Languages.Language.service_time
+                </th>
+               
+                <th>
+                    @Servicely.Languages.Language.Service_price
+                </th>
+                <th></th>
+            </tr>
+
+
+
+        </table>
+    </div>
+

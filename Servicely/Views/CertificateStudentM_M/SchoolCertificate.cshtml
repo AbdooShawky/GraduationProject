@@ -1,0 +1,486 @@
+﻿
+@{
+    ViewBag.Title = "SchoolCertificate";
+   if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script src="~/jasonday-printThis-0aa7434/printThis.js"></script>
+<script src="~/qrCodeJs/qrcode.min.js"></script>
+
+<script>
+        $(function () {
+              $("#StudentId").select2();
+            $("#section").hide();
+            var seesion;
+            $.ajax({
+                url: "/Addresses/Sessionvalue",
+                data: "",
+                async: false,
+                success: function (res) {
+
+                    seesion = res;
+
+                }
+            });
+              $("#Student").change(function () {
+                  // empty fields
+                   $("#Name").empty();
+                  $("#NationalId").empty();
+                  $("#qrcode").empty();
+                   $("#School").empty();
+                                $("#Grade").empty();
+                                $("#SchoolSection").empty();
+                                $("#dir").empty();
+                                $("#adminstration").empty();
+
+                 
+                  var data = $("#Student").val();
+                 
+                  
+                  $("#section").hide();
+
+                  if (data == 1) {
+                   $("#CertificateName").text("@Servicely.Languages.Language.Shigh_school_certificate");
+                      $("#section").show();
+                  }
+                  if (data == 2) {
+                   $("#CertificateName").text("@Servicely.Languages.Language.middle_School_certificate");
+                      $("#section").hide();
+                  }
+                  if (data == 3) {
+                   $("#CertificateName").text("@Servicely.Languages.Language.Primary_certificate");
+                       $("#section").hide();
+                  }
+
+
+                  $("#StudentId").empty();
+                  $("#SchoolSection").empty();
+                    $.ajax({
+                        url: "/CertificateStudentM_M/GetAllStudentByPhase",
+                        data: { Id: data },
+                        async:false,
+                        success: function (res) {
+                           $("#StudentId").append("<option > </option>");
+
+                            $.each(res, function (i, r) {
+
+                                // $("#Table").append("<tr class='tt'>  <td> " + r.DirectorateName + "  </td>   <td>  <a  href='/EducationDirectorates/Edit/" + r.Id + "'> <i class='far fa-edit'></i></a> | <a  href='/EducationDirectorates/Delete/" + r.Id + "'> <i class='far fa-trash-alt'></i></a>  </td>  </tr>")
+                                $("#StudentId").append("<option value='" + r.Id + "'>  "+r.citizen_national_id+"  </option>");
+                            });
+                        }
+
+
+
+                    });
+
+
+              });
+
+
+            $("#StudentId").change(function () {
+                var data = $(this).val();
+                 $('#img').empty();
+                var img = $('#img');
+                img.attr("src", "https://localhost:44389/api/Photos?Id1="+ data );
+                //   $.ajax({
+
+
+                //    url: "/CertificateStudentM_M/GetPhotoByStudentId",
+                //    data: { Id: $("#StudentId").val() },
+                //    async:false,
+                //    success: function (res) {
+                       
+                        
+                       
+                        
+                //    }
+
+                //});
+               
+
+
+
+
+
+
+
+                 // get image file of the student
+                  // $("#image").attr("src", "https://localhost:44389/api/Photos?Id=" + data);
+                    var qr;
+                    // qr code
+               $("#qrcode").empty();
+            $.ajax({
+
+                url: "/CertificateStudentM_M/GetCitizenQRCode1",
+                data: {cid:data},
+                async: false,
+                success: function (res) {
+
+                    qr = res;
+
+            }
+
+            });
+
+               var q = new QRCode("qrcode", {
+                   text: qr,
+                   width: 60,
+                   height:60,
+                   colorDark : "#000000",
+                   colorLight : "#ffffff",
+                   correctLevel : QRCode.CorrectLevel.H
+              });
+                $("#aa").addClass("text-center")
+
+
+            });
+
+            if (seesion == "ar-EG") {
+                 $("#StudentId").change(function () {
+
+
+
+
+                    // empty the certificate
+                    $("#School").empty();
+                    $("#Grade").empty();
+                                $("#SchoolSection").empty();
+                                $("#dir").empty();
+                                $("#adminstration").empty();
+
+                    var data = $("#StudentId").val();
+                    var data1 = $("#Student").val();
+
+                    $.ajax({
+                        url: "/CertificateStudentM_M/GetGradesOfStudentByIdAndPhase",
+                        data: { Id: data , ph:data1 },
+                        async:false,
+                        success: function (res) {
+
+
+
+
+                                $("#School").text(res.SchoolNameArabic);
+                            $("#Grade").text(res.GradeNameArabic);
+                            if (res.SchoolSection == "Scientific") {
+                                $("#SchoolSection").text("علمي");
+                            }
+                            else {
+                                $("#SchoolSection").text("أدبي");
+                            }
+                                
+                                $("#dir").text(res.state_arabic_name);
+                                $("#adminstration").text(res.DirectorateNameArabic);
+
+
+
+
+                        }
+
+
+
+                    });
+
+                     $("#Name").empty();
+                     $("#NationalId").empty();
+
+                    $.ajax({
+                        url: "/CertificateStudentM_M/GetAllInfoOfStudentByPaseAndSTudentId",
+                        data: { Id: data , ph:data1 },
+                        async:false,
+                        success: function (res) {
+
+
+                           // alert( res.citizen_first_name_arabic+res.citizen_second_name_arabic+res.citizen_third_name_arabic+res.citizen_fourth_name_arabic)
+                                $("#Name").text(res.citizen_first_name_arabic +" "+ res.citizen_second_name_arabic +" "+ res.citizen_third_name_arabic+" "+ res.citizen_fourth_name_arabic);
+
+                            $("#NationalId").text(res.citizen_national_id);
+
+
+
+
+
+                        }
+
+
+
+                    });
+
+                });
+            }
+            else {
+
+                $("#StudentId").change(function () {
+
+
+
+
+                    // empty the certificate
+                    $("#School").empty();
+                                $("#Grade").empty();
+                                $("#SchoolSection").empty();
+                                $("#dir").empty();
+                                $("#adminstration").empty();
+
+                    var data = $("#StudentId").val();
+                    var data1 = $("#Student").val();
+
+                    $.ajax({
+                        url: "/CertificateStudentM_M/GetGradesOfStudentByIdAndPhase",
+                        data: { Id: data , ph:data1 },
+                        async:false,
+                        success: function (res) {
+
+
+
+
+                                $("#School").text(res.SchoolName);
+                                $("#Grade").text(res.GradeName);
+                                $("#SchoolSection").text(res.SchoolSection);
+                                $("#dir").text(res.state_name);
+                                $("#adminstration").text(res.DirectorateName);
+
+
+
+
+                        }
+
+
+
+                    });
+
+                     $("#Name").empty();
+                     $("#NationalId").empty();
+
+                    $.ajax({
+                        url: "/CertificateStudentM_M/GetAllInfoOfStudentByPaseAndSTudentId",
+                        data: { Id: data , ph:data1 },
+                        async:false,
+                        success: function (res) {
+
+
+                           // alert( res.citizen_first_name_arabic+res.citizen_second_name_arabic+res.citizen_third_name_arabic+res.citizen_fourth_name_arabic)
+                                $("#Name").text(res.citizen_first_name +" "+ res.citizen_second_name +" "+ res.citizen_third_name+" "+ res.citizen_fourth_name);
+
+                            $("#NationalId").text(res.citizen_national_id);
+
+
+
+
+
+                        }
+
+
+
+                    });
+
+                });
+            }
+
+
+        });
+</script>
+
+<style>
+    .bord {
+        text-align: center;
+        border: 1px solid #000;
+        line-height: 0.1em;
+       
+    }
+
+    .dot {
+        /*border-radius: 50%;*/
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: white;
+    }
+</style>
+<div class="container">
+
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Phases</label>
+            @Html.DropDownList("Student", null, "", new { @class = "form-control", required = "required" })
+
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Students</label>
+            <select class="form-control" id="StudentId">
+            </select>
+        </div>
+
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <div class="container mt-4" style="border: 2px solid;  border-radius: 10px; ">
+                <div class="row">
+                    <div class="col-md-4 text-center ">
+                        <div class="container">
+                            <div class="row">
+                                <div class=" @Servicely.Languages.Language.pl-3 col-md-12 @Servicely.Languages.Language.text_left  mt-3" style="border:solid 1px; border-radius: 10px; height:140px;">
+                                    <h6 class="font-weight-bold mt-4">
+                                        @Servicely.Languages.Language.General_Administration_for_Examinations
+                                    </h6>
+
+                                    <h6 class="font-weight-bold">
+                                        @Servicely.Languages.Language.High_school_completion_certificate
+                                    </h6>
+                                    <h6 class="font-weight-bold" style="display:inline">
+                                        @Servicely.Languages.Language.Year
+                                    </h6>
+                                    <h6 class="font-weight-bold" style="display:inline" id="year">
+                                    </h6>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 @Servicely.Languages.Language.text_left ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="mb-2 col-md-12 text-center mt-3" style="border:solid 1px; border-radius: 10px;height:140px;">
+
+
+
+                                    <img src="~/Images/Ministry of Education-Egypt.png" class="image mt-2" style="width:115px; height:100px;" />
+
+                                    <h6 class="font-weight-bold mt-2" id="CertificateName" style="color:royalblue">
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 text-center ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12  mt-3" style="border:solid 1px; border-radius: 10px; height:140px;">
+                                    <img src="~/CitizenPhotos/" id="img" class="image mt-3" style="width:115px; height:100px;" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+                <div class=" mt-3  bord container-fluid">
+                    <span class="dot pl-3 pr-3 mt-3 mb-3 font-weight-bold"> @Servicely.Languages.Language.StudentInfo</span>
+                    <div class="row mt-5 ">
+                        <div class="col-md-8 @Servicely.Languages.Language.text_left @Servicely.Languages.Language.pl-3 ">
+                            <h6 class="font-weight-bold" style="display:inline">
+                                @Servicely.Languages.Language.StudentName / &ensp;
+
+                            </h6>
+                            <h6 class="font-weight-bold" style="display:inline;color:royalblue" id="Name">
+                            </h6>
+                        </div>
+                        <div class="col-md-4 @Servicely.Languages.Language.text_left @Servicely.Languages.Language.pl-3  ">
+                            <h6 class="font-weight-bold" style="display:inline">
+                                @Servicely.Languages.Language.NationalId /
+
+                            </h6>
+                            <h6 class="font-weight-bold" style="display:inline ;color:royalblue" id="NationalId">
+                            </h6>
+                        </div>
+
+                    </div>
+                    <div class="row mt-3 " id="section">
+                        <div class="col-md-5 @Servicely.Languages.Language.text_left @Servicely.Languages.Language.pl-3  ">
+                            <h6 class="font-weight-bold" style="display:inline">
+                                @Servicely.Languages.Language.SchoolSection / &ensp;
+
+                            </h6>
+                            <h6 class="font-weight-bold" style="display:inline ;color:royalblue" id="SchoolSection">
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row mt-3 ">
+                        <div class="col-md-12 @Servicely.Languages.Language.text_left @Servicely.Languages.Language.pl-3 ">
+                            <h6 class="font-weight-bold" style="display:inline">
+                                @Servicely.Languages.Language.Grade / &ensp;
+
+                            </h6>
+                            <h6 class="font-weight-bold" style="display:inline ;color:royalblue" id="Grade">
+                            </h6>
+                        </div>
+
+                    </div>
+                    <div class="row mt-3 mb-4">
+                        <div class="col-md-5 @Servicely.Languages.Language.text_left @Servicely.Languages.Language.pl-3 ">
+                            <h6 class="font-weight-bold" style="display:inline">
+                                @Servicely.Languages.Language.SchoolName / &ensp;
+
+                            </h6>
+                            <h6 class="font-weight-bold" style="display:inline ;color:royalblue" id="School">
+                            </h6>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class=" mt-3 mb-2 bord container-fluid">
+                    <span class="dot pl-3 pr-3 mt-3 mb-3 font-weight-bold"> @Servicely.Languages.Language.EducationDirectorate</span>
+                    <div class="row mt-5 ">
+                        <div class="col-md-8 @Servicely.Languages.Language.text_left @Servicely.Languages.Language.pl-3 ">
+                            <h6 class="font-weight-bold" style="display:inline">
+                                @Servicely.Languages.Language.DirectorateName / &ensp;
+
+                            </h6>
+                            <h6 class="font-weight-bold" style="display:inline ;color:royalblue" id="dir">
+                            </h6>
+                        </div>
+                        <div class="col-md-4 text-center " id="aa">
+                           
+                            <div id="qrcode" class="float-md-right @Servicely.Languages.Language.mr_4"></div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-3 mb-4">
+                        <div class="col-md-8 @Servicely.Languages.Language.text_left @Servicely.Languages.Language.pl-3 ">
+                            <h6 class="font-weight-bold" style="display:inline">
+                                @Servicely.Languages.Language.Directorate / &ensp;
+
+                            </h6>
+                            <h6 class="font-weight-bold" style="display:inline ;color:royalblue" id="adminstration">
+                            </h6>
+                        </div>
+                        
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+</div>
+
+

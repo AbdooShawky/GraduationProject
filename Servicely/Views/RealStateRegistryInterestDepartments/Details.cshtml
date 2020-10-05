@@ -1,0 +1,39 @@
+﻿@model Servicely.Models.RealStateRegistryInterestDepartment
+
+@{
+    ViewBag.Title = "Details";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RealStateRegistryInterestDepartment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterestDepartments_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterestDepartments_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterestDepartments_isDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterestDepartments_isDeleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.realStateRegistryInterestDepartments_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

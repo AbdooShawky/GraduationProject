@@ -1,0 +1,1824 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutServicely" xml:space="preserve">
+    <value> GSE حول</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>اضف</value>
+  </data>
+  <data name="AddCitizen" xml:space="preserve">
+    <value>أضافة مواطن جديد </value>
+  </data>
+  <data name="AddHealthCare" xml:space="preserve">
+    <value>أضافة منشأة صحية</value>
+  </data>
+  <data name="AddHealthCareSchedule" xml:space="preserve">
+    <value>أضافة جدول لمنشأة صحية</value>
+  </data>
+  <data name="Addnewcitizen" xml:space="preserve">
+    <value>إضافة مواطن جديد</value>
+  </data>
+  <data name="AddNewDoctor" xml:space="preserve">
+    <value>أضافة طبيب جديد</value>
+  </data>
+  <data name="AddNewStudent" xml:space="preserve">
+    <value>إضافة طالب جديد</value>
+  </data>
+  <data name="AddNewUser" xml:space="preserve">
+    <value>إضافة مستخدم جديد</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="AddressDeleteMessage1" xml:space="preserve">
+    <value>لا يمكن حذف هذا العنوان لانه عنوانه الحالي</value>
+  </data>
+  <data name="Addresses" xml:space="preserve">
+    <value>العنواين  الخاصة بي</value>
+  </data>
+  <data name="Address_inArabic" xml:space="preserve">
+    <value>العنوان بالعربية</value>
+  </data>
+  <data name="Address_Of_Citizen" xml:space="preserve">
+    <value>عنوان المواطن</value>
+  </data>
+  <data name="AddSocialStatus" xml:space="preserve">
+    <value>أضافة الحالة الاجتماعية</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>أضافة متسخدم جديد</value>
+  </data>
+  <data name="AddUserType" xml:space="preserve">
+    <value>أضافة نوع مستخدم جديد</value>
+  </data>
+  <data name="AddVaccinationSchedule" xml:space="preserve">
+    <value>إضافة جدول التطعيم</value>
+  </data>
+  <data name="AdNewAddress" xml:space="preserve">
+    <value>إضافة عنوان جديد للمواطن</value>
+  </data>
+  <data name="Age_at_Death" xml:space="preserve">
+    <value>العمر عند الوفاة</value>
+  </data>
+  <data name="AllDoctorType" xml:space="preserve">
+    <value>جميع انواع الأطباء</value>
+  </data>
+  <data name="AllUsers" xml:space="preserve">
+    <value>جميع المستخدمين</value>
+  </data>
+  <data name="All_rights_reserved" xml:space="preserve">
+    <value>جميع الحقوق محفوظة</value>
+  </data>
+  <data name="All_Specialization_Types" xml:space="preserve">
+    <value>جميع أنواع التخصصات</value>
+  </data>
+  <data name="already" xml:space="preserve">
+    <value>موجود مسبقا</value>
+  </data>
+  <data name="AlreadyDied" xml:space="preserve">
+    <value>هو بالفعل مسجل كامتوفي</value>
+  </data>
+  <data name="Already_exist_for_this_citizen" xml:space="preserve">
+    <value>موجودة بالفعل لهذا المواطن</value>
+  </data>
+  <data name="already_exist_go_to_edit_page_to_make_changes" xml:space="preserve">
+    <value>موجود بالفعل انتقل إلى تحرير الصفحة لإجراء تغييرات</value>
+  </data>
+  <data name="already_exist_in_this_state" xml:space="preserve">
+    <value>موجودة بالفعل في هذه المحافظة</value>
+  </data>
+  <data name="ApplicationDirection" xml:space="preserve">
+    <value>RTL.css</value>
+  </data>
+  <data name="Appointemnts" xml:space="preserve">
+    <value>المواعيد</value>
+  </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>المواعيد</value>
+  </data>
+  <data name="ar" xml:space="preserve">
+    <value>العربية</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>عربي</value>
+  </data>
+  <data name="arabic.css" xml:space="preserve">
+    <value>arabic.css</value>
+  </data>
+  <data name="arabicModel_css" xml:space="preserve">
+    <value>arabicModel.css</value>
+  </data>
+  <data name="ArabicStreetName" xml:space="preserve">
+    <value>اسم الشارع باللغة العربية </value>
+  </data>
+  <data name="AreyousureyouwanttodeletethisHealthCareSchedule" xml:space="preserve">
+    <value>هل تريد بالتأكيد حذف جدول المنشأة صحية هذا؟</value>
+  </data>
+  <data name="Areyousureyouwanttosave" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد الحفظ؟</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_this_" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد حذف هذا؟</value>
+  </data>
+  <data name="BaasicInformation" xml:space="preserve">
+    <value>معلومات اساسية</value>
+  </data>
+  <data name="Back_to_List" xml:space="preserve">
+    <value>الرجوع للقائمة</value>
+  </data>
+  <data name="Behind_the_card" xml:space="preserve">
+    <value>الجهه الخلفيه من البطاقة</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="BirthDateWithPoint" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="BirthInformation" xml:space="preserve">
+    <value>بيانات الميلاد</value>
+  </data>
+  <data name="BirthPlace" xml:space="preserve">
+    <value>مكان الميلاد</value>
+  </data>
+  <data name="Birth_Certificate" xml:space="preserve">
+    <value>شهادة الميلاد</value>
+  </data>
+  <data name="Birth_Document" xml:space="preserve">
+    <value>وثيقة الميلاد</value>
+  </data>
+  <data name="BornIn" xml:space="preserve">
+    <value>المولود في </value>
+  </data>
+  <data name="Botharenotmarriedtoeachother" xml:space="preserve">
+    <value>كلاهما غير متزوجين لبعضهما البعض</value>
+  </data>
+  <data name="car" xml:space="preserve">
+    <value>السيارة</value>
+  </data>
+  <data name="CarCode" xml:space="preserve">
+    <value>كود السيارة</value>
+  </data>
+  <data name="CarLicence" xml:space="preserve">
+    <value>رخصة السيارة</value>
+  </data>
+  <data name="CarModel" xml:space="preserve">
+    <value>موديل العربية</value>
+  </data>
+  <data name="CarName" xml:space="preserve">
+    <value>اسم السيارة </value>
+  </data>
+  <data name="CarNameArabic" xml:space="preserve">
+    <value>اسم السيارة بالعربية</value>
+  </data>
+  <data name="CarNameEn" xml:space="preserve">
+    <value>اسم السيارة بالانجليزية</value>
+  </data>
+  <data name="Cars" xml:space="preserve">
+    <value>السيارات</value>
+  </data>
+  <data name="Certificate" xml:space="preserve">
+    <value>الشهادة</value>
+  </data>
+  <data name="CertificateGraduate" xml:space="preserve">
+    <value>شهادات الخريجين</value>
+  </data>
+  <data name="CertificateNameAr" xml:space="preserve">
+    <value>اسم نوع الشهادة بالعربية</value>
+  </data>
+  <data name="CertificateNameEn" xml:space="preserve">
+    <value>اسم نوع الشهادة بالانجليزية</value>
+  </data>
+  <data name="CertificateType" xml:space="preserve">
+    <value>أنواع الشهادات</value>
+  </data>
+  <data name="certifies" xml:space="preserve">
+    <value>أن</value>
+  </data>
+  <data name="Checked" xml:space="preserve">
+    <value>تم الفحص</value>
+  </data>
+  <data name="CheckUPDate" xml:space="preserve">
+    <value>موعد الفحص</value>
+  </data>
+  <data name="CheckUPEnd" xml:space="preserve">
+    <value>نهايه الفحص</value>
+  </data>
+  <data name="CheckUPStart" xml:space="preserve">
+    <value>بداية الفحص</value>
+  </data>
+  <data name="checkup_number" xml:space="preserve">
+    <value>عدد الفحوصات</value>
+  </data>
+  <data name="Child_Information" xml:space="preserve">
+    <value>بيانات الطفل</value>
+  </data>
+  <data name="Choosefile" xml:space="preserve">
+    <value>اختر الملف</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>المدن</value>
+  </data>
+  <data name="Citizen" xml:space="preserve">
+    <value>المواطن</value>
+  </data>
+  <data name="CitizenAddedSuccessfully" xml:space="preserve">
+    <value>تمت إضافة المواطن بنجاح</value>
+  </data>
+  <data name="CitizenAlreadExist" xml:space="preserve">
+    <value>المواطن موجود بالفعل</value>
+  </data>
+  <data name="CitizenAlreadyExist" xml:space="preserve">
+    <value>هذا المواطن موجود بالفعل</value>
+  </data>
+  <data name="Citizenalreadymarried4" xml:space="preserve">
+    <value>المواطن متزوج اربعة بالفعل</value>
+  </data>
+  <data name="CitizenBalance" xml:space="preserve">
+    <value>حساب المواطن</value>
+  </data>
+  <data name="CitizenBasicInfo" xml:space="preserve">
+    <value>بيانات المواطن الأساسية</value>
+  </data>
+  <data name="CitizenName" xml:space="preserve">
+    <value>اسم المواطن</value>
+  </data>
+  <data name="CitizenNameArabic" xml:space="preserve">
+    <value>اسم المواطن باللغه العربية</value>
+  </data>
+  <data name="CitizenNationalId" xml:space="preserve">
+    <value>رقم القومي للمواطن </value>
+  </data>
+  <data name="Citizen_already_has_this_address" xml:space="preserve">
+    <value>المواطن لديه هذا العنوان بالفعل</value>
+  </data>
+  <data name="citizen_balance" xml:space="preserve">
+    <value>حساب المواطن موجود بالفعل </value>
+  </data>
+  <data name="Citizen_Contacts" xml:space="preserve">
+    <value>جهات إتصال المواطن</value>
+  </data>
+  <data name="Citizen_Documents" xml:space="preserve">
+    <value>مستندات المواطن</value>
+  </data>
+  <data name="Citizen_Name" xml:space="preserve">
+    <value>اسم المواطن</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينه</value>
+  </data>
+  <data name="CityName" xml:space="preserve">
+    <value>اسم المدينة بالعربية</value>
+  </data>
+  <data name="City_already_exist" xml:space="preserve">
+    <value>المدينة موجودة بالفعل</value>
+  </data>
+  <data name="City_Name" xml:space="preserve">
+    <value>اسم المدينة</value>
+  </data>
+  <data name="City_Name_Arabic" xml:space="preserve">
+    <value>اسم المدينة باللغه العربية</value>
+  </data>
+  <data name="Civil_Registry_Sector" xml:space="preserve">
+    <value>قطاع السجل المدني</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>كود</value>
+  </data>
+  <data name="Code_already_exist" xml:space="preserve">
+    <value>الرمز موجود بالفعل</value>
+  </data>
+  <data name="Collegeofcertifies" xml:space="preserve">
+    <value>تشهد كلية</value>
+  </data>
+  <data name="Complain" xml:space="preserve">
+    <value>الشكوى</value>
+  </data>
+  <data name="Complains" xml:space="preserve">
+    <value>الشكاوى</value>
+  </data>
+  <data name="ComplainsAndResponds" xml:space="preserve">
+    <value>الشكاوى والردود</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>التأكيد</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="CongratulationsYouSignUpSuccessfully" xml:space="preserve">
+    <value>مبروك قمت بالتسجيل بنجاح</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>جهة الاتصال</value>
+  </data>
+  <data name="contactALREADY" xml:space="preserve">
+    <value>جهة الاتصال موجوده بالفعل</value>
+  </data>
+  <data name="ContactData" xml:space="preserve">
+    <value>بيانات الاتصال</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>معلومات الاتصال</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>جهات الاتصال</value>
+  </data>
+  <data name="ContactType" xml:space="preserve">
+    <value>نوع جهة الاتصال</value>
+  </data>
+  <data name="contactTypeErrorMsg1" xml:space="preserve">
+    <value>هناك نوع جهة اتصال بنفس الاسم</value>
+  </data>
+  <data name="ContactTypeName" xml:space="preserve">
+    <value>اسم نوع جهة الاتصال</value>
+  </data>
+  <data name="ContactTypeNameArabic" xml:space="preserve">
+    <value>اسم نوع جهة الاتصال بالعربية</value>
+  </data>
+  <data name="Contact_type_already_exist" xml:space="preserve">
+    <value>نوع جهة الاتصال موجود بالفعل</value>
+  </data>
+  <data name="Contact_type_description" xml:space="preserve">
+    <value>وصف نوع جهة الاتصال</value>
+  </data>
+  <data name="Contact_type_description_arabic" xml:space="preserve">
+    <value>وصف نوع جهة الاتصال بالعربية</value>
+  </data>
+  <data name="Control_Panel" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="Coordination" xml:space="preserve">
+    <value>التنسيق</value>
+  </data>
+  <data name="CoordinationErr" xml:space="preserve">
+    <value>هذا التنسيق موجود بالفعل</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>حقوق الملكية</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>إنشاء</value>
+  </data>
+  <data name="Create_New" xml:space="preserve">
+    <value>أنشئ جديد</value>
+  </data>
+  <data name="Cristian" xml:space="preserve">
+    <value>مسيحي</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>لوحة القيادة</value>
+  </data>
+  <data name="Dashboard_1" xml:space="preserve">
+    <value>لوحة القيادة 1</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>تاريخ</value>
+  </data>
+  <data name="Datee" xml:space="preserve">
+    <value>بتاريخ</value>
+  </data>
+  <data name="day" xml:space="preserve">
+    <value>يوم</value>
+  </data>
+  <data name="day_full" xml:space="preserve">
+    <value>هذا اليوم ممتلئ</value>
+  </data>
+  <data name="day_is_full_choose_another_date" xml:space="preserve">
+    <value>اليوم مليء اختيار تاريخ آخر</value>
+  </data>
+  <data name="deathCause" xml:space="preserve">
+    <value>سبب الوفاة</value>
+  </data>
+  <data name="deathCause_inArabic" xml:space="preserve">
+    <value>سبب الوفاة بالعربية</value>
+  </data>
+  <data name="deathCause_inEnglish" xml:space="preserve">
+    <value>سبب الوفاة بالانجليزية</value>
+  </data>
+  <data name="DeathDate" xml:space="preserve">
+    <value>تاريخ الوفاة</value>
+  </data>
+  <data name="DeathInformation" xml:space="preserve">
+    <value>بيانات الوفاة</value>
+  </data>
+  <data name="DeathPlace" xml:space="preserve">
+    <value>مكان الوفاه</value>
+  </data>
+  <data name="DeathPlace_inArabic" xml:space="preserve">
+    <value>مكان الوفاة بالعربية</value>
+  </data>
+  <data name="Death_Document" xml:space="preserve">
+    <value>وثيقة وفاة</value>
+  </data>
+  <data name="Deceased" xml:space="preserve">
+    <value>المتوفي</value>
+  </data>
+  <data name="DeceasedDeathDate" xml:space="preserve">
+    <value>تاريخ الوفاة المتوفى</value>
+  </data>
+  <data name="DeceasedInformation" xml:space="preserve">
+    <value>بيانات المتوفي</value>
+  </data>
+  <data name="deceased_deathPlace_inEnglish" xml:space="preserve">
+    <value>مكان الوفاة بالانجليزية</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="DeletedSuccessfully" xml:space="preserve">
+    <value>تم المسح بنجتح</value>
+  </data>
+  <data name="DeleteSocialStatus" xml:space="preserve">
+    <value>حذف الحالة الاجتماعية</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  <data name="Directorate" xml:space="preserve">
+    <value>مدرية التعليم</value>
+  </data>
+  <data name="DirectorateName" xml:space="preserve">
+    <value>اسم الادارة التعليمية</value>
+  </data>
+  <data name="DirectorateNameAr" xml:space="preserve">
+    <value>اسم الادارة بالعربي</value>
+  </data>
+  <data name="DirectorateNameEn" xml:space="preserve">
+    <value>اسم الادارة بالانجليزي</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>غير مسموح</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>الحي</value>
+  </data>
+  <data name="Districts" xml:space="preserve">
+    <value>المناطق</value>
+  </data>
+  <data name="District_Name" xml:space="preserve">
+    <value>اسم الحي</value>
+  </data>
+  <data name="District_Name_inArabic" xml:space="preserve">
+    <value>اسم الحي بالعربية</value>
+  </data>
+  <data name="Distric_already_exist" xml:space="preserve">
+    <value>الحي موجود بالفعل</value>
+  </data>
+  <data name="divorced" xml:space="preserve">
+    <value>مطلقة</value>
+  </data>
+  <data name="DoctorName" xml:space="preserve">
+    <value>اسم الطبيب</value>
+  </data>
+  <data name="DoctorNationalID" xml:space="preserve">
+    <value>الرقم القوي الخاص بالطبيب</value>
+  </data>
+  <data name="Doctors" xml:space="preserve">
+    <value>الاطباء</value>
+  </data>
+  <data name="DoctorSpecialization" xml:space="preserve">
+    <value>تخصص الطبيب</value>
+  </data>
+  <data name="Doctors_Schedules" xml:space="preserve">
+    <value>جداول الاطباء</value>
+  </data>
+  <data name="DoctorType" xml:space="preserve">
+    <value>نوع الطبيب</value>
+  </data>
+  <data name="DoctorTypeName" xml:space="preserve">
+    <value>اسم نوع الطبيب</value>
+  </data>
+  <data name="DoctorTypeName_inArabic" xml:space="preserve">
+    <value>اسم نوع الطبيب بالعربية</value>
+  </data>
+  <data name="doctor_error_message" xml:space="preserve">
+    <value>الدكتور موجود بالفعل</value>
+  </data>
+  <data name="Doctor_hospitalMasageErr" xml:space="preserve">
+    <value>الدكتور موجود في هذه المنشأة الصحية بالفعل</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>الوثيقة</value>
+  </data>
+  <data name="DocumentData" xml:space="preserve">
+    <value>بيانات الوثيقة</value>
+  </data>
+  <data name="DocumentExitention" xml:space="preserve">
+    <value>امتداد الوثيقة</value>
+  </data>
+  <data name="DocumentFile" xml:space="preserve">
+    <value>ملف الوثيقة</value>
+  </data>
+  <data name="DocumentOfCitizen" xml:space="preserve">
+    <value>وثيقة المواطن</value>
+  </data>
+  <data name="DocumentType" xml:space="preserve">
+    <value>نوع الوثيقة</value>
+  </data>
+  <data name="documentt_type_description" xml:space="preserve">
+    <value>وصف نوع  الوثيقة</value>
+  </data>
+  <data name="documentt_type_description_inArabic" xml:space="preserve">
+    <value>وصف نوع الوثيقة بالعربية</value>
+  </data>
+  <data name="document_extensions" xml:space="preserve">
+    <value>امتدادات الوثيقة</value>
+  </data>
+  <data name="document_type_already_exist" xml:space="preserve">
+    <value>هذا النوع موجود بالفعل</value>
+  </data>
+  <data name="document_type_name" xml:space="preserve">
+    <value>اسم نوع  الوثيقة</value>
+  </data>
+  <data name="document_type_name_inArabic" xml:space="preserve">
+    <value>اسم نوع الوثيقة بالعربية</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="drag" xml:space="preserve">
+    <value>اسحب الملفات وأفلتها هنا أو انقر للتصفح</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="EditedSuccessfully" xml:space="preserve">
+    <value>تم التعديل بنجاح</value>
+  </data>
+  <data name="EditUserType" xml:space="preserve">
+    <value>تعديل نوع المستخدم</value>
+  </data>
+  <data name="EducatedAbroad" xml:space="preserve">
+    <value>المتعلمون في الخارج</value>
+  </data>
+  <data name="EducatedInside" xml:space="preserve">
+    <value>المتعلمون في الداخل</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>التعليم</value>
+  </data>
+  <data name="EducationDirectorate" xml:space="preserve">
+    <value>الادارة التعليمية</value>
+  </data>
+  <data name="EmployeeReport" xml:space="preserve">
+    <value>تقرير الموظف</value>
+  </data>
+  <data name="en" xml:space="preserve">
+    <value>الإنجليزية</value>
+  </data>
+  <data name="endDate" xml:space="preserve">
+    <value>نهاية الترخيص</value>
+  </data>
+  <data name="end_time" xml:space="preserve">
+    <value>وقت النهاية</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>انجليزي</value>
+  </data>
+  <data name="EnterThreeDigits" xml:space="preserve">
+    <value>ادخل ثلاث ارقام</value>
+  </data>
+  <data name="EnterThreeLettersInArabic" xml:space="preserve">
+    <value>ادخل ثلاثة احرف بالعربية</value>
+  </data>
+  <data name="errhospital" xml:space="preserve">
+    <value>المنشئة الصحية موجودة بالفعل</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="errorStudent" xml:space="preserve">
+    <value>هذا الطالب / الطالبة موجود/ة بالفعل</value>
+  </data>
+  <data name="errPhase" xml:space="preserve">
+    <value>هذه المرحلة موجودة بالفعل</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>استخراج</value>
+  </data>
+  <data name="Exporting_Birth_Certificate" xml:space="preserve">
+    <value>استخراج شهادة الميلاد</value>
+  </data>
+  <data name="Exporting_Death_Certificate" xml:space="preserve">
+    <value>استخراج شهادة وفاة</value>
+  </data>
+  <data name="Exporting_marriage_divorce_document" xml:space="preserve">
+    <value>إستخراخ شهادة طلاق\وفاة</value>
+  </data>
+  <data name="Exporting_National_Id_Card" xml:space="preserve">
+    <value>استخراج بطاقة الرقم القومي</value>
+  </data>
+  <data name="Faculties" xml:space="preserve">
+    <value>الكليات</value>
+  </data>
+  <data name="Faculty" xml:space="preserve">
+    <value>الكلية</value>
+  </data>
+  <data name="FacultyErr" xml:space="preserve">
+    <value>هذه الكلية موجودة بالفعل</value>
+  </data>
+  <data name="FacultyNameAr" xml:space="preserve">
+    <value>اسم الكلية بالعربية</value>
+  </data>
+  <data name="FacultyNameEn" xml:space="preserve">
+    <value>اسم الكلية بالانجليزية</value>
+  </data>
+  <data name="FatherInformation" xml:space="preserve">
+    <value>بيانات الأب</value>
+  </data>
+  <data name="FatherNationalId" xml:space="preserve">
+    <value>الرقم القومي للأب</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>أنثى</value>
+  </data>
+  <data name="Females" xml:space="preserve">
+    <value>الإناث</value>
+  </data>
+  <data name="FileInput" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FileInputLang" xml:space="preserve">
+    <value>ar.js</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>إنهاء</value>
+  </data>
+  <data name="float-md-right" xml:space="preserve">
+    <value>float-md-left</value>
+  </data>
+  <data name="ForeignStudent" xml:space="preserve">
+    <value>هذا الطالب / الطالبة موجودة بالفعل</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>هل نسيت كلمة المرور</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>من تاريخ</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="GenderWithPoint" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="General_Administration_for_Examinations" xml:space="preserve">
+    <value>الادارة العامة للامتحانات</value>
+  </data>
+  <data name="GovernementName" xml:space="preserve">
+    <value>اسم الهيئه  الحكومية</value>
+  </data>
+  <data name="governement_body" xml:space="preserve">
+    <value>هيكل الحكومة</value>
+  </data>
+  <data name="governement_bodys" xml:space="preserve">
+    <value>خدمات الهيئات الحكومية</value>
+  </data>
+  <data name="governement_name" xml:space="preserve">
+    <value>اسم الهيئه  الحكومية</value>
+  </data>
+  <data name="governement_name_inArabic" xml:space="preserve">
+    <value>اسم الهيئة الحكومية بالعربية</value>
+  </data>
+  <data name="governmentAgency" xml:space="preserve">
+    <value>وكالة حكومية</value>
+  </data>
+  <data name="GovernmentBody" xml:space="preserve">
+    <value>هيكل الحكومة</value>
+  </data>
+  <data name="governmenterr" xml:space="preserve">
+    <value>اسم الهيئة الحكومية موجود بالفعل</value>
+  </data>
+  <data name="Governments_Settings" xml:space="preserve">
+    <value>إعدادات الحكومة</value>
+  </data>
+  <data name="Grade" xml:space="preserve">
+    <value>الدرجة</value>
+  </data>
+  <data name="GradeCertificate" xml:space="preserve">
+    <value>هذه الدرجة موجودة بالفعل في هذه الشهادة</value>
+  </data>
+  <data name="GradeValidationUniversity" xml:space="preserve">
+    <value>درجة الطالب اقل من درجة هذه الكلية لايمكن الإضافة</value>
+  </data>
+  <data name="graduated" xml:space="preserve">
+    <value>تخرج</value>
+  </data>
+  <data name="GraduatedStuednt" xml:space="preserve">
+    <value>الطلبة الخريجين</value>
+  </data>
+  <data name="GraduatesUni" xml:space="preserve">
+    <value>خريجين الجامعات</value>
+  </data>
+  <data name="GraduationProject" xml:space="preserve">
+    <value>مشروع التخرج</value>
+  </data>
+  <data name="GraduationUniversity" xml:space="preserve">
+    <value>شهادة تخرج</value>
+  </data>
+  <data name="hasaBachelor'sdegree" xml:space="preserve">
+    <value>قد حصل على درجة بكالوريوس</value>
+  </data>
+  <data name="Healthcare" xml:space="preserve">
+    <value>منشأة صحية</value>
+  </data>
+  <data name="healthCareName" xml:space="preserve">
+    <value>اسم المنشأة الصحية</value>
+  </data>
+  <data name="HealthcareReservation" xml:space="preserve">
+    <value>حجز موعد في منشأه الصحية</value>
+  </data>
+  <data name="Healthcares" xml:space="preserve">
+    <value>المنشئات الصحية</value>
+  </data>
+  <data name="HealthcareType" xml:space="preserve">
+    <value>نوع المنشأه الصحية</value>
+  </data>
+  <data name="Healthcare_Doctor" xml:space="preserve">
+    <value>طبيب المنشأه الصحية</value>
+  </data>
+  <data name="HealthCare_type" xml:space="preserve">
+    <value>نوع المنشأه الصحية</value>
+  </data>
+  <data name="healthcare_type_id" xml:space="preserve">
+    <value>رقم تعريف للمنشأه الصحية</value>
+  </data>
+  <data name="healthcare_type_name" xml:space="preserve">
+    <value>اسم نوع المنشأه الصحية</value>
+  </data>
+  <data name="healthcare_type_name_inArabic" xml:space="preserve">
+    <value>اسم نوع المنشأة الصحية بالعربية</value>
+  </data>
+  <data name="healthcare_type_name_inEnglish" xml:space="preserve">
+    <value>اسم نوع المنشأة الصحية بالانجليزية</value>
+  </data>
+  <data name="HealthCenter" xml:space="preserve">
+    <value>مركز صحي</value>
+  </data>
+  <data name="HealthCenter_Arabic" xml:space="preserve">
+    <value>اسم المركز الصحي بالعربية</value>
+  </data>
+  <data name="HealthCenter_English" xml:space="preserve">
+    <value>اسم المركز الصحي بالانجليزية</value>
+  </data>
+  <data name="Health_cares_schedules" xml:space="preserve">
+    <value>جداول المنشئات الصحية</value>
+  </data>
+  <data name="Health_cares_Specializations" xml:space="preserve">
+    <value>تخصصات المنشئات الصحية</value>
+  </data>
+  <data name="Health_cares_types" xml:space="preserve">
+    <value>أنواع المنشئات الصحية</value>
+  </data>
+  <data name="He_Sheisnotmarried" xml:space="preserve">
+    <value>هو\هي غير متزوج\ة</value>
+  </data>
+  <data name="High_school_completion_certificate" xml:space="preserve">
+    <value>شهادة إتمام دراسة الثانوية العامة</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>المنزل</value>
+  </data>
+  <data name="Home1" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
+  </data>
+  <data name="Home2" xml:space="preserve">
+    <value>المنزل</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>مستشفى</value>
+  </data>
+  <data name="HospitalName" xml:space="preserve">
+    <value>اسم المستشفى</value>
+  </data>
+  <data name="HospitalName_inArabic" xml:space="preserve">
+    <value>اسم المستشفي بالعربية</value>
+  </data>
+  <data name="Hospital_Arabic" xml:space="preserve">
+    <value>اسم المستشفي بالعربية</value>
+  </data>
+  <data name="Hospital_English" xml:space="preserve">
+    <value>اسم المستشفي بالانجليزية</value>
+  </data>
+  <data name="hospital_name" xml:space="preserve">
+    <value>اسم المستشفى</value>
+  </data>
+  <data name="House" xml:space="preserve">
+    <value>المنزل</value>
+  </data>
+  <data name="House_Arabic" xml:space="preserve">
+    <value>عنوان المنزل بالعربية</value>
+  </data>
+  <data name="House_English" xml:space="preserve">
+    <value>عنوان المنزل بالانجليزية</value>
+  </data>
+  <data name="HowManyYear" xml:space="preserve">
+    <value> عدد السنوات</value>
+  </data>
+  <data name="husband" xml:space="preserve">
+    <value>الزوج</value>
+  </data>
+  <data name="HusbandInformation" xml:space="preserve">
+    <value>بيانات الزوج</value>
+  </data>
+  <data name="HusbandNationalId" xml:space="preserve">
+    <value>الرقم القومي الخاص بالزوج</value>
+  </data>
+  <data name="IdentificationCard" xml:space="preserve">
+    <value>بطاقة الهوية</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>القائمة</value>
+  </data>
+  <data name="Index1" xml:space="preserve">
+    <value>فهرس 1</value>
+  </data>
+  <data name="IndexAdmin" xml:space="preserve">
+    <value>الفهرس الادارية</value>
+  </data>
+  <data name="IndexUser" xml:space="preserve">
+    <value>قائمة  المستخدم</value>
+  </data>
+  <data name="IntermidateErr" xml:space="preserve">
+    <value>مازال في هذه المرحلة</value>
+  </data>
+  <data name="intermidiatePhase" xml:space="preserve">
+    <value>المرحلة الاعدادية</value>
+  </data>
+  <data name="Is_Birth_Place" xml:space="preserve">
+    <value>هل هذا هو مسقط رأسه</value>
+  </data>
+  <data name="Is_Current" xml:space="preserve">
+    <value>هل هذا الحالي</value>
+  </data>
+  <data name="Jewish" xml:space="preserve">
+    <value>يهودي</value>
+  </data>
+  <data name="JopTitle" xml:space="preserve">
+    <value>المسمى الوظيفي</value>
+  </data>
+  <data name="Keep_me_logged_in" xml:space="preserve">
+    <value>أبق تسجيل دخولي</value>
+  </data>
+  <data name="language" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="Language1" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="Listofvaccinations" xml:space="preserve">
+    <value>قائمة التطعيمات</value>
+  </data>
+  <data name="List_of_vaccination_type" xml:space="preserve">
+    <value>قائمة نوع التطعيمات</value>
+  </data>
+  <data name="Litrary" xml:space="preserve">
+    <value>أدبي</value>
+  </data>
+  <data name="LiveSatusType" xml:space="preserve">
+    <value>نوع حاله الحياة</value>
+  </data>
+  <data name="LiveStatus" xml:space="preserve">
+    <value>حالة الحياة</value>
+  </data>
+  <data name="LiveStatusTypeName" xml:space="preserve">
+    <value>اسم نوع حالة الحياة</value>
+  </data>
+  <data name="LiveStatusTypeName_inArabic" xml:space="preserve">
+    <value>اسم نوع حالة الحياة بالعربية</value>
+  </data>
+  <data name="LiveStatusTypeName_inEnglish" xml:space="preserve">
+    <value>اسم نوع حالة الحياة</value>
+  </data>
+  <data name="LiveStatus_type_ already_exist" xml:space="preserve">
+    <value>نوع الحالة الحياة موجودة بالفعل</value>
+  </data>
+  <data name="login_MSG" xml:space="preserve">
+    <value>الرجاء إدخال اسم المستخدم أو كلمة المرور بشكل صحيح</value>
+  </data>
+  <data name="LogRequest" xml:space="preserve">
+    <value>سجل طلب</value>
+  </data>
+  <data name="log_date" xml:space="preserve">
+    <value>تاريخ السجل</value>
+  </data>
+  <data name="Log_in" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="log_request_id" xml:space="preserve">
+    <value>رقم الطلب في السجل</value>
+  </data>
+  <data name="log_request_typeId" xml:space="preserve">
+    <value>رقم نوع الطلب في السجل</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>الذكر</value>
+  </data>
+  <data name="Males" xml:space="preserve">
+    <value>الذكور</value>
+  </data>
+  <data name="MarriagAndDevorceCertificate" xml:space="preserve">
+    <value>شهادة الزواج والطلاق</value>
+  </data>
+  <data name="MarriageDateWithPoint" xml:space="preserve">
+    <value>تاريخ الزواج</value>
+  </data>
+  <data name="MarriageDocument" xml:space="preserve">
+    <value>وثيقة الزواج</value>
+  </data>
+  <data name="MarriageInformation" xml:space="preserve">
+    <value>بيانات الزواج</value>
+  </data>
+  <data name="Married" xml:space="preserve">
+    <value>متزوج</value>
+  </data>
+  <data name="MarriedW" xml:space="preserve">
+    <value>متزوجة</value>
+  </data>
+  <data name="Meanwhile" xml:space="preserve">
+    <value>وفي الوقت نفسه قد يمكنك.</value>
+  </data>
+  <data name="middle_School_certificate" xml:space="preserve">
+    <value>الشهادة الاعدادية</value>
+  </data>
+  <data name="MinistryEducation" xml:space="preserve">
+    <value>وزارة التعليم</value>
+  </data>
+  <data name="Ministry_of_Health" xml:space="preserve">
+    <value>وزارة الصحة</value>
+  </data>
+  <data name="Ministry_of_Interior" xml:space="preserve">
+    <value>وزارة الداخلية</value>
+  </data>
+  <data name="minute" xml:space="preserve">
+    <value>دقائق</value>
+  </data>
+  <data name="ml-auto" xml:space="preserve">
+    <value>mr-auto</value>
+  </data>
+  <data name="modal3" xml:space="preserve">
+    <value>هذا المواطن ليس لديه حساب رصيد</value>
+  </data>
+  <data name="ModalTitle" xml:space="preserve">
+    <value>عنوان الوسائط</value>
+  </data>
+  <data name="month" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="More_info" xml:space="preserve">
+    <value>المزيد من المعلومات</value>
+  </data>
+  <data name="MotherInformation" xml:space="preserve">
+    <value>بيانات الأم</value>
+  </data>
+  <data name="MotherName" xml:space="preserve">
+    <value>أسم الأم</value>
+  </data>
+  <data name="MotherNationalId" xml:space="preserve">
+    <value>الرقم القومي للأم</value>
+  </data>
+  <data name="mr-4" xml:space="preserve">
+    <value>ml-4</value>
+  </data>
+  <data name="Muslim" xml:space="preserve">
+    <value>مسلم</value>
+  </data>
+  <data name="MyContacts" xml:space="preserve">
+    <value>جهات الاتصال  الخاصة بي</value>
+  </data>
+  <data name="MyDocument" xml:space="preserve">
+    <value>الوثائق الخاصة بي</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>صفحتي الشخصية</value>
+  </data>
+  <data name="MySocial" xml:space="preserve">
+    <value>الحالات الجتماعية الخاصة بي</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الأسم</value>
+  </data>
+  <data name="NameAleadyExist" xml:space="preserve">
+    <value>هذا الاسم موجود بالفعل</value>
+  </data>
+  <data name="NameAlreadyExist" xml:space="preserve">
+    <value>هذا الاسم موجود بالفعل</value>
+  </data>
+  <data name="NameWithPoint" xml:space="preserve">
+    <value>الأسم     </value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>الرقم القومي</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>الجنسية</value>
+  </data>
+  <data name="NationalityWithPoint" xml:space="preserve">
+    <value>الجنسية</value>
+  </data>
+  <data name="National_Id" xml:space="preserve">
+    <value>الرقم القومي</value>
+  </data>
+  <data name="National_Idhere" xml:space="preserve">
+    <value>الرقم القومي هنا ...</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="NewSpecializationType" xml:space="preserve">
+    <value>نوع تخصص جديد</value>
+  </data>
+  <data name="NewSpecializationType_inArabic" xml:space="preserve">
+    <value>نوع تخصص جديد بالعربية</value>
+  </data>
+  <data name="next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value>المكتب</value>
+  </data>
+  <data name="officeerr" xml:space="preserve">
+    <value>اسم المكتب موجود بالفعل</value>
+  </data>
+  <data name="OfficeName" xml:space="preserve">
+    <value>اسم المكتب</value>
+  </data>
+  <data name="OfficeName_inArabic" xml:space="preserve">
+    <value>اسم المكتب بالعربية</value>
+  </data>
+  <data name="Offices" xml:space="preserve">
+    <value>المكاتب</value>
+  </data>
+  <data name="Oops" xml:space="preserve">
+    <value>.عفوا! هناك خطأ ما</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>العمليات</value>
+  </data>
+  <data name="Operations1" xml:space="preserve">
+    <value>العمليات</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>أخري</value>
+  </data>
+  <data name="Other_inArabic" xml:space="preserve">
+    <value>اسم مكان اخر بالعربية</value>
+  </data>
+  <data name="Other_inEnglish" xml:space="preserve">
+    <value>اسم مكان اخر بالانجليزية</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="Passwor_here" xml:space="preserve">
+    <value>كلمة المرور هنا ...</value>
+  </data>
+  <data name="Phase" xml:space="preserve">
+    <value>المرحلة</value>
+  </data>
+  <data name="PhaseName" xml:space="preserve">
+    <value>اسم المرحلة بالانجليزية</value>
+  </data>
+  <data name="PhaseNameAr" xml:space="preserve">
+    <value>اسم المرحلة بالعربية</value>
+  </data>
+  <data name="Phases" xml:space="preserve">
+    <value>المراحل </value>
+  </data>
+  <data name="PhasesOfSchool" xml:space="preserve">
+    <value>مراحل المدرسة</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>صورة</value>
+  </data>
+  <data name="pl" xml:space="preserve">
+    <value>pr</value>
+  </data>
+  <data name="Places" xml:space="preserve">
+    <value>الأماكن</value>
+  </data>
+  <data name="Please_sign_in_to_your_account" xml:space="preserve">
+    <value>الرجاء تسجيل الدخول الى حسابك</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>&lt;&lt;السابق</value>
+  </data>
+  <data name="previouss" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="PrimaryPhase" xml:space="preserve">
+    <value>المرحلة الابتدائية</value>
+  </data>
+  <data name="Primary_certificate" xml:space="preserve">
+    <value>الشهادة الابتدائية</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>أطبع</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>عدد النسخ</value>
+  </data>
+  <data name="Recover_Password" xml:space="preserve">
+    <value>إسترجاع كلمة المرور</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>المنطقه</value>
+  </data>
+  <data name="Regions" xml:space="preserve">
+    <value>المناطق</value>
+  </data>
+  <data name="Region_already_exist" xml:space="preserve">
+    <value>المنطقة موجودة بالفعل</value>
+  </data>
+  <data name="Region_Name" xml:space="preserve">
+    <value>اسم المنطقة</value>
+  </data>
+  <data name="Region_Name_inArabic" xml:space="preserve">
+    <value>اسم المنطقة بالعربية</value>
+  </data>
+  <data name="Region_Name_inEnglish" xml:space="preserve">
+    <value>اسم المنطقة بالانجليزية</value>
+  </data>
+  <data name="Relegion" xml:space="preserve">
+    <value>الديانة</value>
+  </data>
+  <data name="RelegionWithPoint" xml:space="preserve">
+    <value>الديانة</value>
+  </data>
+  <data name="Remember_me" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
+  <data name="report" xml:space="preserve">
+    <value>التقرير</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>الطلب</value>
+  </data>
+  <data name="requestErr" xml:space="preserve">
+    <value>لا يمكن طلب نفس الخدمة اليوم</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+  <data name="RequstsIndex" xml:space="preserve">
+    <value>فهرس الطلبات</value>
+  </data>
+  <data name="ReservationDate" xml:space="preserve">
+    <value>تاريخ الحجز</value>
+  </data>
+  <data name="Reservations" xml:space="preserve">
+    <value>الحجوزات</value>
+  </data>
+  <data name="reservation_msg" xml:space="preserve">
+    <value>لقد حجزت في هذا المكتب مرة واحدة في ذلك التاريخ</value>
+  </data>
+  <data name="reservation_success_msg" xml:space="preserve">
+    <value>تم تسجيل الحجز الخاص بك بنجاح</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>حجز</value>
+  </data>
+  <data name="Respond" xml:space="preserve">
+    <value>الرد</value>
+  </data>
+  <data name="return_dashboard" xml:space="preserve">
+    <value>العودة إلى لوحة القيادة.</value>
+  </data>
+  <data name="Return_to" xml:space="preserve">
+    <value>الرجوع إلى</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="scheduleErrDoctor" xml:space="preserve">
+    <value> هذا الدكتور لديه نفس الميعاد بالفعل </value>
+  </data>
+  <data name="scheduleErrVacc" xml:space="preserve">
+    <value>هذا التطعيم لديه نفس الميعاد بالفعل</value>
+  </data>
+  <data name="ScheduleHealthCare" xml:space="preserve">
+    <value>الجدول الزمني للمنشأءة الصحية</value>
+  </data>
+  <data name="ScheduleVaccination" xml:space="preserve">
+    <value>جدول التطعيم</value>
+  </data>
+  <data name="School" xml:space="preserve">
+    <value>المدرسة</value>
+  </data>
+  <data name="SchoolCertificate" xml:space="preserve">
+    <value>شهادة المدرسة</value>
+  </data>
+  <data name="SchoolErr" xml:space="preserve">
+    <value>هذا النوع موجود بالفعل</value>
+  </data>
+  <data name="SchoolName" xml:space="preserve">
+    <value>اسم المدرسة</value>
+  </data>
+  <data name="SchoolNameAr" xml:space="preserve">
+    <value>اسم المدرسة بالعربية</value>
+  </data>
+  <data name="SchoolNameEn" xml:space="preserve">
+    <value>اسم المدرسة بالانجليزية</value>
+  </data>
+  <data name="SchoolPhaseErr" xml:space="preserve">
+    <value>هذه المرحلة موجودة بالفعل في هذه المدرسة</value>
+  </data>
+  <data name="Schools" xml:space="preserve">
+    <value>المدارس</value>
+  </data>
+  <data name="SchoolSection" xml:space="preserve">
+    <value>الشعبة</value>
+  </data>
+  <data name="SchoolSectionValidation" xml:space="preserve">
+    <value>شعبة الطالب ليست متطابقة مع شعبة الكلية</value>
+  </data>
+  <data name="SchoolType" xml:space="preserve">
+    <value>نوع المدرسة</value>
+  </data>
+  <data name="SchoolTypeName" xml:space="preserve">
+    <value>اسم نوع المدرسة</value>
+  </data>
+  <data name="SchoolTypeNameAr" xml:space="preserve">
+    <value>اسم نوع المدرسة بالعربية</value>
+  </data>
+  <data name="SchoolTypeNameEn" xml:space="preserve">
+    <value>اسم نوع المدرسة بالانجليزية</value>
+  </data>
+  <data name="Scientific" xml:space="preserve">
+    <value>علمي</value>
+  </data>
+  <data name="ScientificAndLitrary" xml:space="preserve">
+    <value>علمي و ادبي</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="search_form" xml:space="preserve">
+    <value>أو حاول استخدام نموذج البحث.</value>
+  </data>
+  <data name="SecondaryPhase" xml:space="preserve">
+    <value>المرحلة الثانوية</value>
+  </data>
+  <data name="SecondarySchool" xml:space="preserve">
+    <value>الثانوية العام</value>
+  </data>
+  <data name="SelectCitizenID" xml:space="preserve">
+    <value>حدد هوية المواطن</value>
+  </data>
+  <data name="Select_Portal" xml:space="preserve">
+    <value>إختر البوابة </value>
+  </data>
+  <data name="Select_your_portal" xml:space="preserve">
+    <value>اختر البوابة الخاصة بك</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>الخدمة</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>خدمات</value>
+  </data>
+  <data name="Service_Already_exist" xml:space="preserve">
+    <value>الخدمة موجودة بالفعل</value>
+  </data>
+  <data name="service_name" xml:space="preserve">
+    <value>اسم الخدمة</value>
+  </data>
+  <data name="service_name_inArabic" xml:space="preserve">
+    <value>اسم الخدمة بالعربية</value>
+  </data>
+  <data name="Service_price" xml:space="preserve">
+    <value>سعر الخدمة</value>
+  </data>
+  <data name="service_time" xml:space="preserve">
+    <value>وقت الخدمة</value>
+  </data>
+  <data name="service_type_id" xml:space="preserve">
+    <value>نوع الخدمة</value>
+  </data>
+  <data name="Shigh_school_certificate" xml:space="preserve">
+    <value>الشهادة الثانوية</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>عرض</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="SignUP" xml:space="preserve">
+    <value>سجل</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>المجتمع</value>
+  </data>
+  <data name="SocialStatus" xml:space="preserve">
+    <value>الحالة الاجتماعية</value>
+  </data>
+  <data name="SocialStatusType" xml:space="preserve">
+    <value>نوع الحالة الاجتماعية</value>
+  </data>
+  <data name="Social_status" xml:space="preserve">
+    <value>الحالة الاجتماعية</value>
+  </data>
+  <data name="Social_status_type" xml:space="preserve">
+    <value>نوع الحالة الاجتماعية</value>
+  </data>
+  <data name="social_status_type_description" xml:space="preserve">
+    <value>وصف نوع الحالة الاجتماعية</value>
+  </data>
+  <data name="social_status_type_description_inArabic" xml:space="preserve">
+    <value>وصف نوع الحاله الأجتماعية بالعربية</value>
+  </data>
+  <data name="social_status_type_description_inEglish" xml:space="preserve">
+    <value>وصف نوع الحاله الأجتماعية بالانجليزية</value>
+  </data>
+  <data name="social_status_type_name" xml:space="preserve">
+    <value>اسم نوع الحالة الاجتماعية</value>
+  </data>
+  <data name="social_status_type_name_inArabic" xml:space="preserve">
+    <value>اسم نوع الحاله الأجتماعية بالعربية</value>
+  </data>
+  <data name="social_status_type_name_inEnglish" xml:space="preserve">
+    <value>اسم نوع الحاله الأجتماعية بالانجليزية</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>التخصص</value>
+  </data>
+  <data name="SpecializationOfFaculty" xml:space="preserve">
+    <value>اقسام الكلية</value>
+  </data>
+  <data name="Specializations" xml:space="preserve">
+    <value>التخصصات</value>
+  </data>
+  <data name="Specialization_already_exist" xml:space="preserve">
+    <value>هذا التخصص موجود بالفعل</value>
+  </data>
+  <data name="Specialization_name" xml:space="preserve">
+    <value>اسم التخصص</value>
+  </data>
+  <data name="Specialization_name_inArabic" xml:space="preserve">
+    <value>اسم التخصص بالعربية</value>
+  </data>
+  <data name="Specialization_Name_inEnglish" xml:space="preserve">
+    <value>اسم التخصص بالانجليزية</value>
+  </data>
+  <data name="startDate" xml:space="preserve">
+    <value>تاريخ الترخيص</value>
+  </data>
+  <data name="start_time" xml:space="preserve">
+    <value>وقت البدء</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>المحافظة</value>
+  </data>
+  <data name="States" xml:space="preserve">
+    <value>المحافظات</value>
+  </data>
+  <data name="State_already_exist" xml:space="preserve">
+    <value>المحافظة موجودة بالفعل</value>
+  </data>
+  <data name="State_Code" xml:space="preserve">
+    <value>كود المحافظة</value>
+  </data>
+  <data name="State_Name" xml:space="preserve">
+    <value>اسم المحافظة</value>
+  </data>
+  <data name="State_Name_inArabic" xml:space="preserve">
+    <value>اسم المحافظة بالعربية</value>
+  </data>
+  <data name="state_name_inEnglish" xml:space="preserve">
+    <value>اسم المحافظة بالانجليزية</value>
+  </data>
+  <data name="Step1" xml:space="preserve">
+    <value>الخطوة 1</value>
+  </data>
+  <data name="Step2" xml:space="preserve">
+    <value>الخطوة 2</value>
+  </data>
+  <data name="Step3" xml:space="preserve">
+    <value>الخطوة 3</value>
+  </data>
+  <data name="Step4" xml:space="preserve">
+    <value>الخطوة 4</value>
+  </data>
+  <data name="stepsss" xml:space="preserve">
+    <value>style1.css</value>
+  </data>
+  <data name="StreetName" xml:space="preserve">
+    <value>اسم الشارع</value>
+  </data>
+  <data name="Street_Name" xml:space="preserve">
+    <value>اسم الشارع بالانجليزية</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>ألطالب</value>
+  </data>
+  <data name="StudentInfo" xml:space="preserve">
+    <value>معلومات الطالب</value>
+  </data>
+  <data name="StudentName" xml:space="preserve">
+    <value>اسم الطالب / الطالبة</value>
+  </data>
+  <data name="StudentRegisteration" xml:space="preserve">
+    <value>تسجيل الطلاب</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>الطلاب</value>
+  </data>
+  <data name="studentschool" xml:space="preserve">
+    <value> بالفعل هذا لطالب / الطالبة في هذه المدرسة</value>
+  </data>
+  <data name="StudentsCount" xml:space="preserve">
+    <value>الحد الاقصى لعدد الطلاب</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>تقديم</value>
+  </data>
+  <data name="SuccessFulCreate" xml:space="preserve">
+    <value>تم الاضافة بنجاح</value>
+  </data>
+  <data name="successfully_reserved" xml:space="preserve">
+    <value>تم الحجز بنجاح</value>
+  </data>
+  <data name="successfully_reserved_checkemail" xml:space="preserve">
+    <value>محفوظة بنجاح تحقق من بريدك الإلكتروني لمعرفة التفاصيل</value>
+  </data>
+  <data name="succmsg" xml:space="preserve">
+    <value>الرسالة تم ارسالها الى لبريد الالكتروني الذي ادخلته</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>موجز</value>
+  </data>
+  <data name="text-left" xml:space="preserve">
+    <value>text-right</value>
+  </data>
+  <data name="TheEgyptianArabicRepublic" xml:space="preserve">
+    <value>جمهورية مصر العربية</value>
+  </data>
+  <data name="TheUserTypes" xml:space="preserve">
+    <value>أنواع المستخدم</value>
+  </data>
+  <data name="The_card_is_valid_until" xml:space="preserve">
+    <value>البطاقة صالحة حتى</value>
+  </data>
+  <data name="The_Egyptian_Arabic_Republic" xml:space="preserve">
+    <value>جمهورية مصر العربية</value>
+  </data>
+  <data name="thisCodeIsAlreadyTaken" xml:space="preserve">
+    <value>رقم السيارة مأخوذ بالفعل</value>
+  </data>
+  <data name="thisladyisalreadymarried" xml:space="preserve">
+    <value>هذة المرأة متزوجة بالفعل</value>
+  </data>
+  <data name="This_type_already_exist" xml:space="preserve">
+    <value>هذا النوع موجود بالفعل</value>
+  </data>
+  <data name="threeYears" xml:space="preserve">
+    <value>ثلاث سنوات</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>حتى تاريخ</value>
+  </data>
+  <data name="Transactioncode" xml:space="preserve">
+    <value>رمز العملية</value>
+  </data>
+  <data name="typeReaquest_name" xml:space="preserve">
+    <value>اسم نوع الطلب</value>
+  </data>
+  <data name="TypeRequest" xml:space="preserve">
+    <value>نوع طلب</value>
+  </data>
+  <data name="UniStudent" xml:space="preserve">
+    <value>هذا الطالب تخرج بالفعل</value>
+  </data>
+  <data name="Universities" xml:space="preserve">
+    <value>الجامعات</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>الجامعة</value>
+  </data>
+  <data name="UniversityFaculty" xml:space="preserve">
+    <value>هذه الكلية في نفس الجامعة بالفعل </value>
+  </data>
+  <data name="UniversityNameAr" xml:space="preserve">
+    <value>اسم الجامعة بالعربية</value>
+  </data>
+  <data name="UniversityNameEn" xml:space="preserve">
+    <value>اسم الجامعة بالانجليزية</value>
+  </data>
+  <data name="UniversityRegisteration" xml:space="preserve">
+    <value>تسجيل الجامعة</value>
+  </data>
+  <data name="UniversityType" xml:space="preserve">
+    <value>نوع الجامعة</value>
+  </data>
+  <data name="UniversityTypeNameAr" xml:space="preserve">
+    <value>اسم نوع الجامعة بالعربية</value>
+  </data>
+  <data name="UniversityTypeNameEn" xml:space="preserve">
+    <value>اسم نوع الجامعة بالانجليزية</value>
+  </data>
+  <data name="universtyErr" xml:space="preserve">
+    <value>هذه الجامعة موجودة بالفعل</value>
+  </data>
+  <data name="Unmarried" xml:space="preserve">
+    <value>عاذب</value>
+  </data>
+  <data name="UnMarriedW" xml:space="preserve">
+    <value>عاذبة</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>رفع</value>
+  </data>
+  <data name="UploadDate" xml:space="preserve">
+    <value>تاريخ الرفع</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>المستخدم</value>
+  </data>
+  <data name="UserNameAlready" xml:space="preserve">
+    <value>اسم المستخدم هذا موجود بالفعل</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>كلمة مرور المستخدم</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>نوع المستخدم</value>
+  </data>
+  <data name="User_name" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="user_type_name" xml:space="preserve">
+    <value>اسم نوع مستخدم</value>
+  </data>
+  <data name="user_type_name_inArabic" xml:space="preserve">
+    <value>اسم نوع مستخدم بالعربية</value>
+  </data>
+  <data name="user_type_name_inEnglish" xml:space="preserve">
+    <value>اسم نوع المستخدم بالانجليزية</value>
+  </data>
+  <data name="Vaccination" xml:space="preserve">
+    <value>التطعيم</value>
+  </data>
+  <data name="VaccinationReservation" xml:space="preserve">
+    <value>حجز التطعيم</value>
+  </data>
+  <data name="Vaccinations" xml:space="preserve">
+    <value>التطعيمات</value>
+  </data>
+  <data name="Vaccinations_Reservations" xml:space="preserve">
+    <value>حجوزات التطعيمات</value>
+  </data>
+  <data name="VaccinationType" xml:space="preserve">
+    <value>نوع التطعيم</value>
+  </data>
+  <data name="VaccinationType _errorMsg" xml:space="preserve">
+    <value>نوع التطعيم موجود بالفعل!</value>
+  </data>
+  <data name="Vaccination_not_allowed_to_the_child" xml:space="preserve">
+    <value>التطعيم غير مسموح للطفل</value>
+  </data>
+  <data name="vaccination_on_age" xml:space="preserve">
+    <value>العمر عند التطعيم </value>
+  </data>
+  <data name="Vaccination_type" xml:space="preserve">
+    <value>نوع التطعيم</value>
+  </data>
+  <data name="Vaccination_types" xml:space="preserve">
+    <value>أنواع التطعيمات</value>
+  </data>
+  <data name="vaccination_type_age" xml:space="preserve">
+    <value>عمر نوع التطعيم</value>
+  </data>
+  <data name="vaccination_type_name" xml:space="preserve">
+    <value>اسم نوع التطعيم</value>
+  </data>
+  <data name="vaccination_type_name_inArabic" xml:space="preserve">
+    <value>اسم نوع التطعيم بالعربية</value>
+  </data>
+  <data name="vaccination_type_name_inEnglish" xml:space="preserve">
+    <value>اسم نوع التطعيم بالانجليزية</value>
+  </data>
+  <data name="vaccination_type_period" xml:space="preserve">
+    <value>فتره نوع التطعيم</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>messages_ar.min.js</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>الإصدار</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>عرض الكل</value>
+  </data>
+  <data name="Violation" xml:space="preserve">
+    <value>المخالفات</value>
+  </data>
+  <data name="violationError" xml:space="preserve">
+    <value>هذه المخالفة موجودة بالفعل</value>
+  </data>
+  <data name="ViolationName" xml:space="preserve">
+    <value>اسم المخالفة</value>
+  </data>
+  <data name="ViolationNameInAr" xml:space="preserve">
+    <value>اسم المخالفة بالعربية</value>
+  </data>
+  <data name="ViolationNameInEng" xml:space="preserve">
+    <value>اسم المخالفة بالانجليزية</value>
+  </data>
+  <data name="ViolationPrice" xml:space="preserve">
+    <value>سعر المخالفة</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value> ! تحذير</value>
+  </data>
+  <data name="WarningMessage" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد الطباعة؟</value>
+  </data>
+  <data name="WarningMessage1" xml:space="preserve">
+    <value>ذا قمت بالنقر فوق "نعم" ، فسيتم خصم 40EG من رصيدك حتى في حالة النقر فوق "إلغاء" في شاشة المعاينة</value>
+  </data>
+  <data name="We_away" xml:space="preserve">
+    <value>سوف نعمل على إصلاح ذلك على الفور</value>
+  </data>
+  <data name="wife" xml:space="preserve">
+    <value>الزوجة</value>
+  </data>
+  <data name="WifeInformation" xml:space="preserve">
+    <value>بيانات الزوجة</value>
+  </data>
+  <data name="WifeNationalId" xml:space="preserve">
+    <value>الرقم القومي الخاص بالزوجة</value>
+  </data>
+  <data name="Withappreciation" xml:space="preserve">
+    <value>بتقدير</value>
+  </data>
+  <data name="With_Father" xml:space="preserve">
+    <value>مع الأب</value>
+  </data>
+  <data name="With_Mother" xml:space="preserve">
+    <value>مع الأم</value>
+  </data>
+  <data name="Wlecome_Back" xml:space="preserve">
+    <value>مرحبا بعودتك</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>السنة</value>
+  </data>
+  <data name="YearOfPhase" xml:space="preserve">
+    <value>سنوات المرحلة</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="YourChiledsNationalIds" xml:space="preserve">
+    <value>الرقم القومي الخاص بطفلك</value>
+  </data>
+  <data name="your_balance_is_not_sufficient" xml:space="preserve">
+    <value>رصيدك ليس كافيا</value>
+  </data>
+  <data name="your_child_is_vaccinated" xml:space="preserve">
+    <value>تم تطعيم طفلك</value>
+  </data>
+  <data name="you_are_already_reserved_on_this_day" xml:space="preserve">
+    <value>أنت حجزت  بالفعل في هذا اليوم</value>
+  </data>
+  <data name="you_have_already_reservation" xml:space="preserve">
+    <value>لديك حجز بالفعل</value>
+  </data>
+</root>

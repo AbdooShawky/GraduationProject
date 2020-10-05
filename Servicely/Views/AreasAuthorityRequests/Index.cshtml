@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Servicely.Models.AreasAuthorityRequest>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+<label>Request Number</label>
+        </th>
+        <th>
+<label>Length</label>
+        </th>
+        <th>
+<label>Width</label>
+        </th>
+        <th>
+<label>Piece of Ground</label>
+        </th>
+        <th>
+<label>Place</label>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreasAuthorityRequest_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreasAuthorityRequests_length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreasAuthorityRequests_width)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreasAuthorityRequests_LWnumber)
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.District.district_name)
+            @Html.DisplayFor(modelItem => item.District.Region.region_name)
+            @Html.DisplayFor(modelItem => item.District.Region.City.city_name)
+            @Html.DisplayFor(modelItem => item.District.Region.City.State.state_name)
+
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AreasAuthorityRequest_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AreasAuthorityRequest_id })
+        </td>
+    </tr>
+}
+
+</table>

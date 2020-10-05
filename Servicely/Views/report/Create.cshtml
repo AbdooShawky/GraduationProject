@@ -1,0 +1,406 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+      if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<link href="~/Citizen Steps plugins/css/style.css" rel="stylesheet" />
+
+<script src="~/Citizen Steps plugins/js/jquery.steps.js"></script>
+<script src="~/Citizen Steps plugins/js/main.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<link href="~/drag-drop-image-uploader/dist/image-uploader.min.css" rel="stylesheet" />
+<script src="~/drag-drop-image-uploader/src/GseUploader.js"></script>
+@*<script src="~/drag-drop-image-uploader/src/image-uploader.js"></script>*@
+<script src="~/player/lottie.js"></script>
+<script>
+    $(function () {
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $('.input-images').imageUploader({
+                label: "اسحب الملفات وأفلتها هنا أو انقر للتصفح",
+                maxFiles: 1,
+                imagesInputName: 'photos',
+
+            });
+
+
+        }
+        else {
+            $('.input-images').imageUploader({
+                label: "Drag & Drop files here or click to browse",
+                maxFiles: 1,
+                imagesInputName: 'photos',
+
+            });
+
+
+
+
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+
+
+        }
+
+    });
+    var animation = bodymovin.loadAnimation({
+        container: document.getElementById('imm'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/upload-to-cloud/upload-to-cloud.json'
+    });
+</script>
+
+<div class="page-content" style="background-image: url('images/wizard-v3.jpg')">
+
+    <div class="wizard-form">
+        <div class="wizard-header">
+            <h3 class="heading">@Servicely.Languages.Language.AddCitizen</h3>
+            <h5>Fill all form field to go next step</h5>
+        </div>
+        <form class="form-register" action="#" method="post">
+            <div id="form-total">
+                <!-- SECTION 1 -->
+                <style>
+                    .form-total h2 {
+                        text-align:left;
+                    }
+                </style>
+                <h2 class="text-left">
+
+                    <span class="step-icon"><i class="zmdi zmdi-account"></i></span>
+
+                    <span class="step-text">Basic Info</span>
+                </h2>
+                <section>
+                    <div class="container">
+
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+
+                                    <label for="Citizen name">@Servicely.Languages.Language.CitizenName</label>
+
+
+                                    <input type="text" class="form-control" name="citizen_first_name" required pattern="^[a-zA-Z\\s]{3,20}$" placeholder=@Servicely.Languages.Language.CitizenName id="FirstName" />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+
+                                    <label for="Citizen name">@Servicely.Languages.Language.CitizenNameArabic</label>
+                                    <input type="text" name="citizen_first_name_arabic" class="form-control" required pattern="[\u0600-\u06FF]{3,20}" placeholder=@Servicely.Languages.Language.CitizenName id="FirstNameArabic" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="FatherNationalId">@Servicely.Languages.Language.FatherNationalId</label>
+
+
+                                    @Html.DropDownList("citizen_father_id", null, " ", htmlAttributes: new { @class = " select2 form-control" })
+
+
+
+                                    <div class="mt-2">
+
+                                        <table class=" table  " id="tb1">
+                                        </table>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@Servicely.Languages.Language.MotherNationalId </label>
+                                    @Html.DropDownList("citizen_mother_id", null, "", htmlAttributes: new { @class = "selectpicker scrollable form-control", data_live_search = "true" })
+                                    <div class="mt-2">
+
+                                        <table class=" table  mt-2  " id="tb2">
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+
+                                    <label> @Servicely.Languages.Language.BirthPlace</label>
+                                    <select class="form-control" id="bp" name="" required>
+                                        <option value="">
+                                        </option>
+                                        <option value="House">
+                                            @Servicely.Languages.Language.House
+                                        </option>
+                                        <option value="Hospital">
+                                            @Servicely.Languages.Language.Hospital
+                                        </option>
+                                        <option value="Health Center">
+                                            @Servicely.Languages.Language.HealthCenter
+                                        </option>
+                                        <option value="other">
+                                            @Servicely.Languages.Language.Other
+                                        </option>
+                                    </select>
+
+                                    <div class="mt-2">
+                                        <table id="tb" class="table">
+                                        </table>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>@Servicely.Languages.Language.BirthDate</label>
+                                    @if (DateTime.Now.Month >= 1 && DateTime.Now.Month < 10)
+                                    {
+                                        if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                        {
+                                            <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                        }
+                                        else
+                                        {
+                                            <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+
+                                        if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                        {
+                                            <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                        }
+                                        else
+                                        {
+                                            <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                        }
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>@Servicely.Languages.Language.Gender</label>
+                                    &emsp;
+                                    @*Default inline 1*@
+                                    <div class="custom-control custom-radio custom-control-inline ">
+                                        <input type="radio" class="custom-control-input" id="inline1" name="citizen_gender" checked="checked" value="Male">
+                                        <label class="custom-control-label" for="inline1">@Servicely.Languages.Language.Male</label>
+                                    </div>
+
+                                    @*Default inline 2*@
+                                    <div class="custom-control custom-radio custom-control-inline ">
+                                        <input type="radio" class="custom-control-input" id="inline2" name="citizen_gender" value="Female">
+                                        <label class="custom-control-label" for="inline2">@Servicely.Languages.Language.Female</label>
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>@Servicely.Languages.Language.Relegion</label>
+
+
+                                    <div>
+                                        <select class="form-control" name="citizen_relegion" id="re" required>
+
+                                            <option value="">
+                                            </option>
+                                            <option value="Muslim">
+                                                @Servicely.Languages.Language.Muslim
+                                            </option>
+                                            <option value="Cristian">
+                                                @Servicely.Languages.Language.Cristian
+                                            </option>
+                                            <option value="Jewish">
+                                                @Servicely.Languages.Language.Jewish
+                                            </option>
+
+                                            <option value="Other">
+                                                @Servicely.Languages.Language.Other
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="mt-3 mb-3" id="inp">
+
+                                        <input type="text" class="form-control mb-2" id="btn" name="citizen_relegion" />
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </section>
+                <!-- SECTION 2 -->
+                <h2>
+                    <span class="step-icon"><i class="zmdi zmdi-home"></i></span>
+                    <span class="step-text">@Servicely.Languages.Language.Address</span>
+                </h2>
+                <section>
+                </section>
+                <!-- SECTION 3 -->
+                <h2>
+                    <span class="step-icon"><i class="zmdi zmdi-card"></i></span>
+                    <span class="step-text">@Servicely.Languages.Language.Document</span>
+                </h2>
+                <section>
+
+                    <div class="row mt-2">
+
+
+                        <div class="col-md-3">
+
+                            <label>@Servicely.Languages.Language.DocumentType</label>
+                            @Html.DropDownList("document_documentType_id", null, "", new { @class = "form-control", required = "required" })
+
+                        </div>
+
+                        <div class="col-md-1">
+
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        
+                        <div class="col-md-7">
+                            
+                            <div class="input-images" style="border:2px dashed;"></div>
+                        </div>
+                    </div>
+
+                </section>
+                <!-- SECTION 4 -->
+                <h2>
+                    <span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+                    <span class="step-text">Confirm</span>
+                </h2>
+                <section>
+                    <div class="inner">
+                        <h3>Confirm Details:</h3>
+                        <div class="form-row table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr class="space-row">
+                                        <th>Full Name:</th>
+                                        <td id="fullname-val"></td>
+                                    </tr>
+                                    <tr class="space-row">
+                                        <th>Email Address:</th>
+                                        <td id="email-val"></td>
+                                    </tr>
+                                    <tr class="space-row">
+                                        <th>Phone Number:</th>
+                                        <td id="phone-val"></td>
+                                    </tr>
+                                    <tr class="space-row">
+                                        <th>User:</th>
+                                        <td id="username-val"></td>
+                                    </tr>
+                                    <tr class="space-row">
+                                        <th>Gender:</th>
+                                        <td id="gender-val"></td>
+                                    </tr>
+                                    <tr class="space-row">
+                                        <th>Address:</th>
+                                        <td id="address-val"></td>
+                                    </tr>
+                                    <tr class="space-row">
+                                        <th>Card Type:</th>
+                                        <td id="pay-val">Credit Card</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </form>
+    </div>
+
+</div>

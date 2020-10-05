@@ -1,0 +1,154 @@
+﻿@model Servicely.Models.RealStateRegistryInterestReport
+
+@{
+    ViewBag.Title = "Create";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Create</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Real State Registry Interest Report</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Report Number</label>
+
+                        @Html.EditorFor(model => model.realStateRegistryInterest_reports_number, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_number, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <span>
+                        <label>Report Subject</label>
+
+                        @Html.DropDownList("realStateRegistryInterest_reports_subject", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_subject, "", new { @class = "text-danger" })
+                    </span>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Vendor National Id</label>
+
+                        @Html.DropDownList("realStateRegistryInterest_reports_vendor_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_vendor_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Buyer National Id</label>
+
+
+                        @Html.DropDownList("realStateRegistryInterest_reports_buyer_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_buyer_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Place</label>
+
+                        @Html.DropDownList("realStateRegistryInterest_reports_Places_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_Places_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Popular Contract Number</label>
+
+                        @Html.DropDownList("realStateRegistryInterest_reports_popularContract_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_popularContract_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Taxes Report</label>
+
+                        @Html.DropDownList("realStateRegistryInterest_reports_propertyTaxes_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_propertyTaxes_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Price</label>
+
+                        @Html.EditorFor(model => model.realStateRegistryInterest_reports_price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Request Number</label>
+
+                        @Html.DropDownList("realStateRegistryInterest_reports_request", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_request, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Report Date</label>
+
+                        @Html.EditorFor(model => model.realStateRegistryInterest_reports_Date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterest_reports_Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Branch Name</label>
+
+                        @Html.DropDownList("realStateRegistryInterestBranch_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.realStateRegistryInterestBranch_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

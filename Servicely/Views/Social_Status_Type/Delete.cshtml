@@ -1,0 +1,111 @@
+﻿@model Servicely.Models.Social_Status_Type
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<div>
+    <div class="container-fluid  ">
+        <h2>@Servicely.Languages.Language.Delete</h2>
+        <h3> @Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+        <h4>@Servicely.Languages.Language.SocialStatus</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+
+                    <dt>
+                        @Servicely.Languages.Language.social_status_type_name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.social_status_type_name_arabic)
+                    </dd>
+
+                    <dt>
+                        @Servicely.Languages.Language.social_status_type_description
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.social_status_type_description_arabic)
+                    </dd>
+
+
+
+
+
+                }
+                else
+                {
+                    <dt>
+                        @Servicely.Languages.Language.social_status_type_name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.social_status_type_name)
+                    </dd>
+
+                    <dt>
+                        @Servicely.Languages.Language.social_status_type_description
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.social_status_type_description)
+                    </dd>
+
+
+
+                }
+            }
+            else
+            {
+
+                <dt>
+                    @Servicely.Languages.Language.social_status_type_name
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.social_status_type_name)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.social_status_type_description
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.social_status_type_description)
+                </dd>
+
+            }
+
+
+
+
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+
+
+            <div class="form-actions no-color">
+                <input type="submit" value="@Servicely.Languages.Language.Delete" class="btn btn-default " /> |
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+        }
+    </div>
+
+
+
+
+    </div>

@@ -1,0 +1,156 @@
+﻿@model IEnumerable<Servicely.Models.Address>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+   if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+}
+
+
+
+
+<h5>@Servicely.Languages.Language.Index</h5>
+<h5>@Servicely.Languages.Language.Addresses </h5>
+<script>
+
+    $(function () {
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        var citi;
+        $.ajax({
+            url: "/Addresses/GetCitizenIdToJqueryCode",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                citi = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+
+
+
+
+            $.ajax({
+
+                url: "/Addresses/GetAllAddressesByCitizenId",
+                data: { AId: citi },
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, r) {
+                        if (r.address_isBirthPlace == true) {
+                            r.address_isBirthPlace = "نعم"
+                        }
+                        else {
+                            r.address_isBirthPlace = "لا"
+
+                        }
+                        if (r.address_isCurrent == true) {
+                            r.address_isCurrent = "نعم"
+                        }
+                        else {
+                            r.address_isCurrent = "لا"
+
+                        }
+                        $("#tb").append("<tr class='tt'> " +
+                            " <td> " + r.address_street_arabic + " </td> <td> " + r.district_arabic_name + " </td><td>" + r.region_arabic_name + " </td><td> " + r.city_arabic_name + " </td><td>" + r.state_arabic_name + " </td><td>" + r.address_isCurrent + "</td>   </tr>");
+
+
+                    });
+
+                }
+
+            });
+
+
+        }
+        else {
+
+
+
+
+
+            $.ajax({
+
+                url: "/Addresses/GetAllAddressesByCitizenId",
+                data: { AId: citi },
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb").append("<tr class='tt'> " +
+                            "  <td> " + r.address_street + " </td> <td> " + r.district_name + " </td><td>" + r.region_name + " </td><td> " + r.city_name + " </td><td>" + r.state_name + " </td><td>" + r.address_isCurrent + "</td>"
+                            + "</tr>");
+
+                    });
+
+                }
+
+            });
+
+
+        }
+
+        $(document).ready(function () {
+
+
+
+            $("#NId").select2();
+
+
+        });
+
+
+
+    });
+
+</script>
+
+
+
+<div class="col">
+    <table class="table table-fixed mt-3" id="tb">
+        <tr>
+
+            <th>
+                @Servicely.Languages.Language.StreetName
+            </th>
+            <th>
+                @Servicely.Languages.Language.District
+            </th>
+
+            <th>
+                @Servicely.Languages.Language.Region
+            </th>
+            <th>
+                @Servicely.Languages.Language.City
+            </th>
+            <th>
+                @Servicely.Languages.Language.State
+            </th>
+            <th>
+                @Servicely.Languages.Language.Is_Current
+            </th>
+
+        </tr>
+
+
+
+    </table>
+</div>

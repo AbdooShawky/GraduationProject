@@ -1,0 +1,109 @@
+﻿@model Servicely.Models.VaccinationType
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-6">
+
+
+            <h4>@Servicely.Languages.Language.VaccinationType</h4>
+
+
+            <br />
+            <h5>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h5>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+      
+        <div class="col-3">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Servicely.Languages.Language.vaccination_type_name
+                </dt>
+
+
+                @if (Session["lang"] != null)
+                {
+                    if (Session["lang"].ToString().Equals("ar-EG"))
+                    {
+
+                        <dd>
+                            @Html.DisplayFor(model => model.vaccination_type_name_arabic)
+                        </dd>
+
+
+
+                    }
+                    else
+                    {
+                        <dd>
+                            @Html.DisplayFor(model => model.vaccination_type_name)
+                        </dd>
+
+
+                    }
+                }
+                else
+                {
+                    <dd>
+                        @Html.DisplayFor(model => model.vaccination_type_name)
+                    </dd>
+
+                }
+
+
+
+
+
+
+            </dl>
+
+
+        </div>
+        <div class="col-3">
+
+            <dl class="dl-horizontal">
+
+
+                <dt>
+                    @Servicely.Languages.Language.vaccination_type_period
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.vaccination_type_period)
+                </dd>
+
+
+
+            </dl>
+
+
+        </div>
+    </div>
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+
+
+            <div class="form-actions no-color">
+                <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+        }
+    </div>
+
+</div>
+
+

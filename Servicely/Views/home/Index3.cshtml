@@ -1,0 +1,117 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index3</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Style1.css" rel="stylesheet" />
+
+
+    <style>
+
+        .text {
+            width: 240px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #fff;
+            font-family: 'Play',sans-serif;
+            font-size: 16px;
+            padding: 10px 0;
+            transition: border 0.5s;
+            outline: none;
+            color: #fff;
+        }
+
+        .button {
+            border: none;
+            width: 190px;
+            background: white;
+            color: #000;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 10px 0;
+            border-radius: 15px;
+            cursor: pointer;
+            outline: none;
+        }
+
+            .button:hover {
+                color: #fff;
+                background-color: black;
+            }
+
+        .h2 {
+            color: white;
+        }
+
+        .a {
+            color: yellow;
+            text-decoration: none;
+        }
+
+            .a:hover {
+                color: skyblue;
+            }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .form-control::-webkit-input-placeholder {
+            color: white;
+        }
+        /* WebKit, Blink, Edge */
+        .form-control:-moz-placeholder {
+            color: white;
+        }
+        /* Mozilla Firefox 4 to 18 */
+        .form-control::-moz-placeholder {
+            color: white;
+        }
+        /* Mozilla Firefox 19+ */
+        .form-control:-ms-input-placeholder {
+            color: white;
+        }
+        /* Internet Explorer 10-11 */
+
+    </style>
+
+</head>
+
+<body style="background-image: url('../../img/newwwww.jpg'); font-family: Tahoma,Geneva,sans-serif; color: #fff ; overflow-y: scroll; min-height:200px">
+    <div class="sign-in" style="background:rgba(44,62,80,0.7);padding:40px;width:300px;margin:auto;margin-top:80px;height:400px;margin-left:350px">
+        <form action="/home/Index" style="width:240px;text-align:center;margin:0;padding:0">
+
+            <h2 style="color:white" class="">Log in</h2>
+            <input type="text" name="user name" placeholder="User Name" class="text" />
+            <input type="password" name="password" placeholder="Password" class="text" required />
+            <br /><br />
+            <button type="button" value="log in" class="button">
+                <a href="/S/Index4">Log in</a>
+            </button>
+            <br /><br />
+            <div id="container">
+                <a href="#" style="margin-right:0px;font-size:13px;font-family:Tahoma,Geneva,sans-serif" class="a">Reset Password</a>
+                <a href="#" style="margin-right:0px;font-size:13px;font-family:Tahoma,Geneva,sans-serif" class="a">Forgot Password</a>
+            </div>
+            
+        </form>
+    </div>
+</body>
+
+
+
+</html>

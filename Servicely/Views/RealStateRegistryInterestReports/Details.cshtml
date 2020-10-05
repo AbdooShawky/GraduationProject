@@ -1,0 +1,111 @@
+﻿@model Servicely.Models.RealStateRegistryInterestReport
+
+@{
+    ViewBag.Title = "Details";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RealStateRegistryInterestReport</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_reports_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterest_reports_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_reports_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterest_reports_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterest_reports_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterest_reports_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreasAuthorityRequest.AreasAuthorityRequest_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreasAuthorityRequest.AreasAuthorityRequest_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen.citizen_national_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen1.citizen_national_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen1.citizen_national_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District.district_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District.district_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestBranch.realStateRegistryInterest_branch_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealStateRegistryInterestBranch.realStateRegistryInterest_branch_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestPopularContract.realStateRegistryInterest_popularContract_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealStateRegistryInterestPopularContract.realStateRegistryInterest_popularContract_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestPropertyTax.realStateRegistryInterestPropertyTaxes_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealStateRegistryInterestPropertyTax.realStateRegistryInterestPropertyTaxes_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealStateRegistryInterestReportsSubject.realStateRegistryInterestReports_subject_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealStateRegistryInterestReportsSubject.realStateRegistryInterestReports_subject_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.realStateRegistryInterest_reports_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

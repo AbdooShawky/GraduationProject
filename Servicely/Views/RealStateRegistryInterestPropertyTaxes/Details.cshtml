@@ -1,0 +1,39 @@
+﻿@model Servicely.Models.RealStateRegistryInterestPropertyTax
+
+@{
+    ViewBag.Title = "Details";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RealStateRegistryInterestPropertyTax</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterestPropertyTaxes_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterestPropertyTaxes_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.realStateRegistryInterestPropertyTaxes_body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.realStateRegistryInterestPropertyTaxes_body)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.realStateRegistryInterestPropertyTaxes_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

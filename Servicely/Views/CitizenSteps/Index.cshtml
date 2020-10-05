@@ -1,0 +1,1593 @@
+﻿@model Servicely.Models.Upload
+@{
+    ViewBag.Title = "EmployeeReport";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<style>
+    .error {
+        color: red;
+        font-weight: bold
+    }
+</style>
+<script>
+    //$(document).ready(function () {
+
+    //     $("#input-b1").fileinput({
+    //    theme: "theme",
+    //    uploadUrl: '#',
+    //   // allowedFileExtensions: ['jpg', 'png', 'jpeg', 'pdf'],
+    //    overwriteInitial: false,
+    //    fileType: "any",
+    //    maxFileSize: 10000,
+
+    //});
+
+    //});
+
+</script>
+@*<link href="~/AdminLTE-3.0.1/plugins/fontawesome-free/css/all.css" rel="stylesheet" />*@
+@*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">*@
+@*<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer-fas/theme.css" rel="stylesheet" type="text/css" media="all" />*@
+
+
+<script src="~/Steps Plugins/js/jquery.steps.js"></script>
+<script src="~/Steps Plugins/js/main.js"></script>
+<link href="~/drag-drop-image-uploader/dist/image-uploader.min.css" rel="stylesheet" />
+<script src="~/drag-drop-image-uploader/src/GseUploader.js"></script>
+@*<script src="~/drag-drop-image-uploader/src/image-uploader.js"></script>*@
+<script src="~/player/lottie.js"></script>
+<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/css/fileinput.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+
+<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/css/@Servicely.Languages.Language.FileInput" rel="stylesheet" />
+<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer/theme.css" rel="stylesheet" />
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/js/fileinput.js"></script>
+
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/js/locales/@Servicely.Languages.Language.FileInputLang"></script>
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/fas/theme.js"></script>
+<script src="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer-fas/theme.js"></script>
+
+<link href="~/Steps Plugins/css/@Servicely.Languages.Language.stepsss" rel="stylesheet" />
+<script>
+    $(function () {
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $('.input-images').imageUploader({
+                label: "اسحب الملفات وأفلتها هنا أو انقر للتصفح",
+                maxFiles: 1,
+                imagesInputName: 'photos',
+
+            });
+
+
+        }
+        else {
+            $('.input-images').imageUploader({
+                label: "Drag & Drop files here or click to browse",
+                maxFiles: 1,
+                imagesInputName: 'photos',
+
+            });
+
+
+            $(document).ready(function () {
+
+
+                $('input[type="file"]').attr('name', 'file');
+                $('input[type="file"]').prop('required', true);
+
+            });
+
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //----------------------- Card Id ---------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+            //-----------------------------------------------------
+
+
+        }
+
+    });
+    var animation = bodymovin.loadAnimation({
+        container: document.getElementById('imm'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/upload-to-cloud/upload-to-cloud.json'
+    });
+</script>
+<script>
+
+    $(function() {
+
+         $("a").click(function () {
+
+                var href = $(this).attr('href');
+                if (href == "#finish") {
+
+                    alert("finishhhhshshshshshshsh")
+                    $("#form-register").submit();
+
+
+                }
+
+             var flag = false;
+             //var hidden = $("#hidden").val();
+
+             if (flag == true) {
+                  if (href == "#next") {
+
+
+
+
+                    var Nat = $("input[name='inlineDefaultRadiosExample']:checked").val();
+
+                             if (Nat == "WithF" || Nat == "WithM")  {
+                                var birthDate = $("#dd").val();
+                                 var natinalId;
+
+                                  var fatherId = $("#citizen_father_id option:selected").val();//father Id
+
+
+                                 var dd = 0;
+                                 alert("ajaaaaaaaaaaaaaaaaax");
+                                 alert(birthDate);
+                                 alert(fatherId);
+                                 $.ajax({
+
+                                     url: "/Report/GetAll",
+                                     data: { Stat: null, date: birthDate, Fid: fatherId },
+                                      async: false,
+                                      success: function (res) {
+
+                                          natinalId = res
+
+                                      }
+
+
+                                 });
+
+
+                             }
+
+                             else if (Nat == "other") {
+
+                             }
+
+
+
+
+
+
+                }
+             }
+
+
+             //$("#hidden").val(1);
+             //alert($("#hidden").val(1));
+            });
+
+
+      var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+            
+            
+            // left arrow
+            var arrow = $("a[href='#next']");
+                $(arrow).empty();
+                $(arrow).append("<i class='zmdi zmdi-arrow-left'></i>");
+            
+
+         
+              // display father name after select NId
+        $("#citizen_father_id").change(function () {
+
+            var data = $("#citizen_father_id").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+        // display mother name after select NId
+        $("#citizen_mother_id").change(function () {
+
+            var data = $("#citizen_mother_id").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        }
+        else {
+              // display father name after select NId
+        $("#citizen_father_id").change(function () {
+
+            var data = $("#citizen_father_id").val();
+            $("#tb1").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb1").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+        // display mother name after select NId
+        $("#citizen_mother_id").change(function () {
+
+            var data = $("#citizen_mother_id").val();
+            $("#tb2").empty();
+            $.ajax({
+                url: "/Citizen/GetNamesByCitizenId",
+                data: { ctId: data },
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+
+                        $("#tb2").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        }
+
+
+
+
+        $("tb1").find("td").click(function () {
+
+            var daya = $(this).text();
+
+
+
+        });
+        $(document).ready(function () {
+
+
+             $('#citizen_mother_id').select2();
+
+            $('#citizen_father_id').select2();
+
+            $("#inp").hide();
+            $("#btn").prop('required', false);
+
+            //$("#citizen_mother_id").prop('class', 'selectpicker');
+            //$("#citizen_mother_id").attr('data-live-search', true);
+            //$("#citizen_father_id").prop('class', 'selectpicker');
+            //$("#citizen_father_id").attr('data-live-search', true);
+
+
+
+            $("#bp").change(function () {
+                $("#tb").empty();
+
+                var d = $("#bp").val();
+
+
+                if (d == "other")
+                    $("#tb").append("<tr> <td>" +
+
+                        " <lable>  @Servicely.Languages.Language.Other_inEnglish </lable><br/><input type='text' required class='form-control'  pattern = '[a-zA-Z\s]{3,20}$' name='citizen_birthPlace' id='inputt'/>"
+                      +" <lable>  @Servicely.Languages.Language.Other_inArabic </lable><br/><input type='text' required class='form-control'  pattern ='[\u0600-\u06FF\s]{3,20}' name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+
+
+                    );
+                if (d == "Health Center") {
+                    $("#tb").append(" <tr> <td>" +
+                       " <lable> @Servicely.Languages.Language.HealthCenter_English </lable><br/><input type='text' required  pattern = '[a-zA-Z\s]{3,20}$' class='form-control' name='citizen_birthPlace' id='inputt'/>"
+                       +"<lable> @Servicely.Languages.Language.HealthCenter_Arabic </lable><br/><input type='text' required class='form-control' pattern ='[\u0600-\u06FF\s]{3,20}'name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+                    );
+                }
+                if (d == "House") {
+                    $("#tb").append("<tr> <td>" +
+                       " <lable> @Servicely.Languages.Language.House_English </lable><br/><input type='text' required class='form-control' pattern = '[a-zA-Z\s]{3,20}$'name='citizen_birthPlace' id='inputt'/>"
+                        +"<lable> @Servicely.Languages.Language.House_Arabic </lable><br/><input type='text' required class='form-control' pattern ='[\u0600-\u06FF\s]{3,20}' name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+
+                    );
+                }
+
+                if (d == "Hospital") {
+
+                    $("#tb").append("<tr> <td>" +
+                          " <lable> @Servicely.Languages.Language.Hospital_English </lable><br/><input type='text' required class='form-control'  pattern = '[a-zA-Z\s]{3,20}$' name='citizen_birthPlace' id='inputt'/>"
+                        + " <lable> @Servicely.Languages.Language.Hospital_Arabic </lable><br/><input type='text' required class='form-control'pattern ='[\u0600-\u06FF\s]{3,20}' name='citizen_birthPlace_arabic' id='inputt'/> </td></tr>"
+                    );
+
+                }
+
+
+            });
+
+            $("#re").change(function () {
+
+                var data = $(this).val();
+                if (data == "Other") {
+                    $("#inp").show();
+                    $("#btn").prop('required', true);
+
+
+
+                }
+                else {
+                    $("#inp").hide();
+                    $("#btn").prop('required', false);
+                }
+            });
+
+
+
+        });
+
+
+
+      //  $('.form-register .steps li::before').removeClass('.form-register .steps li::before');
+
+
+    });
+
+
+</script>
+
+<script>
+
+
+
+
+
+
+    $(document).ready(function () {
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+                var sid = $("#City").val();
+                var ss = $("#city").val();
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+            });
+
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                $("#region").empty();
+                $("#district").empty();
+
+
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+
+
+
+        }
+        else {
+
+
+
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+                var sid = $("#City").val();
+                var ss = $("#city").val();
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+            });
+
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+        }
+
+        $("#div1").hide();
+        $("#div2").hide();
+
+
+
+
+        $("#NId").prop('class', 'selectpicker');
+        $("#NId").attr('data-live-search', true);
+
+        $("#defaultInline3").click(function () {
+
+            $("#div2").show();
+            $("#div1").show();
+            $("#State").prop('required', true);
+            $("#streetnameAR").prop('required', true);
+            $("#streetnameEn").prop('required', true);
+        });
+        $("#defaultInline2").click(function () {
+
+            $("#div2").hide();
+            $("#div1").hide();
+            $("#State").prop('required', false);
+            $("#streetnameEn").prop('required', false);
+            $("#streetnameAR").prop('required', false);
+
+
+        });
+        $("#defaultInline1").click(function () {
+
+            $("#div2").hide();
+            $("#div1").hide();
+            $("#State").prop('required', false);
+            $("#streetnameEn").prop('required', false);
+            $("#streetnameAR").prop('required', false);
+
+
+        });
+
+
+    });
+
+
+
+    $("#NId").selectpicker();
+
+</script>
+<script>
+
+    //   $(document).ready(function () {
+
+    //       $.extend( $.validator.messages, {
+    //	required: "هذا الحقل إلزامي",
+    //	remote: "يرجى تصحيح هذا الحقل للمتابعة",
+    //	email: "رجاء إدخال عنوان بريد إلكتروني صحيح",
+    //	url: "رجاء إدخال عنوان موقع إلكتروني صحيح",
+    //	date: "رجاء إدخال تاريخ صحيح",
+    //	dateISO: "رجاء إدخال تاريخ صحيح (ISO)",
+    //	number: "رجاء إدخال عدد بطريقة صحيحة",
+    //	digits: "رجاء إدخال أرقام فقط",
+    //	creditcard: "رجاء إدخال رقم بطاقة ائتمان صحيح",
+    //	equalTo: "رجاء إدخال نفس القيمة",
+    //	extension: "رجاء إدخال ملف بامتداد موافق عليه",
+    //	maxlength: $.validator.format( "الحد الأقصى لعدد الحروف هو {0}" ),
+    //	minlength: $.validator.format( "الحد الأدنى لعدد الحروف هو {0}" ),
+    //	rangelength: $.validator.format( "عدد الحروف يجب أن يكون بين {0} و {1}" ),
+    //	range: $.validator.format( "رجاء إدخال عدد قيمته بين {0} و {1}" ),
+    //	max: $.validator.format( "رجاء إدخال عدد أقل من أو يساوي {0}" ),
+    //	min: $.validator.format( "رجاء إدخال عدد أكبر من أو يساوي {0}" )
+    //} );
+
+    //   });
+
+
+    // Genarate National Id
+    $(function () {
+
+
+        $("a").click(function () {
+
+            var href = $(this).attr('href');
+
+            var fooorm = $("#form-register");
+
+            if (fooorm.valid() == true) {
+
+                $("#hidden").val(1);
+
+            }
+
+
+
+            // var hidden = $("#hidden").val();
+
+            if ($("#hidden").val() == "1") {
+                if (href == "#next") {
+                    alert("Nexttttttttttttttttttttttttt")
+
+                    //Citizen whole Name
+                    $("#Name").empty();
+                    $.ajax({
+
+                        url: "/Report/GetAllNameOfCitizen",
+                        data: { name: $("#FirstName").val(), Id: $("#citizen_father_id option:selected").val() },
+                        async: false,
+                        success: function (res) {
+
+                            $("#Name").text(res);
+
+                        }
+                    });
+
+
+
+                    // citizen Relegion
+                    $("#Relegion").empty();
+                    $("#Relegion").text($("#re option:selected").val());
+
+                    //Citizen Gender
+                    $("#Gender").empty();
+                    $("#Gender").text($("input[name='citizen_gender']:checked").val());
+
+                    //Citizen Birth date
+                    $("#BirthDate").empty();
+                    $("#BirthDate").text($("#dd").val());
+
+
+                    var Nat = $("input[name='inlineDefaultRadiosExample']:checked").val();
+
+                    if (Nat == "WithF" || Nat == "WithM") {
+
+
+                        if (Nat == "WithF") {
+
+                            // father address
+                            $("#stateId").empty();
+
+                            $("#cityId").empty();
+
+                            $("#regionId").empty();
+
+                            $("#districtId").empty();
+
+                            $("#streetId").empty();
+
+
+                            $.ajax({
+                                url: "/Report/GetFatherorMotherAddress",
+                                data: { Id: $("#citizen_father_id option:selected").val() },
+                                async: false,
+                                success: function (res) {
+
+                                    $.each(res, function (i, r) {
+
+                                        $("#stateId").text(r.state_name);
+                                        $("#cityId").text(r.city_name);
+                                        $("#regionId").text(r.region_name);
+                                        $("#districtId").text(r.district_name);
+                                        $("#streetId").text(r.address_street);
+
+                                    });
+
+                                }
+
+                            });
+
+
+
+                        }
+
+                        if (Nat == "WithM") {
+
+                            // mother address
+                            $("#stateId").empty();
+
+                            $("#cityId").empty();
+
+                            $("#regionId").empty();
+
+                            $("#districtId").empty();
+
+                            $("#streetId").empty();
+
+
+                            $.ajax({
+                                url: "/Report/GetFatherorMotherAddress",
+                                data: { Id: $("#citizen_mother_id option:selected").val() },
+                                async: false,
+                                success: function (res) {
+
+                                    $.each(res, function (i, r) {
+
+                                        $("#stateId").text(r.state_name);
+                                        $("#cityId").text(r.city_name);
+                                        $("#regionId").text(r.region_name);
+                                        $("#districtId").text(r.district_name);
+                                        $("#streetId").text(r.address_street);
+
+                                    });
+
+                                }
+
+                            });
+
+
+
+                        }
+
+                        var birthDate = $("#dd").val();
+                        var natinalId;
+
+                        var fatherId = $("#citizen_father_id option:selected").val();//father Id
+
+
+                        var dd = 0;
+
+                        $("#NationalId").empty();
+                        $.ajax({
+
+                            url: "/Report/GetAll",
+                            data: { Stat: null, date: birthDate, Fid: fatherId },
+                            async: false,
+                            success: function (res) {
+
+                                natinalId = res;
+                                $("#NationalId").text(res);
+                                $("#HiddenNational").val(res);
+
+                            }
+
+
+                        });
+
+
+                    }
+
+                    else if (Nat == "other") {
+
+
+
+                        // other address
+                        $("#stateId").empty();
+
+                        $("#cityId").empty();
+
+                        $("#regionId").empty();
+
+                        $("#districtId").empty();
+
+                        $("#streetId").empty();
+
+                        $("#stateId").text($("#state option:selected").val());
+
+                        $("#cityId").text($("#city option:selected").val());
+
+                        $("#regionId").text($("#region option:selected").val());
+
+                        $("#districtId").text($("#district option:selected").val());
+
+                        $("#streetId").text($("#streetnameEn option:selected").val());
+
+                        var stt = $("#State option:selected").val();
+                        var birthDate = $("#dd").val();
+                        var natinalId;
+
+                        var fatherId = $("#citizen_father_id option:selected").val();//father Id
+
+
+                        var dd = 0;
+
+                        $("#NationalId").empty();
+                        $.ajax({
+
+                            url: "/Report/GetAll",
+                            data: { Stat: stt, date: birthDate, Fid: fatherId },
+                            async: false,
+                            success: function (res) {
+
+                                natinalId = res;
+                                $("#NationalId").text(res);
+
+                            }
+
+
+                        });
+                    }
+
+
+
+
+
+
+                }
+            }
+
+
+            //$("#hidden").val(1);
+            //alert($("#hidden").val(1));
+        });
+
+    });
+
+
+</script>
+<style>
+   
+
+    .wizard-v1-content {
+        background: #fff;
+        width: 100%;
+        box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -o-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -ms-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        -o-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        margin: 0;
+        font-family: 'Raleway', sans-serif;
+        position: relative;
+        display: flex;
+        display: -webkit-flex;
+    }
+
+    label {
+        font-size: medium;
+    }
+</style>
+<div class="page-content">
+    <div class=" w-100">
+        <div class="wizard-form">
+
+            @using (Html.BeginForm("Index", "report", FormMethod.Post, new { @class = "form-register", id = "form-register", enctype = "multipart/form-data" }))
+            {
+                <div id="form-total">
+                    <!--SECTION 1-->
+                    <h2>
+                            <span class="step-icon"><i class="zmdi zmdi-account"></i></span>
+                            <span class="step-number">@Servicely.Languages.Language.Step1</span>
+                            <span class="step-text">@Servicely.Languages.Language.BaasicInformation</span>
+                    </h2>
+                        <section class="">
+                            <div class="container">
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+
+                                            <label for="Citizen name">@Servicely.Languages.Language.CitizenName</label>
+
+
+                                            <input type="text" class="form-control" name="citizen_first_name" required pattern="^[a-zA-Z\\s]{3,20}$" placeholder=@Servicely.Languages.Language.CitizenName id="FirstName" />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+
+                                            <label for="Citizen name">@Servicely.Languages.Language.CitizenNameArabic</label>
+                                            <input type="text" name="citizen_first_name_arabic" class="form-control" required pattern="[\u0600-\u06FF]{3,20}" placeholder=@Servicely.Languages.Language.CitizenName id="FirstNameArabic" />
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="FatherNationalId">@Servicely.Languages.Language.FatherNationalId</label>
+
+
+                                            @Html.DropDownList("citizen_father_id", null, " ", htmlAttributes: new { @class = " select2 form-control" })
+
+
+
+                                            <div class="mt-2">
+
+                                                <table class=" table  " id="tb1">
+                                                </table>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@Servicely.Languages.Language.MotherNationalId </label>
+                                            @Html.DropDownList("citizen_mother_id", null, "", htmlAttributes: new { @class = "selectpicker scrollable form-control", data_live_search = "true" })
+                                            <div class="mt-2">
+
+                                                <table class=" table  mt-2  " id="tb2">
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+
+                                            <label> @Servicely.Languages.Language.BirthPlace</label>
+                                            <select class="form-control" id="bp" name="" required>
+                                                <option value="">
+                                                </option>
+                                                <option value="House">
+                                                    @Servicely.Languages.Language.House
+                                                </option>
+                                                <option value="Hospital">
+                                                    @Servicely.Languages.Language.Hospital
+                                                </option>
+                                                <option value="Health Center">
+                                                    @Servicely.Languages.Language.HealthCenter
+                                                </option>
+                                                <option value="other">
+                                                    @Servicely.Languages.Language.Other
+                                                </option>
+                                            </select>
+
+                                            <div class="mt-2">
+                                                <table id="tb" class="table">
+                                                </table>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>@Servicely.Languages.Language.BirthDate</label>
+                                            @if (DateTime.Now.Month >= 1 && DateTime.Now.Month < 10)
+                                            {
+                                                if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                                {
+                                                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                                }
+                                                else
+                                                {
+                                                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                                }
+
+
+                                            }
+                                            else
+                                            {
+
+                                                if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                                {
+                                                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                                }
+                                                else
+                                                {
+                                                    <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                                }
+
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>@Servicely.Languages.Language.Gender</label>
+                                            &emsp;
+                                            @*Default inline 1*@
+                                            <div class="custom-control custom-radio custom-control-inline ">
+                                                <input type="radio" class="custom-control-input" id="inline1" name="citizen_gender" checked="checked" value="Male">
+                                                <label class="custom-control-label" for="inline1">@Servicely.Languages.Language.Male</label>
+                                            </div>
+
+                                            @*Default inline 2*@
+                                            <div class="custom-control custom-radio custom-control-inline ">
+                                                <input type="radio" class="custom-control-input" id="inline2" name="citizen_gender" value="Female">
+                                                <label class="custom-control-label" for="inline2">@Servicely.Languages.Language.Female</label>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>@Servicely.Languages.Language.Relegion</label>
+
+
+                                            <div>
+                                                <select class="form-control" name="citizen_relegion" id="re" required>
+
+                                                    <option value="">
+                                                    </option>
+                                                    <option value="Muslim">
+                                                        @Servicely.Languages.Language.Muslim
+                                                    </option>
+                                                    <option value="Cristian">
+                                                        @Servicely.Languages.Language.Cristian
+                                                    </option>
+                                                    <option value="Jewish">
+                                                        @Servicely.Languages.Language.Jewish
+                                                    </option>
+
+                                                    <option value="Other">
+                                                        @Servicely.Languages.Language.Other
+                                                    </option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="mt-3 mb-3" id="inp">
+
+                                                <input type="text" class="form-control mb-2" id="btn" name="citizen_relegion" />
+
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        @*SECTION 2*@
+                        <h2>
+                            <span class="step-icon"><i class="zmdi zmdi-home"></i></span>
+                            <span class="step-number">@Servicely.Languages.Language.Step2</span>
+                            <span class="step-text">@Servicely.Languages.Language.Address</span>
+                        </h2>
+                        <section>
+                            <div class="row">
+
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md">
+
+                                    <label class="text-md" id="firstName"></label>
+
+
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-3">
+
+                                    @*Default inline 1*@
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" value="WithF" checked="checked">
+                                        <label class="custom-control-label" for="defaultInline1">@Servicely.Languages.Language.With_Father</label>
+                                    </div>
+
+                                    @*Default inline 2*@
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" value="WithM">
+                                        <label class="custom-control-label" for="defaultInline2">@Servicely.Languages.Language.With_Mother</label>
+                                    </div>
+
+                                    @*Default inline 3*@
+                                    <div class="custom-control custom-radio   custom-control-inline">
+                                        <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample" value="other">
+                                        <label class="custom-control-label" for="defaultInline3">@Servicely.Languages.Language.Other</label>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="mt-3" id="div1">
+
+
+                                <div class="row ">
+                                    <div class="col mt-3">
+                                        <label class="label">@Servicely.Languages.Language.State</label>
+                                        @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control" })
+
+
+                                    </div>
+                                    <div class="col mt-3">
+                                        <label class="label">@Servicely.Languages.Language.City</label>
+                                        <select class="form-control" id="city"></select>
+                                    </div>
+                                    <div class="col mt-3">
+                                        <label class="label">@Servicely.Languages.Language.Region</label>
+                                        <select class="form-control" id="region" name="district_region_id"></select>
+
+
+                                    </div>
+
+                                    <div class="col mt-3">
+                                        <label class="label">@Servicely.Languages.Language.District</label>
+                                        <select class="form-control" id="district" name="address_district_id">
+                                        </select>
+
+
+                                    </div>
+
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="" id="div2">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <label class="label">@Servicely.Languages.Language.Street_Name</label>
+                                        <input type="text" name="address_street" class="form-control" pattern="[0-9]*[a-zA-Z\\s]{3,20}" id="streetnameEn" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="label">@Servicely.Languages.Language.ArabicStreetName</label>
+
+                                        <input type="text" name="address_street_arabic" class="form-control" pattern="[0-9]*[\u0600-\u06FF\\s]{3,20}" id="streetnameAR" />
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <input type="hidden" value="0" id="hidden" />
+                        </section>
+                    @*SECTION 3*@
+                    <h2>
+                        <span class="step-icon"><i class="zmdi zmdi-card"></i></span>
+                        <span class="step-number">@Servicely.Languages.Language.Step3</span>
+                        <span class="step-text">@Servicely.Languages.Language.Document</span>
+                    </h2>
+                    <section>
+
+                        <div class="row mt-2">
+
+
+                            <div class="col-md-3">
+
+                                <label>@Servicely.Languages.Language.DocumentType</label>
+                                @Html.DropDownList("document_documentType_id", null, "", new { @class = "form-control", required = "required" })
+
+                            </div>
+
+                            <div class="col-md-1">
+
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class=" file-loading">
+                                    <input id="input-b1" required name="file" type="file" class="file mt-5" data-browse-on-zone-click="true" data-allowed-file-extensions='["pdf", "png","jpg","jpeg"]' data-max-File-Size="10000">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </section>
+                    @*SECTION 4*@
+                    <h2>
+                        <span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+                        <span class="step-number">@Servicely.Languages.Language.Step4</span>
+                        <span class="step-text">@Servicely.Languages.Language.Confirmation</span>
+                    </h2>
+                    <section class="w-100">
+
+
+
+
+
+
+
+                        <div class="container-fluid w-100">
+
+                            @*Timelime example*@
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    @*The time line*@
+                                    <div class="timeline">
+
+                                        @*timeline item
+                                            citizen Information*@
+                                        <div>
+                                            <i class="fas fa-user bg-green"></i>
+                                            <i class="fas fa-user bg-blue"></i>
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="fas fa-clock"></i> </span>
+                                                <h3 class="timeline-header"><a href="#">Citizen Basic Information</a></h3>
+
+                                                <div class="timeline-body">
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="hidden" id="HiddenNational" name="citizen_national_id" />
+                                                            <label> @Servicely.Languages.Language.NationalId : </label>  &emsp; <span><label id="NationalId"></label></span>
+                                                            <br />
+                                                            <label>@Servicely.Languages.Language.Citizen_Name: </label>  &emsp; <span><label id="Name"></label></span>
+                                                            <br />
+                                                            <label>@Servicely.Languages.Language.Relegion    : </label> &emsp; <span><label id="Relegion"></label></span>
+                                                            <br />
+                                                            <label>@Servicely.Languages.Language.Gender      : </label> &emsp; <span><label id="Gender"></label></span>
+                                                            <br />
+                                                            <label>@Servicely.Languages.Language.BirthDate   : </label> &emsp; <span><label id="BirthDate"></label></span>
+
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        @*END timeline item*@
+
+
+                                        @*timeline item*@
+                                        <div>
+
+                                            <i class="fas fa-address-card bg-yellow"></i>
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="fas fa-clock"></i> </span>
+                                                <h3 class="timeline-header"><a href="#">Citizen Basic Information</a></h3>
+
+                                                <div class="timeline-body">
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label>@Servicely.Languages.Language.State     : </label><label id="stateId"></label>
+                                                            <br />
+
+                                                            <label>@Servicely.Languages.Language.City      : </label><label id="cityId"></label>
+                                                            <br />
+                                                            <label>@Servicely.Languages.Language.Region    : </label><label id="regionId"></label>
+                                                            <br />
+                                                            <label>@Servicely.Languages.Language.District  : </label><label id="districtId"></label>
+
+                                                            <br />
+                                                            <label>@Servicely.Languages.Language.StreetName: </label><label id="streetId"></label>
+
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        @*END timeline item*@
+
+
+
+                                    </div>
+                                </div>
+                                @*/.col*@
+                            </div>
+                        </div>
+                        @*/.timeline*@
+                        @*<div class="container">
+                                 <div class="row mt-3">
+                                     <div class="col-md-6">
+                                         <div class="text-center">
+                                             <h4 class="font-weight-bold">
+                                                 @Servicely.Languages.Language.CitizenBasicInfo
+                                             </h4>
+                                         </div>
+                                         <div class="text-left">
+                                             <p> @Servicely.Languages.Language.NationalId :</p><label id="NationalId"></label>
+                                             <p>@Servicely.Languages.Language.Citizen_Name:</p><label id="Name"></label>
+                                             <p>@Servicely.Languages.Language.Relegion    :</p><label id="Relegion"></label>
+                                             <p>@Servicely.Languages.Language.Gender      :</p><label id="Gender"></label>
+                                             <p>@Servicely.Languages.Language.BirthDate   :</p><label id="BirthDate"></label>
+
+                                         </div>
+
+
+
+
+                                     </div>
+                                 </div>
+                            </div>*@
+                    </section>
+
+                </div>
+
+
+            }
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Servicely.Languages.Language.error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modelbody">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Servicely.Languages.Language.Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+@*<link href="~/kartik-v-bootstrap-fileinput-a7c63f9/css/fileinput.css" rel="stylesheet" />
+        <link href="~/kartik-v-bootstrap-fileinput-a7c63f9/css/@Servicely.Languages.Language.FileInput" rel="stylesheet" />
+        <link href="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer/theme.css" rel="stylesheet" />
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class=" file-loading">
+                    <input id="input-b1" name="file" type="file" class="file mt-5" data-browse-on-zone-click="true">
+                </div>
+            </div>
+        </div>
+        <script src="~/kartik-v-bootstrap-fileinput-a7c63f9/js/fileinput.js"></script>
+        <script src="~/kartik-v-bootstrap-fileinput-a7c63f9/js/locales/@Servicely.Languages.Language.FileInputLang"></script>
+        <script src="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/fas/theme.js"></script>
+        <script src="~/kartik-v-bootstrap-fileinput-a7c63f9/themes/explorer-fas/theme.js"></script>
+
+        <script>
+
+
+
+
+
+            $("#input-b1").fileinput({
+                theme: "explorer-fas",
+                uploadUrl: '#',
+                allowedFileExtensions: ['jpg', 'png', 'jpeg', 'pdf'],
+                overwriteInitial: false,
+                fileType: "any",
+                maxFileSize: 10000,
+
+            });
+
+
+        </script>
+    <div class="row mt-5">
+
+        <div class="col-md-7">
+
+            <div class="input-images" style="border:2px dashed;"></div>
+        </div>
+    </div>*@

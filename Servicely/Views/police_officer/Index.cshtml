@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Servicely.Models.police_officer>
+
+@{
+    ViewBag.Title = "Index";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Police Officers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            NationalId
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Police Department Name
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_second_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_third_name)
+        @Html.DisplayFor(modelItem => item.Citizen.citizen_fourth_name)
+    </td>
+    <td>
+       
+        @Html.DisplayFor(modelItem => item.PoliceDepartment.police_department_name)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.police_officer_id }) |
+
+        @Html.ActionLink("Delete", "Delete", new { id = item.police_officer_id })
+    </td>
+</tr>
+}
+
+</table>

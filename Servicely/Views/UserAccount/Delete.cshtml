@@ -1,0 +1,51 @@
+﻿@model Servicely.Models.User
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2>@Servicely.Languages.Language.Delete</h2>
+
+    <h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4>@Servicely.Languages.Language.User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Servicely.Languages.Language.User_name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_name)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.UserPassword
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_password)
+        </dd>
+
+        
+        
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+       
+
+        <div class="form-actions no-color">
+            <input type="submit" value= @Servicely.Languages.Language.Delete class="btn btn-default" /> |
+            @Html.ActionLink( Servicely.Languages.Language.Back_to_List, "Index1")
+        </div>
+    }
+</div>
+
+

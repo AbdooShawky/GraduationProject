@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Servicely.Models.Photo>
+@{
+    ViewBag.Title = "ChooseUserIndex";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<script>
+
+</script>
+
+
+
+
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink( Servicely.Languages.Language.Create_New, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.CitizenName
+        </th>
+        <th>
+            @Servicely.Languages.Language.NationalId
+        </th>
+        <th>
+            @Servicely.Languages.Language.Photo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name) @Html.DisplayFor(modelItem => item.Citizen.citizen_second_name) @Html.DisplayFor(modelItem => item.Citizen.citizen_third_name) @Html.DisplayFor(modelItem => item.Citizen.citizen_fourth_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+            </td>
+
+            <td>
+
+
+                <img src="~/CitizenPhotos/@item.Photo_Url" class=" elevation-4 " style="height:55px; width:2.2rem " />
+            </td>
+            <td>
+                @Html.ActionLink(Servicely.Languages.Language.Edit, "Edit", new { id = item.Photo_id }) |
+                @Html.ActionLink(Servicely.Languages.Language.Delete, "Delete", new { id = item.Photo_id })
+            </td>
+        </tr>
+    }
+
+</table>

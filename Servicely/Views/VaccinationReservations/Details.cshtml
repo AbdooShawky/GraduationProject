@@ -1,0 +1,99 @@
+﻿@model Servicely.Models.VaccinationReservation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VaccinationReservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_child_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_child_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_checked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_checked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_isDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_isDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccReservation_cancel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccReservation_cancel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen.citizen_national_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthCare.hospital_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthCare.hospital_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccinationType.vaccination_type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccinationType.vaccination_type_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VaccReservation_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

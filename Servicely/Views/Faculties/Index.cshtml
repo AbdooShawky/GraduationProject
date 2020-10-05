@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Servicely.Models.Faculty>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<table class="table table-hover ">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.Faculty
+        </th>
+        <th>
+            @Servicely.Languages.Language.SchoolSection
+        </th>
+        <th>
+            @Servicely.Languages.Language.HowManyYear
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+
+    @if (Session["lang"] != null)
+    {
+        if (Session["lang"].ToString().Equals("ar-EG"))
+        {
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FacultyNameArabic)
+            </td>
+            if (item.SchoolSection == "Scientific")
+            {
+                <td> @Servicely.Languages.Language.Scientific</td>
+            }
+            else if (item.SchoolSection == "Litrary")
+            {
+                <td> @Servicely.Languages.Language.Litrary</td>
+            }
+            else
+            {
+                @Servicely.Languages.Language.ScientificAndLitrary
+            }
+        }
+        else
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.FacultyName)
+            </td>
+            <td>@item.SchoolSection</td>
+        }
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.FacultyName)
+
+        </td>
+        <td>@item.SchoolSection</td>
+    }
+
+    <td>
+        @item.Year
+    </td>
+
+    <td>
+        <a href="/Faculties/Edit/@item.Id"><i class="far fa-edit"></i></a> |
+
+        <a href="/Faculties/Delete/@item.Id"><i class="far fa-trash-alt"></i></a>    </td>
+</tr>
+    }
+
+</table>

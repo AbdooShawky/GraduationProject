@@ -1,0 +1,388 @@
+﻿
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script src="~/scripts/jquery-3.4.1.js"></script>
+@*<link href="~/css/bootstrap.css" rel="stylesheet" />*@
+
+<style>
+    .button {
+        width: 190px;
+        background: white;
+        color: rgb(209, 36, 36);
+        font-size: 16px;
+        line-height: 25px;
+        padding: 10px 0;
+        border-radius: 15px;
+        cursor: pointer;
+        border-color: rgb(209, 36, 36);
+        outline: rgb(209, 36, 36);
+        border: solid;
+    }
+
+        .button:hover {
+
+            color: #fff;
+            background-color: rgb(209, 36, 36);
+        }
+</style>
+<script>
+
+    $(function () {
+
+
+        //$.ajax({
+
+        //    url: "/report/getAddressByCitizenId",
+        //    data: "",
+        //    async:false,
+        //    success: function (res) {
+
+        //        $.each(res, function (i, row) {
+
+
+        //            $("#tbAddress").append("<tr>   <td> "+row.state_name+" </td><td>  "+row.city_name+"   </td>     <td> "+row.region_name+"    </td>     <td> "+row.district_name+"    </td>      <td>  "+row.address_street+"   </td>  </tr>");
+
+
+        //        });
+
+        //    }
+
+
+
+        //});
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+
+              $.ajax({
+
+            url: "/summary/getAddressByCitizenId",
+                  data: "",
+                  async: false,
+
+            success: function (res) {
+
+                $.each(res, function (i , r) {
+
+
+                        $("#div1").append(" <label class='font-weight-bold'>@Servicely.Languages.Language.State:</label> <label> " + r.state_arabic_name + " </label> <br/>  <label class='font-weight-bold'>@Servicely.Languages.Language.City:</label> <label> " + r.city_arabic_name+ " </label> <br/> <label class='font-weight-bold'>@Servicely.Languages.Language.Region:</label> <label> " + r.region_arabic_name+" </label> <br/> <label class='font-weight-bold'>@Servicely.Languages.Language.District:</label> <label> " + r.district_arabic_name+" </label> ");
+
+                       // $("#tbAddress").append("<tr> <td> " + r.state_name + " </td> <td> " + r.city_name + " </td> <td> " + r.region_name + " </td> <td> " + r.district_name + " </td> <td> " + @Session["AddresStreetOO"] + " </td> </tr>");
+
+                });
+            }
+
+        });
+
+        }
+        else {
+              $.ajax({
+
+                  url: "/summary/getAddressByCitizenId",
+
+                  data: "",
+                  async: false,
+
+                  success: function (res) {
+
+
+                      $.each(res, function (i, r) {
+
+
+
+                        $("#div1").append(" <label class='font-weight-bold'>State:</label> <label> " + r.state_name + " </label> <br/>  <label class='font-weight-bold'>City:</label> <label> " + r.city_name + " </label> <br/> <label class='font-weight-bold'>Region:</label> <label> " + r.region_name + " </label> <br/> <label class='font-weight-bold'>District:</label> <label> " + r.district_name + " </label> ");
+
+                       // $("#tbAddress").append("<tr> <td> " + r.state_name + " </td> <td> " + r.city_name + " </td> <td> " + r.region_name + " </td> <td> " + r.district_name + " </td> <td> " + @Session["AddresStreetOO"] + " </td> </tr>");
+
+                });
+            }
+
+        });
+        }
+
+      
+
+
+
+    });
+
+</script>
+
+<div class="container mt-5">
+
+
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-8" style="border:4px solid rgb(209, 36, 36)">
+            <h2 class="mt-4">@Servicely.Languages.Language.Summary</h2>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="text-center">
+                        <h5 class="font-weight-bold">
+                            @Servicely.Languages.Language.BaasicInformation
+                        </h5>
+                        <hr />
+                    </div>
+                    <div class="">
+                        @if (Session["lang"] != null)
+                        {
+
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+
+                            {
+                                <label class="font-weight-bold"> @Servicely.Languages.Language.NationalId: </label> <label>@Session["Nai"]</label>
+                                <br />
+                                <label class="font-weight-bold"> @Servicely.Languages.Language.CitizenName: </label> <lable>@Session["FirstNameArabic"] @Session["secondArabic"] @Session["thirdArabic"] @Session["fourthArabic"]</lable>
+                                <br />
+                                <label class="font-weight-bold"> @Servicely.Languages.Language.Gender: </label>
+
+
+
+                                if (Session["gender"] != null)
+
+                                {
+
+                                    if (Session["gender"].ToString().Equals("Male"))
+
+                                    {
+
+                                        <label>@Servicely.Languages.Language.Male</label>
+
+
+                                    }
+
+                                    else
+
+                                    {
+
+
+                                        <label>
+                                            @Servicely.Languages.Language.Female
+                                        </label>
+                                    }
+
+
+                                }
+
+
+
+
+                                <br />
+                                <label class="font-weight-bold"> @Servicely.Languages.Language.Relegion: </label>
+                                if (Session["relegion"] != null)
+                                {
+                                    if (Session["relegion"].ToString() == "Muslim")
+                                    {
+                                        Session["relegion"] = "مسلم";
+                                        <label>@Session["relegion"]</label>
+                                    }
+                                    else if (Session["relegion"].ToString() == "Cristian")
+                                    {
+                                        Session["relegion"] = "مسيحي";
+                                        <label>@Session["relegion"]</label>
+                                    }
+                                    else if (Session["relegion"].ToString() == "Jewish")
+                                    {
+                                        Session["relegion"] = "يهودي";
+                                        <label>@Session["relegion"]</label>
+                                    }
+                                    else
+                                    {
+                                        <label>@Session["relegion"]</label>
+                                    }
+
+                                }
+
+
+                                <br />
+                                <label class="font-weight-bold"> @Servicely.Languages.Language.BirthDate: </label> if (Session["BirthDate"] != null)
+                                { <label>@Convert.ToDateTime(Session["BirthDate"]).ToShortDateString() </label>}
+                            <br />
+                            <label class="font-weight-bold"> @Servicely.Languages.Language.BirthPlace: </label> <label>@Session["BirthPlaceArabic"]</label>
+
+
+
+                        }
+                        else
+                        {
+                            <label class="font-weight-bold"> @Servicely.Languages.Language.NationalId: </label> <label>@Session["Nai"]</label>
+                            <br />
+                            <label class="font-weight-bold"> @Servicely.Languages.Language.CitizenName: </label> <lable>@Session["FirstName"] @Session["second"] @Session["third"] @Session["fourth"]</lable>
+                            <br />
+                            <label class="font-weight-bold"> @Servicely.Languages.Language.Gender: </label> <label>@Session["gender"]</label>
+                            <br />
+                            <label class="font-weight-bold"> @Servicely.Languages.Language.Relegion: </label> <label>@Session["relegion"]</label>
+                            <br />
+                            <label class="font-weight-bold"> @Servicely.Languages.Language.BirthDate: </label> if (Session["BirthDate"] != null)
+                            { <label>@Convert.ToDateTime(Session["BirthDate"]).ToShortDateString() </label>}
+                        <br />
+                        <label class="font-weight-bold"> @Servicely.Languages.Language.BirthPlace: </label> <label>@Session["BirthPlace"]</label>
+
+
+                    }
+                }
+                else
+                {
+                    <label class="font-weight-bold"> @Servicely.Languages.Language.NationalId: </label> <label>@Session["Nai"]</label>
+                    <br />
+                    <label class="font-weight-bold"> @Servicely.Languages.Language.CitizenName: </label> <lable>@Session["FirstName"] @Session["second"] @Session["third"] @Session["fourth"]</lable>
+                    <br />
+                    <label class="font-weight-bold"> @Servicely.Languages.Language.Gender: </label> <label>@Session["gender"]</label>
+                    <br />
+                    <label class="font-weight-bold"> @Servicely.Languages.Language.Relegion: </label> <label>@Session["relegion"]</label>
+                    <br />
+                    <label class="font-weight-bold"> @Servicely.Languages.Language.BirthDate: </label> if (Session["BirthDate"] != null)
+                    { <label>@Convert.ToDateTime(Session["BirthDate"]).ToShortDateString() </label>}
+                    <br />
+                    <label class="font-weight-bold"> @Servicely.Languages.Language.BirthPlace: </label> <label>@Session["BirthPlace"]</label>
+
+                }
+                    </div>
+
+                </div>
+                <div class="col-md-6  mt-3">
+                    <div class="text-center ">
+                        <h5 class="font-weight-bold">
+                            @Servicely.Languages.Language.Address
+                        </h5>
+                        <hr />
+                    </div>
+
+                    <div class="" id="div1">
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4 mb-4">
+                <div class="col-md-6">
+                    <div class="text-center">
+
+                    </div>
+                    <a href="/Document/Create">
+                        <button type="button" class="btn button">
+                            @Servicely.Languages.Language.Previous
+                        </button>
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <button type="button" class="btn button" data-toggle="modal" data-target="#exampleModalCenter">
+                            @Servicely.Languages.Language.Finish
+                        </button>
+                    </div>
+                    
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">@Servicely.Languages.Language.ModalTitle</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>@Servicely.Languages.Language.Areyousureyouwanttosave</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">@Servicely.Languages.Language.No</button>
+                                    @using (Html.BeginForm())
+                                {
+                                        <input type="submit" class="btn btn-primary" value=@Servicely.Languages.Language.Save />
+
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+
+        </div>
+
+
+    </div>
+
+
+
+    @*<div class="row">
+            <div class="col-md-10">
+                <label>Document</label>
+                <table class="table">
+
+                    <thead>
+                        <tr>
+
+                            <td class="font-weight-bold">Document name</td>
+                            <td class="font-weight-bold">Document type</td>
+                            <td class="font-weight-bold">Document extension</td>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>@ViewBag.zz</td>
+                            <td>@ViewBag.xx</td>
+                            <td>@ViewBag.cc</td>
+                        </tr>
+
+
+                    </tbody>
+
+
+
+                </table>
+            </div>
+
+        </div>*@
+
+
+
+
+
+</div>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+
+
+
+
+
+
+

@@ -1,0 +1,448 @@
+﻿@model Servicely.Models.Reservation
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Create;
+          Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+
+
+<style>
+  
+</style>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script>
+
+    $(function () {
+
+
+       var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+
+            $("#states").change(function () {
+                var dt = $("#states").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: dt },
+                    async: false,
+                    success: function (res) {
+                       $("#city").append("<option value='1'>  </option>");
+
+                        $.each(res, function (i, row) {
+                           
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                        });
+                        
+                        
+
+                    }
+
+
+
+                });
+              
+
+
+
+
+            });
+
+            $("#city").change(function () {
+
+                $("#region").empty();
+
+                var dt = $("#city").val();
+                $.ajax({
+
+
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: dt },
+                    success: function (res) {
+
+                        $("#region").append("<option value='1'>  </option>");
+                        $.each(res, function (i, row) {
+
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + "   </option>");
+
+
+                        })
+
+                    }
+
+
+
+                });
+
+
+            });
+
+            $("#region").change(function () {
+
+                $("#district").empty();
+
+                var dat = $("#region").val();
+                $.ajax({
+
+
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: dat },
+                    success: function (res) {
+
+                         $("#district").append("<option value='1'>  </option>");
+                        $.each(res, function (i, row) {
+
+
+                            $("#district").append("<option value='" + row.district_id + "'> " + row.district_arabic_name + "  </option>");
+
+
+                        });
+
+
+
+
+                    }
+
+
+
+
+
+
+                });
+
+
+
+
+
+            });
+
+
+            $("#district").change(function () {
+                var d = $("#district").val();
+                var dd = $("#id").val();
+
+                $.ajax({
+                    url: "/Reservation/GetAllOfficesByDistrictIdAndGovernementId",
+                    data: { Dis: d, gov: dd },
+                    async:false,
+                    success: function (res) {
+                          $("#office").append("<option value='1'>  </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#office").append("<option value='" + row.office_id + "'>" + row.office_name_arabic + " </option>");
+                        });
+
+                    }
+
+                });
+
+            });
+
+            $("#id").change(function () {
+
+                var dd = $(this).val();
+
+                $.ajax({
+                    url: "/Reservation/GetAllServicesByGovernementBodyId",
+                    data: { goo: dd },
+                    success: function (res) {
+                            $("#service_id").append("<option value='1'>  </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#service_id").append("<option value='" + row.service_id + "'>" + row.service_name_arabic + " </option>");
+                        });
+
+                    }
+
+                });
+
+            });
+
+        }
+        else
+        {
+
+             $("#states").change(function () {
+                var dt = $("#states").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: dt },
+                    async: false,
+                    success: function (res) {
+                         $("#city").append("<option value='0'>  </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+              
+
+
+
+            });
+
+            $("#city").change(function () {
+
+                $("#region").empty();
+
+                var dt = $("#city").val();
+                $.ajax({
+
+
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: dt },
+                    success: function (res) {
+
+                         $("#region").append("<option value='1'>  </option>");
+                        $.each(res, function (i, row) {
+
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + "   </option>");
+
+
+                        })
+
+                    }
+
+
+
+                });
+
+
+
+            });
+
+            $("#region").change(function () {
+
+                $("#district").empty();
+
+                var dat = $("#region").val();
+                $.ajax({
+
+
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: dat },
+                    async: false,
+                    success: function (res) {
+                        
+                       $("#district").append("<option value='1'>  </option>");
+
+                        $.each(res, function (i, row) {
+
+
+                            $("#district").append("<option value='" + row.district_id + "'> " + row.district_name + "  </option>");
+
+
+                        });
+
+
+
+
+                    }
+
+
+
+
+
+
+                });
+
+
+
+
+
+            });
+
+
+            $("#district").change(function () {
+                var d = $("#district").val();
+                var dd = $("#id").val();
+
+                $.ajax({
+                    url: "/Reservation/GetAllOfficesByDistrictIdAndGovernementId",
+                    data: { Dis: d, gov: dd },
+                    success: function (res) {
+                        $("#office").append("<option value='1'>  </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#office").append("<option value='" + row.office_id + "'>" + row.office_name + " </option>");
+                        });
+
+                    }
+
+                });
+
+            });
+
+            $("#id").change(function () {
+
+                var dd = $(this).val();
+
+                $.ajax({
+                    url: "/Reservation/GetAllServicesByGovernementBodyId",
+                    data: { goo: dd },
+                    success: function (res) {
+                         $("#service_id").append("<option value='1'>  </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#service_id").append("<option value='" + row.service_id + "'>" + row.service_name + " </option>");
+                        });
+
+                    }
+
+                });
+
+            });
+
+        }
+
+
+
+
+
+
+    });
+
+
+
+</script>
+
+
+
+
+<div class="container  ">
+    <h2> @Servicely.Languages.Language.Create</h2>
+    <div class="row">
+        <div class=" col-12 mt-3">
+            <h4> @Servicely.Languages.Language.Reservations</h4>
+        </div>
+    </div>
+    <hr />
+    <form action="/Reservation/Create" method="post" class="mt-3">
+
+        <div class="row">
+            <div class="col-md-3">
+                <label>  @Servicely.Languages.Language.governement_body</label>
+                @Html.DropDownList("id", null, "", htmlAttributes: new { @class = "form-control", requierd = "requierd" })
+
+            </div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-3">
+                <label>
+                    @Servicely.Languages.Language.Services
+
+                </label>
+                <select name="service_id" id="service_id" class="form-control" required>
+                </select>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3">
+
+                <label class="label">
+                    @Servicely.Languages.Language.State
+                </label>
+
+                @Html.DropDownList("states", null, "", htmlAttributes: new { @class = "form-control", requierd = "requierd" })
+
+
+
+
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3 ">
+                <label>  @Servicely.Languages.Language.City</label>
+                <select id="city" required class="form-control">
+                </select>
+
+            </div>
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+
+
+                <label> @Servicely.Languages.Language.Region</label>
+                <select id="region" required class="form-control">
+                </select>
+
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+
+                <label> @Servicely.Languages.Language.District </label> <select required class="form-control" id="district"></select>
+
+
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>
+                    @Servicely.Languages.Language.Office
+                </label>
+
+                <select id="office" name="reservation_office_id" required class="form-control">
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <label>
+                    @Servicely.Languages.Language.Date
+                </label>
+                @Html.TextBoxFor(model => model.reservation_date, new { @type = "date", requierd = "requierd", @class = "form-control" })
+
+
+            </div>
+
+        </div>
+        <div class="row">
+            @if (ViewBag.err != null)
+            {
+                <label class="font-weight-bold text-danger mb-3 mt-3" style="color:red;">@ViewBag.err</label>
+            }
+            <div class="col-md-4">
+                <div class=" mt-3 mb-3">
+                    <input type="submit" value=@Servicely.Languages.Language.Reserve class="btn btn-default" />
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </form>
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+
+</div>
+

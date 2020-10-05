@@ -1,0 +1,74 @@
+﻿@model Servicely.Models.ScheduleVaccination
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+<div class="container-fluid">
+    @using (Html.BeginForm())
+    {
+
+        @Html.HiddenFor(a => a.schedule_id)
+        <div class="form-horizontal">
+            <h4>  @Servicely.Languages.Language.Edit</h4>
+            <hr />
+            @if (ViewBag.data != null)
+            {
+                <label class="font-weight-bold">@ViewBag.data </label>
+
+            }
+            <div class="form-group">
+                <div class="col-3">
+                    <label>@Servicely.Languages.Language.CheckUPDate</label>
+                    <input type="date" class="form-control" required min="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" max="@ViewBag.date" name="checkup_date" />
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.CheckUPStart</label>
+                    @Html.EditorFor(model => model.checkup_start, new { htmlAttributes = new { @class = "form-control", type = "time", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.checkup_start, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.CheckUPEnd</label>
+                    @Html.EditorFor(model => model.checkup_end, new { htmlAttributes = new { @class = "form-control", type = "time", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.checkup_end, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>@Servicely.Languages.Language.checkup_number</label>
+                    @Html.EditorFor(model => model.checkup_number, new { htmlAttributes = new { @class = "form-control", min = "1", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.checkup_number, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @if (ViewBag.scheduleErrVacc != null)
+                {
+                    <label class="label mt-3 mb-3 text-danger">@ViewBag.scheduleErrVacc</label>
+                }
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>

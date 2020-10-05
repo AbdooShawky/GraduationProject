@@ -1,0 +1,59 @@
+﻿@model Servicely.Models.GradesCertificateM_M
+
+@{
+    ViewBag.Title = "Create";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+
+
+        <div class="form-group">
+            <label>
+                @Servicely.Languages.Language.Grade
+            </label>
+
+            @Html.DropDownList("GradeId", null, htmlAttributes: new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(model => model.GradeId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            @Servicely.Languages.Language.Certificate
+        </label>
+        <div class="col-md-3">
+            @Html.DropDownList("CertificateId", null, htmlAttributes: new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(model => model.CertificateId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @if (ViewBag.GradeCertificate != null)
+        {
+            <label class="text-danger mt-3 mb-3">@ViewBag.GradeCertificate</label>
+        }
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+</div>

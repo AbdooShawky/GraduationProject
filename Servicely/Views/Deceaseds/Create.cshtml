@@ -1,0 +1,185 @@
+﻿@model Servicely.Models.Deceased
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+
+    $(function () {
+
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $("#deceased_citizenId").change(function () {
+
+                var data = $("#deceased_citizenId").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+        }
+        else
+        {
+                $("#deceased_citizenId").change(function () {
+
+                var data = $("#deceased_citizenId").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr> <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+        }
+
+
+         $('#deceased_citizenId').select2();
+
+
+        // Data Picker Initialization
+        $('.datepicker').pickadate();
+
+    });
+</script>
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Create</h2>
+
+    @using (Html.BeginForm())
+    {
+      
+
+<div class="form-horizontal">
+    <h4>ِ@Servicely.Languages.Language.Deceased</h4>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-4">
+            <label>ِ@Servicely.Languages.Language.NationalId</label>
+            @Html.DropDownList("deceased_citizenId", null, "", htmlAttributes: new { @class = "form-control", data_live_search = "true", required = "required" })
+
+            <table class="table mt-2" id="tb">
+            </table>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <label>ِ@Servicely.Languages.Language.DeceasedDeathDate</label>
+            @if (DateTime.Now.Month >= 1 && DateTime.Now.Month < 10)
+            {
+                if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                {
+                    <input type="date" name="deceased_deathDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                }
+                else
+                {
+                    <input type="date" name="deceased_deathDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                }
+
+
+            }
+            else
+            {
+
+                if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                {
+                    <input type="date" name="deceased_deathDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                }
+                else
+                {
+                    <input type="date" name="deceased_deathDate" class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                }
+
+            }
+
+            @*<input type="date" id="date-picker-example" class="form-control " name="deceased_deathDate" required max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day">*@
+
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-4">
+            <label>ِ@Servicely.Languages.Language.deceased_deathPlace_inEnglish</label>
+            @Html.EditorFor(model => model.deceased_deathPlace, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([a-zA-Z\\s]{2,30})" } })
+
+        </div>
+
+
+        <div class="col-md-4">
+            <label>ِ@Servicely.Languages.Language.DeathPlace_inArabic</label>
+            @Html.EditorFor(model => model.deceased_deathPlace_arabic, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "[\u0600-\u06FF\\s]{2,30}$" } })
+        </div>
+
+    </div>
+    <div class="row mt-2">
+            <div class="col-md-4">
+                <label>ِ@Servicely.Languages.Language.deathCause_inEnglish</label>
+                @Html.EditorFor(model => model.deceased_deathCause, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([a-zA-Z\\s]{2,50})" } })
+            </div>
+
+            <div class="col-md-4">
+                <label>ِ@Servicely.Languages.Language.deathCause_inArabic</label>
+                @Html.EditorFor(model => model.deceased_deathCause_arabic, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "[\u0600-\u06FF\\s]{2,50}$" } })
+            </div>
+        </div>
+        @if (ViewBag.errMsgDead != null)
+        {
+            <label class="text-danger">@ViewBag.errMsgDead </label>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2  mt-3">
+                <input type="submit" value=ِ@Servicely.Languages.Language.Create class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+
+

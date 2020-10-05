@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Servicely.Models.VaccinationReservation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VaccReservation_child_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaccReservation_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaccReservation_checked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaccReservation_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaccReservation_isDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaccReservation_cancel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Citizen.citizen_national_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthCare.hospital_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaccinationType.vaccination_type_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaccReservation_child_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaccReservation_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaccReservation_checked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaccReservation_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaccReservation_isDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaccReservation_cancel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthCare.hospital_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaccinationType.vaccination_type_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VaccReservation_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VaccReservation_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VaccReservation_id })
+        </td>
+    </tr>
+}
+
+</table>

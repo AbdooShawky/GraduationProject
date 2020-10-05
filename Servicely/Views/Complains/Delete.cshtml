@@ -1,0 +1,88 @@
+﻿
+
+@model Servicely.Models.Complain
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+    <div class="container-fluid">
+        <h4>@Servicely.Languages.Language.Delete</h4>
+        <h4>@Servicely.Languages.Language.Complain</h4>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+            </div>
+
+        </div>
+
+        <div>
+
+            <hr />
+            <div class="row fadeIn">
+                <div class="col-3">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <label>@Servicely.Languages.Language.governement_body</label>
+                        </dt>
+
+                        @if (Session["lang"] != null)
+                        {
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+                            {
+
+                                <dd> @Html.DisplayFor(model => model.governement_body.governement_name_arabic)</dd>
+
+                            }
+                            else
+                            {
+                                <dd>
+                                    @Html.DisplayFor(model => model.governement_body.governement_name)
+                                </dd>
+                            }
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(model => model.governement_body.governement_name)
+                            </dd>
+                        }
+                        <dt>
+                            @Servicely.Languages.Language.Complain
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ComplainText)
+
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="col-3">
+
+                </div>
+            </div>
+            <div class="row">
+                @using (Html.BeginForm())
+                {
+
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+                        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "IndexUser")
+                    </div>
+                }
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+

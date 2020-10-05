@@ -1,0 +1,242 @@
+﻿@model Servicely.Models.Request
+
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Delete;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2> @Servicely.Languages.Language.Delete</h2>
+
+    <h3> @Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4> @Servicely.Languages.Language.Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+                <dt>
+                    @Servicely.Languages.Language.Address
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.address_arabic)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Service
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.service)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.language
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.language_arabic)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Quantity
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.quantity)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.TypeRequest
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.typeRequest)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Date
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.governmentAgency
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.governmentAgency)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.CitizenNationalId
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+                </dd>
+            }
+            else
+            {
+                <dt>
+                    @Servicely.Languages.Language.Address
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Service
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.service)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.language
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.language)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Quantity
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.quantity)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.TypeRequest
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.typeRequest)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Date
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.governmentAgency
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.governmentAgency)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.CitizenNationalId
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+                </dd>
+            }
+        }
+        else
+        {
+            <dt>
+                @Servicely.Languages.Language.Address
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.Service
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.service)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.language
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.language)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.Quantity
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.quantity)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.TypeRequest
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.typeRequest)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.Date
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.governmentAgency
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.governmentAgency)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.CitizenNationalId
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+            </dd>
+        }
+
+
+
+
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value= @Servicely.Languages.Language.Delete class="btn btn-default" /> |
+            @Html.ActionLink( Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

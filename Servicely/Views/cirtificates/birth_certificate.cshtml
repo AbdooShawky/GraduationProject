@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Servicely.Models.Citizen>
+@{
+    ViewBag.Title = Servicely.Languages.Language.Birth_Certificate;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script src="~/scripts/jquery-3.4.1.js"></script>
+
+<script src="~/js/bootstrap.js"></script>
+<link href="~/Content/bootstrap-select.css" rel="stylesheet" />
+<script src="~/scripts/bootstrap-select.js"></script>
+<h2>@Servicely.Languages.Language.Birth_Certificate</h2>
+<script>
+    $(function () {
+
+         $("#Nid").prop('class', 'selectpicker');
+        $("#Nid").attr('data-live-search', true);
+        $("#Nid").change(function () {
+
+
+            var data = $("#Nid").val();
+            $.ajax({
+
+                url: "/cirtificates/getCitizenRecordByCitizenID",
+                data: { cid: data },
+                success: function (res) {
+
+                    $.each(res, function (i, row) {
+
+
+                        $("#tb").append("<tr> <td>  " + row.citizen_first_name + " " + row.citizen_second_name + " " + row.citizen_third_name + " " + row.citizen_fourth_name + " " + "   </td>      </tr>");
+
+                    });
+
+
+                }
+
+            });
+
+
+        });
+
+    });
+
+
+
+
+</script>
+<div class="container-fluid">
+
+    <div class="row">
+        @Html.DropDownList("Nid", null, "", htmlAttributes: new { @class = "form-control" })
+
+        <div class="col-md-4">
+
+            <table class="table" id="tb">
+
+                <tr>
+
+                    <th>
+
+                        bgdghd
+
+                    </th>
+
+                </tr>
+
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+

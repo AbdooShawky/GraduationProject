@@ -1,0 +1,1141 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GSE</title>
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+            type="text/javascript" charset="utf-8"></script>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.1/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link href="~/Steps Plugins/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet" />
+
+    <!--<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">-->
+    @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">*@
+
+
+    <link href="~/AdminLTE-3.0.1/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    @*<link rel="stylesheet" href="~/AdminLTE-3.0.1/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">*@
+    <link href="~/AdminLTE-3.0.1/plugins/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="~/AdminLTE-3.0.1/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" rel="stylesheet" />
+
+    <!-- iCheck -->
+    @*<link rel="stylesheet" href="~/AdminLTE-3.0.1/plugins/icheck-bootstrap/icheck-bootstrap.min.css">*@
+
+
+    <!-- JQVMap -->
+    @*<link rel="stylesheet" href="~/AdminLTE-3.0.1/plugins/jqvmap/jqvmap.min.css">*@
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.1/dist/css/@Servicely.Languages.Language.ApplicationDirection">
+    <link href="~/AdminLTE-3.0.1/dist/@Servicely.Languages.Language.arabicModel_css" rel="stylesheet" />
+    @*<link href="~/AdminLTE-3.0.1/dist/css/RTL.css" rel="stylesheet" />*@
+    @*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.1/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.1/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.1/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="~/AdminLTE-3.0.1/plugins/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="~/css/addons/datatables.min.css" rel="stylesheet" />
+
+
+    <script src="~/AdminLTE-3.0.1/plugins/jquery/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.1/plugins/popper/popper.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/AdminLTE-3.0.1/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <!--<script src="~/Scripts/bootstrap.min.js"></script>-->
+    @*@<script src="~/Scripts/bootstrap-select.min.js"></script>*@
+    <!-- jQuery UI 1.11.4 -->
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/additional-methods.min.js"></script>
+
+
+
+
+    <script src="~/js/addons/datatables.js"></script>
+    <script src="~/AdminLTE-3.0.1/plugins/select2/js/select2.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminLTE-3.0.1/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- jQuery Knob Chart -->
+    <script src="~/AdminLTE-3.0.1/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/AdminLTE-3.0.1/plugins/moment/moment.min.js"></script>
+
+    <script src="~/AdminLTE-3.0.1/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/AdminLTE-3.0.1/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/AdminLTE-3.0.1/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/AdminLTE-3.0.1/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminLTE-3.0.1/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
+
+    <script src="~/AdminLTE-3.0.1/dist/js/pages/dashboard2.js"></script>
+
+
+    <style>
+        /*body:before {
+            right: 0 !important;
+            left: auto !important;
+        }
+        .sidebar {
+            float: right !important;
+            margin-right: auto !important;
+            margin-left: -100% !important;
+        }
+        .site-content {
+            float: right !important;
+            margin-right: 29.4118% !important;
+            margin-left: auto !important;
+        }
+        .site-footer {
+            float: right !important;
+            margin: 0 35.2941% 0 0 !important;
+        }*/
+        .error {
+            color: red
+        }
+    </style>
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed  " style="background-color:black;" onafterprint="myFunction()">
+
+    <div class="wrapper" style="background-color:white; ">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand  navbar-dark" id="n">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="index3.html" class="nav-link">@Servicely.Languages.Language.Home1</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link">@Servicely.Languages.Language.Contact</a>
+                </li>
+            </ul>
+
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="@Servicely.Languages.Language.Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"   href="/home/Index2">
+                        <i class=" text-white fa fa-sign-out"></i> LogOut
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        @if (Session["flagIcon"] != null)
+                        {
+                            <img src="~/img/@Session["flagIcon"].ToString()" class="img-circle elevation-2" style="width:30px; height:25px;">
+
+                        }
+                        else
+                        {
+                            <img src="~/img/united-states-of-america-flag-round-icon-32.png" class="img-circle elevation-2" style="width:30px; height:25px;">
+
+                        }
+                        <span class="badge badge-warning navbar-badge">2</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">@Servicely.Languages.Language.Language1</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="/Languages/English" class="dropdown-item">
+                            <img src="~/img/united-states-of-america-flag-round-icon-32.png" style="width:30px; height:25px;" class="img-circle elevation-2"><span> @Servicely.Languages.Language.en</span>
+                            @*<span class="float-right text-muted text-sm">3 mins</span>*@
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/Languages/Arabic" class="dropdown-item">
+                            <img src="~/img/egypt-flag-round-icon-32.png" style="width:30px; height:25px;" class="img-circle elevation-2"><span>@Servicely.Languages.Language.ar</span>
+                            @*<span class="float-right text-muted text-sm">12 hours</span>*@
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+                        <span class="dropdown-item dropdown-footer">@Servicely.Languages.Language.Language1</span>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-2 ">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="~/img/1222.jpeg" width="300" height="300" class="brand-image img-circle elevation-4"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light"> GSG </span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar" style="">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/img/222.png" class="img-circle elevation-4">
+                    </div>
+                    <div class="info">
+                        @if (Session["username"] != null)
+                        {
+                            <a href="#" class="d-block">@Session["username"]</a>
+                        }
+
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column font-small" style="font-size:smaller;" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Dashboard
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/home/index" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Dashboard</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        @*<li class="nav-item">
+                                <a href="pages/widgets.html" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Widgets
+                                        <span class="right badge badge-danger">New</span>
+                                    </p>
+                                </a>
+                            </li>*@
+                        <li class="nav-header"> @Servicely.Languages.Language.Control_Panel</li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Citizen
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">8</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Report/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Addnewcitizen</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Addresses/AddNewAddressCreate" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.AdNewAddress</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/CitizenLiveCycle/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Citizen </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Photos/Create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.AddCitizen @Servicely.Languages.Language.Photo</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/CitizenID/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Exporting_National_Id_Card </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/CitizenBalances/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.CitizenBalance </p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="/BirthCertificate/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Exporting_Birth_Certificate</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/DeceasedCertificate/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Exporting_Death_Certificate</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/MarriageAndDivorce/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Exporting_marriage_divorce_document</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/AddressesGeneral/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>   @Servicely.Languages.Language.Address_Of_Citizen</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Places
+                                    <i class="right fas fa-angle-left"></i>
+                                    <span class="badge badge-info right">5</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/State/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.States</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/City/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Cities</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Region/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Regions</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/District/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Districts</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Offices/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Offices</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Document
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/DocumentGeneral/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Citizen_Documents</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Document_Type/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.DocumentType</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-phone"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Contact
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/CitizenContact/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Citizen_Contacts</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/ContactType/Index" class=" nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.ContactType</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Social
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">5</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Deceaseds/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Deceased</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Live_Status/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.LiveStatus </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Social_status/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.SocialStatus</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+
+
+                                    <a href="/Live_Status_Type/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.LiveSatusType</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Social_Status_Type/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.SocialStatusType</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-university"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Governments_Settings
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+                                    <a href="/governement_body/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.governement_body</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/services/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Services</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Users
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+
+                                    <a href="/UserAccount/Creat" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.AddUser </p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/UserType/Create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>  @Servicely.Languages.Language.AddUserType </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-header">@Servicely.Languages.Language.MinistryEducation</li>
+                        <li class="nav-item has-treeview">
+
+
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-university"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Education
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">12</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/AddStudents/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.StudentRegisteration</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/CertificateStudentM_M/CertificateStudent" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.CertificateGraduate</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/CertificateStudentM_MSecondary/Create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.SchoolCertificate</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/CertificateStudentM_M/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.GraduatesUni</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Coordinations/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Coordination</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a href="/Schools/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Schools</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Universities/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Universities</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/UniversityFacultyM_M/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Faculties-@Servicely.Languages.Language.Universities</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/Faculties/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Faculties</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/SchoolPhasesM_M/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.PhasesOfSchool</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="/Grades/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Grade</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/CertificateTypes/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.CertificateType</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="/EducationalOuts1/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.EducatedAbroad</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+
+
+
+                        </li>
+
+
+
+
+                        <li class="nav-header">@Servicely.Languages.Language.Ministry_of_Interior</li>
+
+                        <li class="nav-item has-treeview">
+
+
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    Police Department
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+                                    <a href="/police_officer/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Police Officer</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/PoliceDepartments/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Police Department</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/PoliceReport_type/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Police Report Type</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/police_report/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Police Report</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+
+                        </li>
+
+
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Civil_Registry_Sector
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+                                    <a href="/Reservation/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Reservations</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Requests/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Requests </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Violation
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">3</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Violation_CarLicenceM_M/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Violation </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a href="/CarLicences/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.CarLicence</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Violations/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.ViolationName </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-header"> @Servicely.Languages.Language.ComplainsAndResponds </li>
+                        <li class="nav-item">
+
+                            <a href="/Complains/Index" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>@Servicely.Languages.Language.Complains</p>
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a href="/Responds/Index" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>@Servicely.Languages.Language.Respond</p>
+
+                            </a>
+                        </li>
+
+                        <li class="nav-header"> @Servicely.Languages.Language.Ministry_of_Health </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-hospital"></i>
+                                <p>
+                                    @Servicely.Languages.Language.Healthcares
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">6</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+                                    <a href="/doctorReservation/IndexAdmin" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.Doctors_Schedules</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/HealthCare_Type1/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Health_cares_types </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Hospitals/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Healthcares </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/ScheduleHealthCares/Step1_ShcheduleHealthCare" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Health_cares_schedules </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Specializations/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Health_cares_Specializations </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Healthcare_Doctor/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Doctors </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                     @Servicely.Languages.Language.Vaccinations
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">4</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+                                    <a href="/VaccinationTypes/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>@Servicely.Languages.Language.VaccinationType</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/VaccinationsSchedules/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Vaccinations_Reservations </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    @*abdoo shawky mohamed shawky ahmed*@
+                                    <a href="/ScheduleVaccinations/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> @Servicely.Languages.Language.Vaccination </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+
+
+
+                        <li class="nav-header">Ministry of Justice</li>
+
+
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    Real State Registry Interest
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">8</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+                                    <a href="/RealStateRegistryInterestBranches/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>RSRI Branches</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/RealStateRegistryInterestDepartments/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>RSRI Departments</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/RealStateRegistryInterestPopularContracts/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>RSRI Popular Contracts</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/RealStateRegistryInterestPropertyTaxes/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Property Taxes</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/RealStateRegistryInterestReportsSubjects/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>RSRI Report Subjects</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/RealStateRegistryInterestReports/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>RSRI Reports</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/RealStateRegistryInterests/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Real State Registry Interest</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/AreasAuthorityRequests/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Areas Authority Request</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    Courts
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">8</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+
+                                    <a href="/police_report/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+
+                                        <p>Police Report</p>
+
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+
+        <div class="content-wrapper " style="background-color:#f8f8ff;">
+            <!-- Content Header (Page header) -->
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <section class="content ">
+                <div class="container-fluid ">
+                    <!-- Small boxes (Stat box) -->
+                    @*<div class="row">
+                            <div class="col-lg-3 col-6">
+                                 small box
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3>150</h3>
+
+                                        <p>New Orders</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                             ./col
+                            <div class="col-lg-3 col-6">
+                                 small box
+                                <div class="small-box bg-success">
+                                    <div class="inner">
+                                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                                        <p>Bounce Rate</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                             ./col
+                            <div class="col-lg-3 col-6">
+                                 small box
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3>44</h3>
+
+                                        <p>User Registrations</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                             ./col
+                            <div class="col-lg-3 col-6">
+                                 small box
+                                <div class="small-box bg-danger">
+                                    <div class="inner">
+                                        <h3>65</h3>
+
+                                        <p>Unique Visitors</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-pie-graph"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                             ./col
+                        </div>*@
+                    <!-- /.row -->
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-10">
+                            <section class="col-lg-12 connectedSortable">
+                                <!-- Custom tabs (Charts with tabs)-->
+
+
+
+                                <div class="card " style="margin-top:100px; margin-bottom:100px;">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                        </h3>
+                                        <div class="card-tools">
+
+                                        </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        @RenderBody()
+                                    </div><!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+
+                            </section>
+                        </div>
+                        <div class="col-md-1">
+
+                        </div>
+
+                        <!-- /.Left col -->
+                        <!-- right col -->
+                    </div>
+                    <!-- /.row (main row) -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer  navbar-dark" id="fo">
+            <strong>@Servicely.Languages.Language.Copyright &copy; &ensp; @DateTime.Now.Year  &ensp;<a href="#">GSG</a>.</strong>
+            &ensp; @Servicely.Languages.Language.All_rights_reserved .
+            <div class="float-right d-none d-sm-inline-block">
+                <b>@Servicely.Languages.Language.Version</b> 2.0.1
+            </div>
+        </footer>
+        <script>
+            $(function () {
+
+
+
+
+            });
+        </script>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark ">
+            <!-- Control sidebar content goes here -->
+
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Scripts/Abdoo.js"></script>
+
+
+
+
+</body>
+
+</html>
+

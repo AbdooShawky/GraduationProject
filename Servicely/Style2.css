@@ -1,0 +1,18 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Tangerine');
+
+@media(mas-width: 992px) {
+}
+
+@media(mas-width: 768px) {
+}
+
+@media(mas-width: 576px) {
+}
+
+.carousel-item {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    transition: -webkit-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}

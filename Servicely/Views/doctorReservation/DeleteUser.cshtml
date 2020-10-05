@@ -1,0 +1,111 @@
+﻿@model Servicely.Models.HealthcareReservation
+
+@{
+    ViewBag.Title =   Servicely.Languages.Language.Delete;
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+<div class="container-fluid">
+    <h2>  @Servicely.Languages.Language.Delete</h2>
+
+    <h3>  @Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_ </h3>
+    <div>
+        <h4>  @Servicely.Languages.Language.HealthcareReservation</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Servicely.Languages.Language.ReservationDate
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Reservation_date)
+            </dd>
+            <dt>
+                @Servicely.Languages.Language.Code
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.healthcareReservation_Code)
+            </dd>
+
+
+
+
+
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+                    <dt>
+                        @Servicely.Languages.Language.DoctorName
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Healthcare_Doctor.Citizen.citizen_first_name_arabic)
+                    </dd>
+
+                    <dt>
+                        @Servicely.Languages.Language.hospital_name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HealthCare.hospital_name_arabic)
+                    </dd>
+
+                }
+                else
+                {
+                    <dt>
+                        @Servicely.Languages.Language.DoctorName
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Healthcare_Doctor.Citizen.citizen_first_name)
+                    </dd>
+
+                    <dt>
+                        @Servicely.Languages.Language.hospital_name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HealthCare.hospital_name)
+                    </dd>
+                }
+            }
+            else
+            {
+                <dt>
+                    @Servicely.Languages.Language.DoctorName
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Healthcare_Doctor.Citizen.citizen_first_name)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.hospital_name
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HealthCare.hospital_name)
+                </dd>
+            }
+
+
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value=  @Servicely.Languages.Language.Delete class="btn btn-default" /> |
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,985 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+
+       
+        $("#form").validate()
+        // search with date 
+        $("#search").click(function () {
+
+            if ($("#form").valid() == true) {
+                var from = $("#dd").val();
+                var to = $("#date1").val();
+                var data = $("#NationalId").val();
+                
+                $(".tt").empty();
+
+                //citizen info
+                
+            $.ajax({
+
+                url: "/CitizenLiveCycle/CitizenInfo",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#citizenInfo").append("<tr class='tt'> <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td> <td> " + e.birthDate + "   </td> <td> " + e.Age + "  </td><td>  " + e.Relegion + "  </td> <td>  " + e.motherName + " </td>   <td> " + e.gender + "  </td> </tr>");
+
+                        $("#transactionDate").text(e.DateTRansactionCitizen);
+                        $("#CurrentAddressDate").text(e.DateTRansactionCitizen);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+                }
+
+            });
+            $.ajax({
+
+                url: "/CitizenLiveCycle/getAddress",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#CurrentAddress").append("<tr class='tt'> <td> " + e.stateName + "  </td> <td> " + e.cityName + "   </td> <td> " + e.regionName + "  </td><td>  " + e.districtName + "  </td></tr>");
+
+                        $("#CurrentAddressDate").text(e.CurrentAddressDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+
+            $.ajax({
+
+                url: "/CitizenLiveCycle/getSocialStatus",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#SocialStatus").append("<tr class='tt'> <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td><td> " + e.wfirstName + " " + e.wsecondName + " " + e.wthirdName + " " + e.wfourthName + "  </td><td> " + e.typeName + "   </td><td>  " + e.from + " </td> <td> " + e.to + " </td><td>  " + e.still + "  </td></tr>");
+
+                        //$("#CurrentAddressDate").text(e.CurrentAddressDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+
+                      //-------------------------------------------
+            //-------------------------------------------
+            //-------------------------------------------
+            //--------healthCare Reservation-------------
+            $.ajax({
+
+                url: "/CitizenLiveCycle/getReservationHealthCareByCitizenId2",
+                data: { Id: data, from: from, to: to },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#Health").append("<tr class='tt'> <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td> <td> " + e.code + "   </td> <td> " + e.hospitalName + "  </td><td>  " + e.date + "  </td> <td>  " + e.cancel + " </td></tr>");
+
+                        $("#HealthDate").text(e.TransactionDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+               
+            }
+
+        });
+
+
+               $("#btn").hide();
+        $("#NationalId").select2();
+        $("#NationalId").change(function () {
+
+
+            var data = $("#NationalId").val();
+
+            // citizen Info
+            $(".tt").empty();
+
+
+            $.ajax({
+
+                url: "/CitizenLiveCycle/CitizenInfo",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#citizenInfo").append("<tr class='tt'> <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td> <td> " + e.birthDate + "   </td> <td> " + e.Age + "  </td><td>  " + e.Relegion + "  </td> <td>  " + e.motherName + " </td>   <td> " + e.gender + "  </td> </tr>");
+
+                        $("#transactionDate").text(e.DateTRansactionCitizen);
+                        $("#CurrentAddressDate").text(e.DateTRansactionCitizen);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+            $.ajax({
+
+                url: "/CitizenLiveCycle/getAddress",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#CurrentAddress").append("<tr class='tt'> <td> " + e.stateName + "  </td> <td> " + e.cityName + "   </td> <td> " + e.regionName + "  </td><td>  " + e.districtName + "  </td></tr>");
+
+                        $("#CurrentAddressDate").text(e.CurrentAddressDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+
+            $.ajax({
+
+                url: "/CitizenLiveCycle/getSocialStatus",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#SocialStatus").append("<tr class='tt'> <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td><td> " + e.wfirstName + " " + e.wsecondName + " " + e.wthirdName + " " + e.wfourthName + "  </td><td> " + e.typeName + "   </td><td>  " + e.from + " </td> <td> " + e.to + " </td><td>  " + e.still + "  </td></tr>");
+
+                        //$("#CurrentAddressDate").text(e.CurrentAddressDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+
+
+            $.ajax({
+
+                url: "/CitizenLiveCycle/GetAllRequestsByCitizenId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#Requests").append("<tr class='tt'> <td>  " + e.ServiceName + " </td> <td> " + e.GovName + " </td> <td> " + e.TypeName + " </td><td> " + e.Quantity + "  </td> <td>" + e.Language + " </td>  </tr>");
+
+                        $("#requestDate").text(e.TransactionDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+            $.ajax({
+
+                url: "/CitizenLiveCycle/getCarLicenceAndViolation",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#carLicence").append("<tr class='tt'> <td>  " + e.carName + " </td> <td> " + e.carModel + " </td> <td> " + e.carCode + " </td>  <td>  " + e.LicenceStartDate + " </td> <td>  " + e.LicenceEndDate + "  </td>     <td> " + e.violationName + "  </td> <td>" + e.violationPrice + " </td><td> " + e.date + "  </td>  </tr>");
+
+                        //$("#violationDate").text(e.date);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+            $.ajax({
+
+                url: "/CitizenLiveCycle/GetAllReservationyBId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#reservation").append("<tr class='tt'> <td>  " + e.ServiceName + " </td> <td> " + e.ServicePrice + " </td> <td> " + e.OfficeName + " </td>  <td>  " + e.Date + " </td>   </tr>");
+
+                        $("#reservationdate").text(e.TrasactionDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+            //-------------------------------------------
+            //-------------------------------------------
+            //-------------------------------------------
+            //--------healthCare Reservation-------------
+            $.ajax({
+
+                url: "/CitizenLiveCycle/getReservationHealthCareByCitizenId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+
+                        $("#Health").append("<tr class='tt'> <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td> <td> " + e.code + "   </td> <td> " + e.hospitalName + "  </td><td>  " + e.date + "  </td> <td>  " + e.cancel + " </td></tr>");
+
+                        $("#HealthDate").text(e.TransactionDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+            //-------------------------------------------
+            //-------------------------------------------
+            //-------------------------------------------
+            //--------Vaccination Reservation-------------
+            $.ajax({
+
+                url: "/CitizenLiveCycle/GetAllVaccintionReservationBychId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+                        // <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td>
+                        $("#Vaccination").append("<tr class='tt'>  <td> " + e.code + "   </td><td> " + e.typeName + "  </td> <td> " + e.hospitalName + "  </td><td>  " + e.date + "  </td> <td>  " + e.cancel + " </td></tr>");
+
+                        $("#Vacc").text(e.TransactionDate);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+
+
+             $.ajax({
+
+                url: "/CitizenLiveCycle/getUniversityCertificate",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+
+                    $.each(res, function (i, e) {
+
+                        // <td> " + e.firstName + " " + e.secondName + " " + e.thirdName + " " + e.fourthName + "  </td>
+                        $("#educationalUniversity").append("<tr class='tt'>  <td> " + e.universityName + "   </td><td> " + e.facultyName + "  </td> <td> " + e.specializationName + "  </td><td>  " + e.gradeName + "  </td> </tr>");
+
+                        $("#dateGradeFaculty").text(e.date);
+                        //alert(e.DateTRansactionCitizen);
+
+
+                    })
+
+
+
+
+
+                }
+
+            });
+
+
+            //---------------------------------------------
+            //---------------------------------------------
+            //---------------------------------------------
+            //-------------------Certificate------------------
+
+
+                var imge = $('#imge'); 
+               imge.attr("src", imge.attr("src") );
+                        $("#UName").empty();
+                        $("#FName").empty();
+                        $("#StudentName").empty();
+                $("#FSName").empty();
+                        $("#month").empty();
+                        $("#Year").empty();
+                        $("#Grade").empty();
+            $("#date").empty();
+     
+            
+                $.ajax({
+
+
+                    url: "/CitizenLiveCycle/GetAllDataByStudentId",//GetAllStudentInfoById
+                    data: { Id: $("#NationalId").val() },   //, FId: $("#FacultyId").val() },
+                    async:false,
+                    success: function (res) {
+
+
+                       
+
+                        $("#UName").text(res.UniversityName);
+                        $("#FName").text(res.FacultyName );
+                        $("#StudentName").text(res.citizen_first_name + " " + res.citizen_second_name + " " + res.citizen_third_name + " " + res.citizen_fourth_name);
+                        $("#FSName").text(res.SpecializationName);
+                        var data = res.Date.split("/");
+                        $("#month").text(data[1]);
+                        $("#Year").text(data[2]);
+                        $("#Grade").text(res.GradeName);
+                        $("#date").text(res.citizen_birthDate);
+                        imge.attr("src", imge.attr("src") + res.UniversityLogo);
+                        
+                      
+                       
+                    }
+
+                });
+
+                $("#StateName").empty();
+                // state
+                   $.ajax({
+
+
+                    url: "/CitizenLiveCycle/GetAddressByStudentId",
+                       data: { Id: $("#NationalId").val() },
+                    async:false,
+                    success: function (res) {
+
+                        $("#StateName").text(res);
+                       
+                        
+                    }
+
+                   });
+                // Photo
+                $('#img').empty();
+                 var img = $('#img'); 
+                 img.attr("src", img.attr("src") );
+                   $.ajax({
+
+
+                    url: "/CitizenLiveCycle/GetPhotoByStudentId",
+                    data: { Id: $("#NationalId").val() },
+                    async:false,
+                    success: function (res) {
+                         img.attr("src", img.attr("src") + res.Photo_Url);
+                        
+                       
+                        
+                    }
+
+                   });
+
+            $("#btn").show();
+
+
+        });
+
+
+    });
+
+
+
+</script>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <label>National id</label>
+                @Html.DropDownList("NationalId", null, "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="container mt-4 ">
+            <form id="form">
+                <div class="row">
+                    <div class="col-md-8" style="border:2px dashed black">
+                        <div class="row ">
+                            <div class="col-md-5 mt-4">
+                                <div class="form-group">
+                                    <label>@Servicely.Languages.Language.From</label>
+                                    @if (DateTime.Now.Month >= 1 && DateTime.Now.Month < 10)
+                                    {
+                                        if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                        {
+                                            <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                        }
+                                        else
+                                        {
+                                            <input type="date" name="citizen_birthDate" class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+
+                                        if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                        {
+                                            <input type="date"  class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="dd" required />
+
+                                        }
+                                        else
+                                        {
+                                            <input type="date"  class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" id="dd" required />
+
+                                        }
+
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 mt-4">
+                                <div class="form-group">
+                                    <label>@Servicely.Languages.Language.To</label>
+                                    @if (DateTime.Now.Month >= 1 && DateTime.Now.Month < 10)
+                                    {
+                                        if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                        {
+                                            <input type="date"  class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="date1" required />
+
+                                        }
+                                        else
+                                        {
+                                            <input type="date"  class="form-control" max="@DateTime.Now.Year-@ViewBag.zero@DateTime.Now.Month-@DateTime.Now.Day" id="date1" required />
+
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+
+                                        if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 10)
+                                        {
+                                            <input type="date"  class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@ViewBag.zero@DateTime.Now.Day" id="date1" required />
+
+                                        }
+                                        else
+                                        {
+                                            <input type="date"  class="form-control" max="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day" id="date1" required />
+
+                                        }
+
+                                    }
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4 text-right">
+                                <input type="button" id="search" class="btn btn-primary mb-3 mr-3" value="search" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </form>
+            
+            
+        </div>
+        
+
+        <!-- Timelime example  -->
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <!-- The time line -->
+                <div class="timeline">
+                    <!-- timeline time label -->
+                    <div class="time-label">
+                        <span class="bg-red tt" id="transactionDate"></span>
+                    </div>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    @*citizen Information*@
+                <div>
+                    <i class="fas fa-user bg-green"></i>
+                    @*<i class="fas fa-envelope bg-blue"></i>*@
+                    <div class="timeline-item">
+                        <span class="time"><i class="fas fa-clock"></i> </span>
+                        <h3 class="timeline-header"><a href="#">Citizen Information</a></h3>
+
+                        <div class="timeline-body">
+                            <table class="table table-sm" id="citizenInfo">
+                                <tr>
+                                    <th>Citizen name</th>
+                                    <th>Birth date</th>
+                                    <th>Age</th>
+                                    <th>Relegion</th>
+                                    <th>Mother name</th>
+                                    <th>Gender </th>
+                                </tr>
+                            </table>
+                        </div>
+                        @*<div class="timeline-footer">
+                            <a class="btn btn-primary btn-sm">Read more</a>
+                            <a class="btn btn-danger btn-sm">Delete</a>
+                        </div>*@
+                    </div>
+                </div>
+                    <!-- END timeline item -->
+                    <!-- timeline time label -->
+                    @*<div class="time-label">
+                        <span class="bg-maroon tt" id="CurrentAddressDate"></span>
+                    </div>*@
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <div>
+                        <i class="fas fa-address-card bg-yellow"></i>
+                        <div class="timeline-item">
+
+                            <span class="time" id=""> </span>
+                            <h3 class="timeline-header no-border"><a href="#">Current address</a></h3>
+                            <div class="timeline-body">
+                                <table class="table table-sm" id="CurrentAddress">
+                                    <tr>
+                                        <th>State name</th>
+                                        <th>City name</th>
+                                        <th> Region name</th>
+                                        <th>District name</th>
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+                    <!-- timeline item -->
+                    @*Social Status information*@
+                    <div>
+                        <i class="fas fa-users bg-blue"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fas fa-clock"></i> </span>
+                            <h3 class="timeline-header"><a href="#">Social status information</a></h3>
+                            <div class="timeline-body">
+                                <table class="table table-sm" id="SocialStatus">
+                                    <tr>
+                                        <th>Husband</th>
+                                        <th>Wife</th>
+                                        <th>Social status type</th>
+                                        <th>From</th>
+                                        <th>to</th>
+                                        <th>is still married</th>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+                            @*<div class="timeline-footer">
+                                <a class="btn btn-warning btn-sm">View comment</a>
+                            </div>*@
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+                    <!-- timeline time label -->
+                    <div class="time-label">
+                        <span class="bg-green tt" id="requestDate"></span>
+                    </div>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <div>
+                        <i class="fa fa-paper-plane bg-red"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fas fa-clock"></i></span>
+                            <h3 class="timeline-header"><a href="#">Request</a></h3>
+                            <div class="timeline-body">
+                                <table class="table table-sm" id="Requests">
+                                    <tr>
+                                        <th>Servic name</th>
+                                        <th>Government name</th>
+                                        <th>Type nequest</th>
+                                        <th>Quantity</th>
+                                        <th>Language</th>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+                    <!-- timeline time label -->
+                    <div class="time-label">
+                        <span class="bg-green tt" id="violationDate"></span>
+                    </div>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <div>
+                        <i class="fas fa-id-card bg-maroon"></i>
+
+                        <div class="timeline-item">
+                            <span class="time"><i class="fas fa-clock"></i> </span>
+
+                            <h3 class="timeline-header"><a href="#">Car licence with its violation</a></h3>
+
+                            <div class="timeline-body">
+
+                                <table class="table table-sm" id="carLicence">
+                                    <tr>
+                                        <th>Car name</th>
+                                        <th>Car model</th>
+                                        <th>Car code</th>
+                                        <th>Licence start date</th>
+                                        <th>Licence end date</th>
+                                        <th>Violation name</th>
+                                        <th>Violation price</th>
+                                        <th>Violation date</th>
+
+
+                                    </tr>
+                                </table>
+
+                            </div>
+                            @*<div class="timeline-footer">
+                                <a href="#" class="btn btn-sm bg-maroon">See comments</a>
+                            </div>*@
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+                    <!-- timeline time label -->
+                    <div class="time-label">
+                        <span class="bg-yellow tt" id="reservationdate"></span>
+                    </div>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <div>
+                        <i class="fa fa-ticket-alt bg-purple"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fas fa-clock"></i> </span>
+                            <h3 class="timeline-header"><a href="#">Reservation</a></h3>
+                            <div class="timeline-body">
+                                <table class="table table-sm" id="reservation">
+                                    <tr>
+                                        <th>Servic name</th>
+                                        <th>Price</th>
+                                        <th>Office name</th>
+                                        <th>Reservation date</th>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+                    <!-- timeline time label -->
+                    @*<div class="time-label">
+                        <span class="bg-maroon tt" id="HealthDate"></span>
+                    </div>*@
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <div>
+                        <i class="fa fa-plus bg-red"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fas fa-clock"></i> </span>
+                            <h3 class="timeline-header"><a href="#">Health care reservation</a></h3>
+                            <div class="timeline-body">
+                                <table class="table table-sm" id="Health">
+                                    <tr>
+                                        <th>Doctor name</th>
+                                        <th>Code</th>
+
+                                        <th>Hospital name</th>
+                                        <th>Reservation date</th>
+                                        <th>Reservation Canceled</th>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+                    <!-- timeline time label -->
+                    <div class="time-label">
+                        <span class="bg-green tt" id="Vacc"></span>
+                    </div>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <div>
+                        <i class="fa fa-syringe bg-indigo"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fas fa-clock"></i> </span>
+                            <h3 class="timeline-header"><a href="#">Vaccination reservation</a></h3>
+                            <div class="timeline-body">
+                                <table class="table table-sm" id="Vaccination">
+                                    <tr>
+
+                                        <th>Code</th>
+                                        <th>Vaccination type</th>
+                                        <th>Hospital name</th>
+                                        <th>Reservation date</th>
+                                        <th>Reservation Canceled</th>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+                    <!-- timeline time label -->
+                    <div class="time-label">
+                        <span class="bg-green tt" id="dateGradeFaculty"></span>
+                    </div>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <div>
+                        <i class="fa fa-graduation-cap bg-orange"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fas fa-clock"></i> </span>
+                            <h3 class="timeline-header"><a href="#">Information about educational university</a></h3>
+                            <div class="timeline-body">
+                                <table class="table table-sm" id="educationalUniversity">
+                                    <tr>
+
+                                        <th>University name</th>
+                                        <th>Faculty name</th>
+                                        <th>Specialization name</th>
+                                        <th>Grade name</th>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="timeline-footer" id="btn">
+                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                                    Generate certificate
+                                </button>
+                                @*<a class="btn btn-primary btn-sm"></a>*@
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END timeline item -->
+
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+    </div>
+    <!-- /.timeline -->
+    
+    <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Certificate</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container mt-5" style="border:dashed">
+                        <div class="row mt-5">
+                            <div class="col-md-4 text-center">
+                                <img src="~/UniversityLogo/" class=" " style="height:100px; width:5.5rem " id="imge" />
+
+                            </div>
+                            <div class="col-md-4 text-center">
+                                @Servicely.Languages.Language.University
+                                <br />
+                                <strong id="UName">
+
+                                </strong>
+                                <br />
+                                <strong>
+                                    @Servicely.Languages.Language.GraduationUniversity
+                                </strong>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <img src="~/CitizenPhotos/" class=" " style="height:80px; width:4.5rem " id="img" />
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-5">
+                            <div class="col-md-3 text-center ">
+                                <label>@Servicely.Languages.Language.Collegeofcertifies</label>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <label id="FName">
+
+                                </label>
+
+                            </div>
+                        </div>
+                        <div class="row mt-5 ">
+                            <div class="col-md-3 text-center ">
+                                <label>
+                                    @Servicely.Languages.Language.certifies /
+                                </label>
+                            </div>
+                            <div class="col-md-4 text-left">
+                                <strong id="StudentName"></strong>
+                            </div>
+                        </div>
+                        <div class="row mt-4 ">
+                            <div class="col-md-3 text-center">
+                                <lable>@Servicely.Languages.Language.BornIn</lable> &nbsp; <strong id="StateName"></strong>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <label>@Servicely.Languages.Language.Datee</label>&nbsp;<strong id="date"></strong>
+
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-4 text-center">
+                                <lable>@Servicely.Languages.Language.hasaBachelor_sdegree</lable> &nbsp; <strong id="FSName"></strong>
+                            </div>
+
+                        </div>
+                        <div class="row mt-5 mb-3">
+                            <div class="col-md-3 text-center">
+                                <lable>@Servicely.Languages.Language.month</lable> &nbsp; <strong id="month"></strong>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <lable>@Servicely.Languages.Language.Year </lable> &nbsp; <strong id="Year"></strong>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <label>@Servicely.Languages.Language.Withappreciation</label>&nbsp;<strong id="Grade"></strong>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 mb-3">
+                            <div class="col-md-3 text-center">
+                                <lable>@Servicely.Languages.Language.GraduationProject</lable> &nbsp; <strong id="GradeGraduation"></strong>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                   
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</section>

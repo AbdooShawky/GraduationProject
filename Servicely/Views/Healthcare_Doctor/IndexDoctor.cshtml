@@ -1,0 +1,103 @@
+﻿@model IEnumerable < Servicely.Models.Healthcare_Doctor>
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Index;
+    if (Session["Layout"] != null)
+        Layout = Session["Layout"].ToString();
+    else
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<script>
+    $(function () {
+        $(document).ready(function () {
+
+            $('#dtBasicExample').DataTable();
+
+            $('.dataTables_length').addClass('bs-select');
+
+        });
+
+
+    });
+</script>
+<div class="container">
+    <h4>@Servicely.Languages.Language.Index</h4>
+
+    <p>
+        @Html.ActionLink(Servicely.Languages.Language.Create_New, "MainCreateDoctor")
+    </p>
+    <hr />
+    <table id="dtBasicExample" class="table table-striped table-sm  table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    <label>@Servicely.Languages.Language.DoctorName</label>
+                </th>
+
+                <th>
+                    <label>@Servicely.Languages.Language.Specialization</label>
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+
+                    @if (Session["lang"] != null)
+                    {
+                        if (Session["lang"].ToString().Equals("ar-EG"))
+                        {
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name_arabic)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HealthCareSpecialization.specialization_name_arabic)
+                            </td>
+                           
+
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HealthCareSpecialization.specialization_name)
+                            </td>
+                            
+                        }
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Citizen.citizen_first_name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HealthCareSpecialization.specialization_name)
+                        </td>
+                        
+                    }
+
+                    <td>
+                        <a href="/Healthcare_Doctor/MainEditDoctor/@item.doctor_id"><i class="fa fa-edit"></i></a>| <a href="/Healthcare_Doctor/Delete/@item.doctor_id"><i class="fa fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+
+</div>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Servicely.Models.Document>
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Index;
+     Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<script>
+    $(function () {
+          var citi;
+        $.ajax({
+            url: "/CitizenContact/GetCitizenIdToJqueryCode",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                citi = res;
+
+            }
+        });
+
+
+            var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $.ajax({
+                url: "/DocumentGeneral/GetAllDocumentsByCitizenId",
+                data: { tid: citi },
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, row) {
+
+                        $("#tb1").append("<tr class='tt'><td> " + row.document_type_name_arabic + " </td><td>"+    row.document_date_upload + "</td> <td> <a href='/DocumentGeneral/Download?id=" + row.document_id + "'> @Servicely.Languages.Language.Download <li class='fa fa-download' style='color: #20c997;'></li> </a> </td>    <td> " + row.document_extensions + "  </td></tr>");
+                    });
+                }
+
+
+            });
+
+
+
+
+       
+        }
+        else {
+        
+           
+
+            $.ajax({
+                url: "/DocumentGeneral/GetAllDocumentsByCitizenId",
+                 data: { tid: citi },
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, row) {
+
+                        $("#tb1").append("<tr class='tt'><td> " + row.document_type_name + " </td><td> "+row.document_date_upload + " </td>   <td> <a href='/DocumentGeneral/Download?id=" + row.document_id + "'> @Servicely.Languages.Language.Download <li class='fa fa-download' style='color: #20c997;'></li> </a> </td>    <td> " + row.document_extensions + "  </td></tr>");
+                    });
+                }
+
+
+            });
+
+
+
+
+        
+
+        }
+       
+
+        //$.ajax({
+        //    url: "/Document/GetAllDocument",
+        //    data: "",
+        //    success: function (res) {
+
+        //        $.each(res, function (i, row) {
+
+        //            $("#tb1").append("<tr class='tt'><td> " + row.citizen_national_id + " </td><td> " + row.document_type_name + " </td><td> " + row.document_name + " </td>  <td> " + row.document_extensions + " </td><td> " + row.document_data + " </td>  <td><a href='/Document/Edit/" + row.document_id + "'>Edit</a> | <a href='/Document/Delete/" + row.document_id + "'>Delete</a>   </td></tr>");
+        //        });
+        //    }
+
+
+        //});
+
+       
+
+
+
+    });
+
+</script>
+<div class="container-fluid">
+    <h5>@Servicely.Languages.Language.Index</h5>
+    <h5>@Servicely.Languages.Language.MyDocument</h5>
+
+
+
+    <div class="col-md-12 mt-4">
+        <table class="table table-hover" id="tb1">
+            <tr>
+
+                <th class="font-weight-bold">
+                    @Servicely.Languages.Language.DocumentType
+                </th>
+                <th class="font-weight-bold">
+                    @Servicely.Languages.Language.UploadDate
+                </th>
+                <th class="font-weight-bold">
+                    @Servicely.Languages.Language.DocumentFile
+                </th>
+
+                <th class="font-weight-bold">
+                    @Servicely.Languages.Language.document_extensions
+                </th>
+
+                <th> </th>
+            </tr>
+
+
+        </table>
+    </div>
+</div>
+

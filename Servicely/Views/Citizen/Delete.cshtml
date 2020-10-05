@@ -1,0 +1,75 @@
+﻿@model Servicely.Models.Citizen
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+
+
+
+
+    });
+</script>
+    <h2>@Servicely.Languages.Language.Delete</h2>
+
+    <h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4>@Servicely.Languages.Language.Citizen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Servicely.Languages.Language.NationalId
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.citizen_national_id)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.CitizenName
+        </dt>
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.citizen_first_name_arabic) @Html.DisplayFor(model => model.citizen_second_name_arabic) @Html.DisplayFor(model => model.citizen_third_name_arabic) @Html.DisplayFor(model => model.citizen_fourth_name_arabic)
+                </dd>
+
+            }
+            else
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.citizen_first_name) @Html.DisplayFor(model => model.citizen_second_name) @Html.DisplayFor(model => model.citizen_third_name) @Html.DisplayFor(model => model.citizen_fourth_name)
+                </dd>
+            }
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.citizen_first_name) @Html.DisplayFor(model => model.citizen_second_name) @Html.DisplayFor(model => model.citizen_third_name) @Html.DisplayFor(model => model.citizen_fourth_name)
+            </dd>
+        }
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@Servicely.Languages.Language.Delete class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

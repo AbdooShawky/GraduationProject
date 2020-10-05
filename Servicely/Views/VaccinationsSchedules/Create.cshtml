@@ -1,0 +1,545 @@
+﻿@model Servicely.Models.VaccinationReservation
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<script>
+    $(function () {
+
+        var flage = true;
+             var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+    //GetAllVaccinationAppointmentByHealthCareId
+        if (seesion == "ar-EG") {
+            $.ajax({
+
+                url: "/VaccinationsSchedules/GetAllChiledByCitizenId",
+                data: "",
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#vacc").append("<option value='" + r.citizen_id + "'>" + r.citizen_national_id + " </option>");
+
+                        if (flage == true)
+                            $("#tb").append("<tr class='tt'> <td class='font-weight-bold'> " + r.citizen_first_name_arabic + " </td>  </tr>");
+                        flage = false;
+                    });
+
+                }
+
+            });
+            var data = $("#vacc").val();
+            $("#VaccType").empty();
+            $.ajax({
+
+                url: "/VaccinationsSchedules/GetAllVaccinationTypeByCitizenId",
+                data: { cti: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, row) {
+
+                        $("#VaccType").append("<option value='" + row.vaccination_type_id + "'> " + row.vaccination_type_name_arabic + " </option>");
+                    });
+
+                }
+
+            });
+
+            $("#vacc").change(function () {
+                var data = $("#vacc").val();
+                $("#VaccType").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetAllVaccinationTypeByCitizenId",
+                    data: { cti: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, row) {
+
+                            $("#VaccType").append("<option value='" + row.vaccination_type_id + "'> " + row.vaccination_type_name_arabic + " </option>");
+                        });
+
+                    }
+
+                });
+            });
+
+            $("#vacc").change(function () {
+                var data = $("#vacc").val();
+                $(".tt").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetFirstName",
+                    data: { id: data },
+                    async: false,
+                    success: function (res) {
+
+
+
+
+
+                        $("#tb").append("<tr class='tt'> <td class='font-weight-bold'> " + res + " </td>  </tr>");
+
+
+
+                    }
+
+                });
+            });
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                    $("#city").append("<option > </option>");
+
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+
+
+            });
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $("#region").append("<option > </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#district").append("<option > </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+                
+
+            });
+
+
+            $("#district").change(function () {
+                var data = $("#district").val();
+                var vacc = $("#VaccType").val();
+                var htype = $("#HCtype").val();
+
+                $("#Health").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetAllHealtCaresByVaccinationType_HealthcareTypeAndDistrictIds",
+                    data: { VtId: vacc, DId: data, HCTId: htype },
+                    async: false,
+                    success: function (res) {
+                        $("#Health").append("<option > </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#Health").append("<option value='" + r.hospital_id + "'> " + r.hospital_name_arabic + "  </option>");
+                        });
+                    }
+
+                });
+
+            });
+
+            $("#Health").change(function () {
+
+                var data = $("#Health").val();
+                $("#schedule").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetAllVaccinationAppointmentByHealthCareId",
+                    data: { hos: data , vacType: $("#VaccType").val()},
+                    success: function (res) {
+                        $("#schedule").append("<option > </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#schedule").append("<option value='" + r.schedule_id + "'> " + r.checkup_date + " " + r.checkup_start + " " + r.checkup_end + "  </option>");
+
+
+                        });
+
+                    }
+
+                });
+
+            });
+            $(document).ready(function () {
+
+                $('#exampleModalCenter').modal('show')
+
+            });
+        }
+        else {
+
+              $.ajax({
+
+                url: "/VaccinationsSchedules/GetAllChiledByCitizenId",
+                data: "",
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, r) {
+
+                        $("#vacc").append("<option value='" + r.citizen_id + "'>" + r.citizen_national_id + " </option>");
+
+                        if (flage == true)
+                            $("#tb").append("<tr class='tt'> <td class='font-weight-bold'> " + r.citizen_first_name + " </td>  </tr>");
+                        flage = false;
+                    });
+
+                }
+
+            });
+            var data = $("#vacc").val();
+            $("#VaccType").empty();
+            $.ajax({
+
+                url: "/VaccinationsSchedules/GetAllVaccinationTypeByCitizenId",
+                data: { cti: data },
+                async: false,
+                success: function (res) {
+
+                    $.each(res, function (i, row) {
+
+                        $("#VaccType").append("<option value='" + row.vaccination_type_id + "'> " + row.vaccination_type_name + " </option>");
+                    });
+
+                }
+
+            });
+            $("#vacc").change(function () {
+                var data = $("#vacc").val();
+                $("#VaccType").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetAllVaccinationTypeByCitizenId",
+                    data: { cti: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, row) {
+
+                            $("#VaccType").append("<option value='" + row.vaccination_type_id + "'> " + row.vaccination_type_name + " </option>");
+                        });
+
+                    }
+
+                });
+            });
+
+            $("#vacc").change(function () {
+                var data = $("#vacc").val();
+                $(".tt").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetFirstName",
+                    data: { id: data },
+                    async: false,
+                    success: function (res) {
+
+
+
+
+
+                        $("#tb").append("<tr class='tt'> <td class='font-weight-bold'> " + res + " </td>  </tr>");
+
+
+
+                    }
+
+                });
+            });
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#city").append("<option > </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+            });
+
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $("#region").append("<option > </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#district").append("<option > </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+            });
+
+
+            $("#district").change(function () {
+                var data = $("#district").val();
+                var vacc = $("#VaccType").val();
+                var htype = $("#HCtype").val();
+
+                $("#Health").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetAllHealtCaresByVaccinationType_HealthcareTypeAndDistrictIds",
+                    data: { VtId: vacc, DId: data, HCTId: htype },
+                    async: false,
+                    success: function (res) {
+                        $("#Health").append("<option > </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#Health").append("<option value='" + r.hospital_id + "'> " + r.hospital_name + "  </option>");
+                        });
+                    }
+
+                });
+
+            });
+
+            $("#Health").change(function () {
+
+                var data = $("#Health").val();
+                $("#schedule").empty();
+                $.ajax({
+
+                    url: "/VaccinationsSchedules/GetAllVaccinationAppointmentByHealthCareId",
+                    data: { hos: data, vacType: $("#VaccType").val() },
+                    success: function (res) {
+                        $("#schedule").append("<option > </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#schedule").append("<option value='" + r.schedule_id + "'> " + r.checkup_date + " " + r.checkup_start + " " + r.checkup_end + "  </option>");
+
+
+                        });
+
+                    }
+
+                });
+
+            });
+            $(document).ready(function () {
+
+                $('#exampleModalCenter').modal('show')
+
+            });
+
+        }
+
+
+
+
+
+    });
+</script>
+<div class="container-fluid ">
+
+    @if (ViewBag.vcc != null)
+    {
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">@Servicely.Languages.Language.VaccinationReservation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>@ViewBag.vcc</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@Servicely.Languages.Language.Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    
+<h2>@Servicely.Languages.Language.Create</h2>
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-4">
+                <label>@Servicely.Languages.Language.YourChiledsNationalIds</label>
+                <select class="form-control" id="vacc" name="VaccReservation_child_id" required>
+                </select>
+                <table id="tb" class="table mt-3">
+                </table>
+            </div>
+            <div class="col-3">
+                <label>@Servicely.Languages.Language.VaccinationType</label>
+                @*@Html.DropDownList("VaccType", null, "", new { @class = "form-control" })*@
+                <select name="VaccType" id="VaccType" class="form-control" required>
+
+                </select>
+            </div>
+            <div class="col-3">
+                <label>@Servicely.Languages.Language.HealthcareType</label>
+                @Html.DropDownList("HCtype", null, "", new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-3 ">
+                <label class="label"> @Servicely.Languages.Language.State</label>
+                @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control" })
+
+
+            </div>
+            <div class="col-3 ">
+                <label class="label"> @Servicely.Languages.Language.City</label>
+                <select class="form-control" id="city"></select>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-3 ">
+                <label class="label"> @Servicely.Languages.Language.Region</label>
+                <select class="form-control" id="region" name="district_region_id"></select>
+
+
+            </div>
+
+            <div class="col-3 ">
+                <label class="label"> @Servicely.Languages.Language.District</label>
+                <select class="form-control" id="district" name="address_district_id">
+                </select>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>@Servicely.Languages.Language.HealthcareReservation</label>
+                <select id="Health" required class="form-control" name="VaccReservation_HealthCare_id"></select>
+            </div>
+            <div class="col-3">
+                <label>@Servicely.Languages.Language.Appointments</label>
+                <select class="form-control" required id="schedule" name="schedule">
+                </select>
+            </div>
+        </div>
+     
+
+
+        <div class="row mt-3">
+            <div class="col-3">
+                <input type="submit" class="btn btn-default" value=@Servicely.Languages.Language.Submit />
+            </div>
+
+        </div>
+    }
+
+
+</div>

@@ -1,0 +1,198 @@
+﻿@model Servicely.Models.Document
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+
+
+
+          var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+
+            $("#document_citizen_id").change(function () {
+
+                var data = $("#document_citizen_id").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr > <td class='font-weight-bold'>" + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+
+        }
+       else
+        {
+                $("#document_citizen_id").change(function () {
+
+                var data = $("#document_citizen_id").val();
+                $("#tb").empty();
+                $.ajax({
+                    url: "/Citizen/GetNamesByCitizenId",
+                    data: { ctId: data },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+
+
+                            $("#tb").append("<tr > <td class='font-weight-bold'>" + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + " </td> </tr>");
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+        }
+
+           $('#document_citizen_id').select2();
+       
+
+      
+
+    });
+
+</script>
+
+
+@using (Html.BeginForm("Create","DocumentGeneral",FormMethod.Post , new { enctype = "multipart/form-data" }))
+{
+
+
+    
+        
+        
+        
+            <div class="container-fluid">
+                <h2>@Servicely.Languages.Language.Create</h2>
+                <h4>@Servicely.Languages.Language.Document</h4>
+                <hr />
+                <div class="row ">
+                    <div class="col-md-3">
+                        <label>@Servicely.Languages.Language.NationalId</label>
+                        @Html.DropDownList("document_citizen_id", null, "", new { @class = "form-control", data_live_search="true" ,required = "required" })
+
+                        <table class="table mt-3" id="tb">
+
+                        </table>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <label>@Servicely.Languages.Language.DocumentType</label>
+                        @Html.DropDownList("document_documentType_id", null, "", new { @class = "form-control", required = "required" })
+
+
+
+                    </div>
+                    
+
+                    <div class="col-md-8">
+                       
+                        <label>@Servicely.Languages.Language.DocumentData</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">@Servicely.Languages.Language.Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                       aria-describedby="inputGroupFileAddon01" name="f1">
+                                <label class="custom-file-label" for="inputGroupFile01">@Servicely.Languages.Language.Choosefile</label>
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                </div>
+                   
+                
+                    
+                <div class="row">
+                    <div class="col-md-4">
+                        @if(ViewBag.x != null)
+                        {
+                            <label style="color:#1c5223">@ViewBag.x</label>
+                        }
+
+                    </div>
+                </div>
+                    
+                   <div class="row mt-2">
+
+
+                      
+
+                       <div class="col-md-3">
+
+
+                           <input type="submit" value=@Servicely.Languages.Language.Upload class="btn btn-default mt-4 btn-md" />
+
+
+                       </div>
+
+                   </div>
+
+
+
+                    
+                   
+
+
+
+                    
+
+                    
+
+
+
+                  
+                   
+
+                   <div>
+                       @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+                   </div>
+                   
+
+                   
+               
+            </div>
+        
+
+        
+}
+
+
+
+
+

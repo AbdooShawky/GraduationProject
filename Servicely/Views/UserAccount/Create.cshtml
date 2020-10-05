@@ -1,0 +1,116 @@
+﻿@model Servicely.Models.User
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Create;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+ 
+<style>
+    .text {
+        width: 240px;
+        text-align: center;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #fff;
+        font-family: Play, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 0;
+        transition: border .5s;
+        outline: none;
+        color: #fff;
+    }
+     .text1 {
+            width: 150px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #fff;
+            font-family: 'Play',sans-serif;
+            font-size: 16px;
+            padding: 10px 0;
+            transition: border 0.5s;
+            outline: none;
+            color: black;
+        }
+
+    .button {
+        border: none;
+        width: 190px;
+        background: white;
+        color: #000;
+        font-size: 16px;
+        line-height: 25px;
+        padding: 10px 0;
+        border-radius: 15px;
+        cursor: pointer;
+        outline: none;
+    }
+
+        .button:hover {
+            color: #fff;
+            background-color: black;
+        }
+</style>
+<body style="background-image: url('../../img/newwwww.jpg');background-size:cover; min-height:200px; background-repeat:no-repeat;background-position:center" >
+    <div class="signup" style="background-color:rgba(44,62,80,.7);padding:40px;width:300px;margin:auto;margin-top:80px;height:500px;margin-left:180px;margin:0 auto;margin-top:90px">
+        <form action="/UserAccount/Create" method="post" style="width:240px;text-align:center">
+
+            @*<label for="Name" class="font-weight-bold">UserName</label>
+        <input type="text" class="form-control" placeholder="Enter UserName" name="user_name" required pattern="^[a-z0-9A-Z_-]{8,20}$" />
+
+
+
+        <label for="Password" class="font-weight-bold">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="user_password" required pattern="^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$" />
+
+        <label for="" class="font-weight-bold">Confirm Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="confPassword" required />
+
+        <br />
+
+        <button type="submit" class="btn-danger btn-lg">Add User</button>*@
+
+            @*-------------------------------------------------------*@
+
+            @*<h1 style="color:#fff">Sign up</h1>
+        <input type="text" name="NationalId" placeholder="National Id" class="text" />*@
+            <br /><br />
+            <input type="text" placeholder="UserName" class="text" name="user_name" required pattern="^[a-z0-9A-Z_-]{8,20}$" />
+            <br /><br />
+            <input type="password" placeholder="Password" class="text" name="user_password" required pattern="^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$" />
+            <br /><br />
+            <input type="password" name="confPassword" placeholder="Confirm Password" class="text" required />
+            <br /><br />
+                  <div>
+
+                      @using (Html.BeginForm())
+                      {
+
+
+
+                          @Html.DropDownList("user_type_id", null, "", new { @class = "text1", requierd = "required", placeholder = "Select your portal" })
+                          <br /><br />
+
+                          <input type="submit" value="Sign Up" class="button" />
+                      }
+
+
+                  </div>
+           
+
+            <br /><br />
+
+
+                  <div id="msg">@Servicely.Languages.Language.CongratulationsYouSignUpSuccessfully</div>
+
+
+
+        </form>
+    </div>
+</body>

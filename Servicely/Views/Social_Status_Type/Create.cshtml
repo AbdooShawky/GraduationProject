@@ -1,0 +1,80 @@
+﻿@model Servicely.Models.Social_Status_Type
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+
+
+<div class="container-fluid  mt-5 mr-5 ml-5">
+    <div class="row">
+        <div class="col">
+            <h4 >@Servicely.Languages.Language.Create</h4>
+            <h4 >@Servicely.Languages.Language.SocialStatusType</h4>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+
+
+<div class="form-horizontal">
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>@Servicely.Languages.Language.social_status_type_name_inEnglish</label>
+                <input type="text" class="form-control" required name="social_status_type_name" pattern="([A-Za-z\s]{2,20})" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label> @Servicely.Languages.Language.social_status_type_description_inEglish</label>
+                <input type="text" class="form-control" required name="social_status_type_description" pattern="([A-Za-z\s]{2,100})" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+
+        
+
+        <div class="form-group">
+            <div class="col-md-12 ">
+                <label> @Servicely.Languages.Language.social_status_type_name_inArabic</label>
+                <input type="text" class="form-control" required name="social_status_type_name_arabic" pattern="([\u0600-\u06FF\s]{3,20})" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label> @Servicely.Languages.Language.social_status_type_description_inArabic</label>
+                <input type="text" class="form-control" required name="social_status_type_description_arabic" pattern="([\u0600-\u06FF\s]{3,100})" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="@Servicely.Languages.Language.Create" class=" button" />
+        </div>
+    </div>
+</div>
+    }
+    @if (ViewBag.errMsg != null)
+    {
+        <label class="text-danger">@ViewBag.errMsg</label>
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>

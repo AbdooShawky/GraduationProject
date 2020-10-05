@@ -1,0 +1,54 @@
+﻿@model Servicely.Models.Live_Status_Type
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Create;
+    if (Session["Layout"] != null)
+        Layout = Session["Layout"].ToString(); 
+    else
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+<div class="container-fluid">
+    <h2>  @Servicely.Languages.Language.Create</h2>
+
+    @using (Html.BeginForm())
+    {
+
+
+        <div class="form-horizontal">
+            <h4>  @Servicely.Languages.Language.LiveSatusType</h4>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>  @Servicely.Languages.Language.LiveStatusTypeName_inEnglish</label>
+                    <input type="text" class="form-control" required name="live_status_type_name" pattern="([a-zA-Z\s]{2,20})" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>  @Servicely.Languages.Language.LiveStatusTypeName_inArabic</label>
+                    <input type="text" class="form-control" required name="live_status_type_name_arabic" pattern="[\u0600-\u06FF\s]{2,20}$" />
+                </div>
+            </div>
+
+
+
+
+            @if (ViewBag.errMsgLive != null)
+            {
+                <label class="text-danger">@ViewBag.errMsgLive</label>
+            }
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=@Servicely.Languages.Language.Create class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+

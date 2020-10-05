@@ -1,0 +1,359 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>Index</h2>
+<script>
+
+
+
+
+
+
+    $(document).ready(function () {
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+
+                    async: false,
+                    success: function (res) {
+                        $("#city").append("<option >   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+
+
+            });
+
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $("#region").append("<option >   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#district").append("<option >   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+
+            $("#district").change(function () {
+
+                var data = $(this).val();
+                $("#schoolId").empty();
+
+                $.ajax({
+
+                    url: "/IntermediateRegistration/getSchoolByDistrictId",
+                    data: { Id: data },
+                    async: false,
+                    success: function (res) {
+                        $("#schoolId").append("<option >   </option>");
+
+                        $.each(res, function (i, e) {
+
+
+                            $("#schoolId").append("<option value='" + e.Id + "'>  " + e.SchoolNameArabic + " </option>");
+
+                        })
+
+
+
+                    }
+
+                });
+
+            });
+
+            $("#schoolId").change(function () {
+
+                var data = $(this).val();
+                $(".tt").empty();
+
+                $.ajax({
+
+                    url: "/SecondaryRegisterations/GetAllStudentinHighPhaseBySchoolId",
+                    data: { Id: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, e) {
+
+
+                            $("#tb1").append(" <tr class='tt'> <td> " + e.citizen_first_name_arabic + " " + e.citizen_second_name_arabic + " " + e.citizen_third_name_arabic + " " + e.citizen_fourth_name_arabic + "</td>  <td> " + e.citizen_national_id + "  </td> <td> <a href='/IntermediateRegistration/Edit?Id=" + e.Id + "'> <i class='far fa-edit'>  </i> </a> |<a href='/IntermediateRegistration/Delete?Id=" + e.Id + "'> <i class='far fa-trash-alt'>  </a>  </td> </tr>");
+
+                        })
+
+
+
+                    }
+
+                });
+
+            });
+
+        }
+        else {
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#city").append("<option >   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+
+            });
+
+
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $("#region").append("<option >   </option>");
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+                        $("#district").append("<option >   </option>");
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+            $("#district").change(function () {
+
+                var data = $(this).val();
+                $("#schoolId").empty();
+
+                $.ajax({
+
+                    url: "/IntermediateRegistration/getSchoolByDistrictId",
+                    data: { Id: data },
+                    async: false,
+                    success: function (res) {
+                        $("#schoolId").append("<option >   </option>");
+
+                        $.each(res, function (i, e) {
+
+
+                            $("#schoolId").append("<option value='" + e.Id + "'>  " + e.SchoolName + " </option>");
+
+                        })
+
+
+
+                    }
+
+                });
+
+            });
+
+            $("#schoolId").change(function () {
+
+                var data = $(this).val();
+                $(".tt").empty();
+
+                $.ajax({
+
+                    url: "/SecondaryRegisterations/GetAllStudentinHighPhaseBySchoolId",
+                    data: { Id: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, e) {
+
+
+                            $("#tb1").append(" <tr class='tt'> <td> " + e.citizen_first_name + " " + e.citizen_second_name + " " + e.citizen_third_name + " " + e.citizen_fourth_name + "</td>  <td> " + e.citizen_national_id + "  </td> <td> <a href='/IntermediateRegistration/Edit?Id=" + e.Id + "'> <i class='far fa-edit'>  </i> </a> |<a href='/IntermediateRegistration/Delete?Id=" + e.Id + "'>   </a>  </td> </tr>");
+
+                        })
+
+
+
+                    }
+
+                });
+
+            });
+
+        }
+
+
+
+
+
+    });
+
+</script>
+<div class="container">
+
+    <div class="row ">
+        <div class="col mt-3">
+            <label class="label">@Servicely.Languages.Language.State</label>
+            @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control" })
+
+
+        </div>
+        <div class="col mt-3">
+            <label class="label">@Servicely.Languages.Language.City</label>
+            <select class="form-control" id="city"></select>
+        </div>
+        <div class="col mt-3">
+            <label class="label">@Servicely.Languages.Language.Region</label>
+            <select class="form-control" id="region" name="district_region_id"></select>
+
+
+        </div>
+
+        <div class="col mt-3">
+            <label class="label">@Servicely.Languages.Language.District</label>
+            <select class="form-control" id="district" name="address_district_id">
+            </select>
+
+
+        </div>
+
+
+
+
+    </div>
+    <div class="row mt-3">
+
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Schools</label>
+            <select id="schoolId" name="SchoolId" class="form-control">
+            </select>
+        </div>
+
+    </div>
+    <div class="row mt-3">
+
+        <div class="col-md-12">
+            <table id="tb1" class="table table-sm">
+                <tr>
+                    <th>@Servicely.Languages.Language.Student</th>
+
+                    <th>@Servicely.Languages.Language.NationalId</th>
+
+                </tr>
+            </table>
+
+
+        </div>
+
+    </div>
+
+</div>

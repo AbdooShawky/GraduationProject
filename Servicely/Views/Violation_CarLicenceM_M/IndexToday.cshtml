@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Servicely.Models.Violation_CarLicenceM_M>
+
+@{
+    ViewBag.Title = "Index";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+
+        $("#Car").select2();
+     var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        
+        if (seesion == "ar-EG") {
+           
+
+                 var data = $(this).val();
+                 $(".tt").empty();
+            $.ajax({
+
+                url: "/Violation_CarLicenceM_M/GetAllViolationByCarLicenceId1",
+                data: "",
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+                        $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name_arabic + " " + r.citizen_second_name_arabic + " " + r.citizen_third_name_arabic + " " + r.citizen_fourth_name_arabic + "  </td>   <td> " + r.citizen_national_id + "  </td> <td> "+r.CarNameArabic+" </td><td> "+r.ViolationNameArabic+"  </td> <td> "+ r.ViolationPrice+"  </td>  <td> "+r.Date+" </td>   <td> <a href='/Violation_CarLicenceM_M/Edit/" + r.Id + "'>  <i class='far fa-edit'></i> </a> | <a href='/Violation_CarLicenceM_M/Delete/" + r.Id + "'><i class='far fa-trash-alt'></i> </a> </td>  </tr>");
+
+                    });
+
+                }
+
+
+            });
+
+
+      
+        }
+        else {
+          
+
+                 
+                 $(".tt").empty();
+            $.ajax({
+
+                url: "/Violation_CarLicenceM_M/GetAllViolationByCarLicenceId1",
+                data: "",
+                async: false,
+                success: function (res) {
+                    $.each(res, function (i, r) {
+
+                        $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name + " " + r.citizen_second_name + " " + r.citizen_third_name + " " + r.citizen_fourth_name + "  </td>   <td> " + r.citizen_national_id + "  </td> <td> "+r.CarName+" </td><td> "+r.ViolationName+"  </td> <td> "+ r.ViolationPrice+"  </td>  <td> "+r.Date+" </td>   <td> <a href='/Violation_CarLicenceM_M/Edit/" + r.Id + "'>  <i class='far fa-edit'></i> </a> | <a href='/Violation_CarLicenceM_M/Delete/" + r.Id + "'><i class='far fa-trash-alt'></i> </a> </td>  </tr>");
+
+                    });
+
+                }
+
+
+            });
+
+
+      
+        }
+       
+
+    });
+</script>
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<div class="container">
+    @*<div class="row">
+        <div class="col-md-3">
+            <label>
+                @Servicely.Languages.Language.CarCode
+            </label>
+            @Html.DropDownList("Car", null, "", new { @class="form-control"})
+        </div>
+    </div>*@
+</div>
+<table class="table table-striped table-sm mt-4" id="tb">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.Citizen_Name
+        </th>
+        <th>
+            @Servicely.Languages.Language.NationalId
+        </th>
+        <th>
+            @Servicely.Languages.Language.car
+        </th>
+        <th>
+            @Servicely.Languages.Language.Violation
+        </th>
+        <th>@Servicely.Languages.Language.ViolationPrice</th>
+        
+        <th>@Servicely.Languages.Language.Date</th>
+        <th></th>
+    </tr>
+
+
+    
+
+
+</table>

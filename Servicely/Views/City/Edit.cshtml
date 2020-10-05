@@ -1,0 +1,87 @@
+﻿@model Servicely.Models.City
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Edit;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <div class="container-fluid">
+        <h4>@Servicely.Languages.Language.City</h4>
+        <h2>@Servicely.Languages.Language.Edit</h2>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.city_id)
+    <div class="row fadeIn">
+
+
+
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.CityName</label>
+
+
+
+
+            @Html.EditorFor(model => model.city_name, new { htmlAttributes = new { @class = "form-control", pattern="([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{3,20})" , required = "required" } })
+
+
+
+
+        </div>
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.City_Name_Arabic</label>
+
+
+            @Html.EditorFor(model => model.city_arabic_name, new { htmlAttributes = new { @class = "form-control", pattern="([\u0600-\u06FF\\s]{3,20})", required = "required" } })
+
+
+
+
+
+
+        </div>
+
+
+
+        <div class="col-md-3">
+
+            @if (ViewBag.errMsg != null)
+
+            {
+
+                <label style="color:red"> @ViewBag.errMsg </label>
+
+            }
+
+        </div>
+
+    </div>
+            <div class="row mt-5">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value=@Servicely.Languages.Language.Save class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+            </div>
+        }
+    </div>
+
+
+
+
+   
+
+
+
+    
+
+
+
+

@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Servicely.Models.CarLicence>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h4>@Servicely.Languages.Language.Index</h4>
+<h4>@Servicely.Languages.Language.CarLicence</h4>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<script>
+    $(function () {
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        $("#citizen").select2();
+
+        if (seesion == "ar-EG") {
+            $("#citizen").change(function () {
+                var d = $("#citizen").val();
+                $(".tt").empty();
+                $.ajax({
+
+
+                    url: "/CarLicences/getLicenceByCitizenId",
+                    data: { Id: d },
+                    async: false,
+                    success: function (res) {
+
+
+                        $.each(res, function (i, e) {
+
+
+                            $("#tb1").append("<tr class='tt'>  <td> " + e.CarNameArabic + "  </td><td> " + e.CarCode + "   </td> <td>  " + e.CarModel + " </td><td> " + e.StartDate + "  </td>   <td>   " + e.EndDate + " </td> <td> <a href='/CarLicences/Edit/" + e.Id + "'> <i class='far fa-edit'> </i>  </a> | <a href='/CarLicences/Delete/" + e.Id + "'> <i class='far fa-trash-alt'></i> </a> </td> </tr>")
+
+                        })
+
+
+                    }
+
+
+                })
+
+
+
+
+
+            });
+        }
+        else {
+            $("#citizen").change(function () {
+                var d = $("#citizen").val();
+                $(".tt").empty();
+                $.ajax({
+
+
+                    url: "/CarLicences/getLicenceByCitizenId",
+                    data: { Id: d },
+                    async: false,
+                    success: function (res) {
+
+
+                        $.each(res, function (i, e) {
+
+
+                            /**/
+                            $("#tb1").append("<tr class='tt'>  <td> " + e.CarName + "  </td><td> " + e.CarCode + "   </td> <td>  " + e.CarModel + " </td><td> " + e.StartDate + "  </td>   <td>   " + e.EndDate + " </td> <td> <a href='/CarLicences/Edit/" + e.Id + "'> <i class='far fa-edit'> </i>  </a> | <a href='/CarLicences/Delete/" + e.Id + "'><i class='far fa-trash-alt'></i> </a> </td> </tr>")
+                            /**/
+
+                        })
+
+
+                    }
+
+
+                })
+
+
+
+
+
+            });
+        }
+
+
+
+
+
+    });
+
+
+
+</script>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3 mb-2">
+            <label>@Servicely.Languages.Language.NationalId</label>
+            @Html.DropDownList("citizen", null, "", new { @class = "form-control" })
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            <table class="table" id="tb1">
+                <tr>
+                    <th>
+                        @Servicely.Languages.Language.CarName
+                    </th>
+                    <th>
+                        @Servicely.Languages.Language.CarCode
+                    </th>
+
+                    <th>
+                        @Servicely.Languages.Language.CarModel
+                    </th>
+                    <th>
+                        @Servicely.Languages.Language.startDate
+                    </th>
+                    <th>
+                        @Servicely.Languages.Language.endDate
+                    </th>
+
+                    <th>
+
+                    </th>
+                    <th></th>
+                </tr>
+
+
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,129 @@
+﻿@model Servicely.Models.LogRequest
+
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Delete;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2> @Servicely.Languages.Language.Delete</h2>
+
+    <h3> @Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    <h4> @Servicely.Languages.Language.LogRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Servicely.Languages.Language.log_date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.log_date)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.CitizenNationalId
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+        </dd>
+
+
+
+
+
+
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+
+                <dt>
+                    @Servicely.Languages.Language.Address
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Request.address_arabic)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.typeReaquest_name
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TypeRequest.typeReaquest_name_arabic)
+                </dd>
+
+
+            }
+            else
+            {
+                <dt>
+                    @Servicely.Languages.Language.Address
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Request.address)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.typeReaquest_name
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TypeRequest.typeReaquest_name)
+                </dd>
+
+            }
+        }
+        else
+        {
+            <dt>
+                @Servicely.Languages.Language.Address
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Request.address)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.typeReaquest_name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TypeRequest.typeReaquest_name)
+            </dd>
+
+        }
+
+        <dt>
+            @Servicely.Languages.Language.Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Request.address)
+        </dd>
+
+        <dt>
+            @Servicely.Languages.Language.typeReaquest_name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeRequest.typeReaquest_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value= @Servicely.Languages.Language.Delete class="btn btn-default" /> |
+            @Html.ActionLink( Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

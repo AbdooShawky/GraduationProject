@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "IndexI";
+    Layout = "~/Views/Shared/Interior_LayOut.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.Citizen</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+
+                </div>
+                <a href="/report/index" class="small-box-footer">@Servicely.Languages.Language.Create <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Requests</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-paper-plane"></i>
+
+                </div>
+                <a href="/Requests/IndexToday" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+                    <p>@Servicely.Languages.Language.Reservations</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <a href="/Reservation/IndexToday" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-gray-dark w-100 h-100">
+                <div class="inner">
+
+
+                    <p>@Servicely.Languages.Language.Violation</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                </div>
+                <a href="/Violation_CarLicenceM_M/IndexToday" class="small-box-footer">@Servicely.Languages.Language.Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>
+
+

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Servicely.Models.Document>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $("#NId").change(function () {
+
+                var ttid = $("#NId").val();
+
+                $.ajax({
+                    url: "/Document/GetAllDocumentsByCitizenId",
+                    data: { tid: ttid },
+                    success: function (res) {
+                        $(".tt").empty();
+                        $.each(res, function (i, row) {
+
+                            $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name_arabic + " " + row.citizen_second_name_arabic + " " + row.citizen_third_name_arabic + " " + row.citizen_fourth_name_arabic + " </td><td> " + row.document_type_name + " </td><td> " + row.document_name + " </td>  <td> " + row.document_extensions + " </td><td> " + row.document_data + " </td>  <td><a href='/Document/Edit/" + row.document_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/Document/Delete/" + row.document_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                        });
+                    }
+
+
+                });
+
+
+
+
+            });
+
+        }
+
+        else
+        {
+             $("#NId").change(function () {
+
+                var ttid = $("#NId").val();
+
+                $.ajax({
+                    url: "/Document/GetAllDocumentsByCitizenId",
+                    data: { tid: ttid },
+                    success: function (res) {
+                        $(".tt").empty();
+                        $.each(res, function (i, row) {
+
+                            $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name + " " + row.citizen_second_name + " " + row.citizen_third_name + " " + row.citizen_fourth_name + " </td><td> " + row.document_type_name + " </td><td> " + row.document_name + " </td>  <td> " + row.document_extensions + " </td><td> " + row.document_data + " </td>  <td><a href='/Document/Edit/" + row.document_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/Document/Delete/" + row.document_id + "'>@Servicely.Languages.Language.Delete</a>   </td></tr>");
+                        });
+                    }
+
+
+                });
+
+
+
+
+            });
+        }
+            
+
+
+        //$.ajax({
+        //    url: "/Document/GetAllDocument",
+        //    data: "",
+        //    success: function (res) {
+
+        //        $.each(res, function (i, row) {
+
+        //            $("#tb1").append("<tr class='tt'><td> " + row.citizen_national_id + " </td><td> " + row.document_type_name + " </td><td> " + row.document_name + " </td>  <td> " + row.document_extensions + " </td><td> " + row.document_data + " </td>  <td><a href='/Document/Edit/" + row.document_id + "'>Edit</a> | <a href='/Document/Delete/" + row.document_id + "'>Delete</a>   </td></tr>");
+        //        });
+        //    }
+
+
+        //});
+
+    });
+
+</script>
+<h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+</p>
+<div class="col-md-3">
+    @Html.DropDownList("NId", null, "", new { @class = "form-control", required = "required" })
+</div>
+
+<div class="col-md-10">
+    <table class="table" id="tb1">
+        <tr>
+            <th>
+                @Servicely.Languages.Language.CitizenName
+            </th>
+            <th>
+                @Servicely.Languages.Language.document_type_name
+            </th>
+            <th>
+                @Servicely.Languages.Language.Document
+            </th>
+            <th>
+                @Servicely.Languages.Language.DocumentExitention
+            </th>
+            <th>
+                @Servicely.Languages.Language.DocumentData
+            </th>
+
+            <th></th>
+        </tr>
+
+
+    </table>
+</div>

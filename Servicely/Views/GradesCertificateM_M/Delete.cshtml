@@ -1,0 +1,92 @@
+﻿@model Servicely.Models.GradesCertificateM_M
+
+@{
+    ViewBag.Title = "Delete";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.Delete</h2>
+
+<h3>@Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+
+        @if (Session["lang"] != null)
+        {
+            if (Session["lang"].ToString().Equals("ar-EG"))
+            {
+                <dt>
+                    @Servicely.Languages.Language.Certificate
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Certificate.CirtificateTypeNameArabic)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Grade
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Grade.GradeNameArabic)
+                </dd>
+
+
+            }
+            else
+            {
+                <dt>
+                    @Servicely.Languages.Language.Certificate
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Certificate.CirtificateTypeName)
+                </dd>
+
+                <dt>
+                    @Servicely.Languages.Language.Grade
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Grade.GradeName)
+                </dd>
+
+            }
+        }
+        else
+        {
+            <dt>
+                @Servicely.Languages.Language.Certificate
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Certificate.CirtificateTypeName)
+            </dd>
+
+            <dt>
+                @Servicely.Languages.Language.Grade
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Grade.GradeName)
+            </dd>
+
+        }
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Servicely.Languages.Language.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CitizenBirthCertificate" targetNamespace="http://tempuri.org/CitizenBirthCertificate.xsd" xmlns:mstns="http://tempuri.org/CitizenBirthCertificate.xsd" xmlns="http://tempuri.org/CitizenBirthCertificate.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CitizenBirthCertificate" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CitizenBirthCertificate" msprop:Generator_UserDSName="CitizenBirthCertificate">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BirthCertificate" msprop:Generator_TableClassName="BirthCertificateDataTable" msprop:Generator_TableVarName="tableBirthCertificate" msprop:Generator_RowChangedName="BirthCertificateRowChanged" msprop:Generator_TablePropName="BirthCertificate" msprop:Generator_RowDeletingName="BirthCertificateRowDeleting" msprop:Generator_RowChangingName="BirthCertificateRowChanging" msprop:Generator_RowEvHandlerName="BirthCertificateRowChangeEventHandler" msprop:Generator_RowDeletedName="BirthCertificateRowDeleted" msprop:Generator_RowClassName="BirthCertificateRow" msprop:Generator_UserTableName="BirthCertificate" msprop:Generator_RowEvArgName="BirthCertificateRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CitizenName" msprop:Generator_ColumnVarNameInTable="columnCitizenName" msprop:Generator_ColumnPropNameInRow="CitizenName" msprop:Generator_ColumnPropNameInTable="CitizenNameColumn" msprop:Generator_UserColumnName="CitizenName" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenFatherName" msprop:Generator_ColumnVarNameInTable="columnCitizenFatherName" msprop:Generator_ColumnPropNameInRow="CitizenFatherName" msprop:Generator_ColumnPropNameInTable="CitizenFatherNameColumn" msprop:Generator_UserColumnName="CitizenFatherName" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenMotherName" msprop:Generator_ColumnVarNameInTable="columnCitizenMotherName" msprop:Generator_ColumnPropNameInRow="CitizenMotherName" msprop:Generator_ColumnPropNameInTable="CitizenMotherNameColumn" msprop:Generator_UserColumnName="CitizenMotherName" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenBirthDate" msprop:Generator_ColumnVarNameInTable="columnCitizenBirthDate" msprop:Generator_ColumnPropNameInRow="CitizenBirthDate" msprop:Generator_ColumnPropNameInTable="CitizenBirthDateColumn" msprop:Generator_UserColumnName="CitizenBirthDate" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenBirthBlace" msprop:Generator_ColumnVarNameInTable="columnCitizenBirthBlace" msprop:Generator_ColumnPropNameInRow="CitizenBirthBlace" msprop:Generator_ColumnPropNameInTable="CitizenBirthBlaceColumn" msprop:Generator_UserColumnName="CitizenBirthBlace" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenFname" msprop:Generator_ColumnVarNameInTable="columnCitizenFname" msprop:Generator_ColumnPropNameInRow="CitizenFname" msprop:Generator_ColumnPropNameInTable="CitizenFnameColumn" msprop:Generator_UserColumnName="CitizenFname" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenGender" msprop:Generator_ColumnVarNameInTable="columnCitizenGender" msprop:Generator_ColumnPropNameInRow="CitizenGender" msprop:Generator_ColumnPropNameInTable="CitizenGenderColumn" msprop:Generator_UserColumnName="CitizenGender" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenRelegion" msprop:Generator_ColumnVarNameInTable="columnCitizenRelegion" msprop:Generator_ColumnPropNameInRow="CitizenRelegion" msprop:Generator_ColumnPropNameInTable="CitizenRelegionColumn" msprop:Generator_UserColumnName="CitizenRelegion" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenState" msprop:Generator_ColumnVarNameInTable="columnCitizenState" msprop:Generator_ColumnPropNameInRow="CitizenState" msprop:Generator_ColumnPropNameInTable="CitizenStateColumn" msprop:Generator_UserColumnName="CitizenState" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenCity" msprop:Generator_ColumnVarNameInTable="columnCitizenCity" msprop:Generator_ColumnPropNameInRow="CitizenCity" msprop:Generator_ColumnPropNameInTable="CitizenCityColumn" msprop:Generator_UserColumnName="CitizenCity" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenFatherRelegion" msprop:Generator_ColumnVarNameInTable="columnCitizenFatherRelegion" msprop:Generator_ColumnPropNameInRow="CitizenFatherRelegion" msprop:Generator_ColumnPropNameInTable="CitizenFatherRelegionColumn" msprop:Generator_UserColumnName="CitizenFatherRelegion" type="xs:string" minOccurs="0" />
+              <xs:element name="CitizenMotherRelegion" msprop:Generator_ColumnVarNameInTable="columnCitizenMotherRelegion" msprop:Generator_ColumnPropNameInRow="CitizenMotherRelegion" msprop:Generator_ColumnPropNameInTable="CitizenMotherRelegionColumn" msprop:Generator_UserColumnName="CitizenMotherRelegion" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Servicely.Models.City>
+
+@{
+    ViewBag.Title =Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script src="~/scripts/jquery-3.4.1.js"></script>
+
+<script>
+    $(function () {
+
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $("#State").change(function () {
+                var sid = $("#State").val();
+                $.ajax({
+
+
+                    url: "/City/getCityByStateId",
+                    data: { Stateid: sid },
+                    success: function (res) {
+                        $(".tt").empty();
+                        $.each(res, function (i, row) {
+
+
+                            $("#table1").append("<tr class='tt'> <td >" + row.city_arabic_name + "</td><td ><a style='color:blue' href='/City/Edit/" + row.city_id + "'>@Servicely.Languages.Language.Edit</a> | <a style='color:blue'  href='/City/Delete/" + row.city_id + "'>@Servicely.Languages.Language.Delete</a>  </td> </tr>");
+
+
+                        });
+
+
+
+                    }
+
+
+
+                })
+
+            });
+
+        }
+        else {
+            
+        $("#State").change(function () {
+            var sid = $("#State").val();
+            $.ajax({
+
+
+                url: "/City/getCityByStateId",
+                data: { Stateid: sid },
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (i, row) {
+
+
+                        $("#table1").append("<tr class='tt'> <td >" + row.city_name + "</td><td ><a style='color:blue' href='/City/Edit/" + row.city_id + "'>@Servicely.Languages.Language.Edit</a> | <a style='color:blue'  href='/City/Delete/" + row.city_id + "'>@Servicely.Languages.Language.Delete</a>  </td> </tr>");
+
+
+                    });
+
+
+
+                }
+
+
+
+            })
+
+        });
+        }
+
+
+
+
+
+
+
+    });
+
+</script>
+
+
+
+
+<div class="container-fluid">
+    <h2>@Servicely.Languages.Language.Cities</h2>
+
+    <p>
+        @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+    </p>
+    <div class="row">
+
+        <div class="col-md-3">
+            @Html.DropDownList("State", null, "", new { @class = "form-control", required = "required" })
+
+
+        </div>
+
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <table class="table " id="table1">
+                <tr>
+                    <th class="font-weight-bold">
+                     @Servicely.Languages.Language.City_Name
+                    </th>
+
+
+                    <th></th>
+                </tr>
+
+
+
+            </table>
+        </div>
+    </div>
+
+</div>

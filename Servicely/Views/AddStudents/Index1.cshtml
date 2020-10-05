@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<h2>@Servicely.Languages.Language.AddNewStudent</h2>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1 col-6">
+
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    @if (ViewBag.Int != null)
+                    {
+                        <h3>@ViewBag.Int</h3>
+                    }
+
+
+                    <p>@Servicely.Languages.Language.intermidiatePhase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+
+                </div>
+                <a href="/IntermidiateForeignRegisterations/Create" class="small-box-footer">@Servicely.Languages.Language.AddNewStudent <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    @if (ViewBag.Sec != null)
+                    {
+                        <h3>@ViewBag.Sec</h3>
+                    }
+
+                    <p>@Servicely.Languages.Language.SecondaryPhase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/SecondaryForeignRegiserations/Create" class="small-box-footer">@Servicely.Languages.Language.AddNewStudent <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    @if (ViewBag.Uni != null)
+                    {
+                        <h3>@ViewBag.Uni</h3>
+                    }
+
+                    <p>@Servicely.Languages.Language.Universities</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/UniversityStudentsForeignRegesterations/Create" class="small-box-footer">@Servicely.Languages.Language.AddNewStudent <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-1 col-6">
+
+        </div>
+    </div>
+</div>

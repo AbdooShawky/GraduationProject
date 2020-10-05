@@ -1,0 +1,88 @@
+﻿@model Servicely.Models.Complain
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+
+
+<script>
+    $(document).ready(function () {
+        var Nid;
+        $.ajax({
+            url: "/Complains/GetNationalId",
+            data: "",
+            async: false,
+            success: function (res) {
+
+                Nid = res;
+            }
+
+        });
+
+        $("#div1").hide();
+        
+
+         $(":checkbox").on("change", function() {
+        //When the id is test1
+        //And name is A
+        //And it's checked
+             if (this.id === "checkbox" && this.checked) {
+
+                 $("#div1").show();
+
+                 $("#txt1").val(Nid);
+             }
+             else {
+                 $("#txt1").val("");
+                   $("#div1").hide();
+             }
+    });
+
+    });
+</script>
+<h4>@Servicely.Languages.Language.Create</h4>
+<h4>@Servicely.Languages.Language.Complain</h4>
+
+<hr />
+
+
+@using (Html.BeginForm())
+{
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3">
+            <label class="label">@Servicely.Languages.Language.governement_body</label>
+            @Html.DropDownList("GovernementId", null, "", new { @class = "form-control", required = "required" })
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <label class="label d-block">@Servicely.Languages.Language.Complain</label>
+            @Html.TextAreaFor(a => a.ComplainText, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-3 mt-3">
+            <label class="label">@Servicely.Languages.Language.NationalId</label>
+            <input class="ml-3" type="checkbox" id="checkbox" />
+        </div>
+        <div class="col-md-3 mt-3" id="div1">
+            
+            <input type="text" readonly name="CitizenNationalId" id="txt1" class="form-control" />
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-3 mt-3">
+            <input type="submit" class="btn btn-default " value= @Servicely.Languages.Language.Create />
+        </div>
+    </div>
+
+</div>
+
+}
+

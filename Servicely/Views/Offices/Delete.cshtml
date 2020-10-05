@@ -1,0 +1,203 @@
+﻿@model Servicely.Models.Office
+
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Delete;
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <div class="container-fluid">
+        <h2> @Servicely.Languages.Language.Delete</h2>
+
+        <h3> @Servicely.Languages.Language.Are_you_sure_you_want_to_delete_this_</h3>
+        <div>
+            <h4> @Servicely.Languages.Language.Office</h4>
+            <hr />
+            <div class="row">
+                <div class="col-6">
+                    <dl class="d-inline-block">
+                        <dt>
+                            @Servicely.Languages.Language.OfficeName
+                        </dt>
+                        @if (Session["lang"] != null)
+                        {
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+                            {
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.office_name_arabic)
+                                </dd>
+                            }
+                            else
+                            {
+                                <dd>
+                                    @Html.DisplayFor(model => model.office_name)
+                                </dd>
+                            }
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(model => model.office_name)
+                            </dd>
+                        }
+
+
+                        <dt>
+                            @Servicely.Languages.Language.State
+                        </dt>
+                        @if (Session["lang"] != null)
+                        {
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+                            {
+
+                                <dd>
+                                    @Html.DisplayFor(a => a.District.Region.City.State.state_arabic_name)
+                                </dd>
+                            }
+                            else
+                            {
+                                <dd>
+                                    @Html.DisplayFor(a => a.District.Region.City.State.state_name)
+                                </dd>
+                            }
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(a => a.District.Region.City.State.state_name)
+                            </dd>
+                        }
+
+                        <dt>
+                            @Servicely.Languages.Language.City
+                        </dt>
+                        @if (Session["lang"] != null)
+                        {
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+                            {
+                                <dd>
+                                    @Html.DisplayFor(a => a.District.Region.City.city_arabic_name)
+                                </dd>
+
+                            }
+                            else
+                            {
+                                <dd>
+                                    @Html.DisplayFor(a => a.District.Region.City.city_name)
+                                </dd>
+                            }
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(a => a.District.Region.City.city_name)
+                            </dd>
+
+                        }
+
+                        <dt>
+                            @Servicely.Languages.Language.Region
+                        </dt>
+                        @if (Session["lang"] != null)
+                        {
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+                            {
+                                <dd>
+                                    @Html.DisplayFor(a => a.District.Region.region_arabic_name)
+                                </dd>
+
+                            }
+                            else
+                            {
+                                <dd>
+                                    @Html.DisplayFor(a => a.District.Region.region_name)
+                                </dd>
+                            }
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(a => a.District.Region.region_name)
+                            </dd>
+                        }
+
+
+                        <dt>
+                            @Servicely.Languages.Language.District_Name
+                        </dt>
+                        @if (Session["lang"] != null)
+                        {
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+                            {
+                                <dd>
+                                    @Html.DisplayFor(model => model.District.district_arabic_name)
+                                </dd>
+
+                            }
+                            else
+                            {
+                                <dd>
+                                    @Html.DisplayFor(model => model.District.district_name)
+                                </dd>
+                            }
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(model => model.District.district_name)
+                            </dd>
+
+                        }
+
+
+                        <dt>
+                            @Servicely.Languages.Language.GovernementName
+                        </dt>
+                        @if (Session["lang"] != null)
+                        {
+                            if (Session["lang"].ToString().Equals("ar-EG"))
+                            {
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.governement_body.governement_name_arabic)
+                                </dd>
+
+                            }
+                            else
+                            {
+                                <dd>
+                                    @Html.DisplayFor(model => model.governement_body.governement_name)
+                                </dd>
+
+                            }
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(model => model.governement_body.governement_name)
+                            </dd>
+
+                        }
+
+                    </dl>
+                </div>
+            </div>
+           
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value= @Servicely.Languages.Language.Delete class="btn btn-default" /> |
+                    @Html.ActionLink( Servicely.Languages.Language.Back_to_List, "Index")
+                </div>
+            }
+        </div>
+    </div>
+

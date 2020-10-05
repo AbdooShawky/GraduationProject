@@ -1,0 +1,210 @@
+﻿@model Servicely.Models.Social_status
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Delete;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2>@Servicely.Languages.Language.Delete</h2>
+
+<h3></h3>
+<div>
+    <h4>@Servicely.Languages.Language.Social_status</h4>
+    <hr />
+
+
+    @if (Session["lang"] != null)
+    {
+        if (Session["lang"].ToString().Equals("ar-EG"))
+        {
+
+<dl class="dl-horizontal">
+    <dt>
+        @Servicely.Languages.Language.husband
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+    </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Citizen.citizen_first_name_arabic)
+    </dd>
+
+    <dt>
+        @Servicely.Languages.Language.wife
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen1.citizen_national_id)
+    </dd>
+
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen1.citizen_first_name_arabic)
+    </dd>
+    <dt>
+        @Servicely.Languages.Language.FromDate
+    </dt>
+
+
+    <dd>
+        @Html.DisplayFor(model => model.social_status_from)
+    </dd>
+
+    <dt>
+        @Servicely.Languages.Language.ToDate
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.social_status_to)
+    </dd>
+
+
+
+
+    <dt>
+        @Servicely.Languages.Language.Social_status_type
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Social_Status_Type.social_status_type_name_arabic)
+    </dd>
+
+
+
+</dl>
+
+        }
+        else
+        {
+<dl class="dl-horizontal">
+    <dt>
+        @Servicely.Languages.Language.husband
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+    </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Citizen.citizen_first_name_arabic)
+    </dd>
+
+    <dt>
+        @Servicely.Languages.Language.wife
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen1.citizen_national_id)
+    </dd>
+
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen1.citizen_first_name)
+    </dd>
+    <dt>
+        @Servicely.Languages.Language.FromDate
+    </dt>
+
+
+    <dd>
+        @Html.DisplayFor(model => model.social_status_from)
+    </dd>
+
+    <dt>
+        @Servicely.Languages.Language.ToDate
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.social_status_to)
+    </dd>
+
+
+
+
+    <dt>
+        @Servicely.Languages.Language.Social_status_type
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Social_Status_Type.social_status_type_name)
+    </dd>
+
+
+
+</dl>
+        }
+    }
+    else
+    {
+
+<dl class="dl-horizontal">
+    <dt>
+        @Servicely.Languages.Language.husband
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen.citizen_national_id)
+    </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Citizen.citizen_first_name_arabic)
+    </dd>
+
+    <dt>
+        @Servicely.Languages.Language.wife
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen1.citizen_national_id)
+    </dd>
+
+
+    <dd>
+        @Html.DisplayFor(model => model.Citizen1.citizen_first_name)
+    </dd>
+    <dt>
+        @Servicely.Languages.Language.FromDate
+    </dt>
+
+
+    <dd>
+        @Html.DisplayFor(model => model.social_status_from)
+    </dd>
+
+    <dt>
+        @Servicely.Languages.Language.ToDate
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.social_status_to)
+    </dd>
+
+
+
+
+    <dt>
+        @Servicely.Languages.Language.Social_status_type
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Social_Status_Type.social_status_type_name)
+    </dd>
+
+
+
+</dl>
+    }
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Servicely.Languages.Language.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>

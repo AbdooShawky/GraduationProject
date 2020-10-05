@@ -1,0 +1,520 @@
+﻿@model Servicely.Models.Healthcare_Doctor
+
+@{
+    ViewBag.Title = @Servicely.Languages.Language.Create;
+   if (Session["Layout"] != null)
+    Layout = Session["Layout"].ToString(); 
+    else
+       Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<script>
+    $(function () {
+        $("#hospitalDoctor_doctor").select2(); //searchable drop down doctor national id
+      var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+
+
+            $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_arabic_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+                var sid = $("#City").val();
+                var ss = $("#city").val();
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+                var data = $("#district").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/HealthCare_Doctor/GetHospitalsByDistrictId",
+                    data: { DID: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name_arabic + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_arabic_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+                var data = $("#district").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/HealthCare_Doctor/GetHospitalsByDistrictId",
+                    data: { DID: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name_arabic + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_arabic_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+            
+            $("#district").change(function () {
+
+                var data = $("#district").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/HealthCare_Doctor/GetHospitalsByDistrictId",
+                    data: { DID: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name_arabic + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+            });
+
+        }
+        else
+        {
+                $("#State").change(function () {
+                var data = $("#State").val();
+                $("#city").empty();
+                $.ajax({
+                    url: "/Addresses/GetCitiesByStateId",
+                    data: { stateId: data },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#city").append("<option value='" + row.city_id + "'> " + row.city_name + " </option>");
+                        });
+
+
+
+                    }
+
+
+
+                });
+
+
+                var sid = $("#City").val();
+                var ss = $("#city").val();
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+                var data = $("#district").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/HealthCare_Doctor/GetHospitalsByDistrictId",
+                    data: { DID: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+            $("#city").change(function () {
+                var ss = $("#city").val();
+                $("#region").empty();
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                $("#region").empty();
+                $("#district").empty();
+
+                $.ajax({
+                    url: "/Addresses/GetRegionByCityId",
+                    data: { CityId: ss },
+                    async: false,
+                    success: function (res) {
+                        $.each(res, function (i, row) {
+
+                            $("#region").append("<option value='" + row.region_id + "'> " + row.region_name + " </option>");
+                        });
+
+                    }
+                });
+
+                var data = $("#region").val();
+
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+                var data = $("#district").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/HealthCare_Doctor/GetHospitalsByDistrictId",
+                    data: { DID: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+
+
+            });
+
+            $("#region").change(function () {
+                var data = $("#region").val();
+                $("#district").empty();
+                $.ajax({
+                    url: "/Addresses/GetDistrictByRegionId",
+                    data: { rId: data },
+                    async: false,
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#district").append("<option value='" + r.district_id + "'>  " + r.district_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+            $("#district").change(function () {
+
+                var data = $("#district").val();
+                $("#hospital").empty();
+                $.ajax({
+                    url: "/HealthCare_Doctor/GetHospitalsByDistrictId",
+                    data: { DID: data },
+                    success: function (res) {
+
+                        $.each(res, function (i, r) {
+
+                            $("#hospital").append("<option value='" + r.hospital_id + "'>  " + r.hospital_name + " </option>");
+
+                        });
+                    }
+
+
+                });
+
+
+            });
+        }
+
+    });
+</script>
+
+    <div class="container">
+        <h2>@Servicely.Languages.Language.AddNewDoctor</h2>
+
+        @using (Html.BeginForm())
+        {
+
+    <div class="form-horizontal">
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.DoctorNationalID</label>
+                @Html.DropDownList("hospitalDoctor_doctor", null, "", htmlAttributes: new { @class = " form-control", required = "required", data_live_search = "true" })
+                @Html.ValidationMessageFor(model => model.doctor_citizen_id, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+        <div class="row ">
+            <div class="col mt-3">
+                <label class="label"> @Servicely.Languages.Language.State</label>
+                @Html.DropDownList("State", null, "", htmlAttributes: new { @class = "form-control" })
+
+
+            </div>
+            <div class="col mt-3">
+                <label class="label"> @Servicely.Languages.Language.City</label>
+                <select class="form-control" id="city"></select>
+            </div>
+            <div class="col mt-3">
+                <label class="label"> @Servicely.Languages.Language.Region</label>
+                <select class="form-control" id="region" name="district_region_id"></select>
+
+
+            </div>
+
+            <div class="col mt-3">
+                <label class="label"> @Servicely.Languages.Language.District</label>
+                <select class="form-control" id="district" name="address_district_id">
+                </select>
+
+
+            </div>
+
+
+            <div class="col mt-3">
+                <label class="label"> @Servicely.Languages.Language.Hospital</label>
+                <select class="form-control" id="hospital" name="hospitalDoctor_hospital">
+                </select>
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        @if (ViewBag.errorMessage != null)
+        {
+            <label class="text-danger mt-3 mb-3">@ViewBag.errorMessage</label>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 mt-2 col-md-10">
+
+
+
+
+                <input type="submit" value=@Servicely.Languages.Language.Create class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+        }
+
+        <div>
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    </div>

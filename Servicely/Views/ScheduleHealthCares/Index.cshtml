@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Servicely.Models.HealthCareSheduleM_M>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+    <h2>@Servicely.Languages.Language.Index</h2>
+
+<p>
+    @Html.ActionLink(Servicely.Languages.Language.Create_New, "Step1_ShcheduleHealthCare")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Servicely.Languages.Language.Appointemnts
+        </th>
+        <th>
+            @Servicely.Languages.Language.Doctors
+        </th>
+        <th>
+            @Servicely.Languages.Language.healthCareName
+        </th>
+        <th>
+           @Servicely.Languages.Language.Specialization
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @item.ScheduleHealthCare.checkup_date.Value.ToShortDateString() &nbsp; <span> @Servicely.Languages.Language.From</span> &nbsp;@item.ScheduleHealthCare.checkup_start.Value.Hours:@item.ScheduleHealthCare.checkup_start.Value.Minutes<span>0</span> &nbsp;<span>@Servicely.Languages.Language.To</span>&nbsp;@item.ScheduleHealthCare.checkup_end.Value.Hours:@item.ScheduleHealthCare.checkup_end.Value.Minutes<span>0</span>
+    </td>
+    @if (Session["lang"] != null)
+    {
+        if (Session["lang"].ToString().Equals("ar-EG"))
+        {
+
+            <td>
+                @item.Healthcare_Doctor.Citizen.citizen_first_name_arabic @item.Healthcare_Doctor.Citizen.citizen_second_name_arabic  @item.Healthcare_Doctor.Citizen.citizen_third_name_arabic  @item.Healthcare_Doctor.Citizen.citizen_fourth_name_arabic
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HealthCare.hospital_name_arabic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Healthcare_Doctor.HealthCareSpecialization.specialization_name_arabic)
+            </td>
+        }
+        else
+        {
+            <td>
+                @item.Healthcare_Doctor.Citizen.citizen_first_name @item.Healthcare_Doctor.Citizen.citizen_second_name  @item.Healthcare_Doctor.Citizen.citizen_third_name  @item.Healthcare_Doctor.Citizen.citizen_fourth_name
+
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HealthCare.hospital_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Healthcare_Doctor.HealthCareSpecialization.specialization_name)
+            </td>
+        }
+    }
+    else
+    {
+        <td>
+            @item.Healthcare_Doctor.Citizen.citizen_first_name @item.Healthcare_Doctor.Citizen.citizen_second_name  @item.Healthcare_Doctor.Citizen.citizen_third_name  @item.Healthcare_Doctor.Citizen.citizen_fourth_name
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthCare.hospital_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Healthcare_Doctor.HealthCareSpecialization.specialization_name)
+        </td>
+    }
+
+    <td>
+        <a href="/ScheduleHealthCares/Edit/@item.ScheduleHealthCare.schedule_id"><i class="fa fa-edit"></i></a>| <a href="/ScheduleHealthCares/Delete/@item.ScheduleHealthCare.schedule_id"><i class="fa fa-trash-alt"></i></a>
+    </td>
+</tr>
+}
+
+</table>

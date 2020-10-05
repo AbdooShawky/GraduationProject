@@ -1,0 +1,282 @@
+﻿@model Servicely.Models.CertificateStudentM_M
+
+@{
+    ViewBag.Title = "Create";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+    <script>
+    $(function () {
+        $('.js-example-basic-multiple').select2();
+       
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+             $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+            $("#Id").change(function () {
+            var data = $("#Id").val();
+            $("#studentInfo").empty();
+
+            $.ajax({
+
+
+                url: "/IntermediateRegistration/getDataOfStudent",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    $("#studentInfo").text(  res.citizen_first_name_arabic + " " + res.citizen_second_name_arabic + " " + res.citizen_third_name_arabic + " " + res.citizen_fourth_name_arabic);
+
+
+                }
+
+
+            });
+
+
+
+
+        });
+
+        }
+        else {
+
+         $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityName + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyName + "  </option>");
+                    });
+
+                }
+
+            });
+
+         });
+         $("#StudentId").change(function () {
+            var data = $("#StudentId").val();
+            $("#studentInfo").empty();
+
+            $.ajax({
+
+
+                url: "/IntermediateRegistration/getDataOfStudent",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+
+                    $("#studentInfo").text( res.citizen_first_name + " " + res.citizen_second_name + " " + res.citizen_third_name + " " + res.citizen_fourth_name);
+
+
+                }
+
+
+            });
+
+
+
+
+         });
+
+
+            $("#FacultyId").change(function () {
+
+                 var data = $(this).val();
+                $("#CertificateId").empty();
+                $("#CirtificateTypeName").empty();
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllCertificateByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        
+                    $("#CirtificateTypeName").val(res.CirtificateTypeName);
+                    $("#CertificateId").val(res.CertificateId);
+                    
+
+                }
+
+            });
+
+            });
+            $("#FacultyId").change(function () {
+
+                      var data = $(this).val();
+            $("#StudentId").empty();
+            $.ajax({
+                url: "/CertificateStudentM_M/GetAllStudentByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#StudentId").append("<option >  </option>");
+                    $.each(res, function (i, r) {
+                           
+                          
+                           
+                          
+                        $("#StudentId").append("<option value='" + r.Id + "'>  "+ r.citizen_first_name+" "+r.citizen_second_name+" "+r.citizen_third_name+" "+r.citizen_fourth_name+"  </option>");
+                    });
+
+                }
+
+            });
+           
+
+            });
+        }
+
+   
+    });
+    </script>
+
+<h2>@Servicely.Languages.Language.Create</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <h4>@Servicely.Languages.Language.Certificate</h4>
+        <hr />
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.UniversityType</label>
+                @Html.DropDownList("UType", null, "", new { @class = "form-control", required = "required" })
+            </div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.University</label>
+                <select class="form-control" required id="U" name="UniversityId">
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Faculty</label>
+                <select class="form-control" id="FacultyId" name="FacultyId" required>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row mt-3 ">
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Certificate</label>
+                <input type="text" required class="form-control" name="CirtificateTypeName" id="CirtificateTypeName" readonly />
+                <input type="hidden" name="CertificateId" id="CertificateId" />
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.Grade</label>
+                @Html.DropDownList("GradeId", null, "", new { @class = "form-control", required = "required" })
+
+            </div>
+            
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <label>@Servicely.Languages.Language.GraduationProject @Servicely.Languages.Language.Grade</label>
+                @Html.DropDownList("GraduationProjectGradeId", null, "", new { @class = "form-control", required = "required" })
+
+            </div>
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <label>@Servicely.Languages.Language.Students</label>
+                <select required class="form-control js-example-basic-multiple" multiple id="StudentId" name="StudentId">
+                </select>
+                <div class="mt-2" id="studentInfo">
+
+                </div>
+            </div>
+        </div>
+
+            <div class="form-group mt-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Servicely.Languages.Language.Create" class="btn btn-default" />
+                </div>
+            </div>
+       
+    }
+
+    <div>
+        @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+    </div>
+</div>
+

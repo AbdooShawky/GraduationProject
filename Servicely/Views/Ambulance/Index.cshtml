@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+@*<script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=j2MyrDzKvQcE8-JmOe9_c7POPG_ckT1DX1DFteiFRE8&callback=initMap" async defer></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+           * element that contains the map. */
+        #map {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+    <div id="map"></div>*@
+
+
+<div style="width: 640px; height: 480px" id="mapContainer"></div>
+<script>
+    // Initialize the platform object:
+    var platform = new H.service.Platform({
+        'apikey': '4brmk_30rSCahajo2kPuCqpKK7w97xZAe1hyYjj0xM8'
+    });
+
+    // Obtain the default map types from the platform object
+    var maptypes = platform.createDefaultLayers();
+
+    // Instantiate (and display) a map object:
+    var map = new H.Map(
+        document.getElementById('mapContainer'),
+        maptypes.vector.normal.map,
+        {
+            zoom: 10,
+            center: { lng: 13.4, lat: 52.51 }
+        });
+
+    // 'maptypes' variable holds the result of the H.service.Platform#createDefaultLayers call
+var mapSettings = new H.ui.MapSettingsControl({
+  alignment: 'top-right',
+  entries: [{
+    name: 'Normal map',
+    mapTypes: maptypes.normal
+  }]
+});
+ui.addControl('mapsettings', mapSettings);
+
+</script>

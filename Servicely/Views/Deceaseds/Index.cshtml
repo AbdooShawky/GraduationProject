@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Servicely.Models.Deceased>
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Index;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+}
+
+    <script>
+    $(function () {
+
+        $("#NId").select2();
+         var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+        if (seesion == "ar-EG") {
+            $("#NId").change(function () {
+
+                var ttid = $("#NId").val();
+
+                $.ajax({
+                    url: "/Deceaseds/GetAllDeceadedsBYId",
+                    data: { Id: ttid },
+                    success: function (row) {
+                        $(".tt").empty();
+                       
+
+                            $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name_arabic + " " + row.citizen_second_name_arabic + " " + row.citizen_third_name_arabic + " " + row.citizen_fourth_name_arabic + " </td><td> " + row.deceased_deathDate + " </td><td> " + row.deceased_deathPlace_arabic + " </td>  <td> " + row.deceased_deathCause_arabic + " </td> <td><a href='/Deceaseds/Edit/" + row.deceased_id + "'><i class='far fa-edit'></i></a> | <a href='/Deceaseds/Delete/" + row.deceased_id + "'><i class='far fa-trash-alt' ></i></a>   </td></tr>");
+                        
+                    }
+
+
+                });
+
+
+
+
+            });
+
+        }
+
+        else
+        {
+             $("#NId").change(function () {
+
+                var ttid = $("#NId").val();
+
+                $.ajax({
+                    url: "/Deceaseds/GetAllDeceadedsBYId",
+                    data: { Id: ttid },
+                    success: function (row) {
+                        $(".tt").empty();
+                       
+
+                            $("#tb1").append("<tr class='tt'><td> " + row.citizen_first_name + " " + row.citizen_second_name + " " + row.citizen_third_name + " " + row.citizen_fourth_name + " </td><td> " + row.deceased_deathDate + " </td><td> " + row.deceased_deathPlace + " </td>  <td> " + row.deceased_deathCause + " </td> <td><a href='/Deceaseds/Edit/" + row.deceased_id + "'><i class='far fa-edit'></i></a> | <a href='/Deceaseds/Delete/" + row.deceased_id + "'><i class='far fa-trash-alt' ></i></a>   </td></tr>");
+                        
+                    }
+
+
+                });
+
+
+
+
+            });
+        }
+        //<i class="far fa-edit"></i></a>
+
+        //><i class="far fa-trash-alt"></i>
+        //$.ajax({
+        //    url: "/Document/GetAllDocument",
+        //    data: "",
+        //    success: function (res) {
+
+        //        $.each(res, function (i, row) {
+
+        //            $("#tb1").append("<tr class='tt'><td> " + row.citizen_national_id + " </td><td> " + row.document_type_name + " </td><td> " + row.document_name + " </td>  <td> " + row.document_extensions + " </td><td> " + row.document_data + " </td>  <td><a href='/Document/Edit/" + row.document_id + "'>Edit</a> | <a href='/Document/Delete/" + row.document_id + "'>Delete</a>   </td></tr>");
+        //        });
+        //    }
+
+
+        //});
+
+    });
+
+    </script>
+    <div class="container-fluid">
+        <h2>@Servicely.Languages.Language.Index</h2>
+        <h3>@Servicely.Languages.Language.Deceased</h3>
+        <p>
+            @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+        </p>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DropDownList("NId" ,null,  "",  new { @class="form-control"})
+            </div>
+        </div>
+
+
+        <table class="table mt-3" id="tb1">
+            <tr>
+                <th>
+                    @Servicely.Languages.Language.CitizenName
+
+                </th>
+                
+                <th>
+                    @Servicely.Languages.Language.DeathDate
+
+                </th>
+                <th>
+                    @Servicely.Languages.Language.DeathPlace
+
+                </th>
+                <th>
+                    @Servicely.Languages.Language.deathCause
+
+                </th>
+                <th></th>
+            </tr>
+
+         
+
+        </table>
+    </div>
+

@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    $(function () {
+
+
+        $('#wizard1').steps({
+            headerTag: 'h3',
+            bodyTag: 'section',
+            autoFocus: true,
+            titleTemplate: '#index# #title#'
+        });
+
+    });
+</script>
+<h2>@Servicely.Languages.Language.AddNewStudent</h2>
+<hr />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-dark">
+                <div class="inner">
+                    @if (ViewBag.outt != null)
+                    {
+                        <h3>
+                            @ViewBag.inn
+                        </h3>
+                    }
+
+
+                    <p>@Servicely.Languages.Language.EducatedInside</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/AddStudents/Index2" class="small-box-footer">@Servicely.Languages.Language.AddNewStudent <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-dark">
+                <div class="inner">
+                    @if (ViewBag.outt != null)
+                    {
+                        <h3>
+                            @ViewBag.outt
+                        </h3>
+                    }
+
+
+                    <p>@Servicely.Languages.Language.EducatedAbroad</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">@Servicely.Languages.Language.AddNewStudent <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+
+        </div>
+        <!-- ./col -->
+    </div>
+
+</div>

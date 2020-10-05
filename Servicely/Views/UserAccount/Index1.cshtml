@@ -1,0 +1,153 @@
+﻿@model IEnumerable<Servicely.Models.User>
+@{
+    ViewBag.Title =  Servicely.Languages.Language.Index1;
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+<script>
+    $(function () {
+
+
+          var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+                 
+                seesion = res;
+
+            }
+        });
+
+        if (seesion == "ar-EG") {
+
+            $("#user_type_id").change(function () {
+
+            var ttid = $("#user_type_id").val();
+                  
+            $.ajax({
+                url: "/UserAccount/GetAllUsersByTypeNameId",
+                data: { tid: ttid },
+                 
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (index, row) {
+                         
+                        $("#tb").append("<tr class='tt'> <td> " + row.user_name + " </td> <td> " + row.user_type_name_arabic + "  </td>  <td><a href='/UserAccount/Edit/" + row.user_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/UserAccount/Delete/" + row.user_id + "'>@Servicely.Languages.Language.Delete</a> </td></tr> ");
+
+                    });
+
+                }
+
+            });
+                     });
+        }
+
+        else {
+
+                    $("#user_type_id").change(function () {
+
+            var ttid = $("#user_type_id").val();
+                  
+            $.ajax({
+                url: "/UserAccount/GetAllUsersByTypeNameId",
+                async: false,
+                data: { tid: ttid },
+                 
+                success: function (res) {
+                    $(".tt").empty();
+                    $.each(res, function (index, row) {
+                         
+                        $("#tb").append("<tr class='tt'> <td> " + row.user_name + " </td> <td> " + row.user_type_name + "  </td>  <td><a href='/UserAccount/Edit/" + row.user_id + "'>@Servicely.Languages.Language.Edit</a> | <a href='/UserAccount/Delete/" + row.user_id + "'>@Servicely.Languages.Language.Delete</a> </td></tr> ");
+
+                      
+                    });
+
+                }
+
+            });
+                     });
+
+        }
+
+
+
+    });
+
+</script>
+
+
+
+<div class="container-fluid">
+    <h5 > @Servicely.Languages.Language.Index</h5>
+    <h5 > @Servicely.Languages.Language.AllUsers</h5>
+   
+
+            <div class="container-fluid mt-1">
+
+                <div class="col-4">
+
+                </div>
+
+
+                <div class="row ml-2 mb-2">
+                    @Html.ActionLink(Servicely.Languages.Language.AddNewUser, "Creat", new { })
+                </div>
+
+
+                <div class="col-3 mb-2">
+                    <label for="vaccination_type_period">@Servicely.Languages.Language.UserType</label><br />
+                    @Html.DropDownList("user_type_id", null, "", new { @class = "form-control", requierd = "required" })
+
+                </div>
+                <div class="row">
+
+                    <table class="table table-hover" id="tb">
+
+                        <thead>
+                            <tr><th class="font-weight-bold">  @Servicely.Languages.Language.User_name </th><th class="font-weight-bold">  @Servicely.Languages.Language.UserType</th></tr>
+
+                        </thead>
+
+
+                    </table>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div>
+    <table class="table table-hover" style="border:2px solid; " id="tb">
+
+        <thead>
+            <tr><th class="font-weight-bold"> User Name </th><th class="font-weight-bold"> User Type</th></tr>
+
+        </thead>
+        
+
+    </table>
+
+
+</div>*@

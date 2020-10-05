@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Servicely.Models.police_report>
+
+@{
+    ViewBag.Title = "Index";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Police Report Number</label>
+        </th>
+        <th>
+            <label>Police Comments</label>
+        </th>
+        <th>
+            <label>Date</label>
+        </th>
+        <th>
+            <label>Police officer</label>
+        </th>
+        <th>
+            <label>Accused Person</label>
+        </th>
+        <th>
+            <label>Police Report Type</label>
+        </th>
+        <th>
+            <label>Police department</label>
+        </th>
+        <th>
+            <label>Police Report Clasiification</label>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.police_report_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.police_report_body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.police_report_DateAndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citizen.citizen_national_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citizen1.citizen_national_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PoliceReport_type.police_report_type_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PoliceDepartment.police_department_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PoliceReportClassification.police_report_classification_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.police_report_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.police_report_id })
+        </td>
+    </tr>
+}
+
+</table>

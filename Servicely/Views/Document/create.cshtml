@@ -1,0 +1,203 @@
+﻿@model Servicely.Models.Upload
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<style>
+    .button {
+        width: 190px;
+        background: white;
+        color: rgb(209, 36, 36);
+        font-size: 16px;
+        line-height: 25px;
+        padding: 10px 0;
+        border-radius: 15px;
+        cursor: pointer;
+        border-color: rgb(209, 36, 36);
+        outline: rgb(209, 36, 36);
+        border: solid;
+    }
+
+        .button:hover {
+            color: #fff;
+            background-color: rgb(209, 36, 36);
+        }
+</style>
+<script>
+    $(function () {
+
+        @*$("#contact_type_id").change(function () {
+
+            var data = $("#contact_type_id").val();
+
+            if( data == 1)
+            {
+                $("#divInput").append(" <input type='text' class='form-control' required name='contact_data' pattern='"+@ViewBag.e+"' />");
+            }
+
+            if( data == 2)
+            {
+                $("#divInput").append(" <input type='text' class='form-control' required name='contact_data' pattern='(201)[0-9]{9}' />");
+            }
+
+
+            $("#divInput").append(" <input type='text' class='form-control' required name='contact_data' pattern='(201)[0-9]{9}' />");
+        });*@
+
+        $.
+
+
+
+    });
+
+</script>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+            <div class="container-fluid mt-4" >
+                @using (Html.BeginForm("Create", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    
+
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <h2 style="color:rgb(209, 36, 36)">@Servicely.Languages.Language.DocumentOfCitizen</h2>
+                            </div>
+                            
+                            <div class="col-md-6">
+
+                                <img src="~/img/step3.PNG" style="width:300px;height:50px;margin:auto" />
+
+                            </div>
+                        </div>
+
+                    
+
+                    
+                        <div class="row mt-2">
+                            @*<div class="col-md-3">
+                            <label>National Id</label>
+                            @Html.DropDownList("document_citizen_id", null, "", new { @class = "form-control", required = "required" })
+
+                        </div>*@
+
+                            <div class="col">
+
+                                <label>@Servicely.Languages.Language.DocumentType</label>
+                                @Html.DropDownList("document_documentType_id", null, "", new { @class = "form-control", required = "required" })
+
+
+
+                            </div>
+
+
+                            <div class="col ">
+
+                                <label>@Servicely.Languages.Language.DocumentData</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">@Servicely.Languages.Language.Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        @*<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="file">*@
+
+                                        @Html.TextBoxFor(a => a.file, new { type = "file", @class = "custom-file-input ", id = "inputGroupFile01", aria_describedby = "inputGroupFileAddon01" })
+                                        <label class="custom-file-label" for="inputGroupFile01">@Servicely.Languages.Language.Choosefile</label>
+
+
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <label class="text-danger">
+
+                                        @Html.ValidationMessageFor(a => a.file)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+
+                            </div>
+                        </div>
+                    
+
+
+
+
+
+
+                 
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+
+                               
+                                <div class="text-center">
+                                    <a href="/Addresses/Create">
+                                        <button type="button" class="btn btn-md button  float-right">
+                                            @Servicely.Languages.Language.Previous
+
+                                        </button>
+                                    </a>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="col-md-4"></div>
+                           
+
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-md button  float-right">
+
+                                        @Servicely.Languages.Language.Step3
+
+                                    </button>
+                                </div>
+                                
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    
+
+
+
+
+                }
+
+            </div>
+
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+</div>
+
+
+
+

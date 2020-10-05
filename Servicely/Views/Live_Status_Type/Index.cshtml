@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Servicely.Models.Live_Status_Type>
+
+@{
+    ViewBag.Title = "Index";
+     if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+    <div class="container-fluid">
+        <h2>  @Servicely.Languages.Language.Index</h2>
+        <h3>  @Servicely.Languages.Language.LiveSatusType</h3>
+
+        <p>
+            @Html.ActionLink(Servicely.Languages.Language.Create_New, "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Servicely.Languages.Language.LiveStatusTypeName
+                </th>
+
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+
+            @if (Session["lang"] != null)
+            {
+                if (Session["lang"].ToString().Equals("ar-EG"))
+                {
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.live_status_type_name_arabic)
+                    </td>
+
+
+
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.live_status_type_name)
+                    </td>
+
+
+                }
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.live_status_type_name)
+                </td>
+
+            }
+
+
+
+
+            <td>
+                @Html.ActionLink(@Servicely.Languages.Language.Edit+" | ", "Edit", new { id = item.live_status_type_id })
+
+
+                @Html.ActionLink(@Servicely.Languages.Language.Delete, "Delete", new { id = item.live_status_type_id })
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+

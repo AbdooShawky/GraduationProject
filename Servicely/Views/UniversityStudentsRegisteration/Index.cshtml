@@ -1,0 +1,201 @@
+﻿@model IEnumerable<Servicely.Models.Student>
+@{
+    ViewBag.Title = "Index";
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+    <script>
+    $(function () {
+
+        $("#Id").select2();
+        var seesion;
+        $.ajax({
+            url: "/Addresses/Sessionvalue",
+            data: "",
+            async:false,
+            success: function (res) {
+
+                seesion = res;
+
+            }
+        });
+
+
+        if (seesion == "ar-EG") {
+
+
+             $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyNameArabic + "  </option>");
+                    });
+
+                }
+
+            });
+
+         });
+
+             $("#FacultyId").change(function () {
+            var data = $(this).val();
+            $(".tt").empty();
+            $.ajax({
+                url: "/UniversityStudentsRegisteration/GetAllStudentByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                       
+                    $.each(res, function (i, r) {
+                        $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name_arabic+" "+r.citizen_second_name_arabic+" "+r.citizen_third_name_arabic+" "+r.citizen_fourth_name_arabic + " </td>   <td> " + r.citizen_national_id + " </td>   <td> " + r.IsGraduatedU + "</td>  <td><a href='/Coordinitaion/Edit/" + r.Id + "'>  <i class='far fa-edit'></i> </a> | <a href='/Coordinitaion/Delete/" + r.Id + "'><i class='far fa-trash-alt'></i> </a> </td> </tr>");
+
+                    });
+
+                }
+
+            });
+
+        });
+        
+        }
+        else {
+
+         $("#UType").change(function () {
+            var data = $(this).val();
+            $("#U").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllUnversityByTypeId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#U").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#U").append("<option value='" + r.Id + "'>  " + r.UniversityName + "  </option>");
+                    });
+
+                }
+
+            });
+
+        });
+
+         $("#U").change(function () {
+            var data = $(this).val();
+            $("#FacultyId").empty();
+            $.ajax({
+                url: "/Coordinations/GetAllFacultyByUniversityId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                        $("#FacultyId").append("<option value='0'>  </option>");
+                    $.each(res, function (i, r) {
+                        $("#FacultyId").append("<option value='" + r.Id + "'>  " + r.FacultyName + "  </option>");
+                    });
+
+                }
+
+            });
+
+         });
+
+
+            $("#FacultyId").change(function () {
+            var data = $(this).val();
+            $(".tt").empty();
+            $.ajax({
+                url: "/UniversityStudentsRegisteration/GetAllStudentByFacultyId",
+                data: { Id: data },
+                async: false,
+                success: function (res) {
+                       
+                    $.each(res, function (i, r) {
+                        $("#tb").append("<tr class='tt'> <td> " + r.citizen_first_name+" "+r.citizen_second_name+" "+r.citizen_third_name+" "+r.citizen_fourth_name + " </td>   <td> " + r.citizen_national_id + " </td>   <td> " + r.IsGraduatedU + "</td>  <td><a href='/Coordinitaion/Edit/" + r.Id + "'>  <i class='far fa-edit'></i> </a> | <a href='/Coordinitaion/Delete/" + r.Id + "'><i class='far fa-trash-alt'></i> </a> </td> </tr>");
+
+                       
+                        
+                        
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+        }
+
+
+    });
+    </script>
+
+<h2>@Servicely.Languages.Language.Index</h2>
+<hr />
+
+@Html.ActionLink(Servicely.Languages.Language.Create_New,"Create")
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.UniversityType</label>
+            @Html.DropDownList("UType", null, "", new { @class = "form-control", required = "required" })
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.University</label>
+            <select class="form-control" required id="U" name="UniversityId">
+            </select>
+        </div>
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3">
+            <label>@Servicely.Languages.Language.Faculty</label>
+            <select class="form-control" id="FacultyId" name="FacultyId" required>
+            </select>
+        </div>
+
+    </div>
+    <div class="row mt-4">
+        <table class="table table-sm table-striped" id="tb">
+            <tr>
+                <th>@Servicely.Languages.Language.Students</th>
+                <th>@Servicely.Languages.Language.NationalId</th>
+                <th>@Servicely.Languages.Language.graduated</th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+</div>

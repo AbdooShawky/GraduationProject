@@ -1,0 +1,99 @@
+﻿@model Servicely.Models.service
+
+@{
+    ViewBag.Title = Servicely.Languages.Language.Create;
+    if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<div class="container mt-5">
+    @using (Html.BeginForm())
+
+    {
+        @Html.HiddenFor(a=> a.service_id)
+        <h2>@Servicely.Languages.Language.Edit</h2>
+        <h4 class="mt-3">@Servicely.Languages.Language.Service</h4>
+        <hr />
+
+        <div class=" row">
+            <div class="col-4">
+
+                <div class="form-group">
+                    <label>@Servicely.Languages.Language.governement_name</label>
+
+                    @Html.DropDownList("goverenemnt_id", null, htmlAttributes: new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.goverenemnt_id, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="col-4 col-sm">
+                <div class="form-group">
+                    <label>@Servicely.Languages.Language.service_name</label>
+
+                    @Html.EditorFor(model => model.service_name, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20}\\s[A-Z][a-z]{2,20})|([A-Z][a-z]{3,20})" } })
+                    @Html.ValidationMessageFor(model => model.service_name, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+
+            <div class="col-4 col-sm">
+                <div class="form-group">
+                    <label>@Servicely.Languages.Language.service_name_inArabic</label>
+
+                    @Html.EditorFor(model => model.service_name_arabic, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "([\u0600-\u06FF\\s]{3,20})" } })
+                    @Html.ValidationMessageFor(model => model.service_name_arabic, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-4">
+
+            <div class="form-group">
+                <label>@Servicely.Languages.Language.service_time</label>
+
+                @Html.EditorFor(model => model.service_time, new { htmlAttributes = new { @class = "form-control", required = "required", type = "Number", max = "60", min = "5" } })
+                @Html.ValidationMessageFor(model => model.service_time, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="col-4">
+
+            <div class="form-group">
+                <label>@Servicely.Languages.Language.service_time</label>
+                @Html.EditorFor(model => model.service_price, new { htmlAttributes = new { @class = "form-control", required = "required", type = "Number", max = "600", min = "5" } })
+                @Html.ValidationMessageFor(model => model.service_time, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                @if (ViewBag.sererror != null)
+                {
+                    <label class="mt-3 mb-3 text-danger">@ViewBag.sererror </label>
+                }
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="@Servicely.Languages.Language.Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="mb-3 mt-3">
+            @Html.ActionLink(Servicely.Languages.Language.Back_to_List, "Index")
+        </div>
+    }
+</div>
+
+
+
+
+

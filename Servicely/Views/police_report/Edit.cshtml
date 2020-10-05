@@ -1,0 +1,95 @@
+﻿@model Servicely.Models.police_report
+
+@{
+    ViewBag.Title = "Create";
+       if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Police Report</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Police Report Number</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.police_report_number, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.police_report_number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Police Report Clasiification</label>
+            <div class="col-md-10">
+                @Html.DropDownList("police_report_classification_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.police_report_classification_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Police department</label>
+            <div class="col-md-10">
+                @Html.DropDownList("police_report_policeDepartment", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.police_report_policeDepartment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Police Comments</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.police_report_body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.police_report_body, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Police officer</label>
+            <div class="col-md-10">
+                @Html.DropDownList("police_report_police_signature", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.police_report_police_signature, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Accused Person</label>
+            <div class="col-md-10">
+                @Html.DropDownList("police_report_accused_signature", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.police_report_accused_signature, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Date</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.police_report_DateAndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.police_report_DateAndTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Police Report Type</label>
+            <div class="col-md-10">
+                @Html.DropDownList("police_report_type", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.police_report_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

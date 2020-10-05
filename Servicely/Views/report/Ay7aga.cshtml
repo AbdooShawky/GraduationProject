@@ -1,0 +1,61 @@
+﻿@{
+        if (Session["Layout"] != null)
+    { Layout = Session["Layout"].ToString(); }
+
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+
+<script>
+    let xhr = new XMLHttpRequest();
+   
+    const url = ' https://newsapi.org/v2/sources?apiKey=717d16ab4b5f4057b65d1ec7a1a8b09f';
+    xhr.onreadystatechange = function () {
+
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.response);
+
+            alert(this.response.json.sources[0].name)
+               
+          
+            
+        }
+        
+    }
+    console.log(xhr);
+
+
+xhr.open('GET', url , true);
+
+xhr.send(); 
+    $.ajax({
+        type:"Get",
+        url: "http://newsapi.org/v2/top-headlines?country=eg&apiKey=717d16ab4b5f4057b65d1ec7a1a8b09f",
+        contentType:"application/json",
+        data: "",
+        async: false,
+        crossDomain: true,
+        success: function (res) {
+            alert("success")
+            alert(JSON.stringify(res));
+            $.each(res, function (i, r) {
+
+               
+                alert(JSON.res.articles[0].source.name)
+                
+            });
+
+        },
+        error: function (res) {
+
+           
+        }
+
+
+    });
+</script>
+
+
+
+
+
